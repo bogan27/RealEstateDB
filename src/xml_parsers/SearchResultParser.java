@@ -53,6 +53,29 @@ public class SearchResultParser extends ParseZillowResultsAbstract {
             }
           }
 
+          // From Zestimate section of result
+          // Sets amount, 30-day change, date last updated, low valuation, high valuation, and
+          // percentile rank
+          NodeList zestimateList = element.getElementsByTagName("zestimate");
+          if (zestimateList.getLength() > 0) {
+            Node zestimateNode = zestimateList.item(0);
+            if (zestimateNode.getNodeType() == Node.ELEMENT_NODE) {
+              Element zestimate = (Element) zestimateNode;
+              unit.setZestimate(zestimate.getElementsByTagName("amount").item(0).getTextContent());
+              unit.setLastUpdated(
+                  zestimate.getElementsByTagName("last-updated").item(0).getTextContent());
+              unit.setThirtyDayChange(
+                  zestimate.getElementsByTagName("valueChange").item(0).getTextContent());
+              unit.setPercentileValue(
+                  zestimate.getElementsByTagName("percentile").item(0).getTextContent());
+              Element valuationRange =
+                  (Element) zestimate.getElementsByTagName("valuationRange").item(0);
+              unit.setvaluationLow(
+                  valuationRange.getElementsByTagName("low").item(0).getTextContent());
+              unit.setValuationHigh(
+                  valuationRange.getElementsByTagName("high").item(0).getTextContent());
+            }
+          }
         }
         propertyList.add(unit);
       }

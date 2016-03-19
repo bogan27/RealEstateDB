@@ -4,9 +4,6 @@
 package classes_for_db;
 
 import java.math.BigInteger;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.util.Date;
 import java.util.Map;
 
 /**
@@ -19,7 +16,7 @@ public class Zestimate implements DbTableObject {
 
   private BigInteger zpid;
   private int zestimate;
-  private Date lastUpdated;
+  private String lastUpdated;
   private int thirtyDayChange;
   private int valuationHigh;
   private int valuationLow;
@@ -121,38 +118,25 @@ public class Zestimate implements DbTableObject {
           "Length of argument for zestimate exceeds max allowed number of characters (9). Argument given: "
               + zestimate);
     } else {
-      int z = Integer.parseInt(zestimate);
-      this.setZestimate(z);
+      if (zestimate.length() > 0) {
+        int z = Integer.parseInt(zestimate);
+        this.setZestimate(z);
+      }
     }
   }
 
   /**
    * @return the date that the Zestimate for the property was last Updated
    */
-  public Date getLastUpdated() {
+  public String getLastUpdated() {
     return lastUpdated;
   }
 
   /**
-   * @param lastUpdated the date that the property's Zestimate was last updated @throws
-   */
-  public void setLastUpdated(Date lastUpdated) {
-    this.lastUpdated = lastUpdated;
-  }
-
-  /**
-   * @param lastUpdated the date that the property's Zestimate was last updated @throws
+   * @param lastUpdated the date that the property's Zestimate was last updated
    */
   public void setLastUpdated(String lastUpdated) {
-    DateFormat formatter = DateFormat.getDateInstance();
-    Date date = null;
-    try {
-      date = formatter.parse(lastUpdated);
-    } catch (ParseException e) {
-      e.printStackTrace();
-      System.out.println("Error converting String to Date: " + lastUpdated);
-    }
-    this.lastUpdated = date;
+    this.lastUpdated = lastUpdated;
   }
 
   /**
@@ -183,8 +167,10 @@ public class Zestimate implements DbTableObject {
    *         of -$1 Billion < thirtyDayChange < $1 Billion.
    */
   public void setThirtyDayChange(String thirtyDayChange) {
-    int change = Integer.parseInt(thirtyDayChange);
-    this.setThirtyDayChange(change);
+    if (thirtyDayChange.length() > 0) {
+      int change = Integer.parseInt(thirtyDayChange);
+      this.setThirtyDayChange(change);
+    }
   }
 
   /**
@@ -215,8 +201,10 @@ public class Zestimate implements DbTableObject {
    *         -$1 Billion < thirtyDayChange < $1 Billion.
    */
   public void setValuationHigh(String valuationHigh) {
-    int val = Integer.parseInt(valuationHigh);
-    this.setValuationHigh(val);
+    if (valuationHigh.length() > 0) {
+      int val = Integer.parseInt(valuationHigh);
+      this.setValuationHigh(val);
+    }
   }
 
   /**
@@ -247,8 +235,10 @@ public class Zestimate implements DbTableObject {
    *         -$1 Billion < thirtyDayChange < $1 Billion.
    */
   public void setvaluationLow(String valuationLow) {
-    int val = Integer.parseInt(valuationLow);
-    this.setvaluationLow(val);
+    if (valuationLow.length() > 0) {
+      int val = Integer.parseInt(valuationLow);
+      this.setvaluationLow(val);
+    }
   }
 
 

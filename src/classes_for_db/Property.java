@@ -23,10 +23,13 @@ public class Property implements DbTableObject {
   private int bedroomCount;
   private Date lastSoldDate;
   private int lastSoldPrice;
+  private Zestimate zestimate;
+  private Neighborhood region;
 
 
   public Property() {
-    // TODO Auto-generated constructor stub
+    this.zestimate = new Zestimate();
+    this.region = new Neighborhood();
   }
 
 
@@ -512,11 +515,255 @@ public class Property implements DbTableObject {
     }
   }
 
+  ////////////////////////
+  /// Delegate methods ///
+  ////////////////////////
+  /**
+   * @return
+   * @see classes_for_db.Zestimate#getZestimate()
+   */
+  public int getZestimate() {
+    return zestimate.getZestimate();
+  }
+
+
+  /**
+   * @param zestimate
+   * @see classes_for_db.Zestimate#setZestimate(int)
+   */
+  public void setZestimate(int zestimate) {
+    this.zestimate.setZestimate(zestimate);
+  }
+
+
+  /**
+   * @param zestimate
+   * @see classes_for_db.Zestimate#setZestimate(java.lang.String)
+   */
+  public void setZestimate(String zestimate) {
+    this.zestimate.setZestimate(zestimate);
+  }
+
+
+  /**
+   * @return
+   * @see classes_for_db.Zestimate#getLastUpdated()
+   */
+  public String getLastUpdated() {
+    return zestimate.getLastUpdated();
+  }
+
+
+  /**
+   * @param lastUpdated
+   * @see classes_for_db.Zestimate#setLastUpdated(java.lang.String)
+   */
+  public void setLastUpdated(String lastUpdated) {
+    zestimate.setLastUpdated(lastUpdated);
+  }
+
+
+  /**
+   * @return
+   * @see classes_for_db.Zestimate#getThirtyDayChange()
+   */
+  public int getThirtyDayChange() {
+    return zestimate.getThirtyDayChange();
+  }
+
+
+  /**
+   * @param thirtyDayChange
+   * @see classes_for_db.Zestimate#setThirtyDayChange(int)
+   */
+  public void setThirtyDayChange(int thirtyDayChange) {
+    zestimate.setThirtyDayChange(thirtyDayChange);
+  }
+
+
+  /**
+   * @param thirtyDayChange
+   * @see classes_for_db.Zestimate#setThirtyDayChange(java.lang.String)
+   */
+  public void setThirtyDayChange(String thirtyDayChange) {
+    zestimate.setThirtyDayChange(thirtyDayChange);
+  }
+
+
+  /**
+   * @return
+   * @see classes_for_db.Zestimate#getValuationHigh()
+   */
+  public int getValuationHigh() {
+    return zestimate.getValuationHigh();
+  }
+
+
+  /**
+   * @param valuationHigh
+   * @see classes_for_db.Zestimate#setValuationHigh(int)
+   */
+  public void setValuationHigh(int valuationHigh) {
+    zestimate.setValuationHigh(valuationHigh);
+  }
+
+
+  /**
+   * @param valuationHigh
+   * @see classes_for_db.Zestimate#setValuationHigh(java.lang.String)
+   */
+  public void setValuationHigh(String valuationHigh) {
+    zestimate.setValuationHigh(valuationHigh);
+  }
+
+
+  /**
+   * @return
+   * @see classes_for_db.Zestimate#getvaluationLow()
+   */
+  public int getvaluationLow() {
+    return zestimate.getvaluationLow();
+  }
+
+
+  /**
+   * @param valuationLow
+   * @see classes_for_db.Zestimate#setvaluationLow(int)
+   */
+  public void setvaluationLow(int valuationLow) {
+    zestimate.setvaluationLow(valuationLow);
+  }
+
+
+  /**
+   * @param valuationLow
+   * @see classes_for_db.Zestimate#setvaluationLow(java.lang.String)
+   */
+  public void setvaluationLow(String valuationLow) {
+    zestimate.setvaluationLow(valuationLow);
+  }
+
+
+  /**
+   * @return
+   * @see classes_for_db.Zestimate#getPercentileValue()
+   */
+  public float getPercentileValue() {
+    return zestimate.getPercentileValue();
+  }
+
+
+  /**
+   * @param percentileValue
+   * @see classes_for_db.Zestimate#setPercentileValue(float)
+   */
+  public void setPercentileValue(float percentileValue) {
+    zestimate.setPercentileValue(percentileValue);
+  }
+
+
+  /**
+   * @param percentileValue
+   * @see classes_for_db.Zestimate#setPercentileValue(java.lang.String)
+   */
+  public void setPercentileValue(String percentileValue) {
+    zestimate.setPercentileValue(percentileValue);
+  }
+
+
+  /**
+   * @return
+   * @see classes_for_db.Neighborhood#getRegionID()
+   */
+  public int getRegionID() {
+    return region.getRegionID();
+  }
+
+
+  /**
+   * @param regionID
+   * @see classes_for_db.Neighborhood#setRegionID(int)
+   */
+  public void setRegionID(int regionID) {
+    region.setRegionID(regionID);
+  }
+
+
+  /**
+   * @param regionID
+   * @see classes_for_db.Neighborhood#setRegionID(java.lang.String)
+   */
+  public void setRegionID(String regionID) {
+    region.setRegionID(regionID);
+  }
+
+
+  /**
+   * @return
+   * @see classes_for_db.Neighborhood#getName()
+   */
+  public String getName() {
+    return region.getName();
+  }
+
+
+  /**
+   * @param name
+   * @see classes_for_db.Neighborhood#setName(java.lang.String)
+   */
+  public void setName(String name) {
+    region.setName(name);
+  }
+
+
+  /**
+   * @return
+   * @see classes_for_db.Neighborhood#getzIndexChange()
+   */
+  public float getzIndexChange() {
+    return region.getzIndexChange();
+  }
+
+
+  /**
+   * @param zIndexChange
+   * @see classes_for_db.Neighborhood#setzIndexChange(float)
+   */
+  public void setzIndexChange(float zIndexChange) {
+    region.setzIndexChange(zIndexChange);
+  }
+
+
+  /**
+   * @param zIndexChange
+   * @see classes_for_db.Neighborhood#setzIndexChange(java.lang.String)
+   */
+  public void setzIndexChange(String zIndexChange) {
+    region.setzIndexChange(zIndexChange);
+  }
+
+
+  /**
+   * @return
+   * @see classes_for_db.Neighborhood#getType()
+   */
+  public String getType() {
+    return region.getType();
+  }
+
+
+  /**
+   * @param type
+   * @see classes_for_db.Neighborhood#setType(java.lang.String)
+   */
+  public void setType(String type) {
+    region.setType(type);
+  }
+
 
   @Override
   public Map<Tables, String> prepareInsertStatement() {
     // TODO Auto-generated method stub
     return null;
   }
-
 }
