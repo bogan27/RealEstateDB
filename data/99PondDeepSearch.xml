@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SearchResults:searchresults
+	xsi:schemaLocation="http://www.zillow.com/static/xsd/SearchResults.xsd http://www.zillowstatic.com/vstatic/1948dff/static/xsd/SearchResults.xsd"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:SearchResults="http://www.zillow.com/static/xsd/SearchResults.xsd">
+	<request>
+		<address>99 Pond Ave</address>
+		<citystatezip>02445</citystatezip>
+	</request>
+	<message>
+		<text>Request successfully processed</text>
+		<code>0</code>
+	</message>
+	<response>
+		<results>
+			<result>
+				<zpid>2107763131</zpid>
+				<links>
+					<homedetails>http://www.zillow.com/homedetails/99-Pond-Ave-Brookline-MA-02445/2107763131_zpid/</homedetails>
+					<mapthishome>http://www.zillow.com/homes/2107763131_zpid/</mapthishome>
+					<comparables>http://www.zillow.com/homes/comps/2107763131_zpid/</comparables>
+				</links>
+				<address>
+					<street>99 Pond Ave</street>
+					<zipcode>02445</zipcode>
+					<city>Brookline</city>
+					<state>MA</state>
+					<latitude>42.329238</latitude>
+					<longitude>-71.115501</longitude>
+				</address>
+				<FIPScounty></FIPScounty>
+				<useCode>Condominium</useCode>
+				<yearBuilt>1970</yearBuilt>
+				<finishedSqFt>800</finishedSqFt>
+				<bathrooms>1.0</bathrooms>
+				<bedrooms>1</bedrooms>
+				<zestimate>
+					<amount currency="USD">440861</amount>
+					<last-updated>03/16/2016</last-updated>
+					<oneWeekChange deprecated="true"></oneWeekChange>
+					<valueChange></valueChange>
+					<valuationRange>
+						<low currency="USD">418818</low>
+						<high currency="USD">471721</high>
+					</valuationRange>
+					<percentile>0</percentile>
+				</zestimate>
+				<localRealEstate>
+					<region name="Brookline" id="17188" type="city">
+						<zindexValue>740,100</zindexValue>
+						<links>
+							<overview>http://www.zillow.com/local-info/MA-Brookline/r_17188/</overview>
+							<forSaleByOwner>http://www.zillow.com/brookline-ma/fsbo/</forSaleByOwner>
+							<forSale>http://www.zillow.com/brookline-ma/</forSale>
+						</links>
+					</region>
+				</localRealEstate>
+			</result>
+		</results>
+	</response>
+</SearchResults:searchresults>
