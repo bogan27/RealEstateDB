@@ -1,7 +1,6 @@
 package classes_for_db;
 
 import java.math.BigInteger;
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -852,6 +851,7 @@ public class Property implements DbTableObject {
     sb.append("High Valuation: " + this.getValuationHigh() + "\n");
     sb.append("Low valuation: " + this.getvaluationLow() + "\n");
     sb.append("30 day change: " + this.getThirtyDayChange() + "\n");
+    sb.append("Percentile Value: " + this.getPercentileValue() + "\n");
     sb.append("Region name: " + this.getRegionName() + "\n");
     sb.append("Region ID: " + this.getRegionID() + "\n");
     sb.append("Region Type: " + this.getRegionType() + "\n");

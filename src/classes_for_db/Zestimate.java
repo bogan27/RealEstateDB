@@ -146,7 +146,7 @@ public class Zestimate implements DbTableObject {
       e1.printStackTrace();
     }
   }
-  
+
   /**
    * @param lastUpdated the date that the property's Zestimate was last updated
    */
@@ -276,6 +276,20 @@ public class Zestimate implements DbTableObject {
    */
   public void setPercentileValue(String percentileValue) {
     this.percentileValue = Float.parseFloat(percentileValue);
+  }
+
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("ZPID: " + this.getZpid() + "\n");
+    sb.append("Zestimate: " + this.getZestimate() + "\n");
+    sb.append("Last updated: " + this.getLastUpdatedString() + "\n");
+    sb.append("High Valuation: " + this.getValuationHigh() + "\n");
+    sb.append("Low valuation: " + this.getvaluationLow() + "\n");
+    sb.append("30 day change: " + this.getThirtyDayChange() + "\n");
+    sb.append("Percentile Value: " + this.getPercentileValue() + "\n");
+    sb.append("\n\n");
+    return sb.toString();
   }
 
   /*

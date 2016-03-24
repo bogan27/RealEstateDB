@@ -20,6 +20,7 @@ import org.xml.sax.SAXException;
 
 public class TEST_ParseZillowResultsAbstract {
 
+  @SuppressWarnings("unused")
   private Document getXMLDoc() {
     String text = this.getXMLString();
 
@@ -72,9 +73,9 @@ public class TEST_ParseZillowResultsAbstract {
     return sb.toString();
   }
   
-  private ParseZillowResultsAbstract getParser(){
-    return new ParseZillowResultsAbstract(this.getXMLString());
-  }
+//  private ParseZillowResultsAbstract getParser(){
+//    return new ParseZillowResultsAbstract(this.getXMLString());
+//  }
 
   @Test
   public void testGetStatusCode() {
