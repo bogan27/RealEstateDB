@@ -3,6 +3,7 @@ package classes_for_db;
 import java.math.BigInteger;
 import java.text.DateFormat;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Map;
 
@@ -25,11 +26,14 @@ public class Property implements DbTableObject {
   private int lastSoldPrice;
   private Zestimate zestimate;
   private Neighborhood region;
+  private TaxAssessment taxAssessment;
 
+  private SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
 
   public Property() {
     this.zestimate = new Zestimate();
     this.region = new Neighborhood();
+    this.taxAssessment = new TaxAssessment();
   }
 
 
@@ -59,6 +63,9 @@ public class Property implements DbTableObject {
               + zpid);
     } else {
       this.zpid = zpid;
+      this.zestimate.setZpid(zpid);
+      this.region.setZpid(zpid);
+      this.taxAssessment.setZpid(zpid);
     }
   }
 
@@ -240,7 +247,7 @@ public class Property implements DbTableObject {
       throw new IllegalArgumentException(
           "Argument for countyCode exceeds the max allowed length of 5 characters. Argument given: "
               + countyCode);
-    } else {
+    } else if (countyCode.length() > 0) {
       int code = Integer.parseInt(countyCode);
       this.setCountyCode(code);
     }
@@ -471,6 +478,9 @@ public class Property implements DbTableObject {
     return lastSoldDate;
   }
 
+  public String getLastSoldDateString() {
+    return this.sdf.format(this.lastSoldDate);
+  }
 
   public void setLastSoldDate(Date lastSoldDate) {
     this.lastSoldDate = lastSoldDate;
@@ -482,15 +492,12 @@ public class Property implements DbTableObject {
    *        will be converted to a Date.
    */
   public void setLastSoldDate(String lastSoldDate) {
-    DateFormat formatter = DateFormat.getDateInstance();
-    Date date = null;
     try {
-      date = formatter.parse(lastSoldDate);
-    } catch (ParseException e) {
-      e.printStackTrace();
-      System.out.println("Error converting String to Date: " + lastSoldDate);
+      Date date = this.sdf.parse(lastSoldDate);
+      this.lastSoldDate = date;
+    } catch (ParseException e1) {
+      e1.printStackTrace();
     }
-    this.lastSoldDate = date;
   }
 
 
@@ -549,10 +556,17 @@ public class Property implements DbTableObject {
    * @return
    * @see classes_for_db.Zestimate#getLastUpdated()
    */
-  public String getLastUpdated() {
+  public Date getLastUpdated() {
     return zestimate.getLastUpdated();
   }
 
+  /**
+   * @return
+   * @see classes_for_db.Zestimate#getLastUpdated()
+   */
+  public String getLastUpdatedString() {
+    return zestimate.getLastUpdatedString();
+  }
 
   /**
    * @param lastUpdated
@@ -702,7 +716,7 @@ public class Property implements DbTableObject {
    * @return
    * @see classes_for_db.Neighborhood#getName()
    */
-  public String getName() {
+  public String getRegionName() {
     return region.getName();
   }
 
@@ -711,7 +725,7 @@ public class Property implements DbTableObject {
    * @param name
    * @see classes_for_db.Neighborhood#setName(java.lang.String)
    */
-  public void setName(String name) {
+  public void setNameRegion(String name) {
     region.setName(name);
   }
 
@@ -747,7 +761,7 @@ public class Property implements DbTableObject {
    * @return
    * @see classes_for_db.Neighborhood#getType()
    */
-  public String getType() {
+  public String getRegionType() {
     return region.getType();
   }
 
@@ -756,10 +770,94 @@ public class Property implements DbTableObject {
    * @param type
    * @see classes_for_db.Neighborhood#setType(java.lang.String)
    */
-  public void setType(String type) {
+  public void setRegionType(String type) {
     region.setType(type);
   }
 
+
+  /**
+   * @return
+   * @see classes_for_db.TaxAssessment#getTaxYear()
+   */
+  public int getTaxYear() {
+    return taxAssessment.getTaxYear();
+  }
+
+
+  /**
+   * @param taxYear
+   * @see classes_for_db.TaxAssessment#setTaxYear(int)
+   */
+  public void setTaxYear(int taxYear) {
+    taxAssessment.setTaxYear(taxYear);
+  }
+
+
+  /**
+   * @param taxYear
+   * @see classes_for_db.TaxAssessment#setTaxYear(java.lang.String)
+   */
+  public void setTaxYear(String taxYear) {
+    taxAssessment.setTaxYear(taxYear);
+  }
+
+
+  /**
+   * @return
+   * @see classes_for_db.TaxAssessment#getTaxAssessment()
+   */
+  public float getTaxAssessment() {
+    return taxAssessment.getTaxAssessment();
+  }
+
+
+  /**
+   * @param taxAssessment
+   * @see classes_for_db.TaxAssessment#setTaxAssessment(float)
+   */
+  public void setTaxAssessment(float taxAssessment) {
+    this.taxAssessment.setTaxAssessment(taxAssessment);
+  }
+
+  /**
+   * @param taxAssessment
+   * @see classes_for_db.TaxAssessment#setTaxAssessment(String)
+   */
+  public void setTaxAssessment(String taxAssessment) {
+    this.taxAssessment.setTaxAssessment(taxAssessment);
+  }
+
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("ZPID: " + this.getZpid() + "\n");
+    sb.append("Zip code: " + this.getZipCode() + "\n");
+    sb.append("Street Address: " + this.getStreetAddress() + "\n");
+    sb.append("City: " + this.getCity() + "\n");
+    sb.append("State: " + this.getState() + "\n");
+    sb.append("Latitude: " + this.getLatitude() + "\n");
+    sb.append("Longitude: " + this.getLongitude() + "\n");
+    sb.append("FIPS County Code: " + this.getCountyCode() + "\n");
+    sb.append("Use Code: " + this.getUseCode() + "\n");
+    sb.append("Tax Assessment Year: " + this.getTaxYear() + "\n");
+    sb.append("Tax Assessment: " + this.getTaxAssessment() + "\n");
+    sb.append("Year Built: " + this.getYearBuilt() + "\n");
+    sb.append("Finished square feet: " + this.getFinishedSqFt() + "\n");
+    sb.append("Bathrooms: " + this.getBathroomCount() + "\n");
+    sb.append("Bedrooms: " + this.getBedroomCount() + "\n");
+    sb.append("Last sold date: " + this.getLastSoldDateString() + "\n");
+    sb.append("Las sold price: " + this.getLastSoldPrice() + "\n");
+    sb.append("Zestimate: " + this.getZestimate() + "\n");
+    sb.append("Last updated: " + this.getLastUpdatedString() + "\n");
+    sb.append("High Valuation: " + this.getValuationHigh() + "\n");
+    sb.append("Low valuation: " + this.getvaluationLow() + "\n");
+    sb.append("30 day change: " + this.getThirtyDayChange() + "\n");
+    sb.append("Region name: " + this.getRegionName() + "\n");
+    sb.append("Region ID: " + this.getRegionID() + "\n");
+    sb.append("Region Type: " + this.getRegionType() + "\n");
+    sb.append("\n\n");
+    return sb.toString();
+  }
 
   @Override
   public Map<Tables, String> prepareInsertStatement() {

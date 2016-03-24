@@ -35,6 +35,9 @@ public class ExampleZillowCall {
   public static void getHomes() throws IOException {
     String address = "210 South Street";// "99 Pond Ave";
     String zipCode = "02111";// "02445";
+    
+//    String address = "99 Pond Ave";
+//    String zipCode = "02445";
 
     // Create a map of parameter names and values
     HashMap<String, String> params = new HashMap<String, String>();
@@ -44,7 +47,7 @@ public class ExampleZillowCall {
     // Create a new ZillowRequestBuilder, and set the necessary values on it
     ZillowRequestBuilder builder = new GenericZillowAPICaller.ZillowRequestBuilder();
     String request = builder.setBaseUrl(ZillowAPI.GetDeepSearchResults).addParams(params).build();
-    // System.out.println(request);
+    System.out.println(request);
 
     // Make the actual API call, and print out the data
     GenericZillowAPICaller apiTool = new GenericZillowAPICaller();
@@ -57,20 +60,8 @@ public class ExampleZillowCall {
     System.out.println("Response message text: " + parser.getMessageText());
     for (DbTableObject dbto : parser.parseData()) {
       Property p = (Property) dbto;
-
-//      Property p = (Property) parser.parseData().get(0);
-      System.out.println("ZPID: " + p.getZpid());
-      System.out.println("Zip code: " + p.getZipCode());
-      System.out.println("Street Address: " + p.getStreetAddress());
-      System.out.println("City: " + p.getCity());
-      System.out.println("State: " + p.getState());
-      System.out.println("Latitude: " + p.getLatitude());
-      System.out.println("Longitude: " + p.getLongitude());
-      System.out.println("Last sold date: " + p.getLastSoldDate());
-      System.out.println("Zestimate: " + p.getZestimate());
-      System.out.println("High Valuation: " + p.getValuationHigh());
-      System.out.println("Low valuation: " + p.getvaluationLow());
-      System.out.println("30 day change: " + p.getThirtyDayChange() + "\n" + "\n");
+      // Property p = (Property) parser.parseData().get(0);
+      System.out.println(p.toString());
     }
   }
 
@@ -82,7 +73,6 @@ public class ExampleZillowCall {
     try {
       getHomes();
     } catch (IOException e) {
-      // TODO Auto-generated catch block
       e.printStackTrace();
     }
 

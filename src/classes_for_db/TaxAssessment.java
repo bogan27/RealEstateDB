@@ -120,6 +120,22 @@ public class TaxAssessment implements DbTableObject {
     this.taxAssessment = taxAssessment;
   }
 
+  /**
+   * @param taxAssessment the taxAssessment to set
+   */
+  public void setTaxAssessment(String taxAssessment) {
+    this.setTaxAssessment(Float.parseFloat(taxAssessment));
+  }
+
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("ZPID: " + this.zpid + "\n");
+    sb.append("Tax Assessment Year: " + this.taxYear + "\n");
+    sb.append("Tax Assessment Amount: " + this.taxAssessment + "\n");
+    return sb.toString();
+  }
+
   /*
    * (non-Javadoc)
    * 

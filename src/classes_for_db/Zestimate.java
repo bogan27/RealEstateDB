@@ -4,6 +4,9 @@
 package classes_for_db;
 
 import java.math.BigInteger;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Map;
 
 /**
@@ -16,11 +19,13 @@ public class Zestimate implements DbTableObject {
 
   private BigInteger zpid;
   private int zestimate;
-  private String lastUpdated;
+  private Date lastUpdated;
   private int thirtyDayChange;
   private int valuationHigh;
   private int valuationLow;
   private float percentileValue;
+
+  private SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
 
   /**
    * 
@@ -75,16 +80,7 @@ public class Zestimate implements DbTableObject {
     }
   }
 
-  /*
-   * (non-Javadoc)
-   * 
-   * @see classes_for_db.DbTableObject#prepareInsertStatement()
-   */
-  @Override
-  public Map<Tables, String> prepareInsertStatement() {
-    // TODO Auto-generated method stub
-    return null;
-  }
+
 
   /**
    * @return the zestimate
@@ -128,14 +124,33 @@ public class Zestimate implements DbTableObject {
   /**
    * @return the date that the Zestimate for the property was last Updated
    */
-  public String getLastUpdated() {
-    return lastUpdated;
+  public String getLastUpdatedString() {
+    return this.sdf.format(lastUpdated);
+  }
+
+  /**
+   * @return the date that the Zestimate for the property was last Updated
+   */
+  public Date getLastUpdated() {
+    return this.lastUpdated;
   }
 
   /**
    * @param lastUpdated the date that the property's Zestimate was last updated
    */
   public void setLastUpdated(String lastUpdated) {
+    try {
+      Date date = this.sdf.parse(lastUpdated);
+      this.lastUpdated = date;
+    } catch (ParseException e1) {
+      e1.printStackTrace();
+    }
+  }
+  
+  /**
+   * @param lastUpdated the date that the property's Zestimate was last updated
+   */
+  public void setLastUpdated(Date lastUpdated) {
     this.lastUpdated = lastUpdated;
   }
 
@@ -261,5 +276,16 @@ public class Zestimate implements DbTableObject {
    */
   public void setPercentileValue(String percentileValue) {
     this.percentileValue = Float.parseFloat(percentileValue);
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see classes_for_db.DbTableObject#prepareInsertStatement()
+   */
+  @Override
+  public Map<Tables, String> prepareInsertStatement() {
+    // TODO Auto-generated method stub
+    return null;
   }
 }

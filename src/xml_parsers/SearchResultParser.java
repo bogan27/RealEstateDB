@@ -40,18 +40,31 @@ public class SearchResultParser extends ParseZillowResultsAbstract {
             Node addressSection = addressSectionList.item(0);
             if (addressSection.getNodeType() == Node.ELEMENT_NODE) {
               Element addressElement = (Element) addressSection;
-              unit.setStreetAddress(
-                  addressElement.getElementsByTagName("street").item(0).getTextContent());
-              unit.setZipCode(
-                  addressElement.getElementsByTagName("zipcode").item(0).getTextContent());
-              unit.setCity(addressElement.getElementsByTagName("city").item(0).getTextContent());
-              unit.setState(addressElement.getElementsByTagName("state").item(0).getTextContent());
-              unit.setlatitude(
-                  addressElement.getElementsByTagName("latitude").item(0).getTextContent());
-              unit.setLongitude(
-                  addressElement.getElementsByTagName("longitude").item(0).getTextContent());
+              unit.setStreetAddress(this.extractFirstValue(addressElement, "street"));
+              unit.setZipCode(this.extractFirstValue(addressElement, "zipcode"));
+              unit.setCity(this.extractFirstValue(addressElement, "city"));
+              unit.setState(this.extractFirstValue(addressElement, "state"));
+              unit.setlatitude(this.extractFirstValue(addressElement, "latitude"));
+              unit.setLongitude(this.extractFirstValue(addressElement, "longitude"));
             }
           }
+
+          // Stuff between address and zestimate sections.
+          /*
+           * Sets: FIPScounty, useCode, yearBuilt, finishedSqFt, bathrooms, bedrooms, tax assessment
+           * year, tax assessment amount, date last sold, price last sold for
+           */
+          unit.setCountyCode(this.extractFirstValue(element, "FIPScounty"));
+          unit.setUseCode(this.extractFirstValue(element, "useCode"));
+          unit.setTaxYear(this.extractFirstValue(element, "taxAssessmentYear"));
+          unit.setTaxAssessment(this.extractFirstValue(element, "taxAssessment"));
+          unit.setYearBuilt(this.extractFirstValue(element, "yearBuilt"));
+          unit.setFinishedSqFt(this.extractFirstValue(element, "finishedSqFt"));
+          unit.setBathroomCount(this.extractFirstValue(element, "bathrooms"));
+          unit.setBedroomCount(this.extractFirstValue(element, "bedrooms"));
+          unit.setLastSoldDate(this.extractFirstValue(element, "lastSoldDate"));
+          unit.setLastSoldPrice(this.extractFirstValue(element, "lastSoldPrice"));
+
 
           // From Zestimate section of result
           // Sets amount, 30-day change, date last updated, low valuation, high valuation, and
@@ -61,21 +74,23 @@ public class SearchResultParser extends ParseZillowResultsAbstract {
             Node zestimateNode = zestimateList.item(0);
             if (zestimateNode.getNodeType() == Node.ELEMENT_NODE) {
               Element zestimate = (Element) zestimateNode;
-              unit.setZestimate(zestimate.getElementsByTagName("amount").item(0).getTextContent());
-              unit.setLastUpdated(
-                  zestimate.getElementsByTagName("last-updated").item(0).getTextContent());
-              unit.setThirtyDayChange(
-                  zestimate.getElementsByTagName("valueChange").item(0).getTextContent());
-              unit.setPercentileValue(
-                  zestimate.getElementsByTagName("percentile").item(0).getTextContent());
+              unit.setZestimate(this.extractFirstValue(zestimate, "amount"));
+              unit.setLastUpdated(this.extractFirstValue(zestimate, "last-updated"));
+              unit.setThirtyDayChange(this.extractFirstValue(zestimate, "valueChange"));
+              unit.setPercentileValue(this.extractFirstValue(zestimate, "percentile"));
               Element valuationRange =
                   (Element) zestimate.getElementsByTagName("valuationRange").item(0);
-              unit.setvaluationLow(
-                  valuationRange.getElementsByTagName("low").item(0).getTextContent());
-              unit.setValuationHigh(
-                  valuationRange.getElementsByTagName("high").item(0).getTextContent());
+              unit.setvaluationLow(this.extractFirstValue(valuationRange, "low"));
+              unit.setValuationHigh(this.extractFirstValue(valuationRange, "high"));
             }
           }
+
+          // From region section of result. This section is slightly different because the desired
+          // values are attribute values, not tag values.
+          // Gets region name, id, and type.
+          unit.setNameRegion(this.getAttributeValue(element, "region", "name"));
+          unit.setRegionID(this.getAttributeValue(element, "region", "id"));
+          unit.setRegionType(this.getAttributeValue(element, "region", "type"));
         }
         propertyList.add(unit);
       }

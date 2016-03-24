@@ -125,6 +125,43 @@ public abstract class ParseZillowResultsAbstract {
   }
 
   /**
+   * If a tag with the given tag name is found in the given element, this method extracts and
+   * returns as a String the value of the first occurrence of the tag. If the tag is not found, null
+   * is returned.
+   * 
+   * @param e An {@code Element} in which to search for the specified tag
+   * @param tagName The name of the tag to extract content from
+   * @return The value of the first occurrence of the specified tag, if one is found, or
+   *         {@code null} if not found.
+   */
+  public String extractFirstValue(Element e, String tagName) {
+    NodeList values = e.getElementsByTagName(tagName);
+    String response = null;
+    if (values.getLength() > 0) {
+      response = values.item(0).getTextContent();
+    }
+    return response;
+  }
+
+  /**
+   * Returns the attibute value for the specified attribute on the first occurrence of the specified
+   * tag in the given Element.
+   * 
+   * @param e An {@code Element} in which to search for the specified tag and attribute
+   * @param tagName The name of the tag to extract content from
+   * @param attribute The name of the attribute whose value should be returned
+   * @return The value of the attribute, if found, otherwise {@code null}.
+   */
+  public String getAttributeValue(Element e, String tagName, String attribute) {
+    NodeList nodes = e.getElementsByTagName(tagName);
+    String response = null;
+    if (nodes.getLength() > 0) {
+      response = nodes.item(0).getAttributes().getNamedItem(attribute).getNodeValue();
+    }
+    return response;
+  }
+
+  /**
    * Parses the XML, and assigns the values of tags of interest to fields in the corresponding class
    * that implements DbTableObject
    * 
