@@ -4,7 +4,7 @@
 package classes_for_db;
 
 import java.math.BigInteger;
-import java.util.Map;
+import java.util.List;
 
 /**
  * @author brandonbogan
@@ -136,13 +136,8 @@ public class TaxAssessment implements DbTableObject {
     return sb.toString();
   }
 
-  /*
-   * (non-Javadoc)
-   * 
-   * @see classes_for_db.DbTableObject#prepareInsertStatement()
-   */
   @Override
-  public Map<Tables, String> prepareInsertStatement() {
+  public List<DbTableObject> getDelegateObjects() {
     // TODO Auto-generated method stub
     return null;
   }

@@ -4,7 +4,7 @@
 package classes_for_db;
 
 import java.math.BigInteger;
-import java.util.Map;
+import java.util.List;
 
 /**
  * @author brandonbogan
@@ -27,16 +27,6 @@ public class Neighborhood implements DbTableObject {
     // TODO Auto-generated constructor stub
   }
 
-  /*
-   * (non-Javadoc)
-   * 
-   * @see classes_for_db.DbTableObject#prepareInsertStatement()
-   */
-  @Override
-  public Map<Tables, String> prepareInsertStatement() {
-    // TODO Auto-generated method stub
-    return null;
-  }
 
   /**
    * @return the regionID
@@ -221,6 +211,13 @@ public class Neighborhood implements DbTableObject {
    */
   public void setType(String type) {
     this.type = type;
+  }
+
+
+  @Override
+  public List<DbTableObject> getDelegateObjects() {
+    // TODO Auto-generated method stub
+    return null;
   }
 
 

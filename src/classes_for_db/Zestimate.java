@@ -7,7 +7,7 @@ import java.math.BigInteger;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Map;
+import java.util.List;
 
 /**
  * A class to represent a Zestimate record in the Real Estate DB.
@@ -292,13 +292,9 @@ public class Zestimate implements DbTableObject {
     return sb.toString();
   }
 
-  /*
-   * (non-Javadoc)
-   * 
-   * @see classes_for_db.DbTableObject#prepareInsertStatement()
-   */
+
   @Override
-  public Map<Tables, String> prepareInsertStatement() {
+  public List<DbTableObject> getDelegateObjects() {
     // TODO Auto-generated method stub
     return null;
   }

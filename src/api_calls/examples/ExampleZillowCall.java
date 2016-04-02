@@ -26,7 +26,7 @@ public class ExampleZillowCall {
    * @param args
    */
   public static void main(String[] args) {
-    ZillowAPI setting = ZillowAPI.GetZestimate;
+    ZillowAPI setting = ZillowAPI.GetSearchResults;
     Example e;
     switch (setting) {
       case GetZestimate:
@@ -39,13 +39,13 @@ public class ExampleZillowCall {
         e = new GetDeepSearchResultsExample();
         break;
       case GetComps:
-        e = new GetDeepSearchResultsExample();
+        e = new GetDeepCompsExample();
         break;
       case GetDeepComps:
-        e = new GetDeepSearchResultsExample();
+        e = new GetDeepCompsExample();
         break;
       case GetUpdatedProperyDetails:
-        e = new GetDeepSearchResultsExample();
+        e = new GetPropertyDetailsExample();
         break;
       default:
         e = new GetDeepSearchResultsExample();

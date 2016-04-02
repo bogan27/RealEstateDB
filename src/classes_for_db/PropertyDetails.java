@@ -4,10 +4,10 @@
 package classes_for_db;
 
 import java.math.BigInteger;
-import java.text.DateFormat;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Map;
+import java.util.List;
 
 /**
  * @author brandonbogan
@@ -39,6 +39,7 @@ public class PropertyDetails implements DbTableObject {
   private String roofType;
   private String parkingType;
   private String rooms;
+  private int numRooms;
   private String homeDescription;
   private String neighborhoodName;
   private String schoolDistrict;
@@ -140,6 +141,17 @@ public class PropertyDetails implements DbTableObject {
     return lastUpdated;
   }
 
+  /**
+   * @return the date the property was last updated
+   */
+  public Date getLastUpdatedString() {
+    String response = "";
+    if (this.lastUpdated != null) {
+      SimpleDateFormat sdf = new SimpleDateFormat("YYYY-MM-dd HH:MM:SS:d");
+      response.concat(sdf.format(this.lastUpdated));
+    }
+    return lastUpdated;
+  }
 
   /**
    * @param lastUpdated the date the property was last updated
@@ -152,14 +164,21 @@ public class PropertyDetails implements DbTableObject {
    * @param lastUpdated the date the property was last updated
    */
   public void setLastUpdated(String lastUpdated) {
-    DateFormat formatter = DateFormat.getDateInstance();
     Date date = null;
-    try {
-      date = formatter.parse(lastUpdated);
-    } catch (ParseException e) {
-      e.printStackTrace();
-      System.out.println("Error converting String to Date: " + lastUpdated);
+    if (lastUpdated != null) {
+      SimpleDateFormat sdf = new SimpleDateFormat("YYYY-MM-dd HH:MM:SS:d");
+      try {
+        date = sdf.parse(lastUpdated);
+      } catch (ParseException e) {
+        e.printStackTrace();
+      }
     }
+    // try {
+    // date = formatter.parse(lastUpdated);
+    // } catch (ParseException e) {
+    // e.printStackTrace();
+    // System.out.println("Error converting String to Date: " + lastUpdated);
+    // }
     this.setLastUpdated(date);
   }
 
@@ -169,6 +188,7 @@ public class PropertyDetails implements DbTableObject {
   public int getyearUpdated() {
     return yearUpdated;
   }
+
 
   /**
    * @param yearUpdated the yearUpdated to set
@@ -188,12 +208,14 @@ public class PropertyDetails implements DbTableObject {
    * @throws IllegalArgumentException if {@code yearUpdated} is less than 1900 or greater than 2017
    */
   public void setyearUpdated(String yearUpdated) {
-    if (yearUpdated.length() > 4) {
+    if (yearUpdated != null && yearUpdated.length() > 4) {
       throw new IllegalArgumentException(
           "Argument for yearUpdated exceeds max allowed length of 4 characters. Argument given: "
               + yearUpdated);
-    } else {
+    } else if (yearUpdated != null) {
       this.setyearUpdated(Integer.parseInt(yearUpdated));
+    } else {
+      this.yearUpdated = 0;
     }
   }
 
@@ -227,10 +249,14 @@ public class PropertyDetails implements DbTableObject {
    *         outside of the allowed range of 0 through 999.
    */
   public void setNumFloors(String numFloors) {
-    if (numFloors.length() > 3) {
-      throw new IllegalArgumentException(
-          "Argument for numFloors exceeds max number of characters (3). Argument given: "
-              + numFloors);
+    if (numFloors != null) {
+      if (numFloors.length() > 3) {
+        throw new IllegalArgumentException(
+            "Argument for numFloors exceeds max number of characters (3). Argument given: "
+                + numFloors);
+      } else {
+        this.setNumFloors(Integer.parseInt(numFloors));
+      }
     }
   }
 
@@ -298,6 +324,35 @@ public class PropertyDetails implements DbTableObject {
     this.rooms = rooms;
   }
 
+
+  /**
+   * @return the numRooms
+   */
+  public int getNumRooms() {
+    return numRooms;
+  }
+
+
+  /**
+   * @param numRooms the numRooms to set
+   * @throws IllegalArgumentException if {@code numRooms} is less than 0
+   */
+  public void setNumRooms(int numRooms) {
+    if (numRooms < 0) {
+      throw new IllegalArgumentException(
+          "Argument for number of rooms cannot be less than 0. Argument given: " + numRooms);
+    } else {
+      this.numRooms = numRooms;
+    }
+  }
+
+  /**
+   * @param numRooms the numRooms to set
+   * @throws IllegalArgumentException if {@code numRooms} is less than 0
+   */
+  public void setNumRooms(String numRooms) {
+    this.setNumRooms(Integer.parseInt(numRooms));
+  }
 
   /**
    * @return the homeDescription
@@ -392,14 +447,34 @@ public class PropertyDetails implements DbTableObject {
     this.setPageViewsTotal(Integer.parseInt(pageViewsTotal));
   }
 
-  /*
-   * (non-Javadoc)
-   * 
-   * @see classes_for_db.DbTableObject#prepareInsertStatement()
-   */
   @Override
-  public Map<Tables, String> prepareInsertStatement() {
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("ZPID: " + this.getZpid() + "\n");
+    sb.append("Views this month: " + this.getPageViewThisMonth() + "\n");
+    sb.append("Total views: " + this.getPageViewsTotal() + "\n");
+    sb.append("Properrty status: " + this.getStatus() + "\n");
+    sb.append("Posting Type: " + this.getPosting_type() + "\n");
+    sb.append("Date last updated: " + this.getLastUpdatedString() + "\n");
+    sb.append("Year Updated: " + this.getyearUpdated() + "\n");
+    sb.append("Number of floors: " + this.getNumFloors() + "\n");
+    sb.append("Basement type: " + this.getBasement() + "\n");
+    sb.append("Roof type: " + this.getRoofType() + "\n");
+    sb.append("Parking Type: " + this.getParkingType() + "\n");
+    sb.append("Room types: " + this.getRooms() + "\n");
+    sb.append("Room count: " + this.getNumRooms() + "\n");
+    sb.append("Home Description: " + this.getHomeDescription() + "\n");
+    sb.append("Neighborhood Name: " + this.getNeighborhoodName() + "\n");
+    sb.append("School District: " + this.getSchoolDistrict() + "\n");
+    sb.append("\n\n");
+    return sb.toString();
+  }
+
+
+  @Override
+  public List<DbTableObject> getDelegateObjects() {
     // TODO Auto-generated method stub
     return null;
   }
+
 }

@@ -30,9 +30,6 @@ public class GetZestimateExample implements Example {
   public void run() throws IOException {
     String zpid = "81858764";
 
-    // String address = "99 Pond Ave";
-    // String zipCode = "02445";
-
     // Create a map of parameter names and values
     HashMap<String, String> params = new HashMap<String, String>();
     params.put("zpid", zpid);

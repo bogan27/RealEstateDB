@@ -4,13 +4,13 @@
 package classes_for_db;
 
 import java.math.BigInteger;
-import java.util.Map;
+import java.util.List;
 
 /**
  * @author brandonbogan
  *
  */
-public class Comparable implements DbTableObject {
+public class ZillowComparable implements DbTableObject {
 
   private BigInteger primaryZPID;
   private BigInteger compZPID;
@@ -19,7 +19,7 @@ public class Comparable implements DbTableObject {
   /**
    * 
    */
-  public Comparable() {
+  public ZillowComparable() {
     // TODO Auto-generated constructor stub
   }
 
@@ -130,7 +130,7 @@ public class Comparable implements DbTableObject {
    * @throws IllegalArgumentException if {@code compScore} is less than 0 or greater than 1
    */
   public void setCompScore(float compScore) {
-    if (compScore < 0 | compScore > 1) {
+    if (compScore < 0 | compScore > 100) {
       throw new IllegalArgumentException(
           "Argument for compScore falls outside of allowed range of 0 to 1. Argument given: "
               + compScore);
@@ -146,15 +146,21 @@ public class Comparable implements DbTableObject {
     this.setCompScore(Float.parseFloat(compScore));
   }
 
-  /*
-   * (non-Javadoc)
-   * 
-   * @see classes_for_db.DbTableObject#prepareInsertStatement()
-   */
   @Override
-  public Map<Tables, String> prepareInsertStatement() {
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("Primary ZPID: " + this.getPrimaryZpid() + "\n");
+    sb.append("Comparable ZPID: " + this.getCompZpid() + "\n");
+    sb.append("Comparability Score: " + this.getCompScore() + "\n");
+    sb.append("\n\n");
+    return sb.toString();
+  }
+
+  @Override
+  public List<DbTableObject> getDelegateObjects() {
     // TODO Auto-generated method stub
     return null;
   }
+
 
 }

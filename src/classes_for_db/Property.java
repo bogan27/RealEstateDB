@@ -4,7 +4,7 @@ import java.math.BigInteger;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Map;
+import java.util.List;
 
 public class Property implements DbTableObject {
   private BigInteger zpid;
@@ -859,8 +859,9 @@ public class Property implements DbTableObject {
     return sb.toString();
   }
 
+
   @Override
-  public Map<Tables, String> prepareInsertStatement() {
+  public List<DbTableObject> getDelegateObjects() {
     // TODO Auto-generated method stub
     return null;
   }
