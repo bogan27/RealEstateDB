@@ -136,7 +136,7 @@ public abstract class ParseZillowResultsAbstract {
    */
   public String extractFirstValue(Element e, String tagName) {
     NodeList values = e.getElementsByTagName(tagName);
-    String response = null;
+    String response = "";
     if (values.getLength() > 0) {
       response = values.item(0).getTextContent();
     }

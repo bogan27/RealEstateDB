@@ -101,7 +101,7 @@ public class TaxAssessment implements DbTableObject {
       throw new IllegalArgumentException(
           "Argument for taxYear exceeds max allowed length of 4 characters. Argument given: "
               + taxYear);
-    } else {
+    } else if (taxYear.length() > 0) {
       this.setTaxYear(Integer.parseInt(taxYear));
     }
   }
@@ -124,7 +124,9 @@ public class TaxAssessment implements DbTableObject {
    * @param taxAssessment the taxAssessment to set
    */
   public void setTaxAssessment(String taxAssessment) {
-    this.setTaxAssessment(Float.parseFloat(taxAssessment));
+    if (taxAssessment.length() > 0) {
+      this.setTaxAssessment(Float.parseFloat(taxAssessment));
+    }
   }
 
   @Override

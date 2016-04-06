@@ -299,7 +299,7 @@ public class Property implements DbTableObject {
     if (yearBuilt.length() > 4) {
       throw new IllegalArgumentException(
           "Argument for yearBuilt exceed max allowed length of 4. Argument given: " + yearBuilt);
-    } else {
+    } else if (yearBuilt.length() > 0) {
       int yr = Integer.parseInt(yearBuilt);
       if (yr < 0) {
         throw new IllegalArgumentException(
@@ -397,7 +397,7 @@ public class Property implements DbTableObject {
       throw new IllegalArgumentException(
           "Argument finishedSqFt cannot be longer than 9 characters. Argument given: "
               + finishedSqFt);
-    } else {
+    } else if (finishedSqFtString.length() > 0) {
       int sqFt = Integer.parseInt(finishedSqFtString);
       if (sqFt < 0) {
         throw new IllegalArgumentException(
@@ -486,7 +486,11 @@ public class Property implements DbTableObject {
   }
 
   public String getLastSoldDateString() {
-    return this.sdf.format(this.lastSoldDate);
+    String result = "";
+    if (this.lastSoldDate != null) {
+      result = this.sdf.format(this.lastSoldDate);
+    }
+    return result;
   }
 
   public void setLastSoldDate(Date lastSoldDate) {
@@ -499,11 +503,13 @@ public class Property implements DbTableObject {
    *        will be converted to a Date.
    */
   public void setLastSoldDate(String lastSoldDate) {
-    try {
-      Date date = this.sdf.parse(lastSoldDate);
-      this.lastSoldDate = date;
-    } catch (ParseException e1) {
-      e1.printStackTrace();
+    if (lastSoldDate != null && lastSoldDate.length() > 0) {
+      try {
+        Date date = this.sdf.parse(lastSoldDate);
+        this.lastSoldDate = date;
+      } catch (ParseException e1) {
+        e1.printStackTrace();
+      }
     }
   }
 
@@ -523,7 +529,7 @@ public class Property implements DbTableObject {
   public void setLastSoldPrice(String lastSoldPrice) {
     if (lastSoldPrice.length() > 8) {
       throw new IllegalArgumentException("Length of lastSoldPrice exceeds max length allowed (8)");
-    } else {
+    } else if (lastSoldPrice.length() > 0) {
       int lastPriceAsInt = Integer.parseInt(lastSoldPrice);
       this.lastSoldPrice = lastPriceAsInt;
     }
