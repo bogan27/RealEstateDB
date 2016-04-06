@@ -3,6 +3,7 @@ package classes_for_db;
 import java.math.BigInteger;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -24,8 +25,13 @@ public class Property implements DbTableObject {
   private Date lastSoldDate;
   private int lastSoldPrice;
   private Zestimate zestimate;
+  private boolean zestimateUsed;
   private Neighborhood region;
+  private boolean regionUsed;
   private TaxAssessment taxAssessment;
+  private boolean taxAssessmentUsed;
+  private PropertyDetails details;
+  private boolean detailsUsed;
 
   private SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
 
@@ -33,6 +39,7 @@ public class Property implements DbTableObject {
     this.zestimate = new Zestimate();
     this.region = new Neighborhood();
     this.taxAssessment = new TaxAssessment();
+    this.details = new PropertyDetails();
   }
 
 
@@ -65,6 +72,7 @@ public class Property implements DbTableObject {
       this.zestimate.setZpid(zpid);
       this.region.setZpid(zpid);
       this.taxAssessment.setZpid(zpid);
+      this.details.setZpid(zpid);
     }
   }
 
@@ -538,6 +546,7 @@ public class Property implements DbTableObject {
    * @see classes_for_db.Zestimate#setZestimate(int)
    */
   public void setZestimate(int zestimate) {
+    this.zestimateUsed = true;
     this.zestimate.setZestimate(zestimate);
   }
 
@@ -547,6 +556,7 @@ public class Property implements DbTableObject {
    * @see classes_for_db.Zestimate#setZestimate(java.lang.String)
    */
   public void setZestimate(String zestimate) {
+    this.zestimateUsed = true;
     this.zestimate.setZestimate(zestimate);
   }
 
@@ -572,6 +582,7 @@ public class Property implements DbTableObject {
    * @see classes_for_db.Zestimate#setLastUpdated(java.lang.String)
    */
   public void setLastUpdated(String lastUpdated) {
+    this.zestimateUsed = true;
     zestimate.setLastUpdated(lastUpdated);
   }
 
@@ -590,6 +601,7 @@ public class Property implements DbTableObject {
    * @see classes_for_db.Zestimate#setThirtyDayChange(int)
    */
   public void setThirtyDayChange(int thirtyDayChange) {
+    this.zestimateUsed = true;
     zestimate.setThirtyDayChange(thirtyDayChange);
   }
 
@@ -599,6 +611,7 @@ public class Property implements DbTableObject {
    * @see classes_for_db.Zestimate#setThirtyDayChange(java.lang.String)
    */
   public void setThirtyDayChange(String thirtyDayChange) {
+    this.zestimateUsed = true;
     zestimate.setThirtyDayChange(thirtyDayChange);
   }
 
@@ -617,6 +630,7 @@ public class Property implements DbTableObject {
    * @see classes_for_db.Zestimate#setValuationHigh(int)
    */
   public void setValuationHigh(int valuationHigh) {
+    this.zestimateUsed = true;
     zestimate.setValuationHigh(valuationHigh);
   }
 
@@ -626,6 +640,7 @@ public class Property implements DbTableObject {
    * @see classes_for_db.Zestimate#setValuationHigh(java.lang.String)
    */
   public void setValuationHigh(String valuationHigh) {
+    this.zestimateUsed = true;
     zestimate.setValuationHigh(valuationHigh);
   }
 
@@ -644,6 +659,7 @@ public class Property implements DbTableObject {
    * @see classes_for_db.Zestimate#setvaluationLow(int)
    */
   public void setvaluationLow(int valuationLow) {
+    this.zestimateUsed = true;
     zestimate.setvaluationLow(valuationLow);
   }
 
@@ -653,6 +669,7 @@ public class Property implements DbTableObject {
    * @see classes_for_db.Zestimate#setvaluationLow(java.lang.String)
    */
   public void setvaluationLow(String valuationLow) {
+    this.zestimateUsed = true;
     zestimate.setvaluationLow(valuationLow);
   }
 
@@ -671,6 +688,7 @@ public class Property implements DbTableObject {
    * @see classes_for_db.Zestimate#setPercentileValue(float)
    */
   public void setPercentileValue(float percentileValue) {
+    this.zestimateUsed = true;
     zestimate.setPercentileValue(percentileValue);
   }
 
@@ -680,6 +698,7 @@ public class Property implements DbTableObject {
    * @see classes_for_db.Zestimate#setPercentileValue(java.lang.String)
    */
   public void setPercentileValue(String percentileValue) {
+    this.zestimateUsed = true;
     zestimate.setPercentileValue(percentileValue);
   }
 
@@ -698,6 +717,7 @@ public class Property implements DbTableObject {
    * @see classes_for_db.Neighborhood#setRegionID(int)
    */
   public void setRegionID(int regionID) {
+    this.regionUsed = true;
     region.setRegionID(regionID);
   }
 
@@ -707,6 +727,7 @@ public class Property implements DbTableObject {
    * @see classes_for_db.Neighborhood#setRegionID(java.lang.String)
    */
   public void setRegionID(String regionID) {
+    this.regionUsed = true;
     region.setRegionID(regionID);
   }
 
@@ -725,6 +746,7 @@ public class Property implements DbTableObject {
    * @see classes_for_db.Neighborhood#setName(java.lang.String)
    */
   public void setNameRegion(String name) {
+    this.regionUsed = true;
     region.setName(name);
   }
 
@@ -743,6 +765,7 @@ public class Property implements DbTableObject {
    * @see classes_for_db.Neighborhood#setzIndexChange(float)
    */
   public void setzIndexChange(float zIndexChange) {
+    this.regionUsed = true;
     region.setzIndexChange(zIndexChange);
   }
 
@@ -752,6 +775,7 @@ public class Property implements DbTableObject {
    * @see classes_for_db.Neighborhood#setzIndexChange(java.lang.String)
    */
   public void setzIndexChange(String zIndexChange) {
+    this.regionUsed = true;
     region.setzIndexChange(zIndexChange);
   }
 
@@ -770,6 +794,7 @@ public class Property implements DbTableObject {
    * @see classes_for_db.Neighborhood#setType(java.lang.String)
    */
   public void setRegionType(String type) {
+    this.regionUsed = true;
     region.setType(type);
   }
 
@@ -788,6 +813,7 @@ public class Property implements DbTableObject {
    * @see classes_for_db.TaxAssessment#setTaxYear(int)
    */
   public void setTaxYear(int taxYear) {
+    this.taxAssessmentUsed = true;
     taxAssessment.setTaxYear(taxYear);
   }
 
@@ -797,6 +823,7 @@ public class Property implements DbTableObject {
    * @see classes_for_db.TaxAssessment#setTaxYear(java.lang.String)
    */
   public void setTaxYear(String taxYear) {
+    this.taxAssessmentUsed = true;
     taxAssessment.setTaxYear(taxYear);
   }
 
@@ -815,6 +842,7 @@ public class Property implements DbTableObject {
    * @see classes_for_db.TaxAssessment#setTaxAssessment(float)
    */
   public void setTaxAssessment(float taxAssessment) {
+    this.taxAssessmentUsed = true;
     this.taxAssessment.setTaxAssessment(taxAssessment);
   }
 
@@ -823,8 +851,344 @@ public class Property implements DbTableObject {
    * @see classes_for_db.TaxAssessment#setTaxAssessment(String)
    */
   public void setTaxAssessment(String taxAssessment) {
+    this.taxAssessmentUsed = true;
     this.taxAssessment.setTaxAssessment(taxAssessment);
   }
+
+  /**
+   * @return
+   * @see classes_for_db.PropertyDetails#getStatus()
+   */
+  public String getStatus() {
+    return details.getStatus();
+  }
+
+
+  /**
+   * @param status
+   * @see classes_for_db.PropertyDetails#setStatus(java.lang.String)
+   */
+  public void setStatus(String status) {
+    this.detailsUsed = true;
+    details.setStatus(status);
+  }
+
+
+  /**
+   * @return
+   * @see classes_for_db.PropertyDetails#getPosting_type()
+   */
+  public String getPosting_type() {
+    return details.getPosting_type();
+  }
+
+
+  /**
+   * @param posting_type
+   * @see classes_for_db.PropertyDetails#setPosting_type(java.lang.String)
+   */
+  public void setPosting_type(String posting_type) {
+    this.detailsUsed = true;
+    details.setPosting_type(posting_type);
+  }
+
+
+  /**
+   * @return
+   * @see classes_for_db.PropertyDetails#getLastUpdatedString()
+   */
+  public Date getLastUpdatedDetailsString() {
+    return details.getLastUpdatedString();
+  }
+
+
+  /**
+   * @param lastUpdated
+   * @see classes_for_db.PropertyDetails#setLastUpdated(java.util.Date)
+   */
+  public void setLastUpdatedDetails(Date lastUpdated) {
+    this.detailsUsed = true;
+    details.setLastUpdated(lastUpdated);
+  }
+
+
+  /**
+   * @return
+   * @see classes_for_db.PropertyDetails#getyearUpdated()
+   */
+  public int getyearUpdated() {
+    return details.getyearUpdated();
+  }
+
+
+  /**
+   * @param yearUpdated
+   * @see classes_for_db.PropertyDetails#setyearUpdated(int)
+   */
+  public void setyearUpdated(int yearUpdated) {
+    this.detailsUsed = true;
+    details.setyearUpdated(yearUpdated);
+  }
+
+
+  /**
+   * @param yearUpdated
+   * @see classes_for_db.PropertyDetails#setyearUpdated(java.lang.String)
+   */
+  public void setyearUpdated(String yearUpdated) {
+    this.detailsUsed = true;
+    details.setyearUpdated(yearUpdated);
+  }
+
+
+  /**
+   * @return
+   * @see classes_for_db.PropertyDetails#getNumFloors()
+   */
+  public int getNumFloors() {
+    return details.getNumFloors();
+  }
+
+
+  /**
+   * @param numFloors
+   * @see classes_for_db.PropertyDetails#setNumFloors(int)
+   */
+  public void setNumFloors(int numFloors) {
+    this.detailsUsed = true;
+    details.setNumFloors(numFloors);
+  }
+
+
+  /**
+   * @param numFloors
+   * @see classes_for_db.PropertyDetails#setNumFloors(java.lang.String)
+   */
+  public void setNumFloors(String numFloors) {
+    this.detailsUsed = true;
+    details.setNumFloors(numFloors);
+  }
+
+
+  /**
+   * @return
+   * @see classes_for_db.PropertyDetails#getBasement()
+   */
+  public String getBasement() {
+    return details.getBasement();
+  }
+
+
+  /**
+   * @param basement
+   * @see classes_for_db.PropertyDetails#setBasement(java.lang.String)
+   */
+  public void setBasement(String basement) {
+    this.detailsUsed = true;
+    details.setBasement(basement);
+  }
+
+
+  /**
+   * @return
+   * @see classes_for_db.PropertyDetails#getRoofType()
+   */
+  public String getRoofType() {
+    return details.getRoofType();
+  }
+
+
+  /**
+   * @param roofType
+   * @see classes_for_db.PropertyDetails#setRoofType(java.lang.String)
+   */
+  public void setRoofType(String roofType) {
+    this.detailsUsed = true;
+    details.setRoofType(roofType);
+  }
+
+
+  /**
+   * @return
+   * @see classes_for_db.PropertyDetails#getParkingType()
+   */
+  public String getParkingType() {
+    return details.getParkingType();
+  }
+
+
+  /**
+   * @param parkingType
+   * @see classes_for_db.PropertyDetails#setParkingType(java.lang.String)
+   */
+  public void setParkingType(String parkingType) {
+    this.detailsUsed = true;
+    details.setParkingType(parkingType);
+  }
+
+
+  /**
+   * @return
+   * @see classes_for_db.PropertyDetails#getRooms()
+   */
+  public String getRooms() {
+    return details.getRooms();
+  }
+
+
+  /**
+   * @param rooms
+   * @see classes_for_db.PropertyDetails#setRooms(java.lang.String)
+   */
+  public void setRooms(String rooms) {
+    this.detailsUsed = true;
+    details.setRooms(rooms);
+  }
+
+
+  /**
+   * @return
+   * @see classes_for_db.PropertyDetails#getNumRooms()
+   */
+  public int getNumRooms() {
+    return details.getNumRooms();
+  }
+
+
+  /**
+   * @param numRooms
+   * @see classes_for_db.PropertyDetails#setNumRooms(int)
+   */
+  public void setNumRooms(int numRooms) {
+    this.detailsUsed = true;
+    details.setNumRooms(numRooms);
+  }
+
+
+  /**
+   * @param numRooms
+   * @see classes_for_db.PropertyDetails#setNumRooms(java.lang.String)
+   */
+  public void setNumRooms(String numRooms) {
+    this.detailsUsed = true;
+    details.setNumRooms(numRooms);
+  }
+
+
+  /**
+   * @return
+   * @see classes_for_db.PropertyDetails#getHomeDescription()
+   */
+  public String getHomeDescription() {
+    return details.getHomeDescription();
+  }
+
+
+  /**
+   * @param homeDescription
+   * @see classes_for_db.PropertyDetails#setHomeDescription(java.lang.String)
+   */
+  public void setHomeDescription(String homeDescription) {
+    this.detailsUsed = true;
+    details.setHomeDescription(homeDescription);
+  }
+
+
+  /**
+   * @return
+   * @see classes_for_db.PropertyDetails#getNeighborhoodName()
+   */
+  public String getNeighborhoodName() {
+    return details.getNeighborhoodName();
+  }
+
+
+  /**
+   * @param neighborhoodName
+   * @see classes_for_db.PropertyDetails#setNeighborhoodName(java.lang.String)
+   */
+  public void setNeighborhoodName(String neighborhoodName) {
+    this.detailsUsed = true;
+    details.setNeighborhoodName(neighborhoodName);
+  }
+
+
+  /**
+   * @return
+   * @see classes_for_db.PropertyDetails#getSchoolDistrict()
+   */
+  public String getSchoolDistrict() {
+    return details.getSchoolDistrict();
+  }
+
+
+  /**
+   * @param schoolDistrict
+   * @see classes_for_db.PropertyDetails#setSchoolDistrict(java.lang.String)
+   */
+  public void setSchoolDistrict(String schoolDistrict) {
+    this.detailsUsed = true;
+    details.setSchoolDistrict(schoolDistrict);
+  }
+
+
+  /**
+   * @return
+   * @see classes_for_db.PropertyDetails#getPageViewThisMonth()
+   */
+  public int getPageViewThisMonth() {
+    return details.getPageViewThisMonth();
+  }
+
+
+  /**
+   * @param pageViewThisMonth
+   * @see classes_for_db.PropertyDetails#setPageViewThisMonth(int)
+   */
+  public void setPageViewThisMonth(int pageViewThisMonth) {
+    this.detailsUsed = true;
+    details.setPageViewThisMonth(pageViewThisMonth);
+  }
+
+
+  /**
+   * @param pageViewThisMonth
+   * @see classes_for_db.PropertyDetails#setPageViewThisMonth(java.lang.String)
+   */
+  public void setPageViewThisMonth(String pageViewThisMonth) {
+    this.detailsUsed = true;
+    details.setPageViewThisMonth(pageViewThisMonth);
+  }
+
+
+  /**
+   * @return
+   * @see classes_for_db.PropertyDetails#getPageViewsTotal()
+   */
+  public int getPageViewsTotal() {
+    return details.getPageViewsTotal();
+  }
+
+
+  /**
+   * @param pageViewsTotal
+   * @see classes_for_db.PropertyDetails#setPageViewsTotal(int)
+   */
+  public void setPageViewsTotal(int pageViewsTotal) {
+    this.detailsUsed = true;
+    details.setPageViewsTotal(pageViewsTotal);
+  }
+
+
+  /**
+   * @param pageViewsTotal
+   * @see classes_for_db.PropertyDetails#setPageViewsTotal(java.lang.String)
+   */
+  public void setPageViewsTotal(String pageViewsTotal) {
+    this.detailsUsed = true;
+    details.setPageViewsTotal(pageViewsTotal);
+  }
+
 
   @Override
   public String toString() {
@@ -862,7 +1226,19 @@ public class Property implements DbTableObject {
 
   @Override
   public List<DbTableObject> getDelegateObjects() {
-    // TODO Auto-generated method stub
-    return null;
+    List<DbTableObject> response = new ArrayList<DbTableObject>();
+    if (this.zestimateUsed) {
+      response.add(this.zestimate);
+    }
+    if (this.taxAssessmentUsed) {
+      response.add(this.taxAssessment);
+    }
+    if (this.regionUsed) {
+      response.add(this.region);
+    }
+    if (this.detailsUsed) {
+      response.add(this.details);
+    }
+    return response;
   }
 }
