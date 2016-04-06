@@ -12,6 +12,10 @@ import classes_for_db.ZillowComparable;
 import java.math.BigInteger;
 import java.sql.*;
 
+/**
+ * @author ronfarizon
+ */
+
 public class DBWriter {
 	/** The name of the MySQL account to use (or empty for anonymous) */
 	private final String userName = "mysqlUser";
