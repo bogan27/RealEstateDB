@@ -2,7 +2,12 @@ package DBSource;
 import java.util.*;
 import java.util.Date;
 
+import classes_for_db.Neighborhood;
+import classes_for_db.Property;
+import classes_for_db.PropertyDetails;
+import classes_for_db.TaxAssessment;
 import classes_for_db.Zestimate;
+import classes_for_db.ZillowComparable;
 
 import java.math.BigInteger;
 import java.sql.*;
@@ -103,16 +108,8 @@ public class DBWriter {
 		}
 	}
 	
-	public void insertZestimate(Zestimate z) {
-/*
- *  sb.append("ZPID: " + this.getZpid() + "\n");
-    sb.append("Zestimate: " + this.getZestimate() + "\n");
-    sb.append("Last updated: " + this.getLastUpdatedString() + "\n");
-    sb.append("High Valuation: " + this.getValuationHigh() + "\n");
-    sb.append("Low valuation: " + this.getvaluationLow() + "\n");
-    sb.append("30 day change: " + this.getThirtyDayChange() + "\n");
-    sb.append("Percentile Value: " + this.getPercentileValue() + "\n");
- */
+	public void insertObject(Zestimate z) {
+
 		try {
 		String statement = 
         "INSERT INTO Zestimates(zpid, zestimate, lastUpdated, thirtyDayChange, valuationHigh, " +
@@ -126,11 +123,131 @@ public class DBWriter {
 		
 		}
 		catch (SQLException e) {
-		System.out.println("ERROR: Could not create the table");
+		System.out.println("ERROR: Could not insert");
 			e.printStackTrace();
 			return;
 		}
 	}
+	
+	public void insertObject(Neighborhood n) {
+		try {
+			String statement = 
+		    "INSERT INTO Neighborhoods(regionID, name, zipcode, zindex, zIndexChange, type)"
+		    + " VALUES (" + ", " + n.getRegionID() + ", " + 
+		     n.getName() + ", " + n.getZipCode() + ", " + n.getzIndexChange() 
+		     + ", " + n.getType() + ");";
+			
+			this.executeUpdate(connect, statement);
+		}
+		catch (SQLException e) {
+			System.out.println("ERROR: Could not insert");
+			e.printStackTrace();
+			return;
+		}
+	}
+	
+	public void insertObject(Property p) {
+		ResultSet checkResult = null;
+		try {
+
+			String check = "SELECT zpid FROM Properties WHERE zpid = " + p.getZpid() + ";";
+			checkResult = connect.createStatement().executeQuery(check);
+			if(checkResult.next() == true) {
+				System.out.println("Property already exists in database!");
+				return;
+			}
+			String statement = 
+		    "INSERT INTO Properties(zpid, streetAddress, zipcode, city, state, latitude, longitude,"
+		    + " regionID, countryCode, useCode, yearBuilt, lotSizeSqFt, finishedSqFt, bathrooomCount, bedroomCount,"
+		    + " lastSoldDate, lastSoldPrice) VALUES (" + ", " + p.getZpid() + ", " + p.getStreetAddress()
+		    + ", " + p.getZipCode() + ", " + p.getCity() + ", " + p.getCity() + ", " + p.getState()
+		    + ", " + p.getLatitude() + ", " + p.getLongitude() + ", " + p.getRegionID() + ", " + p.getCountyCode() 
+		    + ", " + p.getUseCode() + ", " + p.getYearBuilt() + ", " + p.getLotSizeSqFt() + ", " + p.getFinishedSqFt()
+		    + ", " + p.getBathroomCount() + ", " + p.getBedroomCount() + ", " + p.getLastSoldDateString()
+		    + ", " + p.getLastSoldPrice() + ");";
+			
+			this.executeUpdate(connect, statement);
+		}
+		catch (SQLException e) {
+			System.out.println("ERROR: Could not insert");
+			e.printStackTrace();
+			return;
+		}
+	}
+	
+	public void insertObject(PropertyDetails pd) {
+		ResultSet checkPD = null;
+		try {
+			String check = "SELECT zpid FROM PropertyDetails WHERE zpid = " + pd.getZpid() + ";";
+			checkPD = connect.createStatement().executeQuery(check);
+			if(checkPD.next() == true) {
+				System.out.println("Property Details already exist in database!");
+				return;
+			}
+			
+			String statement = 
+			"INSERT INTO PropertDetails(zpid, status, posting_type, last_updated_date, year_updated,"
+			+ " number_floors, basement, roof_type, parking_type, rooms, home_description, neighborhood_name, "
+		    + "school_district, page_views_this_month, page_views_total) VALUES(" 
+			+ pd.getZpid() + ", " + pd.getStatus() + ", " + pd.getPosting_type() + ", "
+			+ pd.getLastUpdatedString() + ", " + pd.getyearUpdated() + ", " + pd.getNumFloors()
+			+ ", " + pd.getBasement() + ", " + pd.getRoofType() + ", " + pd.getParkingType()
+			+ ", " + pd.getRooms() + ", " + pd.getRooms() + ", " + pd.getHomeDescription()
+			+ ", " + pd.getNeighborhoodName() + ", " + pd.getSchoolDistrict() + ", "
+			+ pd.getPageViewThisMonth() + ", " + pd.getPageViewsTotal() +");";
+			
+			this.executeUpdate(connect, statement);
+			
+			}
+			catch (SQLException e) {
+				System.out.println("ERROR: Could not insert");
+				e.printStackTrace();
+				return;
+			}
+		}
+	
+		public void insertObject(ZillowComparable zc) {
+			ResultSet checkZC = null;
+			try {
+				String check = "SELECT compID FROM Comparables"
+						+ " WHERE primaryZPID = " + zc.getPrimaryZpid()
+						+ " AND compZPID = " + zc.getCompZpid() + ";";
+				checkZC = connect.createStatement().executeQuery(check);
+				if(checkZC.next() == true) {
+					System.out.println("Comparable already exists in database!");
+					return;
+				}
+				
+				String statement = 		
+				"INSERT INTO Comparables(primaryZPID, compZPID, compScore) VALUES("
+			    + zc.getPrimaryZpid() + ", " + zc.getCompZpid() + ", " + zc.getCompScore() + ");";
+		
+				this.executeUpdate(connect, statement);
+			}
+			
+			catch (SQLException e) {
+				System.out.println("ERROR: Could not insert");
+				e.printStackTrace();
+				return;
+			}
+		}
+		
+		public void insertObject(TaxAssessment ta) {
+			try {
+				String statement = 
+			    "INSERT INTO TaxAssessments(zpid, taxYear, taxAssessment) VALUES("
+				+ ta.getZpid() + ", " + ta.getTaxYear() + ", " + ta.getTaxAssessment() + "):";
+				
+				this.executeUpdate(connect, statement);
+			}
+			catch (SQLException e) {
+				System.out.println("ERROR: Could not insert");
+				e.printStackTrace();
+				return;
+			}
+			
+		}
+	
 	
 	
 	/**
