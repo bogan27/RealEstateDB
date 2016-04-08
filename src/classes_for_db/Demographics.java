@@ -38,18 +38,18 @@ public class Demographics implements DbTableObject {
 	// Note: all education stats for those 25+ years old
 	private int pop_18_24;
 	private int pop_25;   //MAJOR
-	private double pct_less_than_hs;	//todo
-	private double pct_some_hs;		//todo
-	private double pct_hs_grads;	//todo
-	private double pct_some_col;	//todo
-	private double pct_ass_degree;	//todo
-	private double pct_bach_degre;	//todo
-	private double pct_grad_degree;	//todo
-	private double pct_hs_or_more;  //MAJOR	//todo
-	private double pct_bach_or_more;	//todo
-	private int median_earnings;    //MAJOR	//todo
-	private int median_earnings_bach;   //MAJOR	//todo
-	private int median_earnings_grad;	//todo
+	private double pct_less_than_hs;	
+	private double pct_some_hs;		
+	private double pct_hs_grads;	
+	private double pct_some_col;	
+	private double pct_ass_degree;	
+	private double pct_bach_degree;	
+	private double pct_grad_degree;	
+	private double pct_hs_or_more;  //MAJOR
+	private double pct_bach_or_more;	
+	private int median_earnings;    //MAJOR	
+	private int median_earnings_bach;   //MAJOR
+	private int median_earnings_grad;
 	
 	// Housing
 	private int num_households;   //MAJOR	//todo
@@ -349,9 +349,134 @@ public class Demographics implements DbTableObject {
 		else if(edu.toLowerCase().equals("hs grads") || edu.toLowerCase().equals("hs grad")) {
 			return pct_hs_grads;
 		}
-		return 50.0; //temp
+		else if(edu.toLowerCase().equals("some college") || edu.toLowerCase().equals("some col")) {
+			return pct_some_col;
+		}
+		else if(edu.toLowerCase().equals("associate's degree") || edu.toLowerCase().equals("associate degree") ||
+							edu.toLowerCase().equals("associate's") || edu.toLowerCase().equals("associates degree")) {
+			return pct_ass_degree;
+			
+		}
+		else if(edu.toLowerCase().equals("bach degree") || edu.toLowerCase().equals("bachelor's degree") ||
+							edu.toLowerCase().equals("bachelor's") || edu.toLowerCase().equals("bachelors degree")) {
+			return pct_bach_degree;
+		}
+		else if(edu.toLowerCase().equals("grad degree") || edu.toLowerCase().equals("graduate's degree") ||
+				edu.toLowerCase().equals("graduate's") || edu.toLowerCase().equals("graduate degree")) {
+			return pct_grad_degree;
+		}
+		else {
+			throw new IllegalArgumentException("Expected education levels: less than hs, hs grad, some college, "
+					+ "associate's degree, bachelor's degree, graduate degree");
+		}
+	}
+		
+		public void setPctEdu(String edu, double pct) {
+			if(pct < 0 || pct > 100) {
+				throw new IllegalArgumentException("Percentage must be between 0 and 100");
+			}
+			else if(edu.toLowerCase().equals("less hs") || edu.toLowerCase().equals("less than hs")) {
+				this.pct_less_than_hs = pct;
+			}
+			else if(edu.toLowerCase().equals("some hs")) {
+				this.pct_some_hs = pct;
+			}
+			else if(edu.toLowerCase().equals("hs grads") || edu.toLowerCase().equals("hs grad")) {
+				this.pct_hs_grads = pct;
+			}
+			else if(edu.toLowerCase().equals("some college") || edu.toLowerCase().equals("some col")) {
+				this.pct_some_col = pct;
+			}
+			else if(edu.toLowerCase().equals("associate's degree") || edu.toLowerCase().equals("associate degree") ||
+								edu.toLowerCase().equals("associate's") || edu.toLowerCase().equals("associates degree")) {
+				this.pct_ass_degree = pct;
+			}
+			else if(edu.toLowerCase().equals("bach degree") || edu.toLowerCase().equals("bachelor's degree") ||
+								edu.toLowerCase().equals("bachelor's") || edu.toLowerCase().equals("bachelors degree")) {
+				this.pct_bach_degree = pct;
+			}
+			else if(edu.toLowerCase().equals("grad degree") || edu.toLowerCase().equals("graduate's degree") ||
+					edu.toLowerCase().equals("graduate's") || edu.toLowerCase().equals("graduate degree")) {
+				this.pct_grad_degree = pct;
+			}
+			else {
+				throw new IllegalArgumentException("Expected education levels: less than hs, hs grad, some college, "
+						+ "associate's degree, bachelor's degree, graduate degree");
+			}
+		}
+		
+	public double getPctEduOrMore(String edu) {
+		if(edu.toLowerCase().equals("hs grads") || edu.toLowerCase().equals("hs grad") ||
+				edu.toLowerCase().equals("high school") || edu.toLowerCase().equals("hs")) {
+			return pct_hs_or_more;
+		}
+		else if(edu.toLowerCase().equals("bach degree") || edu.toLowerCase().equals("bachelor's degree") ||
+							edu.toLowerCase().equals("bachelor's") || edu.toLowerCase().equals("bachelors degree")) {
+			return pct_bach_or_more;
+		}
+		else {
+			throw new IllegalArgumentException("Expected education levels: high school, bachelor's degree");
+		}
 	}
 	
+	public void setPctEduOrMore(String edu, double pct) {
+		if(pct < 0 || pct > 100) {
+			throw new IllegalArgumentException("Percentage must be between 0 and 100");
+		}
+		else if(edu.toLowerCase().equals("hs grads") || edu.toLowerCase().equals("hs grad") ||
+				edu.toLowerCase().equals("high school") || edu.toLowerCase().equals("hs")) {
+			this.pct_hs_or_more = pct;
+		}
+		else if(edu.toLowerCase().equals("bach degree") || edu.toLowerCase().equals("bachelor's degree") ||
+							edu.toLowerCase().equals("bachelor's") || edu.toLowerCase().equals("bachelors degree")) {
+			this.pct_bach_or_more = pct;
+		}
+		else {
+			throw new IllegalArgumentException("Expected education levels: high school, bachelor's degree");
+		}
+	}
+	
+	public int getMedianEarnings() {
+		return median_earnings;
+	}
+	
+	public void setMedianEarnings(int earn) {
+		if(earn < 0) {
+			throw new IllegalArgumentException("Earnings can't be negative");
+		}
+		this.median_earnings = earn;
+	}
+	
+	public int getMedianEarningsEdu(String edu) {
+		if(edu.toLowerCase().equals("bach degree") || edu.toLowerCase().equals("bachelor's degree") ||
+				edu.toLowerCase().equals("bachelor's") || edu.toLowerCase().equals("bachelors degree")) {
+			return median_earnings_bach;
+		}
+		else if(edu.toLowerCase().equals("grad degree") || edu.toLowerCase().equals("graduate's degree") ||
+				edu.toLowerCase().equals("graduate's") || edu.toLowerCase().equals("graduate degree")) {
+			return median_earnings_grad;
+		}
+		else {
+			throw new IllegalArgumentException("Education expected: bachelor's degree, graduate degree");
+		}
+	}
+	
+	public void setMedianEarningsEdu(int earn, String edu) {
+		if(earn < 0) {
+			throw new IllegalArgumentException("Earnings can't be negative");
+		}
+		else if(edu.toLowerCase().equals("bach degree") || edu.toLowerCase().equals("bachelor's degree") ||
+				edu.toLowerCase().equals("bachelor's") || edu.toLowerCase().equals("bachelors degree")) {
+			this.median_earnings_bach = earn;
+		}
+		else if(edu.toLowerCase().equals("grad degree") || edu.toLowerCase().equals("graduate's degree") ||
+				edu.toLowerCase().equals("graduate's") || edu.toLowerCase().equals("graduate degree")) {
+			 this.median_earnings_grad = earn;
+		}
+		else {
+			throw new IllegalArgumentException("Education expected: bachelor's degree, graduate degree");
+		}
+	}
 	
 
 
