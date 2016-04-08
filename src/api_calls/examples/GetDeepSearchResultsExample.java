@@ -31,8 +31,8 @@ public class GetDeepSearchResultsExample implements Example {
     String address = "580 Washington St";// "99 Pond Ave";
     String zipCode = "02111";// "02445";
 
-    // String address = "99 Pond Ave";
-    // String zipCode = "02445";
+   // String address = "99 Pond Ave";
+   // String zipCode = "02445";
 
     // Create a map of parameter names and values
     HashMap<String, String> params = new HashMap<String, String>();

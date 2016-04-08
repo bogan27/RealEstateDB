@@ -236,7 +236,4 @@ public class DBWriter {
     DBWriter app = new DBWriter();
     app.run();
   }
-
-
-
 }
