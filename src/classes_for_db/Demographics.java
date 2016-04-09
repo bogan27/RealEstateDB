@@ -52,17 +52,17 @@ public class Demographics implements DbTableObject {
 	private int median_earnings_grad;
 	
 	// Housing
-	private int num_households;   //MAJOR	//todo
-	private int fam_households;   //todo
-	private double pct_households_fam;  //MAJOR	//todo
-	private double avg_fam_size;	//todo
-	private int num_fam_u18_child;	//todo
-	private double pct_household_same_sex;	//todo
-	private double pct_household_opp_sex;	//todo
-	private double pct_one_unit_struct;	//todo
-	private double pct_two_plus_unit_struct;	//todo
-	private double pct_units_owner_occ;   //MAJOR	//todo
-	private double pct_units_renter_occ;  //MAJOR 	//todo
+	private int num_households;   //MAJOR	
+	private int fam_households;   
+	private double pct_households_fam;  //MAJOR	
+	private double avg_fam_size;
+	private int num_fam_u18_child;	
+	private double pct_household_same_sex;
+	private double pct_household_opp_sex;
+	private double pct_one_unit_struct;
+	private double pct_two_plus_unit_struct;	
+	private double pct_units_owner_occ;   //MAJOR
+	private double pct_units_renter_occ;  //MAJOR 
 	
 	public Demographics() {}
 	
@@ -478,9 +478,140 @@ public class Demographics implements DbTableObject {
 		}
 	}
 	
-
-
+	public int getNumHouseholds() {
+		return num_households;
+	}
 	
+	public void setNumHouseholds(int num) {
+		if(num < 0) {
+			throw new IllegalArgumentException("Number of households can't be negative");
+		}
+		this.num_households = num;
+	}
+	
+	public int getFamHouseholds() {
+		return fam_households;
+	}
+	
+	public void setFamHouseholds(int num) {
+		if(num < 0) {
+			throw new IllegalArgumentException("Number of households can't be negative");
+		}
+		this.fam_households = num;
+	}
+	
+	public double getPctFamilyHouseholds() {
+		return pct_households_fam;
+	}
+	
+	public void setPctFamilyHouseholds(double pct) {
+		if(pct < 0 || pct > 100) {
+			throw new IllegalArgumentException("Percentage must be between 0 and 100");
+		}
+		this.pct_households_fam = pct;
+	}
+	
+	public double getAvgFamSize() {
+		return avg_fam_size;
+	}
+	
+	public void setAvgFamSize(double avg) {
+		if(avg < 0) {
+			throw new IllegalArgumentException("Average Family Size can't be negative");
+		}
+		this.avg_fam_size = avg;
+	}
+	
+	public int getNumFamU18Child() {
+		return num_fam_u18_child;
+	}
+	
+	public void setNumFamU18Child(int num) {
+		if(num < 0) {
+			throw new IllegalArgumentException("Number of households can't be negative");
+		}
+		this.num_fam_u18_child = num;
+	}
+	
+	public double getPctUnmarriedSex(String pref) {
+		if(pref.toLowerCase().equals("same") || pref.toLowerCase().equals("same sex") || pref.toLowerCase().equals("gay")) {
+			return pct_household_same_sex;
+		}
+		else if(pref.toLowerCase().equals("opposite") || pref.toLowerCase().equals("opposite sex") || 
+				pref.toLowerCase().equals("opp") || pref.toLowerCase().equals("straight")) {
+			return pct_household_opp_sex;
+		}
+		else {
+			throw new IllegalArgumentException("Expected same or opp");
+		}
+	}
+	
+	public void setPctUnmarriedSex(double pct, String pref) {
+		if(pct < 0 || pct > 100) {
+			throw new IllegalArgumentException("Percentage must be between 0 and 100");
+		}
+		else if(pref.toLowerCase().equals("same") || pref.toLowerCase().equals("same sex") || pref.toLowerCase().equals("gay")) {
+			this.pct_household_same_sex = pct;
+		}
+		else if(pref.toLowerCase().equals("opposite") || pref.toLowerCase().equals("opposite sex") || 
+				pref.toLowerCase().equals("opp") || pref.toLowerCase().equals("straight")) {
+			this.pct_household_opp_sex = pct;
+		}
+		else {
+			throw new IllegalArgumentException("Expected same or opp");
+		}
+	}
+	
+	public double getPctOneUnitStruct() {
+		return pct_one_unit_struct;
+	}
+	
+	public void setPctOneUnitStruct(double pct) {
+		if(pct < 0 || pct > 100) {
+			throw new IllegalArgumentException("Percentage must be between 0 and 100");
+		}
+		this.pct_one_unit_struct = pct;
+	}
+	
+	public double getPctTwoPlusUnitStruct() {
+		return pct_two_plus_unit_struct;
+	}
+	
+	public void setPctTwoPlusUnitStruct(double pct) {
+		if(pct < 0 || pct > 100) {
+			throw new IllegalArgumentException("Percentage must be between 0 and 100");
+		}
+		this.pct_two_plus_unit_struct = pct;
+	}
+	
+	public double getPctOcc(String occ) {
+		if(occ.toLowerCase().equals("owner") || occ.toLowerCase().equals("own")) {
+			return pct_units_owner_occ;
+		}
+		else if(occ.toLowerCase().equals("renter") || occ.toLowerCase().equals("rent")) {
+			return pct_units_renter_occ;
+		}
+		else {
+			throw new IllegalArgumentException("Expected owner or renter");
+		}
+	}
+	
+	public void setPctOcc(double pct, String occ) {
+		if(pct < 0 || pct > 100) {
+			throw new IllegalArgumentException("Percentage must be between 0 and 100");
+		}
+		else if(occ.toLowerCase().equals("owner") || occ.toLowerCase().equals("own")) {
+			this.pct_units_owner_occ = pct;
+		}
+		else if(occ.toLowerCase().equals("renter") || occ.toLowerCase().equals("rent")) {
+			this.pct_units_renter_occ = pct;
+		}
+		else {
+			throw new IllegalArgumentException("Expected owner or renter");
+		}
+	}
+	
+
 	@Override
 	public List<DbTableObject> getDelegateObjects() {
 		// TODO Auto-generated method stub
