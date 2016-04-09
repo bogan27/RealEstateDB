@@ -170,25 +170,8 @@ public class DBWriter {
 
       preparedStmt.execute();
 
-      // "INSERT INTO Properties(zpid, streetAddress, zipcode, city, state, latitude, longitude,
-      // regionID, countyCode, useCode, yearBuilt, lotSizeSqFt, finishedSqFt, bathroomCount,
-      // bedroomCount, lastSoldDate, lastSoldPrice) VALUES ("
-      // + p.getZpid() + ", " + p.getStreetAddress() + ", " + p.getZipCode() + ", "
-      // + p.getCity() + ", " + p.getState() + ", " + p.getLatitude() + ", " + p.getLongitude()
-      // + ", " + p.getRegionID() + ", " + p.getCountyCode() + ", " + p.getUseCode() + ", "
-      // + p.getYearBuilt() + ", " + p.getLotSizeSqFt() + ", " + p.getFinishedSqFt() + ", "
-      // + p.getBathroomCount() + ", " + p.getBedroomCount() + ", " + p.getLastSoldDate()
-      // + ", " + p.getLastSoldPrice() + ");";
-
-      // + p.getZpid() + ", " + p.getStreetAddress() + ", " + p.getZipCode() + ", "
-      // + p.getCity() + ", " + p.getState() + ", " + p.getLatitude() + ", " + p.getLongitude()
-      // + ", " + p.getRegionID() + ", " + p.getCountyCode() + ", " + p.getUseCode() + ", "
-      // + p.getYearBuilt() + ", " + p.getLotSizeSqFt() + ", " + p.getFinishedSqFt() + ", "
-      // + p.getBathroomCount() + ", " + p.getBedroomCount() + ", " + p.getLastSoldDate()
-      // + ", " + p.getLastSoldPrice() + ");";
       System.out.println(statement);
       System.out.println("\n" + "Record Inserted Successfully!" + "\n");
-//      this.executeUpdate(connect, statement);
     } catch (SQLException e) {
       System.out.println("ERROR: Could not insert");
       e.printStackTrace();
