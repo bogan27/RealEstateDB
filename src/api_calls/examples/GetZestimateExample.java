@@ -52,7 +52,7 @@ public class GetZestimateExample implements Example {
     DBWriter dbw = new DBWriter();
     for (DbTableObject dbto : parser.parseData()) {
       Zestimate z = (Zestimate) dbto;
-      dbw.insertZestimate(z);
+      dbw.insertObject(z);
       System.out.println(z.toString());
     }
 
