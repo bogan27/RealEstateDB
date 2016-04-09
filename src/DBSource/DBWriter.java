@@ -1,7 +1,6 @@
 package DBSource;
 
 import java.util.*;
-import java.util.Date;
 
 import classes_for_db.Neighborhood;
 import classes_for_db.Property;
@@ -10,7 +9,6 @@ import classes_for_db.TaxAssessment;
 import classes_for_db.Zestimate;
 import classes_for_db.ZillowComparable;
 
-import java.math.BigInteger;
 import java.sql.*;
 
 /**
@@ -90,14 +88,14 @@ public class DBWriter {
       ps.setObject(1, z.getZpid(), Types.BIGINT);
       ps.setInt(2, z.getZestimate());
       ps.setObject(3, z.getLastUpdated());
-      ps.setInt(4, x);
-      
-//      + z.getZpid() + ", " + z.getZestimate()
-//              + ", " + z.getLastUpdatedString() + ", " + z.getValuationHigh() + ", "
-//              + z.getvaluationLow() + ", " + z.getThirtyDayChange() + ", " + z.getPercentileValue()
-//              + ");";
-//
-//      this.executeUpdate(connect, statement);
+      ps.setInt(4, z.getThirtyDayChange());
+      ps.setInt(5, z.getValuationHigh());
+      ps.setInt(6, z.getvaluationLow());
+      ps.setFloat(7, z.getPercentileValue());
+
+      ps.execute();
+
+      System.out.println("Zetimate for zpid: " + z.getZpid() + " has successfully been inserted.");
 
     } catch (SQLException e) {
       System.out.println("ERROR: Could not insert");
@@ -110,10 +108,21 @@ public class DBWriter {
     try {
       String statement =
           "INSERT INTO Neighborhoods(regionID, name, zipcode, zindex, zIndexChange, type)"
-              + " VALUES (" + ", " + n.getRegionID() + ", " + n.getName() + ", " + n.getZipCode()
-              + ", " + n.getzIndexChange() + ", " + n.getType() + ");";
+              + " VALUES " + "(?,?,?,?,?,?)";
 
-      this.executeUpdate(connect, statement);
+      PreparedStatement ps = this.connect.prepareStatement(statement);
+
+      ps.setInt(1, n.getRegionID());
+      ps.setString(2, n.getName());
+      ps.setInt(3, n.getZipCode());
+      ps.setInt(4, n.getzIndex());
+      ps.setFloat(5, n.getzIndexChange());
+      ps.setString(6, n.getType());
+      //
+      // , " + n.getRegionID() + ", " + n.getName() + ", " + n.getZipCode()
+      // + ", " + n.getzIndexChange() + ", " + n.getType() + ");";
+      //
+      // this.executeUpdate(connect, statement);
     } catch (SQLException e) {
       System.out.println("ERROR: Could not insert");
       e.printStackTrace();
@@ -181,15 +190,30 @@ public class DBWriter {
       String statement =
           "INSERT INTO PropertDetails(zpid, status, posting_type, last_updated_date, year_updated,"
               + " number_floors, basement, roof_type, parking_type, rooms, home_description, neighborhood_name, "
-              + "school_district, page_views_this_month, page_views_total) VALUES(" + pd.getZpid()
-              + ", " + pd.getStatus() + ", " + pd.getPosting_type() + ", "
-              + pd.getLastUpdatedString() + ", " + pd.getyearUpdated() + ", " + pd.getNumFloors()
-              + ", " + pd.getBasement() + ", " + pd.getRoofType() + ", " + pd.getParkingType()
-              + ", " + pd.getRooms() + ", " + pd.getRooms() + ", " + pd.getHomeDescription() + ", "
-              + pd.getNeighborhoodName() + ", " + pd.getSchoolDistrict() + ", "
-              + pd.getPageViewThisMonth() + ", " + pd.getPageViewsTotal() + ");";
+              + "school_district, page_views_this_month, page_views_total) VALUES "
+              + "(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
-      this.executeUpdate(connect, statement);
+      PreparedStatement ps = this.connect.prepareStatement(statement);
+
+      ps.setObject(1, pd.getZpid(), Types.BIGINT);
+      ps.setString(2, pd.getStatus());
+      ps.setString(3, pd.getPosting_type());
+      ps.setObject(4, pd.getLastUpdated());
+      ps.setObject(5, pd.getyearUpdated());
+      ps.setInt(6, pd.getNumFloors());
+      ps.setObject(7, pd.getBasement());
+      ps.setObject(8, pd.getRoofType());
+      ps.setObject(9, pd.getParkingType());
+      ps.setInt(10, pd.getNumRooms());
+      ps.setString(11, pd.getHomeDescription());
+      ps.setString(12, pd.getNeighborhoodName());
+      ps.setString(13, pd.getSchoolDistrict());
+      ps.setInt(14, pd.getPageViewThisMonth());
+      ps.setInt(15, pd.getPageViewsTotal());
+
+      ps.execute();
+
+      System.out.println("Property Details were successfully inserted for zpid: " + pd.getZpid());
 
     } catch (SQLException e) {
       System.out.println("ERROR: Could not insert");
@@ -209,10 +233,18 @@ public class DBWriter {
         return;
       }
 
-      String statement = "INSERT INTO Comparables(primaryZPID, compZPID, compScore) VALUES("
-          + zc.getPrimaryZpid() + ", " + zc.getCompZpid() + ", " + zc.getCompScore() + ");";
+      String statement =
+          "INSERT INTO Comparables(primaryZPID, compZPID, compScore) VALUES " + "(?,?,?)";
 
-      this.executeUpdate(connect, statement);
+      PreparedStatement ps = this.connect.prepareStatement(statement);
+
+      ps.setObject(1, zc.getPrimaryZpid(), Types.BIGINT);
+      ps.setObject(2, zc.getCompZpid(), Types.BIGINT);
+      ps.setFloat(3, zc.getCompScore());
+
+      ps.execute();
+
+      System.out.println("Comparable Successfully Inserted.");
     }
 
     catch (SQLException e) {
@@ -224,10 +256,19 @@ public class DBWriter {
 
   public void insertObject(TaxAssessment ta) {
     try {
-      String statement = "INSERT INTO TaxAssessments(zpid, taxYear, taxAssessment) VALUES("
-          + ta.getZpid() + ", " + ta.getTaxYear() + ", " + ta.getTaxAssessment() + "):";
+      String statement =
+          "INSERT INTO TaxAssessments(zpid, taxYear, taxAssessment) VALUES " + "(?,?,?)";
 
-      this.executeUpdate(connect, statement);
+      PreparedStatement ps = this.connect.prepareStatement(statement);
+
+      ps.setObject(1, ta.getZpid(), Types.BIGINT);
+      ps.setObject(2, ta.getTaxYear());
+      ps.setObject(3, ta.getTaxAssessment());
+
+      ps.execute();
+
+      System.out.println("Tax Assessment Successfully Added For ZPID: " + ta.getZpid());
+
     } catch (SQLException e) {
       System.out.println("ERROR: Could not insert");
       e.printStackTrace();
