@@ -80,35 +80,24 @@ public class DBWriter {
     }
   }
 
-  // public void run() {
-  //
-  // // Connect to MySQL
-  // Connection conn = null;
-  // try {
-  // conn = this.getConnection();
-  // if (conn == null) {
-  // System.out.println("Could not connect to database");
-  // } else {
-  // // System.out.println("Connected to database");
-  // }
-  // } catch (SQLException e) {
-  // System.out.println("ERROR: Could not connect to the database");
-  // e.printStackTrace();
-  // return;
-  // }
-  // }
-
   public void insertObject(Zestimate z) {
 
     try {
       String statement =
           "INSERT INTO Zestimates(zpid, zestimate, lastUpdated, thirtyDayChange, valuationHigh, "
-              + "valuationLow, percentileValue) VALUES (" + z.getZpid() + ", " + z.getZestimate()
-              + ", " + z.getLastUpdatedString() + ", " + z.getValuationHigh() + ", "
-              + z.getvaluationLow() + ", " + z.getThirtyDayChange() + ", " + z.getPercentileValue()
-              + ");";
-
-      this.executeUpdate(connect, statement);
+              + "valuationLow, percentileValue) VALUES " + "(?,?,?,?,?,?,?)";
+      PreparedStatement ps = this.connect.prepareStatement(statement);
+      ps.setObject(1, z.getZpid(), Types.BIGINT);
+      ps.setInt(2, z.getZestimate());
+      ps.setObject(3, z.getLastUpdated());
+      ps.setInt(4, x);
+      
+//      + z.getZpid() + ", " + z.getZestimate()
+//              + ", " + z.getLastUpdatedString() + ", " + z.getValuationHigh() + ", "
+//              + z.getvaluationLow() + ", " + z.getThirtyDayChange() + ", " + z.getPercentileValue()
+//              + ");";
+//
+//      this.executeUpdate(connect, statement);
 
     } catch (SQLException e) {
       System.out.println("ERROR: Could not insert");
