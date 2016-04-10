@@ -26,7 +26,7 @@ public class ExampleZillowCall {
    * @param args
    */
   public static void main(String[] args) {
-    ZillowAPI setting = ZillowAPI.GetDeepSearchResults;
+    ZillowAPI setting = ZillowAPI.GetUpdatedProperyDetails;
     Example e;
     switch (setting) {
       case GetZestimate:

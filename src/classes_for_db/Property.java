@@ -70,7 +70,6 @@ public class Property implements DbTableObject {
     } else {
       this.zpid = zpid;
       this.zestimate.setZpid(zpid);
-      this.region.setZpid(zpid);
       this.taxAssessment.setZpid(zpid);
       this.details.setZpid(zpid);
     }

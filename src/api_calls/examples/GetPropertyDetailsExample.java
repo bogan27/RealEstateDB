@@ -33,7 +33,8 @@ public class GetPropertyDetailsExample implements Example {
    */
   @Override
   public void run() throws IOException {
-    String zpid = "81858764";
+    // String zpid = "81858764";
+    String zpid = "123844485";
 
     // Create a map of parameter names and values
     HashMap<String, String> params = new HashMap<String, String>();

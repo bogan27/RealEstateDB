@@ -6,6 +6,7 @@ package api_calls.examples;
 import java.io.IOException;
 import java.util.HashMap;
 
+import DBSource.DBWriter;
 import api_calls.GenericZillowAPICaller;
 import api_calls.ZillowAPI;
 import api_calls.GenericZillowAPICaller.ZillowRequestBuilder;
@@ -23,18 +24,20 @@ public class GetDeepCompsExample implements Example {
    * 
    */
   public GetDeepCompsExample() {
-    
+
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see api_calls.examples.Example#run()
    */
   @Override
   public void run() throws IOException {
-    String zpid = "81858764";
+    String zpid = "123844485";// "81858764";
     String count = "25";
-    
- // Create a map of parameter names and values
+
+    // Create a map of parameter names and values
     HashMap<String, String> params = new HashMap<String, String>();
     params.put("zpid", zpid);
     params.put("count", count);
@@ -53,8 +56,10 @@ public class GetDeepCompsExample implements Example {
     GetDeepCompsResultParser parser = new GetDeepCompsResultParser(data);
     System.out.println("Response status code: " + parser.getStatusCode());
     System.out.println("Response message text: " + parser.getMessageText());
+    DBWriter db = new DBWriter();
     for (DbTableObject dbto : parser.parseData()) {
       ZillowComparable c = (ZillowComparable) dbto;
+      db.insertObject(c);
       System.out.println(c.toString());
     }
 
