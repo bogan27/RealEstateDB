@@ -12,6 +12,7 @@ import java.util.List;
  */
 public class ZillowComparable implements DbTableObject {
 
+  private BigInteger compID;
   private BigInteger primaryZPID;
   private BigInteger compZPID;
   private float compScore;
@@ -23,9 +24,30 @@ public class ZillowComparable implements DbTableObject {
     // TODO Auto-generated constructor stub
   }
 
+  public BigInteger getCompID() {
+	  return compID;
+  }
+  
+  public void setCompID(BigInteger id) {
+	  BigInteger min = new BigInteger("0");
+	  BigInteger max = new BigInteger("1000000000000");
+	  if (id.compareTo(min) < 0) {
+		  throw new IllegalArgumentException(
+				  "Comp ID cannot be negative. Argument given for Comp ID: " + id);
+	  }
+	  if (primaryZPID.compareTo(max) >= 0) {
+		  throw new IllegalArgumentException(
+				  "Argument given for Comp ID exceeds maximum allowed value of 1000000000000 (1 trillion). Argument given: "
+						  + id);
+	  } else {
+		  this.compID = id;
+	  }
+  }
+  
   public BigInteger getPrimaryZpid() {
     return primaryZPID;
   }
+  
 
 
   /**
