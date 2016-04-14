@@ -24,7 +24,8 @@ public class Zestimate implements DbTableObject {
   private int valuationHigh;
   private int valuationLow;
   private float percentileValue;
-
+  private Date dateRetrieved;
+  
   private SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
 
   /**
@@ -277,6 +278,44 @@ public class Zestimate implements DbTableObject {
   public void setPercentileValue(String percentileValue) {
     this.percentileValue = Float.parseFloat(percentileValue);
   }
+  
+  public Date getDateRetrieved() {
+	  return this.dateRetrieved;
+  }
+  
+  public java.sql.Date getDateRetrievedSql() {
+
+	  StringBuilder sb = new StringBuilder();
+
+	  sb.append(this.dateRetrieved.getYear() + "-");
+	  sb.append(this.dateRetrieved.getMonth() + "-" + this.dateRetrieved.getDay());
+	  String dateString = sb.toString();
+	  java.sql.Date convertedDate = java.sql.Date.valueOf(dateString);
+	  return convertedDate;
+  }
+
+  public String getDateRetrievedString() {
+	  String result = "";
+	  if (this.dateRetrieved != null) {
+		  result = this.sdf.format(this.dateRetrieved);
+	  }
+	  return result;
+  }
+
+  public void setDateRetrieved(Date date) {
+	  this.dateRetrieved = date;
+  }
+  
+  public void setDateRetrieved(String date) {
+	    if (date != null && date.length() > 0) {
+	      try {
+	        Date d = this.sdf.parse(date);
+	        this.dateRetrieved = d;
+	      } catch (ParseException e1) {
+	        e1.printStackTrace();
+	      }
+	    }
+	  }
 
   @Override
   public String toString() {
@@ -288,6 +327,7 @@ public class Zestimate implements DbTableObject {
     sb.append("Low valuation: " + this.getvaluationLow() + "\n");
     sb.append("30 day change: " + this.getThirtyDayChange() + "\n");
     sb.append("Percentile Value: " + this.getPercentileValue() + "\n");
+    sb.append("Date Retrieved: " + this.getDateRetrieved() + "\n");
     sb.append("\n\n");
     return sb.toString();
   }

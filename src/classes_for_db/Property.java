@@ -478,6 +478,18 @@ public class Property implements DbTableObject {
       this.bedroomCount = bedroomCount;
     }
   }
+  
+  public void setBedroomCount(int count) {
+	  if (count >= 100) {
+	      throw new IllegalArgumentException(
+	          "Whoa! That's way too many bedrooms! Argument for number of bedrooms must be less than 100.");
+	    }
+	    if (count < 0) {
+	      throw new IllegalArgumentException(
+	          "Cannot have a negative number of bedrooms. Argument given: " + count);
+	    }
+	    this.bedroomCount = count;
+  }
 
   public Date getLastSoldDate() {
     return this.lastSoldDate;
@@ -543,6 +555,15 @@ public class Property implements DbTableObject {
       this.lastSoldPrice = lastPriceAsInt;
     }
   }
+  
+  public void setLastSoldPrice(int price) {
+	    if (price >= 1000000000) {
+	      throw new IllegalArgumentException("Last sold price exceeds 1b - that's too much!");
+	    } else {
+	    	this.lastSoldPrice = price;
+	    }
+	  }
+
 
   ////////////////////////
   /// Delegate methods ///
