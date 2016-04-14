@@ -24,14 +24,20 @@ public class Property implements DbTableObject {
   private int bedroomCount;
   private Date lastSoldDate;
   private int lastSoldPrice;
+  
   private Zestimate zestimate;
   private boolean zestimateUsed;
+  
   private Neighborhood region;
   private boolean regionUsed;
-  private TaxAssessment taxAssessment;
+  
+  private List<TaxAssessment> assessmentList;
   private boolean taxAssessmentUsed;
+  private TaxAssessment recentAssessment;
+  
   private PropertyDetails details;
   private boolean detailsUsed;
+  
   private List<ZillowComparable> compList;
   private boolean compsUsed;
   private SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
@@ -39,8 +45,9 @@ public class Property implements DbTableObject {
   public Property() {
     this.zestimate = new Zestimate();
     this.region = new Neighborhood();
-    this.taxAssessment = new TaxAssessment();
+    this.assessmentList = new ArrayList<TaxAssessment>();
     this.details = new PropertyDetails();
+    this.compList = new ArrayList<ZillowComparable>();
   }
 
 
@@ -71,7 +78,7 @@ public class Property implements DbTableObject {
     } else {
       this.zpid = zpid;
       this.zestimate.setZpid(zpid);
-      this.taxAssessment.setZpid(zpid);
+    //  this.taxAssessment.setZpid(zpid);
       this.details.setZpid(zpid);
     }
   }
@@ -836,61 +843,61 @@ public class Property implements DbTableObject {
   }
 
 
-  /**
-   * @return
-   * @see classes_for_db.TaxAssessment#getTaxYear()
-   */
-  public int getTaxYear() {
-    return taxAssessment.getTaxYear();
-  }
-
-
-  /**
-   * @param taxYear
-   * @see classes_for_db.TaxAssessment#setTaxYear(int)
-   */
-  public void setTaxYear(int taxYear) {
-    this.taxAssessmentUsed = true;
-    taxAssessment.setTaxYear(taxYear);
-  }
-
-
-  /**
-   * @param taxYear
-   * @see classes_for_db.TaxAssessment#setTaxYear(java.lang.String)
-   */
-  public void setTaxYear(String taxYear) {
-    this.taxAssessmentUsed = true;
-    taxAssessment.setTaxYear(taxYear);
-  }
-
-
-  /**
-   * @return
-   * @see classes_for_db.TaxAssessment#getTaxAssessment()
-   */
-  public float getTaxAssessmentAmount() {
-    return taxAssessment.getTaxAssessment();
-  }
-
-
-  /**
-   * @param taxAssessment
-   * @see classes_for_db.TaxAssessment#setTaxAssessment(float)
-   */
-  public void setTaxAssessmentAmount(float taxAssessment) {
-    this.taxAssessmentUsed = true;
-    this.taxAssessment.setTaxAssessment(taxAssessment);
-  }
-
-  /**
-   * @param taxAssessment
-   * @see classes_for_db.TaxAssessment#setTaxAssessment(String)
-   */
-  public void setTaxAssessment(String taxAssessment) {
-    this.taxAssessmentUsed = true;
-    this.taxAssessment.setTaxAssessment(taxAssessment);
-  }
+//  /**
+//   * @return
+//   * @see classes_for_db.TaxAssessment#getTaxYear()
+//   */
+//  public int getTaxYear() {
+//    return taxAssessment.getTaxYear();
+//  }
+//
+//
+//  /**
+//   * @param taxYear
+//   * @see classes_for_db.TaxAssessment#setTaxYear(int)
+//   */
+//  public void setTaxYear(int taxYear) {
+//    this.taxAssessmentUsed = true;
+//    taxAssessment.setTaxYear(taxYear);
+//  }
+//
+//
+//  /**
+//   * @param taxYear
+//   * @see classes_for_db.TaxAssessment#setTaxYear(java.lang.String)
+//   */
+//  public void setTaxYear(String taxYear) {
+//    this.taxAssessmentUsed = true;
+//    taxAssessment.setTaxYear(taxYear);
+//  }
+//
+//
+//  /**
+//   * @return
+//   * @see classes_for_db.TaxAssessment#getTaxAssessment()
+//   */
+//  public float getTaxAssessmentAmount() {
+//    return taxAssessment.getTaxAssessment();
+//  }
+//
+//
+//  /**
+//   * @param taxAssessment
+//   * @see classes_for_db.TaxAssessment#setTaxAssessment(float)
+//   */
+//  public void setTaxAssessmentAmount(float taxAssessment) {
+//    this.taxAssessmentUsed = true;
+//    this.taxAssessment.setTaxAssessment(taxAssessment);
+//  }
+//
+//  /**
+//   * @param taxAssessment
+//   * @see classes_for_db.TaxAssessment#setTaxAssessment(String)
+//   */
+//  public void setTaxAssessment(String taxAssessment) {
+//    this.taxAssessmentUsed = true;
+//    this.taxAssessment.setTaxAssessment(taxAssessment);
+//  }
 
   /**
    * @return
@@ -1250,12 +1257,23 @@ public class Property implements DbTableObject {
 	  this.zestimate = z;
   }
   
-  public TaxAssessment getTaxAssessment() {
-	  return taxAssessment;
+  public List<TaxAssessment> getTaxAssessment() {
+	  
+	  return assessmentList;
   }
   
-  public void setTaxAssessment(TaxAssessment ta) {
-	  this.taxAssessment = ta;
+  public void setAssessmentList(List<TaxAssessment> lt) {
+	  this.taxAssessmentUsed = true;
+	  this.assessmentList = lt;
+  }
+  
+  public TaxAssessment getRecentAssessment() {
+	 return this.assessmentList.get(0);  
+  }
+  
+  public void addAssessment(TaxAssessment ta) {
+	  this.taxAssessmentUsed = true;
+	  this.assessmentList.add(ta);
   }
   
   public List<ZillowComparable> getZillowComps() {
@@ -1287,8 +1305,8 @@ public class Property implements DbTableObject {
     sb.append("Longitude: " + this.getLongitude() + "\n");
     sb.append("FIPS County Code: " + this.getCountyCode() + "\n");
     sb.append("Use Code: " + this.getUseCode() + "\n");
-    sb.append("Tax Assessment Year: " + this.getTaxYear() + "\n");
-    sb.append("Tax Assessment: " + this.getTaxAssessment() + "\n");
+    sb.append("Tax Assessment Year: " + this.getRecentAssessment().getTaxYear() + "\n");
+    sb.append("Tax Assessment: " + this.getRecentAssessment().getTaxAssessment() + "\n");
     sb.append("Year Built: " + this.getYearBuilt() + "\n");
     sb.append("Finished square feet: " + this.getFinishedSqFt() + "\n");
     sb.append("Bathrooms: " + this.getBathroomCount() + "\n");
@@ -1316,7 +1334,9 @@ public class Property implements DbTableObject {
       response.add(this.zestimate);
     }
     if (this.taxAssessmentUsed) {
-      response.add(this.taxAssessment);
+    	for(TaxAssessment t : assessmentList) {
+    		response.add(t);
+    	}
     }
     if (this.regionUsed) {
       response.add(this.region);
