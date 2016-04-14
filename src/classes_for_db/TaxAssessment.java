@@ -11,9 +11,11 @@ import java.util.List;
  *
  */
 public class TaxAssessment implements DbTableObject {
+  // assessmentID INT(12)
   // zpid INT(10)
   // taxYear YEAR()
   // taxAssessment FLOAT(10,2)
+  private BigInteger assessmentID;
   private BigInteger zpid;
   private int taxYear;
   private float taxAssessment;
@@ -25,9 +27,25 @@ public class TaxAssessment implements DbTableObject {
     // TODO Auto-generated constructor stub
   }
 
-  public BigInteger getZpid() {
-    return zpid;
+  public BigInteger getAssessmentID() {
+	  return assessmentID;
   }
+  
+  public void setAssessmentID(BigInteger assID) {
+	    BigInteger min = new BigInteger("0");
+	    BigInteger max = new BigInteger("1000000000000");
+	    if (assID.compareTo(min) < 0) {
+	      throw new IllegalArgumentException(
+	          "assessment ID cannot be negative. Argument given for assessment ID: " + assID);
+	    }
+	    if (assID.compareTo(max) >= 0) {
+	      throw new IllegalArgumentException(
+	          "Argument given for assessmentID exceeds maximum allowed value of 1000000000000 (1 trillion). Argument given: "
+	              + assID);
+	    } else {
+	      this.assessmentID = assID;
+	    }
+	  }
 
 
   /**
@@ -38,6 +56,11 @@ public class TaxAssessment implements DbTableObject {
    * @throws IllegalArgumentException if {@code zpid} is less than 0 or greater than 10000000000 (10
    *         billion).
    */
+  
+  public BigInteger getZpid() {
+	    return zpid;
+	  }
+  
   public void setZpid(BigInteger zpid) {
     BigInteger min = new BigInteger("0");
     BigInteger max = new BigInteger("10000000000");
