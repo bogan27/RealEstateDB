@@ -24,20 +24,20 @@ public class Property implements DbTableObject {
   private int bedroomCount;
   private Date lastSoldDate;
   private int lastSoldPrice;
-  
+
   private Zestimate zestimate;
   private boolean zestimateUsed;
-  
+
   private Neighborhood region;
   private boolean regionUsed;
-  
+
   private List<TaxAssessment> assessmentList;
   private boolean taxAssessmentUsed;
   private TaxAssessment recentAssessment;
-  
+
   private PropertyDetails details;
   private boolean detailsUsed;
-  
+
   private List<ZillowComparable> compList;
   private boolean compsUsed;
   private SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
@@ -78,7 +78,7 @@ public class Property implements DbTableObject {
     } else {
       this.zpid = zpid;
       this.zestimate.setZpid(zpid);
-    //  this.taxAssessment.setZpid(zpid);
+      // this.taxAssessment.setZpid(zpid);
       this.details.setZpid(zpid);
     }
   }
@@ -486,17 +486,17 @@ public class Property implements DbTableObject {
       this.bedroomCount = bedroomCount;
     }
   }
-  
+
   public void setBedroomCount(int count) {
-	  if (count >= 100) {
-	      throw new IllegalArgumentException(
-	          "Whoa! That's way too many bedrooms! Argument for number of bedrooms must be less than 100.");
-	    }
-	    if (count < 0) {
-	      throw new IllegalArgumentException(
-	          "Cannot have a negative number of bedrooms. Argument given: " + count);
-	    }
-	    this.bedroomCount = count;
+    if (count >= 100) {
+      throw new IllegalArgumentException(
+          "Whoa! That's way too many bedrooms! Argument for number of bedrooms must be less than 100.");
+    }
+    if (count < 0) {
+      throw new IllegalArgumentException(
+          "Cannot have a negative number of bedrooms. Argument given: " + count);
+    }
+    this.bedroomCount = count;
   }
 
   public Date getLastSoldDate() {
@@ -563,14 +563,14 @@ public class Property implements DbTableObject {
       this.lastSoldPrice = lastPriceAsInt;
     }
   }
-  
+
   public void setLastSoldPrice(int price) {
-	    if (price >= 1000000000) {
-	      throw new IllegalArgumentException("Last sold price exceeds 1b - that's too much!");
-	    } else {
-	    	this.lastSoldPrice = price;
-	    }
-	  }
+    if (price >= 1000000000) {
+      throw new IllegalArgumentException("Last sold price exceeds 1b - that's too much!");
+    } else {
+      this.lastSoldPrice = price;
+    }
+  }
 
 
   ////////////////////////
@@ -843,61 +843,61 @@ public class Property implements DbTableObject {
   }
 
 
-//  /**
-//   * @return
-//   * @see classes_for_db.TaxAssessment#getTaxYear()
-//   */
-//  public int getTaxYear() {
-//    return taxAssessment.getTaxYear();
-//  }
-//
-//
-//  /**
-//   * @param taxYear
-//   * @see classes_for_db.TaxAssessment#setTaxYear(int)
-//   */
-//  public void setTaxYear(int taxYear) {
-//    this.taxAssessmentUsed = true;
-//    taxAssessment.setTaxYear(taxYear);
-//  }
-//
-//
-//  /**
-//   * @param taxYear
-//   * @see classes_for_db.TaxAssessment#setTaxYear(java.lang.String)
-//   */
-//  public void setTaxYear(String taxYear) {
-//    this.taxAssessmentUsed = true;
-//    taxAssessment.setTaxYear(taxYear);
-//  }
-//
-//
-//  /**
-//   * @return
-//   * @see classes_for_db.TaxAssessment#getTaxAssessment()
-//   */
-//  public float getTaxAssessmentAmount() {
-//    return taxAssessment.getTaxAssessment();
-//  }
-//
-//
-//  /**
-//   * @param taxAssessment
-//   * @see classes_for_db.TaxAssessment#setTaxAssessment(float)
-//   */
-//  public void setTaxAssessmentAmount(float taxAssessment) {
-//    this.taxAssessmentUsed = true;
-//    this.taxAssessment.setTaxAssessment(taxAssessment);
-//  }
-//
-//  /**
-//   * @param taxAssessment
-//   * @see classes_for_db.TaxAssessment#setTaxAssessment(String)
-//   */
-//  public void setTaxAssessment(String taxAssessment) {
-//    this.taxAssessmentUsed = true;
-//    this.taxAssessment.setTaxAssessment(taxAssessment);
-//  }
+  /**
+   * @return
+   * @see classes_for_db.TaxAssessment#getTaxYear()
+   */
+  public int getTaxYear() {
+    return recentAssessment.getTaxYear();
+  }
+
+
+  /**
+   * @param taxYear
+   * @see classes_for_db.TaxAssessment#setTaxYear(int)
+   */
+  public void setTaxYear(int taxYear) {
+    this.taxAssessmentUsed = true;
+    recentAssessment.setTaxYear(taxYear);
+  }
+
+
+  /**
+   * @param taxYear
+   * @see classes_for_db.TaxAssessment#setTaxYear(java.lang.String)
+   */
+  public void setTaxYear(String taxYear) {
+    this.taxAssessmentUsed = true;
+    recentAssessment.setTaxYear(taxYear);
+  }
+
+
+  /**
+   * @return
+   * @see classes_for_db.TaxAssessment#getTaxAssessment()
+   */
+  public float getTaxAssessmentAmount() {
+    return recentAssessment.getTaxAssessment();
+  }
+
+
+  /**
+   * @param taxAssessment
+   * @see classes_for_db.TaxAssessment#setTaxAssessment(float)
+   */
+  public void setTaxAssessmentAmount(float taxAssessment) {
+    this.taxAssessmentUsed = true;
+    this.recentAssessment.setTaxAssessment(taxAssessment);
+  }
+
+  /**
+   * @param taxAssessment
+   * @see classes_for_db.TaxAssessment#setTaxAssessment(String)
+   */
+  public void setTaxAssessment(String taxAssessment) {
+    this.taxAssessmentUsed = true;
+    this.recentAssessment.setTaxAssessment(taxAssessment);
+  }
 
   /**
    * @return
@@ -1234,64 +1234,63 @@ public class Property implements DbTableObject {
   }
 
   public PropertyDetails getPropertyDetails() {
-	  return details;
+    return details;
   }
-  
+
   public void setPropertyDetails(PropertyDetails pd) {
-	  this.details = pd;
+    this.details = pd;
   }
-  
+
   public Neighborhood getNeighborhood() {
-	  return region;
+    return region;
   }
-  
+
   public void setNeighborhood(Neighborhood n) {
-	  this.region = n;
+    this.region = n;
   }
-  
+
   public Zestimate getZestimate() {
-	  return zestimate;
+    return zestimate;
   }
-  
+
   public void setZestimate(Zestimate z) {
-	  this.zestimate = z;
+    this.zestimate = z;
   }
-  
+
   public List<TaxAssessment> getTaxAssessment() {
-	  
-	  return assessmentList;
+
+    return assessmentList;
   }
-  
+
   public void setAssessmentList(List<TaxAssessment> lt) {
-	  this.taxAssessmentUsed = true;
-	  this.assessmentList = lt;
+    this.taxAssessmentUsed = true;
+    this.assessmentList = lt;
   }
-  
+
   public TaxAssessment getRecentAssessment() {
-	 return this.assessmentList.get(0);  
+    return this.assessmentList.get(0);
   }
-  
+
   public void addAssessment(TaxAssessment ta) {
-	  this.taxAssessmentUsed = true;
-	  this.assessmentList.add(ta);
+    this.taxAssessmentUsed = true;
+    this.assessmentList.add(ta);
   }
-  
+
   public List<ZillowComparable> getZillowComps() {
-	  return compList;
+    return compList;
   }
-  
+
   public void setZillowComps(List<ZillowComparable> lz) {
-	  this.compsUsed = true;
-	  this.compList = lz;
+    this.compsUsed = true;
+    this.compList = lz;
   }
-  
+
   public void addComp(ZillowComparable zc) {
-	  this.compsUsed = true;
-	  this.compList.add(zc);
+    this.compsUsed = true;
+    this.compList.add(zc);
   }
-  
-  
-  
+
+
 
   @Override
   public String toString() {
@@ -1334,9 +1333,9 @@ public class Property implements DbTableObject {
       response.add(this.zestimate);
     }
     if (this.taxAssessmentUsed) {
-    	for(TaxAssessment t : assessmentList) {
-    		response.add(t);
-    	}
+      for (TaxAssessment t : assessmentList) {
+        response.add(t);
+      }
     }
     if (this.regionUsed) {
       response.add(this.region);
@@ -1345,9 +1344,9 @@ public class Property implements DbTableObject {
       response.add(this.details);
     }
     if (this.compsUsed) {
-    	for(ZillowComparable c : compList) {
-    		response.add(c);
-    	}
+      for (ZillowComparable c : compList) {
+        response.add(c);
+      }
     }
     return response;
   }
