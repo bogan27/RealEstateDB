@@ -32,7 +32,8 @@ public class Property implements DbTableObject {
   private boolean taxAssessmentUsed;
   private PropertyDetails details;
   private boolean detailsUsed;
-
+  private List<ZillowComparable> compList;
+  private boolean compsUsed;
   private SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
 
   public Property() {
@@ -572,7 +573,7 @@ public class Property implements DbTableObject {
    * @return
    * @see classes_for_db.Zestimate#getZestimate()
    */
-  public int getZestimate() {
+  public int getZestimateAmount() {
     return zestimate.getZestimate();
   }
 
@@ -581,7 +582,7 @@ public class Property implements DbTableObject {
    * @param zestimate
    * @see classes_for_db.Zestimate#setZestimate(int)
    */
-  public void setZestimate(int zestimate) {
+  public void setZestimateAmount(int zestimate) {
     this.zestimateUsed = true;
     this.zestimate.setZestimate(zestimate);
   }
@@ -868,7 +869,7 @@ public class Property implements DbTableObject {
    * @return
    * @see classes_for_db.TaxAssessment#getTaxAssessment()
    */
-  public float getTaxAssessment() {
+  public float getTaxAssessmentAmount() {
     return taxAssessment.getTaxAssessment();
   }
 
@@ -877,7 +878,7 @@ public class Property implements DbTableObject {
    * @param taxAssessment
    * @see classes_for_db.TaxAssessment#setTaxAssessment(float)
    */
-  public void setTaxAssessment(float taxAssessment) {
+  public void setTaxAssessmentAmount(float taxAssessment) {
     this.taxAssessmentUsed = true;
     this.taxAssessment.setTaxAssessment(taxAssessment);
   }
@@ -1225,6 +1226,54 @@ public class Property implements DbTableObject {
     details.setPageViewsTotal(pageViewsTotal);
   }
 
+  public PropertyDetails getPropertyDetails() {
+	  return details;
+  }
+  
+  public void setPropertyDetails(PropertyDetails pd) {
+	  this.details = pd;
+  }
+  
+  public Neighborhood getNeighborhood() {
+	  return region;
+  }
+  
+  public void setNeighborhood(Neighborhood n) {
+	  this.region = n;
+  }
+  
+  public Zestimate getZestimate() {
+	  return zestimate;
+  }
+  
+  public void setZestimate(Zestimate z) {
+	  this.zestimate = z;
+  }
+  
+  public TaxAssessment getTaxAssessment() {
+	  return taxAssessment;
+  }
+  
+  public void setTaxAssessment(TaxAssessment ta) {
+	  this.taxAssessment = ta;
+  }
+  
+  public List<ZillowComparable> getZillowComps() {
+	  return compList;
+  }
+  
+  public void setZillowComps(List<ZillowComparable> lz) {
+	  this.compsUsed = true;
+	  this.compList = lz;
+  }
+  
+  public void addComp(ZillowComparable zc) {
+	  this.compsUsed = true;
+	  this.compList.add(zc);
+  }
+  
+  
+  
 
   @Override
   public String toString() {
@@ -1274,6 +1323,11 @@ public class Property implements DbTableObject {
     }
     if (this.detailsUsed) {
       response.add(this.details);
+    }
+    if (this.compsUsed) {
+    	for(ZillowComparable c : compList) {
+    		response.add(c);
+    	}
     }
     return response;
   }
