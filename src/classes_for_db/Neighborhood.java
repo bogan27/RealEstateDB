@@ -115,6 +115,20 @@ public class Neighborhood implements DbTableObject {
       this.setZipCode(Integer.parseInt(zipCode));
     }
   }
+  
+  public int getZindex() {
+	  return this.zIndex;
+  }
+  
+  public void setZindex(int zindex) {
+	  if (zindex < 0 | zindex >= 1000000000) {
+	      throw new IllegalArgumentException(
+	          "Argument for zindex falls outside of acceptable range of 0 to 1 Billion. Argument given: "
+	              + zindex);
+	    } else {
+	    	this.zIndex = zindex;
+	    }
+  }
 
 //  public BigInteger getZpid() {
 //    return zpid;
