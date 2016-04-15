@@ -13,6 +13,7 @@ import classes_for_db.DbTableObject;
 import classes_for_db.Zestimate;
 import xml_parsers.GetZestimateResultParser;
 import DBSource.DBWriter;
+import DBSource.MysqlWriter;
 
 /**
  * @author brandonbogan
@@ -49,7 +50,7 @@ public class GetZestimateExample implements Example {
     GetZestimateResultParser parser = new GetZestimateResultParser(data);
     System.out.println("Response status code: " + parser.getStatusCode());
     System.out.println("Response message text: " + parser.getMessageText());
-    DBWriter dbw = new DBWriter();
+    DBWriter dbw = new MysqlWriter();
     for (DbTableObject dbto : parser.parseData()) {
       Zestimate z = (Zestimate) dbto;
       dbw.insertObject(z);

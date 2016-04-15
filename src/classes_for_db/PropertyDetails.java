@@ -9,6 +9,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import DBSource.DBWriter;
+
 /**
  * @author brandonbogan
  *
@@ -475,6 +477,13 @@ public class PropertyDetails implements DbTableObject {
   public List<DbTableObject> getDelegateObjects() {
     // TODO Auto-generated method stub
     return null;
+  }
+
+
+  @Override
+  public boolean writeToDB(DBWriter writer) {
+    writer.insertObject(this);
+    return true;
   }
 
 }

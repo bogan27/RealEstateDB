@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import DBSource.DBWriter;
+
 public class Property implements DbTableObject {
   private BigInteger zpid;
   private String streetAddress;
@@ -1349,5 +1351,16 @@ public class Property implements DbTableObject {
       }
     }
     return response;
+  }
+
+
+  @Override
+  public boolean writeToDB(DBWriter writer) {
+    writer.insertObject(this);
+    this.zestimate.writeToDB(writer);
+    this.region.writeToDB(writer);
+    this.details.writeToDB(writer);
+    this.recentAssessment.writeToDB(writer);
+    return true;
   }
 }

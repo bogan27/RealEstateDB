@@ -3,8 +3,9 @@
  */
 package classes_for_db;
 
-import java.math.BigInteger;
 import java.util.List;
+
+import DBSource.DBWriter;
 
 /**
  * @author brandonbogan
@@ -115,67 +116,70 @@ public class Neighborhood implements DbTableObject {
       this.setZipCode(Integer.parseInt(zipCode));
     }
   }
-  
+
   public int getZindex() {
-	  return this.zIndex;
-  }
-  
-  public void setZindex(int zindex) {
-	  if (zindex < 0 | zindex >= 1000000000) {
-	      throw new IllegalArgumentException(
-	          "Argument for zindex falls outside of acceptable range of 0 to 1 Billion. Argument given: "
-	              + zindex);
-	    } else {
-	    	this.zIndex = zindex;
-	    }
+    return this.zIndex;
   }
 
-//  public BigInteger getZpid() {
-//    return zpid;
-//  }
-//
-//
-//  /**
-//   * 
-//   * @param zpid A BigInteger representing the zpid of the property. This argument needs to be a
-//   *        {@code BigInteger} instead of an {@code int} because the size of some of the larger
-//   *        zpids exceeds the max value of an int.
-//   * @throws IllegalArgumentException if {@code zpid} is less than 0 or greater than 10000000000 (10
-//   *         billion).
-//   */
-//  public void setZpid(BigInteger zpid) {
-//    BigInteger min = new BigInteger("0");
-//    BigInteger max = new BigInteger("10000000000");
-//    if (zpid.compareTo(min) < 0) {
-//      throw new IllegalArgumentException(
-//          "zpid cannot be negative. Argument given for zpid: " + zpid);
-//    }
-//    if (zpid.compareTo(max) >= 0) {
-//      throw new IllegalArgumentException(
-//          "Argument given for zpid exceeds maximum allowed value of 10000000000 (10 billion). Argument given: "
-//              + zpid);
-//    } else {
-//      this.zpid = zpid;
-//    }
-//  }
-//
-//
-//  /**
-//   * 
-//   * @param zpid A String representation of this property's zpid
-//   * @throws IllegalArgumentException if {@code zpid} is longer than 11 characters, is less than 0,
-//   *         or is greater than 10000000000 (10 billion).
-//   */
-//  public void setZpid(String zpid) {
-//    if (zpid.length() > 11) {
-//      throw new IllegalArgumentException(
-//          "Argument for zpid exceeds maximum allowable length of 11 characters. Argument given: "
-//              + zpid);
-//    } else {
-//      BigInteger id = new BigInteger(zpid);
-//      this.setZpid(id);
-//    }
-//  }
+  public void setZindex(int zindex) {
+    if (zindex < 0 | zindex >= 1000000000) {
+      throw new IllegalArgumentException(
+          "Argument for zindex falls outside of acceptable range of 0 to 1 Billion. Argument given: "
+              + zindex);
+    } else {
+      this.zIndex = zindex;
+    }
+  }
+
+  // public BigInteger getZpid() {
+  // return zpid;
+  // }
+  //
+  //
+  // /**
+  // *
+  // * @param zpid A BigInteger representing the zpid of the property. This argument needs to be a
+  // * {@code BigInteger} instead of an {@code int} because the size of some of the larger
+  // * zpids exceeds the max value of an int.
+  // * @throws IllegalArgumentException if {@code zpid} is less than 0 or greater than 10000000000
+  // (10
+  // * billion).
+  // */
+  // public void setZpid(BigInteger zpid) {
+  // BigInteger min = new BigInteger("0");
+  // BigInteger max = new BigInteger("10000000000");
+  // if (zpid.compareTo(min) < 0) {
+  // throw new IllegalArgumentException(
+  // "zpid cannot be negative. Argument given for zpid: " + zpid);
+  // }
+  // if (zpid.compareTo(max) >= 0) {
+  // throw new IllegalArgumentException(
+  // "Argument given for zpid exceeds maximum allowed value of 10000000000 (10 billion). Argument
+  // given: "
+  // + zpid);
+  // } else {
+  // this.zpid = zpid;
+  // }
+  // }
+  //
+  //
+  // /**
+  // *
+  // * @param zpid A String representation of this property's zpid
+  // * @throws IllegalArgumentException if {@code zpid} is longer than 11 characters, is less than
+  // 0,
+  // * or is greater than 10000000000 (10 billion).
+  // */
+  // public void setZpid(String zpid) {
+  // if (zpid.length() > 11) {
+  // throw new IllegalArgumentException(
+  // "Argument for zpid exceeds maximum allowable length of 11 characters. Argument given: "
+  // + zpid);
+  // } else {
+  // BigInteger id = new BigInteger(zpid);
+  // this.setZpid(id);
+  // }
+  // }
 
   /**
    * @return the zIndexChange
@@ -248,6 +252,13 @@ public class Neighborhood implements DbTableObject {
    */
   public void setzIndex(int zIndex) {
     this.zIndex = zIndex;
+  }
+
+
+  @Override
+  public boolean writeToDB(DBWriter writer) {
+    writer.insertObject(this);
+    return true;
   }
 
 

@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.util.HashMap;
 
 import DBSource.DBWriter;
+import DBSource.MysqlWriter;
 import api_calls.GenericZillowAPICaller;
 import api_calls.ZillowAPI;
 import api_calls.GenericZillowAPICaller.ZillowRequestBuilder;
@@ -56,7 +57,7 @@ public class GetDeepCompsExample implements Example {
     GetDeepCompsResultParser parser = new GetDeepCompsResultParser(data);
     System.out.println("Response status code: " + parser.getStatusCode());
     System.out.println("Response message text: " + parser.getMessageText());
-    DBWriter db = new DBWriter();
+    DBWriter db = new MysqlWriter();
     for (DbTableObject dbto : parser.parseData()) {
       ZillowComparable c = (ZillowComparable) dbto;
       db.insertObject(c);

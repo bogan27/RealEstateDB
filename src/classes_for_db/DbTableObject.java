@@ -2,6 +2,8 @@ package classes_for_db;
 
 import java.util.List;
 
+import DBSource.DBWriter;
+
 public interface DbTableObject {
 
   // /**
@@ -39,4 +41,15 @@ public interface DbTableObject {
    * @return A list of all delegate objects that the class uses. This list may be empty.
    */
   public List<DbTableObject> getDelegateObjects();
+
+  /**
+   * Insert {@code this} DBTableObject into a database specified by the given {@code DBWriter}
+   * 
+   * @param writer The {@code DBWriter} to handle the connection to the database and perform the
+   *        insertion
+   * @return {@code true} if the object is successfully written to the database or the object
+   *         already exists in the database, or {@code false} if the database operation is not
+   *         successful
+   */
+  public boolean writeToDB(DBWriter writer);
 }
