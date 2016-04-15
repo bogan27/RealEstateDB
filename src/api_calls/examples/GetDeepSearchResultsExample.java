@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.util.HashMap;
 
 import DBSource.DBWriter;
+import DBSource.MysqlWriter;
 import api_calls.GenericZillowAPICaller;
 import api_calls.ZillowAPI;
 import api_calls.GenericZillowAPICaller.ZillowRequestBuilder;
@@ -53,7 +54,7 @@ public class GetDeepSearchResultsExample implements Example {
     SearchResultParser parser = new SearchResultParser(data);
     System.out.println("Response status code: " + parser.getStatusCode());
     System.out.println("Response message text: " + parser.getMessageText());
-    DBWriter dbw = new DBWriter();
+    DBWriter dbw = new MysqlWriter();
     for (DbTableObject dbto : parser.parseData()) {
       Property p = (Property) dbto;
       dbw.insertObject(p);

@@ -6,6 +6,8 @@ package classes_for_db;
 import java.math.BigInteger;
 import java.util.List;
 
+import DBSource.DBWriter;
+
 /**
  * @author brandonbogan
  *
@@ -28,24 +30,24 @@ public class TaxAssessment implements DbTableObject {
   }
 
   public BigInteger getAssessmentID() {
-	  return assessmentID;
+    return assessmentID;
   }
-  
+
   public void setAssessmentID(BigInteger assID) {
-	    BigInteger min = new BigInteger("0");
-	    BigInteger max = new BigInteger("1000000000000");
-	    if (assID.compareTo(min) < 0) {
-	      throw new IllegalArgumentException(
-	          "assessment ID cannot be negative. Argument given for assessment ID: " + assID);
-	    }
-	    if (assID.compareTo(max) >= 0) {
-	      throw new IllegalArgumentException(
-	          "Argument given for assessmentID exceeds maximum allowed value of 1000000000000 (1 trillion). Argument given: "
-	              + assID);
-	    } else {
-	      this.assessmentID = assID;
-	    }
-	  }
+    BigInteger min = new BigInteger("0");
+    BigInteger max = new BigInteger("1000000000000");
+    if (assID.compareTo(min) < 0) {
+      throw new IllegalArgumentException(
+          "assessment ID cannot be negative. Argument given for assessment ID: " + assID);
+    }
+    if (assID.compareTo(max) >= 0) {
+      throw new IllegalArgumentException(
+          "Argument given for assessmentID exceeds maximum allowed value of 1000000000000 (1 trillion). Argument given: "
+              + assID);
+    } else {
+      this.assessmentID = assID;
+    }
+  }
 
 
   /**
@@ -56,11 +58,11 @@ public class TaxAssessment implements DbTableObject {
    * @throws IllegalArgumentException if {@code zpid} is less than 0 or greater than 10000000000 (10
    *         billion).
    */
-  
+
   public BigInteger getZpid() {
-	    return zpid;
-	  }
-  
+    return zpid;
+  }
+
   public void setZpid(BigInteger zpid) {
     BigInteger min = new BigInteger("0");
     BigInteger max = new BigInteger("10000000000");
@@ -165,6 +167,12 @@ public class TaxAssessment implements DbTableObject {
   public List<DbTableObject> getDelegateObjects() {
     // TODO Auto-generated method stub
     return null;
+  }
+
+  @Override
+  public boolean writeToDB(DBWriter writer) {
+    writer.insertObject(this);
+    return true;
   }
 
 }

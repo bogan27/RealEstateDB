@@ -6,6 +6,8 @@ package classes_for_db;
 import java.math.BigInteger;
 import java.util.List;
 
+import DBSource.DBWriter;
+
 /**
  * @author brandonbogan
  *
@@ -25,29 +27,29 @@ public class ZillowComparable implements DbTableObject {
   }
 
   public BigInteger getCompID() {
-	  return compID;
+    return compID;
   }
-  
+
   public void setCompID(BigInteger id) {
-	  BigInteger min = new BigInteger("0");
-	  BigInteger max = new BigInteger("1000000000000");
-	  if (id.compareTo(min) < 0) {
-		  throw new IllegalArgumentException(
-				  "Comp ID cannot be negative. Argument given for Comp ID: " + id);
-	  }
-	  if (primaryZPID.compareTo(max) >= 0) {
-		  throw new IllegalArgumentException(
-				  "Argument given for Comp ID exceeds maximum allowed value of 1000000000000 (1 trillion). Argument given: "
-						  + id);
-	  } else {
-		  this.compID = id;
-	  }
+    BigInteger min = new BigInteger("0");
+    BigInteger max = new BigInteger("1000000000000");
+    if (id.compareTo(min) < 0) {
+      throw new IllegalArgumentException(
+          "Comp ID cannot be negative. Argument given for Comp ID: " + id);
+    }
+    if (primaryZPID.compareTo(max) >= 0) {
+      throw new IllegalArgumentException(
+          "Argument given for Comp ID exceeds maximum allowed value of 1000000000000 (1 trillion). Argument given: "
+              + id);
+    } else {
+      this.compID = id;
+    }
   }
-  
+
   public BigInteger getPrimaryZpid() {
     return primaryZPID;
   }
-  
+
 
 
   /**
@@ -182,6 +184,12 @@ public class ZillowComparable implements DbTableObject {
   public List<DbTableObject> getDelegateObjects() {
     // TODO Auto-generated method stub
     return null;
+  }
+
+  @Override
+  public boolean writeToDB(DBWriter writer) {
+    writer.insertObject(this);
+    return true;
   }
 
 
