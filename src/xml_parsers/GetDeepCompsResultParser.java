@@ -41,7 +41,7 @@ public class GetDeepCompsResultParser extends ParseZillowResultsAbstract {
       Element response = (Element) doc.getElementsByTagName("response").item(0);
       Element properties = (Element) response.getElementsByTagName("properties").item(0);
       String principalZPID = this.getPrincipalZPID(properties);
-//      Element list = (Element) response.getElementsByTagName("comparables").item(0);
+      // Element list = (Element) response.getElementsByTagName("comparables").item(0);
       NodeList comparableList = properties.getElementsByTagName("comp");
       System.out.println("Size of comparablesList: " + comparableList.getLength());
       for (int i = 0; i < comparableList.getLength(); i++) {
@@ -53,6 +53,10 @@ public class GetDeepCompsResultParser extends ParseZillowResultsAbstract {
           comp.setCompScore(compNode.getAttribute("score"));
           comp.setCompZPID(this.extractFirstValue(compNode, "zpid"));
           compList.add(comp);
+
+          Element addressSection = (Element) compNode.getElementsByTagName("address").item(0);
+          comp.setCompAddress(this.extractFirstValue(addressSection, "street"));
+          comp.setCompZip(this.extractFirstValue(addressSection, "zipcode"));
         }
       }
     }

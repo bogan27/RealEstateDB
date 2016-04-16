@@ -119,10 +119,13 @@ public class MySQLAddressHandler extends MySQLConnectorAbstract implements Addre
       throw new IllegalArgumentException(
           "Argument for values does contain the required key-value pair for 'api_result'");
     }
-    //TODO Check if address alreadt exists, and if it does, apply an update rather than an insert
-    String query = "INSERT INTO Addresses (address, zip, api_result) VALUES (?,?,?)";
+
     PreparedStatement ps;
     try {
+      String selection = "SELECT COUNT(*) FROM Addresses WHERE address = ? and zip = ?";
+      
+
+      String query = "INSERT INTO Addresses (address, zip, api_result) VALUES (?,?,?)";
       ps = this.connect.prepareStatement(query);
       ps.setString(1, address);
       ps.setInt(2, zipcode);
