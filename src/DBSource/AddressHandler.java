@@ -17,11 +17,12 @@ public interface AddressHandler {
    * The Map will contain at least two key-value pairs:
    * <ol>
    * <li>"address", the street address of the property</li>
-   * <li>"zipcode", the zipcode of the property, stored as a String</li>
+   * <li>"zip", the zipcode of the property, stored as a String</li>
    * </ol>
-   * Any properties that do not have a date set for when they were last updated will be selected
-   * first. If all Properties have a date for when they were last updated, the property with the
-   * oldest date will be returned
+   * Any properties that do not have a value for the field api_result (the field that indicates
+   * whether or not search results were found for the address the last time it was tried) will be
+   * selected first. If all Properties have a date for when they were last updated, the property
+   * with the oldest date will be returned
    * 
    * @return
    */

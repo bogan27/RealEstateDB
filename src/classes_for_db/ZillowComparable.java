@@ -18,6 +18,8 @@ public class ZillowComparable implements DbTableObject {
   private BigInteger primaryZPID;
   private BigInteger compZPID;
   private float compScore;
+  private String compAddress;
+  private int compZip;
 
   /**
    * 
@@ -170,12 +172,54 @@ public class ZillowComparable implements DbTableObject {
     this.setCompScore(Float.parseFloat(compScore));
   }
 
+  /**
+   * @return the compAddress
+   */
+  public String getCompAddress() {
+    return compAddress;
+  }
+
+  /**
+   * @param compAddress the compAddress to set
+   */
+  public void setCompAddress(String compAddress) {
+    this.compAddress = compAddress;
+  }
+
+  /**
+   * @return the compZip
+   */
+  public int getCompZip() {
+    return compZip;
+  }
+
+  /**
+   * @param compZip the compZip to set
+   */
+  public void setCompZip(int compZip) {
+    if (compZip < 0 | compZip > 99999) {
+      throw new IllegalArgumentException(
+          "Invalid argument given for zipcode of comparable: " + compZip);
+    }
+    this.compZip = compZip;
+  }
+
+  /**
+   * @param compZip the compZip to be converted from a String to an int and then set
+   */
+  public void setCompZip(String compZipAsString) {
+    int zip = Integer.parseInt(compZipAsString);
+    this.setCompZip(zip);
+  }
+
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("Primary ZPID: " + this.getPrimaryZpid() + "\n");
     sb.append("Comparable ZPID: " + this.getCompZpid() + "\n");
     sb.append("Comparability Score: " + this.getCompScore() + "\n");
+    sb.append("Comp Street Address: " + this.compAddress + "\n");
+    sb.append("Comp Zip: " + this.compZip + "\n");
     sb.append("\n\n");
     return sb.toString();
   }
