@@ -82,7 +82,7 @@ public class Property implements DbTableObject {
     } else {
       this.zpid = zpid;
       this.zestimate.setZpid(zpid);
-       this.recentAssessment.setZpid(zpid);
+      this.recentAssessment.setZpid(zpid);
       this.details.setZpid(zpid);
     }
   }
@@ -1358,11 +1358,26 @@ public class Property implements DbTableObject {
 
   @Override
   public boolean writeToDB(DBWriter writer) {
+
     writer.insertObject(this);
-    this.zestimate.writeToDB(writer);
-    this.region.writeToDB(writer);
-    this.details.writeToDB(writer);
-    this.recentAssessment.writeToDB(writer);
+
+    if (this.zestimateUsed) {
+      this.zestimate.writeToDB(writer);
+    }
+    if (this.regionUsed) {
+      this.region.writeToDB(writer);
+    }
+    if (this.detailsUsed) {
+      this.details.writeToDB(writer);
+    }
+    if (this.taxAssessmentUsed) {
+      this.recentAssessment.writeToDB(writer);
+    }
+    if (this.compsUsed) {
+      for (ZillowComparable comp : this.compList) {
+        comp.writeToDB(writer);
+      }
+    }
     return true;
   }
 }

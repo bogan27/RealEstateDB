@@ -37,15 +37,14 @@ public class MySQLAddressHandler extends MySQLConnectorAbstract implements Addre
 
     Map<String, String> response = new HashMap<String, String>();
 
-    // First select a property that does not have a last updated date, which is likely a new
-    // addresses in the table
+    // First select a property that does not have a value for the boolean field api_result, which is
+    // likely a new addresses in the table
     try {
-      String statement = "SELECT * FROM Addresses WHERE last_updated = ? LIMIT 1";
+      String statement = "SELECT address, zip FROM Addresses WHERE api_result IS NULL LIMIT 1";
       PreparedStatement ps = this.connect.prepareStatement(statement);
-      ps.setObject(1, null, Types.DATE);
       ResultSet results = ps.executeQuery();
       if (results.next()) {
-        for (int i = 1; i < results.getMetaData().getColumnCount(); i++) {
+        for (int i = 1; i < results.getMetaData().getColumnCount() + 1; i++) {
           String columnName = results.getMetaData().getColumnName(i);
           String columnValue = results.getObject(i).toString();
           response.put(columnName, columnValue);
@@ -57,12 +56,12 @@ public class MySQLAddressHandler extends MySQLConnectorAbstract implements Addre
       // address, data was returned..
       if (response.isEmpty()) {
         statement =
-            "SELECT * FROM Addresses WHERE api_result = ? ORDER BY last_updated ASC LIMIT 1";
+            "SELECT address, zip FROM Addresses WHERE api_result = ? ORDER BY last_updated ASC LIMIT 1";
         ps = this.connect.prepareStatement(statement);
         ps.setBoolean(1, true);
         results = ps.executeQuery();
         if (results.next()) {
-          for (int i = 1; i < results.getMetaData().getColumnCount(); i++) {
+          for (int i = 1; i < results.getMetaData().getColumnCount() + 1; i++) {
             String columnName = results.getMetaData().getColumnName(i);
             String columnValue = results.getObject(i).toString();
             response.put(columnName, columnValue);
@@ -73,7 +72,7 @@ public class MySQLAddressHandler extends MySQLConnectorAbstract implements Addre
       // If still no results, select the oldest address that was not successfully updated last time
       if (response.isEmpty()) {
         statement =
-            "SELECT * FROM Addresses WHERE api_result = ? ORDER BY last_updated ASC LIMIT 1";
+            "SELECT address, zip FROM Addresses WHERE api_result = ? ORDER BY last_updated ASC LIMIT 1";
         ps = this.connect.prepareStatement(statement);
         ps.setBoolean(1, false);
         results = ps.executeQuery();
@@ -120,7 +119,7 @@ public class MySQLAddressHandler extends MySQLConnectorAbstract implements Addre
       throw new IllegalArgumentException(
           "Argument for values does contain the required key-value pair for 'api_result'");
     }
-
+    //TODO Check if address alreadt exists, and if it does, apply an update rather than an insert
     String query = "INSERT INTO Addresses (address, zip, api_result) VALUES (?,?,?)";
     PreparedStatement ps;
     try {
