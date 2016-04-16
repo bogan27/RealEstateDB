@@ -29,22 +29,34 @@ public class MysqlWriter extends MySQLConnectorAbstract implements DBWriter {
   public void insertObject(Zestimate z) {
 
     try {
-      String statement =
-          "INSERT INTO Zestimates(zpid, zestimate, lastUpdated, thirtyDayChange, valuationHigh, "
-              + "valuationLow, percentileValue) VALUES " + "(?,?,?,?,?,?,?)";
-      PreparedStatement ps = this.connect.prepareStatement(statement);
-      ps.setObject(1, z.getZpid(), Types.BIGINT);
-      ps.setInt(2, z.getZestimate());
-      ps.setObject(3, z.getLastUpdated());
-      ps.setInt(4, z.getThirtyDayChange());
-      ps.setInt(5, z.getValuationHigh());
-      ps.setInt(6, z.getvaluationLow());
-      ps.setFloat(7, z.getPercentileValue());
+      String query =
+          "SELECT * FROM Zestimates WHERE zpid = ? AND zestimate = ? AND lastUpdated = ?";
+      PreparedStatement checkStmt = this.connect.prepareStatement(query);
+      checkStmt.setObject(1, z.getZpid(), Types.BIGINT);
+      checkStmt.setInt(2, z.getZestimate());
+      checkStmt.setObject(3, z.getLastUpdated());
+      ResultSet checkResult = checkStmt.executeQuery();
+      if (checkResult.next() == true) {
+        System.out.println("Property already exists in database!");
+        return;
+      } else {
+        String statement =
+            "INSERT INTO Zestimates(zpid, zestimate, lastUpdated, thirtyDayChange, valuationHigh, "
+                + "valuationLow, percentileValue) VALUES " + "(?,?,?,?,?,?,?)";
+        PreparedStatement ps = this.connect.prepareStatement(statement);
+        ps.setObject(1, z.getZpid(), Types.BIGINT);
+        ps.setInt(2, z.getZestimate());
+        ps.setObject(3, z.getLastUpdated());
+        ps.setInt(4, z.getThirtyDayChange());
+        ps.setInt(5, z.getValuationHigh());
+        ps.setInt(6, z.getvaluationLow());
+        ps.setFloat(7, z.getPercentileValue());
 
-      ps.execute();
+        ps.execute();
 
-      System.out.println("Zetimate for zpid: " + z.getZpid() + " has successfully been inserted.");
-
+        System.out
+            .println("Zetimate for zpid: " + z.getZpid() + " has successfully been inserted.");
+      }
     } catch (SQLException e) {
       System.out.println("ERROR: Could not insert");
       e.printStackTrace();
@@ -55,27 +67,33 @@ public class MysqlWriter extends MySQLConnectorAbstract implements DBWriter {
   @Override
   public void insertObject(Neighborhood n) {
     try {
-      String statement =
-          "INSERT INTO Neighborhoods(regionID, name, zipcode, zindex, zIndexChange, type)"
-              + " VALUES " + "(?,?,?,?,?,?)";
+      String query = "SELECT * FROM Neighborhoods WHERE regionID = ?";
+      PreparedStatement checkStmt = this.connect.prepareStatement(query);
+      checkStmt.setInt(1, n.getRegionID());
+      ResultSet checkResult = checkStmt.executeQuery();
+      if (checkResult.next() == true) {
+        System.out.println("Property already exists in database!");
+        return;
+      } else {
 
-      PreparedStatement ps = this.connect.prepareStatement(statement);
+        String statement =
+            "INSERT INTO Neighborhoods(regionID, name, zipcode, zindex, zIndexChange, type)"
+                + " VALUES " + "(?,?,?,?,?,?)";
 
-      ps.setInt(1, n.getRegionID());
-      ps.setString(2, n.getName());
-      ps.setInt(3, n.getZipCode());
-      ps.setInt(4, n.getzIndex());
-      ps.setFloat(5, n.getzIndexChange());
-      ps.setString(6, n.getType());
-      //
-      // , " + n.getRegionID() + ", " + n.getName() + ", " + n.getZipCode()
-      // + ", " + n.getzIndexChange() + ", " + n.getType() + ");";
-      //
-      // this.executeUpdate(connect, statement);
+        PreparedStatement ps = this.connect.prepareStatement(statement);
+
+        ps.setInt(1, n.getRegionID());
+        ps.setString(2, n.getName());
+        ps.setInt(3, n.getZipCode());
+        ps.setInt(4, n.getzIndex());
+        ps.setFloat(5, n.getzIndexChange());
+        ps.setString(6, n.getType());
+
+        ps.execute();
+      }
     } catch (SQLException e) {
       System.out.println("ERROR: Could not insert");
       e.printStackTrace();
-      return;
     }
   }
 
