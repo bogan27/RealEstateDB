@@ -57,7 +57,7 @@ public class GetDeepSearchResultsExample implements Example {
     DBWriter dbw = new MysqlWriter();
     for (DbTableObject dbto : parser.parseData()) {
       Property p = (Property) dbto;
-      dbw.insertObject(p);
+      p.writeToDB(dbw);
       // Property p = (Property) parser.parseData().get(0);
       System.out.println(p.toString());
     }
