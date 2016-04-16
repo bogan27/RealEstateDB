@@ -1,7 +1,5 @@
 package DBSource;
 
-import java.util.*;
-
 import classes_for_db.Neighborhood;
 import classes_for_db.Property;
 import classes_for_db.PropertyDetails;
@@ -15,68 +13,17 @@ import java.sql.*;
  * @author ronfarizon
  */
 
-public class MysqlWriter implements DBWriter {
-  /** The name of the MySQL account to use (or empty for anonymous) */
-  private final String userName = "mysqlUser";
-
-  /** The password for the MySQL account (or empty for anonymous) */
-  private final String password = "zillow";
-
-  /** The name of the computer running MySQL */
-  private final String serverName = "54.86.82.1";
-
-  /** The port of the MySQL server (default is 3306) */
-  private final int portNumber = 3306;
-
-  /** the DB name */
-  private final String dbName = "RealEstate";
-
-  private Connection connect;
+public class MysqlWriter extends MySQLConnectorAbstract implements DBWriter {
 
   public MysqlWriter() {
+    super();
     try {
       this.getConnection();
     } catch (SQLException e) {
-      // TODO Auto-generated catch block
       e.printStackTrace();
     }
   }
 
-
-  public Connection getConnection() throws SQLException {
-
-    Connection conn = null;
-    Properties connectionProps = new Properties();
-    connectionProps.put("user", this.userName);
-    connectionProps.put("password", this.password);
-    String connectionString =
-        "jdbc:mysql://" + this.serverName + ":" + this.portNumber + "/" + this.dbName;
-    System.out.println(connectionString);
-    conn = DriverManager.getConnection(connectionString, connectionProps);
-    connect = conn;
-
-    return conn;
-  }
-
-  /**
-   * Run a SQL command which does not return a recordset: CREATE/INSERT/UPDATE/DELETE/DROP/etc.
-   * 
-   * @throws SQLException If something goes wrong
-   */
-  public boolean executeUpdate(Connection conn, String command) throws SQLException {
-    Statement stmt = null;
-    try {
-      stmt = conn.createStatement();
-      stmt.executeUpdate(command); // This will throw a SQLException if it fails
-      return true;
-    } finally {
-
-      // This will run whether we throw an exception or not
-      if (stmt != null) {
-        stmt.close();
-      }
-    }
-  }
 
   @Override
   public void insertObject(Zestimate z) {
@@ -193,7 +140,7 @@ public class MysqlWriter implements DBWriter {
       }
 
       String statement =
-          "INSERT INTO PropertDetails(zpid, status, posting_type, last_updated_date, year_updated,"
+          "INSERT INTO PropertyDetails(zpid, status, posting_type, last_updated_date, year_updated,"
               + " number_floors, basement, roof_type, parking_type, rooms, home_description, neighborhood_name, "
               + "school_district, page_views_this_month, page_views_total) VALUES "
               + "(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";

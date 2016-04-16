@@ -47,7 +47,9 @@ public class Property implements DbTableObject {
   public Property() {
     this.zestimate = new Zestimate();
     this.region = new Neighborhood();
+    this.recentAssessment = new TaxAssessment();
     this.assessmentList = new ArrayList<TaxAssessment>();
+    this.assessmentList.add(this.recentAssessment);
     this.details = new PropertyDetails();
     this.compList = new ArrayList<ZillowComparable>();
   }
@@ -80,7 +82,7 @@ public class Property implements DbTableObject {
     } else {
       this.zpid = zpid;
       this.zestimate.setZpid(zpid);
-      // this.taxAssessment.setZpid(zpid);
+       this.recentAssessment.setZpid(zpid);
       this.details.setZpid(zpid);
     }
   }
