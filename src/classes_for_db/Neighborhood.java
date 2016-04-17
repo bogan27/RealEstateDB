@@ -5,7 +5,7 @@ package classes_for_db;
 
 import java.util.List;
 
-import DBSource.DBWriter;
+import dbConnectors.DBWriter;
 
 /**
  * @author brandonbogan

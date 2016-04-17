@@ -9,7 +9,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-import DBSource.DBWriter;
+import dbConnectors.DBWriter;
 
 /**
  * A class to represent a Zestimate record in the Real Estate DB.

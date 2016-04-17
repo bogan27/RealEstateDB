@@ -1,7 +1,7 @@
 /**
  * 
  */
-package DBSource;
+package dbConnectors;
 
 import java.lang.annotation.Inherited;
 import java.sql.PreparedStatement;
@@ -99,7 +99,7 @@ public class MySQLAddressHandler extends MySQLConnectorAbstract implements Addre
   @Override
   public void processAddress(Map<String, String> values) {
     String address = null;
-    int zipcode = 0;
+    int zip = 0;
     boolean api_result = false;
     if (values.containsKey("address")) {
       address = values.get("address");
@@ -107,11 +107,11 @@ public class MySQLAddressHandler extends MySQLConnectorAbstract implements Addre
       throw new IllegalArgumentException(
           "Argument for values does contain the required key-value pair for 'address'");
     }
-    if (values.containsKey("zipcode")) {
-      zipcode = Integer.parseInt(values.get("zipcode"));
+    if (values.containsKey("zip")) {
+      zip = Integer.parseInt(values.get("zip"));
     } else {
       throw new IllegalArgumentException(
-          "Argument for values does contain the required key-value pair for 'zipcode'");
+          "Argument for values does contain the required key-value pair for 'zip'");
     }
     if (values.containsKey("api_result")) {
       api_result = Boolean.parseBoolean(values.get("api_result"));
@@ -123,14 +123,34 @@ public class MySQLAddressHandler extends MySQLConnectorAbstract implements Addre
     PreparedStatement ps;
     try {
       String selection = "SELECT COUNT(*) FROM Addresses WHERE address = ? and zip = ?";
-      
+      PreparedStatement selectStmt = this.connect.prepareStatement(selection);
+      selectStmt.setString(1, address);
+      selectStmt.setInt(2, zip);
+      ResultSet resultCount = selectStmt.executeQuery();
+      int count = 0;
+      if (resultCount.next()) {
+        count = resultCount.getInt(1);
+        System.out.println("Rsult count: " + count);
+      } else {
+        throw new RuntimeException("Something's wrong with the address information provided");
+      }
 
-      String query = "INSERT INTO Addresses (address, zip, api_result) VALUES (?,?,?)";
-      ps = this.connect.prepareStatement(query);
-      ps.setString(1, address);
-      ps.setInt(2, zipcode);
-      ps.setBoolean(3, api_result);
-      ps.execute();
+      if (count <= 0) {
+        String query = "INSERT INTO Addresses (address, zip, api_result) VALUES (?,?,?)";
+        ps = this.connect.prepareStatement(query);
+        ps.setString(1, address);
+        ps.setInt(2, zip);
+        ps.setBoolean(3, api_result);
+        ps.execute();
+      } else {
+        String update =
+            "UPDATE Addresses SET api_result = ?, last_updated = CURRENT_TIMESTAMP WHERE address = ? and zip  = ? LIMIT 1";
+        PreparedStatement updateStmt = this.connect.prepareStatement(update);
+        updateStmt.setBoolean(1, api_result);
+        updateStmt.setString(2, address);
+        updateStmt.setInt(3, zip);
+        updateStmt.execute();
+      }
     } catch (SQLException e) {
       e.printStackTrace();
     }
