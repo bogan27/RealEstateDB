@@ -11,9 +11,9 @@ import api_calls.ZillowAPI;
 import api_calls.GenericZillowAPICaller.ZillowRequestBuilder;
 import classes_for_db.DbTableObject;
 import classes_for_db.Zestimate;
+import dbConnectors.DBWriter;
+import dbConnectors.MysqlWriter;
 import xml_parsers.GetZestimateResultParser;
-import DBSource.DBWriter;
-import DBSource.MysqlWriter;
 
 /**
  * @author brandonbogan

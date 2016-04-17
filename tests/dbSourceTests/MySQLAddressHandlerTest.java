@@ -11,7 +11,7 @@ import java.util.Map;
 
 import org.junit.Test;
 
-import DBSource.MySQLAddressHandler;
+import dbConnectors.MySQLAddressHandler;
 
 /**
  * @author brandonbogan
@@ -20,7 +20,7 @@ import DBSource.MySQLAddressHandler;
 public class MySQLAddressHandlerTest {
 
   /**
-   * Test method for {@link DBSource.MySQLAddressHandler#MySQLAddressHandler()}.
+   * Test method for {@link dbConnectors.MySQLAddressHandler#MySQLAddressHandler()}.
    * 
    * Tests that you can successfully instantiate the class and it's super class
    */
@@ -37,7 +37,7 @@ public class MySQLAddressHandlerTest {
   }
 
   /**
-   * Test method for {@link DBSource.MySQLAddressHandler#getNextAddressToUpdate()}.
+   * Test method for {@link dbConnectors.MySQLAddressHandler#getNextAddressToUpdate()}.
    */
   @Test
   public void testGetNextAddressToUpdate() {
@@ -60,7 +60,7 @@ public class MySQLAddressHandlerTest {
   }
 
   /**
-   * Test method for {@link DBSource.MySQLAddressHandler#processAddress(java.util.Map)}.
+   * Test method for {@link dbConnectors.MySQLAddressHandler#processAddress(java.util.Map)}.
    */
   @Test
   public void testProcessAddress() {

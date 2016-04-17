@@ -6,13 +6,13 @@ package api_calls.examples;
 import java.io.IOException;
 import java.util.HashMap;
 
-import DBSource.DBWriter;
-import DBSource.MysqlWriter;
 import api_calls.GenericZillowAPICaller;
 import api_calls.ZillowAPI;
 import api_calls.GenericZillowAPICaller.ZillowRequestBuilder;
 import classes_for_db.DbTableObject;
 import classes_for_db.ZillowComparable;
+import dbConnectors.DBWriter;
+import dbConnectors.MysqlWriter;
 import xml_parsers.GetDeepCompsResultParser;
 
 /**
