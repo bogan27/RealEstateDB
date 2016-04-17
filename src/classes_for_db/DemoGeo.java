@@ -440,7 +440,7 @@ public class DemoGeo implements DbTableObject {
     }
   }
 
-  public void setMedianEarningsEdu(int earn, String edu) {
+  public void setMedianEarningsEdu(String edu, int earn) {
     if (earn < 0) {
       throw new IllegalArgumentException("Earnings can't be negative");
     } else if (edu.toLowerCase().equals("bach degree")
@@ -523,7 +523,7 @@ public class DemoGeo implements DbTableObject {
     }
   }
 
-  public void setPctUnmarriedSex(double pct, String pref) {
+  public void setPctUnmarriedSex(String pref, double pct) {
     if (pct < 0 || pct > 100) {
       throw new IllegalArgumentException("Percentage must be between 0 and 100");
     } else if (pref.toLowerCase().equals("same") || pref.toLowerCase().equals("same sex")
@@ -569,7 +569,7 @@ public class DemoGeo implements DbTableObject {
     }
   }
 
-  public void setPctOcc(double pct, String occ) {
+  public void setPctOcc(String occ, double pct) {
     if (pct < 0 || pct > 100) {
       throw new IllegalArgumentException("Percentage must be between 0 and 100");
     } else if (occ.toLowerCase().equals("owner") || occ.toLowerCase().equals("own")) {
