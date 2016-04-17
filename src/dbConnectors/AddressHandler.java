@@ -1,7 +1,7 @@
 /**
  * 
  */
-package DBSource;
+package dbConnectors;
 
 import java.util.Map;
 
@@ -40,4 +40,10 @@ public interface AddressHandler {
    */
   public void processAddress(Map<String, String> values);
 
+  /**
+   * Gets a count of the number of addresses that are currently in the Addresses table
+   * 
+   * @return The count of addresses
+   */
+  public int getPropertyCount();
 }

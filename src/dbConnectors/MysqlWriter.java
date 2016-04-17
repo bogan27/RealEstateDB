@@ -1,4 +1,4 @@
-package DBSource;
+package dbConnectors;
 
 import classes_for_db.Neighborhood;
 import classes_for_db.Property;
