@@ -167,7 +167,7 @@ public class PropertyDetails implements DbTableObject {
    */
   public void setLastUpdated(String lastUpdated) {
     Date date = null;
-    if (lastUpdated != null) {
+    if (lastUpdated != null && lastUpdated.length() > 0) {
       SimpleDateFormat sdf = new SimpleDateFormat("YYYY-MM-dd HH:MM:SS:d");
       try {
         date = sdf.parse(lastUpdated);
@@ -214,7 +214,7 @@ public class PropertyDetails implements DbTableObject {
       throw new IllegalArgumentException(
           "Argument for yearUpdated exceeds max allowed length of 4 characters. Argument given: "
               + yearUpdated);
-    } else if (yearUpdated != null) {
+    } else if (yearUpdated != null && yearUpdated.length() > 0) {
       this.setyearUpdated(Integer.parseInt(yearUpdated));
     } else {
       this.yearUpdated = 0;
@@ -256,8 +256,10 @@ public class PropertyDetails implements DbTableObject {
         throw new IllegalArgumentException(
             "Argument for numFloors exceeds max number of characters (3). Argument given: "
                 + numFloors);
-      } else {
+      } else if (numFloors.length() > 0) {
         this.setNumFloors(Integer.parseInt(numFloors));
+      } else {
+        this.setNumFloors(0);
       }
     }
   }
@@ -353,7 +355,11 @@ public class PropertyDetails implements DbTableObject {
    * @throws IllegalArgumentException if {@code numRooms} is less than 0
    */
   public void setNumRooms(String numRooms) {
-    this.setNumRooms(Integer.parseInt(numRooms));
+    if (numRooms.length() > 0) {
+      this.setNumRooms(Integer.parseInt(numRooms));
+    } else {
+      this.setNumRooms(0);
+    }
   }
 
   /**

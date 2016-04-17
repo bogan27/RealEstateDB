@@ -48,8 +48,6 @@ public class GetDeepSearchResultsExample implements Example {
     // Make the actual API call, and print out the data
     GenericZillowAPICaller apiTool = new GenericZillowAPICaller();
     String data = apiTool.makeApiCall(request);
-    // System.out.println(data);
-    // System.out.println(request);
 
     SearchResultParser parser = new SearchResultParser(data);
     System.out.println("Response status code: " + parser.getStatusCode());

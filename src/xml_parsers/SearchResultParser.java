@@ -85,6 +85,24 @@ public class SearchResultParser extends ParseZillowResultsAbstract {
             }
           }
 
+          // For Rent Zestimate
+          // From Zestimate section of result
+          // Sets amount, 30-day change, date last updated, low valuation, high valuation, and
+          // percentile rank
+          NodeList rentZestimateList = element.getElementsByTagName("rentzestimate");
+          if (rentZestimateList.getLength() > 0) {
+            Node rentNode = rentZestimateList.item(0);
+            if (rentNode.getNodeType() == Node.ELEMENT_NODE) {
+              Element rentZ = (Element) rentNode;
+              unit.setRentZestimate(this.extractFirstValue(rentZ, "amount"));
+              unit.setRentThirtyDayChange(this.extractFirstValue(rentZ, "valueChange"));
+              Element valuationRange =
+                  (Element) rentZ.getElementsByTagName("valuationRange").item(0);
+              unit.setMinRent(this.extractFirstValue(valuationRange, "low"));
+              unit.setMaxRent(this.extractFirstValue(valuationRange, "high"));
+            }
+          }
+
           // From region section of result. This section is slightly different because the desired
           // values are attribute values, not tag values.
           // Gets region name, id, and type.

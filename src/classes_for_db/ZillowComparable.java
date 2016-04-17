@@ -208,8 +208,12 @@ public class ZillowComparable implements DbTableObject {
    * @param compZip the compZip to be converted from a String to an int and then set
    */
   public void setCompZip(String compZipAsString) {
-    int zip = Integer.parseInt(compZipAsString);
-    this.setCompZip(zip);
+    if (compZipAsString.trim().length() > 0) {
+      int zip = Integer.parseInt(compZipAsString);
+      this.setCompZip(zip);
+    } else {
+      this.setCompZip(0);
+    }
   }
 
   @Override

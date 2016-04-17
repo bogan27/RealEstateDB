@@ -88,4 +88,19 @@ public class MySQLAddressHandlerTest {
     }
   }
 
+  /**
+   * Test method for {@link dbConnectors.MySQLAddressHandler#getAddressCount()}.
+   */
+  @Test
+  public void testProcessAddresss() {
+    MySQLAddressHandler testHandler;
+    try {
+      testHandler = new MySQLAddressHandler();
+      int count = testHandler.getPropertyCount();
+      assertNotNull(count);
+      assertTrue(count > 0);
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
+  }
 }
