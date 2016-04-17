@@ -27,6 +27,10 @@ public class Zestimate implements DbTableObject {
   private int valuationLow;
   private float percentileValue;
   private Date dateRetrieved;
+  private int rentZestimate;
+  private int rentThirtyDayChange;
+  private int minRent;
+  private int maxRent;
 
   private SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
 
@@ -317,6 +321,109 @@ public class Zestimate implements DbTableObject {
         e1.printStackTrace();
       }
     }
+  }
+
+  /**
+   * @return the rentZestimate
+   */
+  public int getRentZestimate() {
+    return rentZestimate;
+  }
+
+  /**
+   * @param rentZestimate the rentZestimate to set
+   */
+  public void setRentZestimate(int rentZestimate) {
+    if (rentZestimate < 0) {
+      throw new IllegalArgumentException(
+          "Really? A negative rent? Sign me up! Value given: " + rentZestimate);
+    }
+    this.rentZestimate = rentZestimate;
+  }
+
+  /**
+   * @param rentZestimate the rentZestimate to set
+   */
+  public void setRentZestimate(String rentZestimate) {
+    if (rentZestimate.length() > 0) {
+      int rz = Integer.parseInt(rentZestimate);
+      this.setRentZestimate(rz);
+    }
+  }
+
+  /**
+   * @return the rentThirtyDayChange
+   */
+  public int getRentThirtyDayChange() {
+    return rentThirtyDayChange;
+  }
+
+  /**
+   * @param rentThirtyDayChange the rentThirtyDayChange to set
+   */
+  public void setRentThirtyDayChange(int rentThirtyDayChange) {
+    this.rentThirtyDayChange = rentThirtyDayChange;
+  }
+
+  /**
+   * @param rentThirtyDayChange the rentThirtyDayChange to set
+   */
+  public void setRentThirtyDayChange(String rentThirtyDayChange) {
+    int change = 0;
+    if (rentThirtyDayChange.length() > 0) {
+      change = Integer.parseInt(rentThirtyDayChange);
+    }
+    this.setRentThirtyDayChange(change);
+  }
+
+  /**
+   * @return the minRent
+   */
+  public int getMinRent() {
+    return minRent;
+  }
+
+  /**
+   * @param minRent the minRent to set
+   */
+  public void setMinRent(int minRent) {
+    this.minRent = minRent;
+  }
+
+  /**
+   * @param minRent the minRent to set
+   */
+  public void setMinRent(String minRent) {
+    int min = 0;
+    if (minRent.length() > 0) {
+      min = Integer.parseInt(minRent);
+    }
+    this.setMinRent(min);
+  }
+
+  /**
+   * @return the maxRent
+   */
+  public int getMaxRent() {
+    return maxRent;
+  }
+
+  /**
+   * @param maxRent the maxRent to set
+   */
+  public void setMaxRent(int maxRent) {
+    this.maxRent = maxRent;
+  }
+
+  /**
+   * @param maxRent the maxRent to set
+   */
+  public void setMaxRent(String maxRent) {
+    int max = 0;
+    if (maxRent.length() > 0) {
+      max = Integer.parseInt(maxRent);
+    }
+    this.setMaxRent(max);
   }
 
   @Override
