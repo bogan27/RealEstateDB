@@ -110,9 +110,7 @@ public class TaxAssessment implements DbTableObject {
    */
   public void setTaxYear(int taxYear) {
     if (taxYear < 1900 | taxYear > 2017) {
-      throw new IllegalArgumentException(
-          "Argument for taxYear does not fall within allowed range of 1900 <= taxYear <= 2017. Argument given: "
-              + taxYear);
+      this.taxYear = 0;
     }
     this.taxYear = taxYear;
   }

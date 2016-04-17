@@ -186,7 +186,7 @@ public class DemoGeo implements DbTableObject {
       throw new IllegalArgumentException("Percentage must be between 0 and 100");
     } else if (age == 18) {
       this.pct_female_pop_18 = pct;
-    } else if (age == 25) {
+    } else if (age == 65) {
       this.pct_female_pop_65 = pct;
     } else {
       throw new IllegalArgumentException(
@@ -448,11 +448,11 @@ public class DemoGeo implements DbTableObject {
         || edu.toLowerCase().equals("bachelors degree")) {
       this.median_earnings_bach = earn;
     } else if (edu.toLowerCase().equals("grad degree")
-        || edu.toLowerCase().equals("graduate's degree") || edu.toLowerCase().equals("graduate's")
+        || edu.toLowerCase().equals("graduate's degree") || edu.toLowerCase().equals("graduate")
         || edu.toLowerCase().equals("graduate degree")) {
       this.median_earnings_grad = earn;
     } else {
-      throw new IllegalArgumentException("Education expected: bachelor's degree, graduate degree");
+      throw new IllegalArgumentException("Education expected: bachelor's degree, graduate degree, got" + edu);
     }
   }
 

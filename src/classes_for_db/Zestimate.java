@@ -21,6 +21,7 @@ public class Zestimate implements DbTableObject {
 
   private BigInteger zpid;
   private int zestimate;
+  private BigInteger zestimateID;
   private Date lastUpdated;
   private int thirtyDayChange;
   private int valuationHigh;
@@ -69,6 +70,27 @@ public class Zestimate implements DbTableObject {
       this.zpid = zpid;
     }
   }
+  
+  public BigInteger getZestimateID(){
+	  return zestimateID;
+  }
+  public void setZestimateID(BigInteger id) {
+	  BigInteger min = new BigInteger("0");
+	  BigInteger max = new BigInteger("1000000000");
+	  if (id.compareTo(min) < 0) {
+		  throw new IllegalArgumentException(
+				  "zestimateID cannot be negative. Argument given for zestimateID: " + id);
+	  }
+	  if (id.compareTo(max) >= 0) {
+		  throw new IllegalArgumentException(
+				  "Argument given for zestimateID exceeds maximum allowed value of 10000000000 (1 million). Argument given: "
+						  + id);
+	  } else {
+		  this.zestimateID = id;
+	  }
+  }
+  
+  
 
   /**
    * 
