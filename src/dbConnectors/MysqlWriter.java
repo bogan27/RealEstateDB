@@ -42,7 +42,8 @@ public class MysqlWriter extends MySQLConnectorAbstract implements DBWriter {
       } else {
         String statement =
             "INSERT INTO Zestimates(zpid, zestimate, lastUpdated, thirtyDayChange, valuationHigh, "
-                + "valuationLow, percentileValue) VALUES " + "(?,?,?,?,?,?,?)";
+                + "valuationLow, percentileValue, rentZestimate, rentThirtyDayChange, "
+                + "rentZestimateLow, rentZestimateHigh) VALUES " + "(?,?,?,?,?,?,?,?,?,?,?)";
         PreparedStatement ps = this.connect.prepareStatement(statement);
         ps.setObject(1, z.getZpid(), Types.BIGINT);
         ps.setInt(2, z.getZestimate());
@@ -51,7 +52,11 @@ public class MysqlWriter extends MySQLConnectorAbstract implements DBWriter {
         ps.setInt(5, z.getValuationHigh());
         ps.setInt(6, z.getvaluationLow());
         ps.setFloat(7, z.getPercentileValue());
-
+        ps.setInt(8, z.getRentZestimate());
+        ps.setInt(9, z.getRentThirtyDayChange());
+        ps.setInt(10, z.getMinRent());
+        ps.setInt(11, z.getMaxRent());
+        
         ps.execute();
 
         System.out
