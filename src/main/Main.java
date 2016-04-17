@@ -1,13 +1,13 @@
 /**
  * 
  */
-package Main;
+package main;
 
 /**
  * @author brandonbogan
  *
  */
-public class Executor {
+public class Main {
 
   /**
    * @param args

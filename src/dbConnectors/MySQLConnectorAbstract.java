@@ -1,7 +1,7 @@
 /**
  * 
  */
-package DBSource;
+package dbConnectors;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

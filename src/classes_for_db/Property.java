@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import DBSource.DBWriter;
+import dbConnectors.DBWriter;
 
 public class Property implements DbTableObject {
   private BigInteger zpid;
