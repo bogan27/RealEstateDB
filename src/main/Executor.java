@@ -72,7 +72,8 @@ public class Executor {
     // Create a new ZillowRequestBuilder, and set the necessary values on it
     ZillowRequestBuilder builder = new GenericZillowAPICaller.ZillowRequestBuilder();
     String request = builder.setBaseUrl(ZillowAPI.GetDeepSearchResults).addParams(params).build();
-
+    System.out.println(request);
+    
     // Make the actual API call
     GenericZillowAPICaller apiTool = new GenericZillowAPICaller();
     String data = apiTool.makeApiCall(request);
