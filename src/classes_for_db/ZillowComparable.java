@@ -39,7 +39,7 @@ public class ZillowComparable implements DbTableObject {
       throw new IllegalArgumentException(
           "Comp ID cannot be negative. Argument given for Comp ID: " + id);
     }
-    if (primaryZPID.compareTo(max) >= 0) {
+    if (id.compareTo(max) >= 0) {
       throw new IllegalArgumentException(
           "Argument given for Comp ID exceeds maximum allowed value of 1000000000000 (1 trillion). Argument given: "
               + id);
