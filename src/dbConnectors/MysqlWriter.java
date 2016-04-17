@@ -134,7 +134,7 @@ public class MysqlWriter extends MySQLConnectorAbstract implements DBWriter {
       preparedStmt.setInt(15, p.getBedroomCount());
       preparedStmt.setObject(16, p.getLastSoldDate());
       preparedStmt.setInt(17, p.getLastSoldPrice());
-
+      System.out.println("Year built: " + p.getYearBuilt());
       preparedStmt.execute();
 
       System.out.println(statement);
@@ -205,13 +205,16 @@ public class MysqlWriter extends MySQLConnectorAbstract implements DBWriter {
       }
 
       String statement =
-          "INSERT INTO Comparables(primaryZPID, compZPID, compScore) VALUES " + "(?,?,?)";
+          "INSERT INTO Comparables(primaryZPID, compZPID, compScore, compAddress, compZipcode) VALUES "
+              + "(?,?,?,?,?)";
 
       PreparedStatement ps = this.connect.prepareStatement(statement);
 
       ps.setObject(1, zc.getPrimaryZpid(), Types.BIGINT);
       ps.setObject(2, zc.getCompZpid(), Types.BIGINT);
       ps.setFloat(3, zc.getCompScore());
+      ps.setString(4, zc.getCompAddress());
+      ps.setInt(5, zc.getCompZip());
 
       ps.execute();
 

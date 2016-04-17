@@ -452,8 +452,9 @@ public class Property implements DbTableObject {
   public void setBathroomCount(String bathroomCountString) {
     if (bathroomCountString.length() > 4) {
       throw new IllegalArgumentException(
-          "Too many characters in argument. Max of 4 characters allowed.");
-    } else {
+          "Too many characters in argument. Max of 4 characters allowed. Argument given: "
+              + bathroomCountString + " and zpid: " + this.zpid);
+    } else if (bathroomCountString.length() > 0) {
       float bathroomCount = Float.parseFloat(bathroomCountString);
       if (bathroomCount >= 100) {
         throw new IllegalArgumentException(
@@ -465,6 +466,8 @@ public class Property implements DbTableObject {
       } else {
         this.bathroomCount = bathroomCount;
       }
+    } else {
+      this.bathroomCount = 0;
     }
   }
 
@@ -485,10 +488,13 @@ public class Property implements DbTableObject {
     if (bedroomCountString.length() > 2) {
       throw new IllegalArgumentException(
           "Length of argument bedroomCountString exceeds max allowed length of 2.");
-    } else {
+    } else if (bedroomCountString.length() > 0) {
       int bedroomCount = Integer.parseInt(bedroomCountString);
       this.bedroomCount = bedroomCount;
+    } else {
+      this.bedroomCount = 0;
     }
+
   }
 
   public void setBedroomCount(int count) {
@@ -748,6 +754,78 @@ public class Property implements DbTableObject {
   public void setPercentileValue(String percentileValue) {
     this.zestimateUsed = true;
     zestimate.setPercentileValue(percentileValue);
+  }
+
+
+  /**
+   * @param rentZestimate
+   * @see classes_for_db.Zestimate#setRentZestimate(int)
+   */
+  public void setRentZestimate(int rentZestimate) {
+    zestimate.setRentZestimate(rentZestimate);
+  }
+
+
+  /**
+   * @param rentZestimate
+   * @see classes_for_db.Zestimate#setRentZestimate(java.lang.String)
+   */
+  public void setRentZestimate(String rentZestimate) {
+    zestimate.setRentZestimate(rentZestimate);
+  }
+
+
+  /**
+   * @param rentThirtyDayChange
+   * @see classes_for_db.Zestimate#setRentThirtyDayChange(int)
+   */
+  public void setRentThirtyDayChange(int rentThirtyDayChange) {
+    zestimate.setRentThirtyDayChange(rentThirtyDayChange);
+  }
+
+
+  /**
+   * @param rentThirtyDayChange
+   * @see classes_for_db.Zestimate#setRentThirtyDayChange(java.lang.String)
+   */
+  public void setRentThirtyDayChange(String rentThirtyDayChange) {
+    zestimate.setRentThirtyDayChange(rentThirtyDayChange);
+  }
+
+
+  /**
+   * @param minRent
+   * @see classes_for_db.Zestimate#setMinRent(int)
+   */
+  public void setMinRent(int minRent) {
+    zestimate.setMinRent(minRent);
+  }
+
+
+  /**
+   * @param minRent
+   * @see classes_for_db.Zestimate#setMinRent(java.lang.String)
+   */
+  public void setMinRent(String minRent) {
+    zestimate.setMinRent(minRent);
+  }
+
+
+  /**
+   * @param maxRent
+   * @see classes_for_db.Zestimate#setMaxRent(int)
+   */
+  public void setMaxRent(int maxRent) {
+    zestimate.setMaxRent(maxRent);
+  }
+
+
+  /**
+   * @param maxRent
+   * @see classes_for_db.Zestimate#setMaxRent(java.lang.String)
+   */
+  public void setMaxRent(String maxRent) {
+    zestimate.setMaxRent(maxRent);
   }
 
 
@@ -1293,24 +1371,23 @@ public class Property implements DbTableObject {
     this.compsUsed = true;
     this.compList.add(zc);
   }
-  
+
   public ZillowComparable getBestComp() {
-	  this.compsUsed = true;
-	  return this.compList.get(0);
+    this.compsUsed = true;
+    return this.compList.get(0);
   }
-  
+
   public List<ZillowComparable> getBest5Comps() {
-	  this.compsUsed = true;
-	  List<ZillowComparable> best5 = new ArrayList<ZillowComparable>();
-	  if(this.compList.size() > 5) {
-		  for(int i = 0; i < 5; i++) {
-			  best5.add(compList.get(i));
-		  }
-		  return best5;
-	  }
-	  else {
-		  return this.compList;
-	  }
+    this.compsUsed = true;
+    List<ZillowComparable> best5 = new ArrayList<ZillowComparable>();
+    if (this.compList.size() > 5) {
+      for (int i = 0; i < 5; i++) {
+        best5.add(compList.get(i));
+      }
+      return best5;
+    } else {
+      return this.compList;
+    }
   }
 
 

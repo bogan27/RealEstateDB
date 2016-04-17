@@ -3,15 +3,11 @@
  */
 package dbConnectors;
 
-import java.lang.annotation.Inherited;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Types;
 import java.util.HashMap;
 import java.util.Map;
-
-import classes_for_db.Property;
 
 
 
@@ -154,6 +150,27 @@ public class MySQLAddressHandler extends MySQLConnectorAbstract implements Addre
     } catch (SQLException e) {
       e.printStackTrace();
     }
+  }
+
+
+  @Override
+  public int getPropertyCount() {
+    String select = "SELECT COUNT(*) FROM Addresses";
+    PreparedStatement selectStmt;
+    int count = 0;
+    try {
+      selectStmt = this.connect.prepareStatement(select);
+      ResultSet rs = selectStmt.executeQuery();
+      if (rs.next()) {
+        count = rs.getInt(1);
+      } else {
+        throw new RuntimeException("Could not get count of addresses");
+      }
+    } catch (SQLException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
+    return count;
   }
 
 }
