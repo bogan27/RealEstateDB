@@ -33,7 +33,7 @@ public interface AddressHandler {
    * Address table:
    * <ul>
    * <li>{@code "address"} (will be left as a String)</li>
-   * <li>{@code "zipcode"} (will be converted to an int)</li>
+   * <li>{@code "zip"} (will be converted to an int)</li>
    * <li>{@code "api_result"} (will be converted to a boolean</li>
    * </ul>
    * 
