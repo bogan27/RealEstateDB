@@ -198,9 +198,7 @@ public class PropertyDetails implements DbTableObject {
    */
   public void setyearUpdated(int yearUpdated) {
     if (yearUpdated < 1900 | yearUpdated > 2017) {
-      throw new IllegalArgumentException(
-          "Argument for yearUpdated does not fall within allowed range of 1900 <= yearUpdated <= 2017. Argument given: "
-              + yearUpdated);
+      this.yearUpdated = 0;
     }
     this.yearUpdated = yearUpdated;
   }

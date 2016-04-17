@@ -494,7 +494,7 @@ public class Property implements DbTableObject {
   public void setBedroomCount(int count) {
     if (count >= 100) {
       throw new IllegalArgumentException(
-          "Whoa! That's way too many bedrooms! Argument for number of bedrooms must be less than 100.");
+          "Whoa! That's way too many bedrooms! Argument for number of bedrooms must be less than 100, got " +count);
     }
     if (count < 0) {
       throw new IllegalArgumentException(
