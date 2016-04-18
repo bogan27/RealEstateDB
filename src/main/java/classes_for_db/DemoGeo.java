@@ -591,7 +591,7 @@ public class DemoGeo implements DbTableObject {
 		return city;
 	}
 	public void setCity(String city) {
-		
+		this.city = city;
 	}
 	public String getState() {
 		return state;
