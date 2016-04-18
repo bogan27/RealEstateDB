@@ -450,15 +450,15 @@ public class Property implements DbTableObject {
    *         greater than 100, or less than 0.
    */
   public void setBathroomCount(String bathroomCountString) {
-    if (bathroomCountString.length() > 4) {
+    if (bathroomCountString.length() > 5) {
       throw new IllegalArgumentException(
           "Too many characters in argument. Max of 4 characters allowed. Argument given: "
               + bathroomCountString + " and zpid: " + this.zpid);
     } else if (bathroomCountString.length() > 0) {
       float bathroomCount = Float.parseFloat(bathroomCountString);
-      if (bathroomCount >= 100) {
+      if (bathroomCount >= 1000) {
         throw new IllegalArgumentException(
-            "Argument for bathroomCountString exceeds max number of bathrooms allowed. Argument must be less than 100.");
+            "Argument for bathroomCountString exceeds max number of bathrooms allowed. Argument must be less than 1000.");
       }
       if (bathroomCount < 0) {
         throw new IllegalArgumentException(
@@ -485,7 +485,7 @@ public class Property implements DbTableObject {
    * @throws IllegalArgumentException If {@code bedroomCountString} is longer than 2 characters.
    */
   public void setBedroomCount(String bedroomCountString) {
-    if (bedroomCountString.length() > 2) {
+    if (bedroomCountString.length() > 3) {
       throw new IllegalArgumentException(
           "Length of argument bedroomCountString exceeds max allowed length of 2.");
     } else if (bedroomCountString.length() > 0) {
@@ -498,7 +498,7 @@ public class Property implements DbTableObject {
   }
 
   public void setBedroomCount(int count) {
-    if (count >= 100) {
+    if (count >= 1000) {
       throw new IllegalArgumentException(
           "Whoa! That's way too many bedrooms! Argument for number of bedrooms must be less than 100, got " +count);
     }
