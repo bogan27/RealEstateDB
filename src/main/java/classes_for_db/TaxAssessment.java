@@ -13,21 +13,11 @@ import main.java.dbConnectors.DBWriter;
  *
  */
 public class TaxAssessment implements DbTableObject {
-  // assessmentID INT(12)
-  // zpid INT(10)
-  // taxYear YEAR()
-  // taxAssessment FLOAT(10,2)
   private BigInteger assessmentID;
   private BigInteger zpid;
   private int taxYear;
   private float taxAssessment;
 
-  /**
-   * 
-   */
-  public TaxAssessment() {
-    // TODO Auto-generated constructor stub
-  }
 
   public BigInteger getAssessmentID() {
     return assessmentID;
@@ -159,12 +149,6 @@ public class TaxAssessment implements DbTableObject {
     sb.append("Tax Assessment Year: " + this.taxYear + "\n");
     sb.append("Tax Assessment Amount: " + this.taxAssessment + "\n");
     return sb.toString();
-  }
-
-  @Override
-  public List<DbTableObject> getDelegateObjects() {
-    // TODO Auto-generated method stub
-    return null;
   }
 
   @Override

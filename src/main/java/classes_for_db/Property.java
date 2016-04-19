@@ -500,7 +500,8 @@ public class Property implements DbTableObject {
   public void setBedroomCount(int count) {
     if (count >= 1000) {
       throw new IllegalArgumentException(
-          "Whoa! That's way too many bedrooms! Argument for number of bedrooms must be less than 100, got " +count);
+          "Whoa! That's way too many bedrooms! Argument for number of bedrooms must be less than 100, got "
+              + count);
     }
     if (count < 0) {
       throw new IllegalArgumentException(
@@ -513,16 +514,16 @@ public class Property implements DbTableObject {
     return this.lastSoldDate;
   }
 
-//  public java.sql.Date getLastSoldDateSql() {
-//
-//    StringBuilder sb = new StringBuilder();
-//
-//    sb.append(this.lastSoldDate.getYear() + "-");
-//    sb.append(this.lastSoldDate.getMonth() + "-" + this.lastSoldDate.getDay());
-//    String dateString = sb.toString();
-//    java.sql.Date convertedDate = java.sql.Date.valueOf(dateString);
-//    return convertedDate;
-//  }
+  // public java.sql.Date getLastSoldDateSql() {
+  //
+  // StringBuilder sb = new StringBuilder();
+  //
+  // sb.append(this.lastSoldDate.getYear() + "-");
+  // sb.append(this.lastSoldDate.getMonth() + "-" + this.lastSoldDate.getDay());
+  // String dateString = sb.toString();
+  // java.sql.Date convertedDate = java.sql.Date.valueOf(dateString);
+  // return convertedDate;
+  // }
 
   public String getLastSoldDateString() {
     String result = "";
@@ -1425,31 +1426,6 @@ public class Property implements DbTableObject {
     return sb.toString();
   }
 
-
-  @Override
-  public List<DbTableObject> getDelegateObjects() {
-    List<DbTableObject> response = new ArrayList<DbTableObject>();
-    if (this.zestimateUsed) {
-      response.add(this.zestimate);
-    }
-    if (this.taxAssessmentUsed) {
-      for (TaxAssessment t : assessmentList) {
-        response.add(t);
-      }
-    }
-    if (this.regionUsed) {
-      response.add(this.region);
-    }
-    if (this.detailsUsed) {
-      response.add(this.details);
-    }
-    if (this.compsUsed) {
-      for (ZillowComparable c : compList) {
-        response.add(c);
-      }
-    }
-    return response;
-  }
 
 
   @Override

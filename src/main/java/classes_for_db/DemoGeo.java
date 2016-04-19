@@ -1,7 +1,5 @@
 package main.java.classes_for_db;
 
-import java.util.List;
-
 import main.java.dbConnectors.DBWriter;
 
 /**
@@ -66,7 +64,7 @@ public class DemoGeo implements DbTableObject {
   private double pct_units_owner_occ; // MAJOR
   private double pct_units_renter_occ; // MAJOR
 
-  //Geography
+  // Geography
   private String zipType;
   private String city;
   private String state;
@@ -77,7 +75,7 @@ public class DemoGeo implements DbTableObject {
   private float latitude;
   private float longitude;
   private String country;
-	
+
   public DemoGeo() {}
 
   public int getZipCode() {
@@ -447,12 +445,13 @@ public class DemoGeo implements DbTableObject {
         || edu.toLowerCase().equals("bachelor's degree") || edu.toLowerCase().equals("bachelor's")
         || edu.toLowerCase().equals("bachelors degree")) {
       this.median_earnings_bach = earn;
-    } else if (edu.toLowerCase().equals("grad degree")
-        || edu.toLowerCase().equals("graduate's degree") || edu.toLowerCase().equals("graduate")
-        || edu.toLowerCase().equals("graduate degree")) {
+    } else
+      if (edu.toLowerCase().equals("grad degree") || edu.toLowerCase().equals("graduate's degree")
+          || edu.toLowerCase().equals("graduate") || edu.toLowerCase().equals("graduate degree")) {
       this.median_earnings_grad = earn;
     } else {
-      throw new IllegalArgumentException("Education expected: bachelor's degree, graduate degree, got" + edu);
+      throw new IllegalArgumentException(
+          "Education expected: bachelor's degree, graduate degree, got" + edu);
     }
   }
 
@@ -580,99 +579,108 @@ public class DemoGeo implements DbTableObject {
       throw new IllegalArgumentException("Expected owner or renter");
     }
   }
-  
-	public String getZipType() {
-		return zipType;
-	}
-	public void setZipType(String type) {
-		this.zipType = type;
-	}
-	public String getCity() {
-		return city;
-	}
-	public void setCity(String city) {
-		this.city = city;
-	}
-	public String getState() {
-		return state;
-	}
-	public void setState(String state) {
-		if(state.length() > 2) {
-			throw new IllegalArgumentException("Expected 2-letter state abbreviation, got " + state);
-		}
-		else {
-		this.state = state;
-		}
-	}
-	public String getCounty() {
-		return county;
-	}
-	public void setCounty(String county) {
-		this.county = county;
-	}
-	public String getTimeZone() {
-		return timeZone;
-	}
-	public void setTimeZone(String zone) {
-		this.timeZone = zone;
-	}
-	public int getAreaCode1() {
-		return areaCode1;
-	}
-	public void setAreaCode1(int ac1) {
-		if(ac1 > 999 || ac1 < 0) {
-			throw new IllegalArgumentException("Area code must be 3 digit integer, got " + ac1);
-		}
-		else {
-			this.areaCode1 = ac1;
-		}
-	}
-	public int getAreaCode2() {
-		return areaCode2;
-	}
-	public void setAreaCode2(int ac2) {
-		if(ac2 > 999 || ac2 < 0) {
-			throw new IllegalArgumentException("Area code must be 3 digit integer, got " + ac2);
-		}
-		else {
-			this.areaCode2 = ac2;
-		}
-	}
-	public float getLatitude() {
-		return latitude;
-	}
-	public void setLatitude(float lat) {
-		if(lat > 90 || lat < -90) {
-			throw new IllegalArgumentException("Latitude must be between -90 and 90, got " + lat);
-		}
-		else {
-			this.latitude = lat;
-		}
-	}
-	public float getLongitude() {
-		return longitude;
-	}
-	public void setLongitude(float longitude) {
-		if(longitude > 180 || longitude < -180) {
-			throw new IllegalArgumentException("Longitude must be between -180 and 180, got " + longitude);
-		}
-		else {
-			this.longitude = longitude;
-		}
-	}
-	public String getCountry() {
-		return country;
-	}
-	public void setCountry(String country) {
-		this.country = country;
-	}
 
-
-  @Override
-  public List<DbTableObject> getDelegateObjects() {
-    // TODO Auto-generated method stub
-    return null;
+  public String getZipType() {
+    return zipType;
   }
+
+  public void setZipType(String type) {
+    this.zipType = type;
+  }
+
+  public String getCity() {
+    return city;
+  }
+
+  public void setCity(String city) {
+    this.city = city;
+  }
+
+  public String getState() {
+    return state;
+  }
+
+  public void setState(String state) {
+    if (state.length() > 2) {
+      throw new IllegalArgumentException("Expected 2-letter state abbreviation, got " + state);
+    } else {
+      this.state = state;
+    }
+  }
+
+  public String getCounty() {
+    return county;
+  }
+
+  public void setCounty(String county) {
+    this.county = county;
+  }
+
+  public String getTimeZone() {
+    return timeZone;
+  }
+
+  public void setTimeZone(String zone) {
+    this.timeZone = zone;
+  }
+
+  public int getAreaCode1() {
+    return areaCode1;
+  }
+
+  public void setAreaCode1(int ac1) {
+    if (ac1 > 999 || ac1 < 0) {
+      throw new IllegalArgumentException("Area code must be 3 digit integer, got " + ac1);
+    } else {
+      this.areaCode1 = ac1;
+    }
+  }
+
+  public int getAreaCode2() {
+    return areaCode2;
+  }
+
+  public void setAreaCode2(int ac2) {
+    if (ac2 > 999 || ac2 < 0) {
+      throw new IllegalArgumentException("Area code must be 3 digit integer, got " + ac2);
+    } else {
+      this.areaCode2 = ac2;
+    }
+  }
+
+  public float getLatitude() {
+    return latitude;
+  }
+
+  public void setLatitude(float lat) {
+    if (lat > 90 || lat < -90) {
+      throw new IllegalArgumentException("Latitude must be between -90 and 90, got " + lat);
+    } else {
+      this.latitude = lat;
+    }
+  }
+
+  public float getLongitude() {
+    return longitude;
+  }
+
+  public void setLongitude(float longitude) {
+    if (longitude > 180 || longitude < -180) {
+      throw new IllegalArgumentException(
+          "Longitude must be between -180 and 180, got " + longitude);
+    } else {
+      this.longitude = longitude;
+    }
+  }
+
+  public String getCountry() {
+    return country;
+  }
+
+  public void setCountry(String country) {
+    this.country = country;
+  }
+
 
   @Override
   public boolean writeToDB(DBWriter writer) {

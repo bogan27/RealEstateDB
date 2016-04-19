@@ -70,27 +70,28 @@ public class Zestimate implements DbTableObject {
       this.zpid = zpid;
     }
   }
-  
-  public BigInteger getZestimateID(){
-	  return zestimateID;
+
+  public BigInteger getZestimateID() {
+    return zestimateID;
   }
+
   public void setZestimateID(BigInteger id) {
-	  BigInteger min = new BigInteger("0");
-	  BigInteger max = new BigInteger("1000000000");
-	  if (id.compareTo(min) < 0) {
-		  throw new IllegalArgumentException(
-				  "zestimateID cannot be negative. Argument given for zestimateID: " + id);
-	  }
-	  if (id.compareTo(max) >= 0) {
-		  throw new IllegalArgumentException(
-				  "Argument given for zestimateID exceeds maximum allowed value of 10000000000 (1 million). Argument given: "
-						  + id);
-	  } else {
-		  this.zestimateID = id;
-	  }
+    BigInteger min = new BigInteger("0");
+    BigInteger max = new BigInteger("1000000000");
+    if (id.compareTo(min) < 0) {
+      throw new IllegalArgumentException(
+          "zestimateID cannot be negative. Argument given for zestimateID: " + id);
+    }
+    if (id.compareTo(max) >= 0) {
+      throw new IllegalArgumentException(
+          "Argument given for zestimateID exceeds maximum allowed value of 10000000000 (1 million). Argument given: "
+              + id);
+    } else {
+      this.zestimateID = id;
+    }
   }
-  
-  
+
+
 
   /**
    * 
@@ -311,16 +312,16 @@ public class Zestimate implements DbTableObject {
     return this.dateRetrieved;
   }
 
-//  public java.sql.Date getDateRetrievedSql() {
-//
-//    StringBuilder sb = new StringBuilder();
-//
-//    sb.append(this.dateRetrieved.getYear() + "-");
-//    sb.append(this.dateRetrieved.getMonth() + "-" + this.dateRetrieved.getDay());
-//    String dateString = sb.toString();
-//    java.sql.Date convertedDate = java.sql.Date.valueOf(dateString);
-//    return convertedDate;
-//  }
+  // public java.sql.Date getDateRetrievedSql() {
+  //
+  // StringBuilder sb = new StringBuilder();
+  //
+  // sb.append(this.dateRetrieved.getYear() + "-");
+  // sb.append(this.dateRetrieved.getMonth() + "-" + this.dateRetrieved.getDay());
+  // String dateString = sb.toString();
+  // java.sql.Date convertedDate = java.sql.Date.valueOf(dateString);
+  // return convertedDate;
+  // }
 
   public String getDateRetrievedString() {
     String result = "";
@@ -461,13 +462,6 @@ public class Zestimate implements DbTableObject {
     sb.append("Date Retrieved: " + this.getDateRetrieved() + "\n");
     sb.append("\n\n");
     return sb.toString();
-  }
-
-
-  @Override
-  public List<DbTableObject> getDelegateObjects() {
-    // TODO Auto-generated method stub
-    return null;
   }
 
   @Override
