@@ -229,12 +229,6 @@ public class ZillowComparable implements DbTableObject {
   }
 
   @Override
-  public List<DbTableObject> getDelegateObjects() {
-    // TODO Auto-generated method stub
-    return null;
-  }
-
-  @Override
   public boolean writeToDB(DBWriter writer) {
     writer.insertObject(this);
     return true;

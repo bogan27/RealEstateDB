@@ -16,21 +16,6 @@ import main.java.dbConnectors.DBWriter;
  *
  */
 public class PropertyDetails implements DbTableObject {
-  // zpid INT(10)
-  // status VARCHAR(15)
-  // posting_type VARCHAR(45)
-  // last_updated_date DATE()
-  // year_updated YEAR()
-  // number_floors INT(2)
-  // basement VARCHAR(25)
-  // roof_type VARCHAR(25)
-  // parking_type VARCHAR(25)
-  // rooms TEXT()
-  // home_description TEXT()
-  // neighborhood_name VARCHAR(100)
-  // school_district VARCHAR(100)
-  // page_views_this_month INT(8)
-  // page_vies_total INT(8)
   private BigInteger zpid;
   private String status;
   private String posting_type;
@@ -474,13 +459,6 @@ public class PropertyDetails implements DbTableObject {
     sb.append("School District: " + this.getSchoolDistrict() + "\n");
     sb.append("\n\n");
     return sb.toString();
-  }
-
-
-  @Override
-  public List<DbTableObject> getDelegateObjects() {
-    // TODO Auto-generated method stub
-    return null;
   }
 
 
