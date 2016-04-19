@@ -232,13 +232,6 @@ public class Neighborhood implements DbTableObject {
   }
 
 
-  @Override
-  public List<DbTableObject> getDelegateObjects() {
-    // TODO Auto-generated method stub
-    return null;
-  }
-
-
   /**
    * @return the zIndex
    */
