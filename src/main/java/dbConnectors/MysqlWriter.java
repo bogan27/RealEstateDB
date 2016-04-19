@@ -27,7 +27,6 @@ public class MysqlWriter extends MySQLConnectorAbstract implements DBWriter {
 
   @Override
   public void insertObject(Zestimate z) {
-
     try {
       String query =
           "SELECT * FROM Zestimates WHERE zpid = ? AND zestimate = ? AND lastUpdated = ?";
@@ -67,6 +66,102 @@ public class MysqlWriter extends MySQLConnectorAbstract implements DBWriter {
       e.printStackTrace();
       return;
     }
+  }
+  
+  public void updateZestimateValue(Zestimate z, int zestimateChange) {
+	  try {
+	      String query =
+	          "SELECT * FROM Zestimates WHERE zpid = ? AND zestimate = ? AND lastUpdated = ?";
+	      PreparedStatement checkStmt = this.connect.prepareStatement(query);
+	      checkStmt.setObject(1, z.getZpid(), Types.BIGINT);
+	      checkStmt.setInt(2, z.getZestimate());
+	      checkStmt.setObject(3, z.getLastUpdated());
+	      ResultSet checkResult = checkStmt.executeQuery();
+	      if (checkResult.next() == false) {
+	    	  System.out.println("Zestimate does not exist in database! Cannot update.");
+	    	  return;
+	      } else {
+	    	  int newZest = z.getZestimate() + zestimateChange;
+	    	  int newThirty = z.getThirtyDayChange() + zestimateChange;
+	    	  int newHigh = z.getValuationHigh();
+	    	  int newLow = z.getvaluationLow();
+	    	  if(newZest > newHigh) {
+	    		  newHigh = newZest;
+	    	  }
+	    	  else if(newZest < newLow) {
+	    		  newLow = newZest;
+	    	  }
+
+	    	  String stmt = 
+	    			  "UPDATE Zestimates SET zestimate = ?, thirtyDayChange = ?, valuationHigh = ?, valuationLow = ?, lastUpdated = CURDATE()"
+	    					  + " WHERE zpid = ? AND zestimate = ?";
+	    	  PreparedStatement ps = this.connect.prepareStatement(stmt);
+	    	  ps.setInt(1, newZest);
+	    	  ps.setInt(2, newThirty);
+	    	  ps.setInt(3, newHigh);
+	    	  ps.setInt(4, newLow);
+	    	  ps.setObject(5, z.getZpid(), Types.BIGINT);
+	    	  ps.setInt(6, z.getZestimate());
+
+	    	  ps.execute();
+
+	    	  System.out.println("Successfully updated Zestimate value");
+	      }
+	  }
+	  catch (SQLException e) {
+		  System.out.println("ERROR: Could not edit Zestimate value");
+		  e.printStackTrace();
+		  return;
+	  }
+
+  }
+  
+  public void updateRentZestimate(Zestimate z, int rentChange) {
+	  try {
+	      String query =
+	          "SELECT * FROM Zestimates WHERE zpid = ? AND zestimate = ? AND lastUpdated = ?";
+	      PreparedStatement checkStmt = this.connect.prepareStatement(query);
+	      checkStmt.setObject(1, z.getZpid(), Types.BIGINT);
+	      checkStmt.setInt(2, z.getZestimate());
+	      checkStmt.setObject(3, z.getLastUpdated());
+	      ResultSet checkResult = checkStmt.executeQuery();
+	      if (checkResult.next() == false) {
+	    	  System.out.println("Zestimate does not exist in database! Cannot update.");
+	    	  return;
+	      } else {
+	    	  int newRentZest = z.getRentZestimate() + rentChange;
+	    	  int newThirty = z.getRentThirtyDayChange() + rentChange;
+	    	  int newHigh = z.getMaxRent();
+	    	  int newLow = z.getMinRent();
+	    	  if(newRentZest > newHigh) {
+	    		  newHigh = newRentZest;
+	    	  }
+	    	  else if(newRentZest < newLow) {
+	    		  newLow = newRentZest;
+	    	  }
+
+	    	  String stmt = 
+	    			  "UPDATE Zestimates SET rentZestimate = ?, rentThirtyDayChange = ?, rentZestimateLow = ?, rentZestimateHigh = ?, lastUpdated = CURDATE()"
+	    					  + " WHERE zpid = ? AND zestimate = ?";
+	    	  PreparedStatement ps = this.connect.prepareStatement(stmt);
+	    	  ps.setInt(1, newRentZest);
+	    	  ps.setInt(2, newThirty);
+	    	  ps.setInt(3, newLow);
+	    	  ps.setInt(4, newHigh);
+	    	  ps.setObject(5, z.getZpid(), Types.BIGINT);
+	    	  ps.setInt(6, z.getZestimate());
+
+	    	  ps.execute();
+
+	    	  System.out.println("Successfully updated Rent Zestimate");
+	      }
+	  }
+	  catch (SQLException e) {
+		  System.out.println("ERROR: Could not edit Rent Zestimate");
+		  e.printStackTrace();
+		  return;
+	  }
+
   }
 
   @Override
@@ -231,6 +326,33 @@ public class MysqlWriter extends MySQLConnectorAbstract implements DBWriter {
       e.printStackTrace();
       return;
     }
+  }
+  
+  public void deleteObject(ZillowComparable zc) {
+	  ResultSet checkZC = null;
+	    try {
+	      String check = "SELECT compID FROM Comparables" + " WHERE primaryZPID = "
+	          + zc.getPrimaryZpid() + " AND compZPID = " + zc.getCompZpid() + ";";
+	      checkZC = connect.createStatement().executeQuery(check);
+	      if (checkZC.next() == false) {
+	        System.out.println("Comparable does not exist in database! Cannot delete.");
+	        return;
+	      }
+	      String statement = "DELETE FROM Comparables WHERE primaryZPID = ? AND "
+	      		+ "compZpid = ?";
+	      
+	      PreparedStatement ps = this.connect.prepareStatement(statement);
+	      
+	      ps.setObject(1, zc.getPrimaryZpid(), Types.BIGINT);
+	      ps.setObject(2, zc.getCompZpid(), Types.BIGINT);
+	      
+	      ps.execute();
+	    }
+	    catch (SQLException e) {
+	        System.out.println("ERROR: Could not delete comparable.");
+	        e.printStackTrace();
+	        return;
+	      }
   }
 
   @Override
