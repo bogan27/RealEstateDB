@@ -311,16 +311,16 @@ public class Zestimate implements DbTableObject {
     return this.dateRetrieved;
   }
 
-  public java.sql.Date getDateRetrievedSql() {
-
-    StringBuilder sb = new StringBuilder();
-
-    sb.append(this.dateRetrieved.getYear() + "-");
-    sb.append(this.dateRetrieved.getMonth() + "-" + this.dateRetrieved.getDay());
-    String dateString = sb.toString();
-    java.sql.Date convertedDate = java.sql.Date.valueOf(dateString);
-    return convertedDate;
-  }
+//  public java.sql.Date getDateRetrievedSql() {
+//
+//    StringBuilder sb = new StringBuilder();
+//
+//    sb.append(this.dateRetrieved.getYear() + "-");
+//    sb.append(this.dateRetrieved.getMonth() + "-" + this.dateRetrieved.getDay());
+//    String dateString = sb.toString();
+//    java.sql.Date convertedDate = java.sql.Date.valueOf(dateString);
+//    return convertedDate;
+//  }
 
   public String getDateRetrievedString() {
     String result = "";

@@ -513,16 +513,16 @@ public class Property implements DbTableObject {
     return this.lastSoldDate;
   }
 
-  public java.sql.Date getLastSoldDateSql() {
-
-    StringBuilder sb = new StringBuilder();
-
-    sb.append(this.lastSoldDate.getYear() + "-");
-    sb.append(this.lastSoldDate.getMonth() + "-" + this.lastSoldDate.getDay());
-    String dateString = sb.toString();
-    java.sql.Date convertedDate = java.sql.Date.valueOf(dateString);
-    return convertedDate;
-  }
+//  public java.sql.Date getLastSoldDateSql() {
+//
+//    StringBuilder sb = new StringBuilder();
+//
+//    sb.append(this.lastSoldDate.getYear() + "-");
+//    sb.append(this.lastSoldDate.getMonth() + "-" + this.lastSoldDate.getDay());
+//    String dateString = sb.toString();
+//    java.sql.Date convertedDate = java.sql.Date.valueOf(dateString);
+//    return convertedDate;
+//  }
 
   public String getLastSoldDateString() {
     String result = "";
