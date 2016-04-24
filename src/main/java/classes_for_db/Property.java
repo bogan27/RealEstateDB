@@ -1373,24 +1373,6 @@ public class Property implements DbTableObject {
     this.compList.add(zc);
   }
 
-  public ZillowComparable getBestComp() {
-    this.compsUsed = true;
-    return this.compList.get(0);
-  }
-
-  public List<ZillowComparable> getBest5Comps() {
-    this.compsUsed = true;
-    List<ZillowComparable> best5 = new ArrayList<ZillowComparable>();
-    if (this.compList.size() > 5) {
-      for (int i = 0; i < 5; i++) {
-        best5.add(compList.get(i));
-      }
-      return best5;
-    } else {
-      return this.compList;
-    }
-  }
-
 
 
   @Override
