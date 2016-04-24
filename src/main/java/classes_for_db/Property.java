@@ -855,6 +855,7 @@ public class Property implements DbTableObject {
    */
   public void setRegionID(String regionID) {
     this.regionUsed = true;
+    System.out.println("Region ID in Property: " + regionID);
     region.setRegionID(regionID);
   }
 

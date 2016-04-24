@@ -47,6 +47,13 @@ public class Executor {
         Map<String, String> addressToSearch = this.addressHandler.getNextAddressToUpdate();
         this.getDataForAddress(addressToSearch);
         i++;
+        long napTime = Math.round(500.0 * Math.random());
+        try {
+          Thread.sleep(napTime);
+        } catch (InterruptedException e) {
+          // TODO Auto-generated catch block
+          e.printStackTrace();
+        }
       }
     }
   }

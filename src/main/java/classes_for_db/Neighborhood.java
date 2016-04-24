@@ -57,12 +57,22 @@ public class Neighborhood implements DbTableObject {
    *         outside of allowed range of 0 to 10,000,000.
    */
   public void setRegionID(String regionID) {
-    if (regionID.length() > 7) {
+    System.out.println("RegionID is null: " + regionID == null);
+    System.out.println("Region ID: " + regionID);
+    if (regionID != null && regionID.length() > 7) {
       throw new IllegalArgumentException(
           "Argument for regionID is longer than the maximum allowed number of characters (7). Argument given: "
               + regionID);
     } else {
-      this.setRegionID(Integer.parseInt(regionID));
+      int id = -1;
+      try {
+        id = Integer.parseInt(regionID);
+      } catch (java.lang.NumberFormatException e) {
+        e.printStackTrace();
+      }
+      if (id > -1) {
+        this.setRegionID(id);
+      }
     }
   }
 

@@ -29,8 +29,10 @@ public class GetDeepSearchResultsExample implements Example {
   }
 
   public void run() throws IOException {
-    String address = "580 Washington St";// "99 Pond Ave";
-    String zipCode = "02111";// "02445";
+    String address = "7510 Shadyvilla Ln";
+    String zipCode = "77055";
+//    String address = "580 Washington St";// "99 Pond Ave";
+//    String zipCode = "02111";// "02445";
 
    // String address = "99 Pond Ave";
    // String zipCode = "02445";
