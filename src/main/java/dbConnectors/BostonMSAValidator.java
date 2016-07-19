@@ -26,6 +26,10 @@ public class BostonMSAValidator extends MySQLConnectorAbstract implements Valida
 		this.property = p;
 	}
 
+	public boolean validate(Property p) {
+		return this.validateGeo(p, "Boston") && this.validateComp(p);
+	}
+	
 	// make sure property falls within the right geography
 	public boolean validateGeo(Property p, String geo) {
 		try {
