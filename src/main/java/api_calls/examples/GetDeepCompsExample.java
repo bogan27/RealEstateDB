@@ -4,7 +4,10 @@
 package main.java.api_calls.examples;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.HashMap;
+
+import org.xml.sax.SAXException;
 
 import main.java.api_calls.GenericZillowAPICaller;
 import main.java.api_calls.ZillowAPI;
@@ -54,16 +57,24 @@ public class GetDeepCompsExample implements Example {
     // System.out.println(data);
     // System.out.println(request);
 
-    GetDeepCompsResultParser parser = new GetDeepCompsResultParser(data);
-    System.out.println("Response status code: " + parser.getStatusCode());
-    System.out.println("Response message text: " + parser.getMessageText());
-    DBWriter db = new MysqlWriter();
-    for (DbTableObject dbto : parser.parseData()) {
-      ZillowComparable c = (ZillowComparable) dbto;
-      db.insertObject(c);
-      System.out.println(c.toString());
+    DBWriter db;
+    try {
+      GetDeepCompsResultParser parser = new GetDeepCompsResultParser(data);
+      System.out.println("Response status code: " + parser.getStatusCode());
+      System.out.println("Response message text: " + parser.getMessageText());
+      db = new MysqlWriter();
+      for (DbTableObject dbto : parser.parseData()) {
+        ZillowComparable c = (ZillowComparable) dbto;
+        db.insertObject(c);
+        System.out.println(c.toString());
+      }
+    } catch (SQLException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    } catch (SAXException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
     }
-
   }
 
 }

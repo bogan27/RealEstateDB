@@ -3,6 +3,7 @@
  */
 package main.java.xml_parsers;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,6 +11,7 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+import org.xml.sax.SAXException;
 
 import main.java.classes_for_db.DbTableObject;
 import main.java.classes_for_db.Zestimate;
@@ -22,8 +24,10 @@ public class GetZestimateResultParser extends ParseZillowResultsAbstract {
 
   /**
    * @param data
+   * @throws IOException 
+   * @throws SAXException 
    */
-  public GetZestimateResultParser(String data) {
+  public GetZestimateResultParser(String data) throws SAXException, IOException {
     super(data);
   }
 

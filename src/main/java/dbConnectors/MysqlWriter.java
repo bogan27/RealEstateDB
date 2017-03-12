@@ -1,6 +1,7 @@
 package main.java.dbConnectors;
 
 import java.sql.*;
+import java.util.UnknownFormatConversionException;
 
 import main.java.classes_for_db.Neighborhood;
 import main.java.classes_for_db.Property;
@@ -15,13 +16,9 @@ import main.java.classes_for_db.ZillowComparable;
 
 public class MysqlWriter extends MySQLConnectorAbstract implements DBWriter {
 
-  public MysqlWriter() {
+  public MysqlWriter() throws SQLException {
     super();
-    try {
-      this.getConnection();
-    } catch (SQLException e) {
-      e.printStackTrace();
-    }
+    this.getConnection();
   }
 
 
@@ -34,10 +31,14 @@ public class MysqlWriter extends MySQLConnectorAbstract implements DBWriter {
       checkStmt.setObject(1, z.getZpid(), Types.BIGINT);
       checkStmt.setInt(2, z.getZestimate());
       checkStmt.setObject(3, z.getLastUpdated());
+      logger.trace("Executing query: " + checkStmt.toString());
       ResultSet checkResult = checkStmt.executeQuery();
       if (checkResult.next() == true) {
         System.out.println("Property already exists in database!");
-        return;
+        logger.warn(String.format(
+            "Did not insert zestimate because an identical zestimate already exists in the database. "
+                + "\n " + "ZPID: %s, Zestimate: %s, Last Updated: %s",
+            z.getZpid().toString(), z.getZestimate(), z.getLastUpdated().toString()));
       } else {
         String statement =
             "INSERT INTO Zestimates(zpid, zestimate, lastUpdated, thirtyDayChange, valuationHigh, "
@@ -55,112 +56,109 @@ public class MysqlWriter extends MySQLConnectorAbstract implements DBWriter {
         ps.setInt(9, z.getRentThirtyDayChange());
         ps.setInt(10, z.getMinRent());
         ps.setInt(11, z.getMaxRent());
-        
+        logger.trace("Executing query: " + checkStmt.toString());
         ps.execute();
-
-        System.out
-            .println("Zetimate for zpid: " + z.getZpid() + " has successfully been inserted.");
+        logger.info("Zetimate for zpid: " + z.getZpid() + " has successfully been inserted.");
       }
     } catch (SQLException e) {
-      System.out.println("ERROR: Could not insert");
-      e.printStackTrace();
-      return;
+      logger.error("A SQLException occured while attempting to insert Zestimate.", e);
+    } catch (UnknownFormatConversionException e) {
+      logger.error(
+          "There was an error converting and/or formatting a String in method insertObject(Zestimate z) in MysqlWriter",
+          e);
     }
   }
-  
+
   public void updateZestimateValue(Zestimate z, int zestimateChange) {
-	  try {
-	      String query =
-	          "SELECT * FROM Zestimates WHERE zpid = ? AND zestimate = ? AND lastUpdated = ?";
-	      PreparedStatement checkStmt = this.connect.prepareStatement(query);
-	      checkStmt.setObject(1, z.getZpid(), Types.BIGINT);
-	      checkStmt.setInt(2, z.getZestimate());
-	      checkStmt.setObject(3, z.getLastUpdated());
-	      ResultSet checkResult = checkStmt.executeQuery();
-	      if (checkResult.next() == false) {
-	    	  System.out.println("Zestimate does not exist in database! Cannot update.");
-	    	  return;
-	      } else {
-	    	  int newZest = z.getZestimate() + zestimateChange;
-	    	  int newThirty = z.getThirtyDayChange() + zestimateChange;
-	    	  int newHigh = z.getValuationHigh();
-	    	  int newLow = z.getvaluationLow();
-	    	  if(newZest > newHigh) {
-	    		  newHigh = newZest;
-	    	  }
-	    	  else if(newZest < newLow) {
-	    		  newLow = newZest;
-	    	  }
+    try {
+      String query =
+          "SELECT * FROM Zestimates WHERE zpid = ? AND zestimate = ? AND lastUpdated = ?";
+      PreparedStatement checkStmt = this.connect.prepareStatement(query);
+      checkStmt.setObject(1, z.getZpid(), Types.BIGINT);
+      checkStmt.setInt(2, z.getZestimate());
+      checkStmt.setObject(3, z.getLastUpdated());
+      logger.trace("Executing query: " + checkStmt.toString());
+      ResultSet checkResult = checkStmt.executeQuery();
+      if (checkResult.next() == false) {
+        logger.warn(String.format(
+            "Zestimate does not exist in database! Cannot update." + "\n "
+                + "ZPID: %s, Zestimate: %i, Last Updated: %s",
+            z.getZpid().toString(), z.getZestimate(), z.getLastUpdated().toString()));
+      } else {
+        int newZest = z.getZestimate() + zestimateChange;
+        int newThirty = z.getThirtyDayChange() + zestimateChange;
+        int newHigh = z.getValuationHigh();
+        int newLow = z.getvaluationLow();
+        if (newZest > newHigh) {
+          newHigh = newZest;
+        } else if (newZest < newLow) {
+          newLow = newZest;
+        }
 
-	    	  String stmt = 
-	    			  "UPDATE Zestimates SET zestimate = ?, thirtyDayChange = ?, valuationHigh = ?, valuationLow = ?, lastUpdated = CURDATE()"
-	    					  + " WHERE zpid = ? AND zestimate = ?";
-	    	  PreparedStatement ps = this.connect.prepareStatement(stmt);
-	    	  ps.setInt(1, newZest);
-	    	  ps.setInt(2, newThirty);
-	    	  ps.setInt(3, newHigh);
-	    	  ps.setInt(4, newLow);
-	    	  ps.setObject(5, z.getZpid(), Types.BIGINT);
-	    	  ps.setInt(6, z.getZestimate());
+        String stmt =
+            "UPDATE Zestimates SET zestimate = ?, thirtyDayChange = ?, valuationHigh = ?, valuationLow = ?, lastUpdated = CURDATE()"
+                + " WHERE zpid = ? AND zestimate = ?";
+        PreparedStatement ps = this.connect.prepareStatement(stmt);
+        ps.setInt(1, newZest);
+        ps.setInt(2, newThirty);
+        ps.setInt(3, newHigh);
+        ps.setInt(4, newLow);
+        ps.setObject(5, z.getZpid(), Types.BIGINT);
+        ps.setInt(6, z.getZestimate());
+        logger.trace("Executing query: " + ps.toString());
+        ps.execute();
 
-	    	  ps.execute();
-
-	    	  System.out.println("Successfully updated Zestimate value");
-	      }
-	  }
-	  catch (SQLException e) {
-		  System.out.println("ERROR: Could not edit Zestimate value");
-		  e.printStackTrace();
-		  return;
-	  }
+        logger.info("Successfully updated Zestimate value: " + ps.toString());
+      }
+    } catch (SQLException e) {
+      logger.error("A SQLException occured while attempting to update a Zestimate.", e);
+    }
 
   }
-  
+
   public void updateRentZestimate(Zestimate z, int rentChange) {
-	  try {
-	      String query =
-	          "SELECT * FROM Zestimates WHERE zpid = ? AND zestimate = ? AND lastUpdated = ?";
-	      PreparedStatement checkStmt = this.connect.prepareStatement(query);
-	      checkStmt.setObject(1, z.getZpid(), Types.BIGINT);
-	      checkStmt.setInt(2, z.getZestimate());
-	      checkStmt.setObject(3, z.getLastUpdated());
-	      ResultSet checkResult = checkStmt.executeQuery();
-	      if (checkResult.next() == false) {
-	    	  System.out.println("Zestimate does not exist in database! Cannot update.");
-	    	  return;
-	      } else {
-	    	  int newRentZest = z.getRentZestimate() + rentChange;
-	    	  int newThirty = z.getRentThirtyDayChange() + rentChange;
-	    	  int newHigh = z.getMaxRent();
-	    	  int newLow = z.getMinRent();
-	    	  if(newRentZest > newHigh) {
-	    		  newHigh = newRentZest;
-	    	  }
-	    	  else if(newRentZest < newLow) {
-	    		  newLow = newRentZest;
-	    	  }
+    try {
+      String query =
+          "SELECT * FROM Zestimates WHERE zpid = ? AND zestimate = ? AND lastUpdated = ?";
+      PreparedStatement checkStmt = this.connect.prepareStatement(query);
+      checkStmt.setObject(1, z.getZpid(), Types.BIGINT);
+      checkStmt.setInt(2, z.getZestimate());
+      checkStmt.setObject(3, z.getLastUpdated());
+      logger.trace("Executing query: " + checkStmt.toString());
+      ResultSet checkResult = checkStmt.executeQuery();
+      if (checkResult.next() == false) {
+        logger.warn(String.format(
+            "Zestimate does not exist in database! Cannot update." + "\n "
+                + "ZPID: %s, Zestimate: %i, Last Updated: %s",
+            z.getZpid().toString(), z.getZestimate(), z.getLastUpdated().toString()));
+      } else {
+        int newRentZest = z.getRentZestimate() + rentChange;
+        int newThirty = z.getRentThirtyDayChange() + rentChange;
+        int newHigh = z.getMaxRent();
+        int newLow = z.getMinRent();
+        if (newRentZest > newHigh) {
+          newHigh = newRentZest;
+        } else if (newRentZest < newLow) {
+          newLow = newRentZest;
+        }
 
-	    	  String stmt = 
-	    			  "UPDATE Zestimates SET rentZestimate = ?, rentThirtyDayChange = ?, rentZestimateLow = ?, rentZestimateHigh = ?, lastUpdated = CURDATE()"
-	    					  + " WHERE zpid = ? AND zestimate = ?";
-	    	  PreparedStatement ps = this.connect.prepareStatement(stmt);
-	    	  ps.setInt(1, newRentZest);
-	    	  ps.setInt(2, newThirty);
-	    	  ps.setInt(3, newLow);
-	    	  ps.setInt(4, newHigh);
-	    	  ps.setObject(5, z.getZpid(), Types.BIGINT);
-	    	  ps.setInt(6, z.getZestimate());
-
-	    	  ps.execute();
-
-	    	  System.out.println("Successfully updated Rent Zestimate");
-	      }
-	  }
-	  catch (SQLException e) {
-		  System.out.println("ERROR: Could not edit Rent Zestimate");
-		  e.printStackTrace();
-		  return;
-	  }
+        String stmt =
+            "UPDATE Zestimates SET rentZestimate = ?, rentThirtyDayChange = ?, rentZestimateLow = ?, rentZestimateHigh = ?, lastUpdated = CURDATE()"
+                + " WHERE zpid = ? AND zestimate = ?";
+        PreparedStatement ps = this.connect.prepareStatement(stmt);
+        ps.setInt(1, newRentZest);
+        ps.setInt(2, newThirty);
+        ps.setInt(3, newLow);
+        ps.setInt(4, newHigh);
+        ps.setObject(5, z.getZpid(), Types.BIGINT);
+        ps.setInt(6, z.getZestimate());
+        logger.trace("Executing query: " + ps.toString());
+        ps.execute();
+        logger.info("Successfully updated Zestimate value: " + ps.toString());
+      }
+    } catch (SQLException e) {
+      logger.error("A SQLException occured while attempting to update a Rent Zestimate.", e);
+    }
 
   }
 
@@ -170,9 +168,10 @@ public class MysqlWriter extends MySQLConnectorAbstract implements DBWriter {
       String query = "SELECT * FROM Neighborhoods WHERE regionID = ?";
       PreparedStatement checkStmt = this.connect.prepareStatement(query);
       checkStmt.setInt(1, n.getRegionID());
+      logger.trace("Executing query: " + checkStmt.toString());
       ResultSet checkResult = checkStmt.executeQuery();
       if (checkResult.next() == true) {
-        System.out.println("Property already exists in database!");
+        logger.warn("Neighborhood already exists in database: regionID = " + n.getRegionID());
         return;
       } else {
 
@@ -188,25 +187,26 @@ public class MysqlWriter extends MySQLConnectorAbstract implements DBWriter {
         ps.setInt(4, n.getzIndex());
         ps.setFloat(5, n.getzIndexChange());
         ps.setString(6, n.getType());
-
+        logger.trace("Executing query: " + ps.toString());
         ps.execute();
       }
     } catch (SQLException e) {
-      System.out.println("ERROR: Could not insert");
-      e.printStackTrace();
+      logger.error("A SQLException occured while attempting to insert a Neighborhood.", e);
     }
   }
 
 
   @Override
   public void insertObject(Property p) {
-    ResultSet checkResult = null;
     try {
-
-      String check = "SELECT zpid FROM Properties WHERE zpid = " + p.getZpid() + ";";
-      checkResult = connect.createStatement().executeQuery(check);
-      if (checkResult.next() == true) {
-        System.out.println("Property already exists in database!");
+      String query = "SELECT zpid FROM Properties WHERE zpid = ?;";
+      PreparedStatement checkStmt = this.connect.prepareStatement(query);
+      checkStmt.setObject(1, p.getZpid(), Types.BIGINT);
+      logger.info("Executing query: " + checkStmt.toString());
+      ResultSet checkResult = checkStmt.executeQuery();
+      if (checkResult.next()) {
+        logger.warn("Property already exists in database. ZPID = " + p.getZpid()
+            + " Will not attempt to reinsert property.");
         return;
       }
       String statement =
@@ -234,148 +234,165 @@ public class MysqlWriter extends MySQLConnectorAbstract implements DBWriter {
       preparedStmt.setInt(15, p.getBedroomCount());
       preparedStmt.setObject(16, p.getLastSoldDate());
       preparedStmt.setInt(17, p.getLastSoldPrice());
-      System.out.println("Year built: " + p.getYearBuilt());
+      logger.info("Executing query: " + preparedStmt.toString());
       preparedStmt.execute();
 
-      System.out.println(statement);
-      System.out.println("\n" + "Record Inserted Successfully!" + "\n");
+      logger.info("Property Inserted Successfully: ZPID: " + p.getZpid());
     } catch (SQLException e) {
-      System.out.println("ERROR: Could not insert");
-      e.printStackTrace();
-      return;
+      logger.error("Error occured when inserting Property: ", e);
     }
   }
 
   @Override
   public void insertObject(PropertyDetails pd) {
-    ResultSet checkPD = null;
     try {
-      String check = "SELECT zpid FROM PropertyDetails WHERE zpid = " + pd.getZpid() + ";";
-      checkPD = connect.createStatement().executeQuery(check);
+      String query = "SELECT zpid FROM PropertyDetails WHERE zpid = ?;";
+      PreparedStatement checkStmt = this.connect.prepareStatement(query);
+      checkStmt.setObject(1, pd.getZpid(), Types.BIGINT);
+      logger.trace("Executing query: " + checkStmt.toString());
+      ResultSet checkPD = checkStmt.executeQuery();
       if (checkPD.next() == true) {
-        System.out.println("Property Details already exist in database!");
-        return;
+        logger.warn("Property Details already exist in database: ZPID = " + pd.getZpid());
+      } else {
+        String statement =
+            "INSERT INTO PropertyDetails(zpid, status, posting_type, last_updated_date, year_updated,"
+                + " number_floors, basement, roof_type, parking_type, rooms, home_description, neighborhood_name, "
+                + "school_district, page_views_this_month, page_views_total) VALUES "
+                + "(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+
+        PreparedStatement ps = this.connect.prepareStatement(statement);
+
+        ps.setObject(1, pd.getZpid(), Types.BIGINT);
+        ps.setString(2, pd.getStatus());
+        ps.setString(3, pd.getPosting_type());
+        ps.setObject(4, pd.getLastUpdated());
+        ps.setObject(5, pd.getyearUpdated());
+        ps.setInt(6, pd.getNumFloors());
+        ps.setObject(7, pd.getBasement());
+        ps.setObject(8, pd.getRoofType());
+        ps.setObject(9, pd.getParkingType());
+        ps.setInt(10, pd.getNumRooms());
+        ps.setString(11, pd.getHomeDescription());
+        ps.setString(12, pd.getNeighborhoodName());
+        ps.setString(13, pd.getSchoolDistrict());
+        ps.setInt(14, pd.getPageViewThisMonth());
+        ps.setInt(15, pd.getPageViewsTotal());
+
+        logger.trace("Executing query: " + ps.toString());
+        ps.execute();
+
+        logger.info("Property Details were successfully inserted for zpid: " + pd.getZpid());
       }
-
-      String statement =
-          "INSERT INTO PropertyDetails(zpid, status, posting_type, last_updated_date, year_updated,"
-              + " number_floors, basement, roof_type, parking_type, rooms, home_description, neighborhood_name, "
-              + "school_district, page_views_this_month, page_views_total) VALUES "
-              + "(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-
-      PreparedStatement ps = this.connect.prepareStatement(statement);
-
-      ps.setObject(1, pd.getZpid(), Types.BIGINT);
-      ps.setString(2, pd.getStatus());
-      ps.setString(3, pd.getPosting_type());
-      ps.setObject(4, pd.getLastUpdated());
-      ps.setObject(5, pd.getyearUpdated());
-      ps.setInt(6, pd.getNumFloors());
-      ps.setObject(7, pd.getBasement());
-      ps.setObject(8, pd.getRoofType());
-      ps.setObject(9, pd.getParkingType());
-      ps.setInt(10, pd.getNumRooms());
-      ps.setString(11, pd.getHomeDescription());
-      ps.setString(12, pd.getNeighborhoodName());
-      ps.setString(13, pd.getSchoolDistrict());
-      ps.setInt(14, pd.getPageViewThisMonth());
-      ps.setInt(15, pd.getPageViewsTotal());
-
-      ps.execute();
-
-      System.out.println("Property Details were successfully inserted for zpid: " + pd.getZpid());
-
     } catch (SQLException e) {
-      System.out.println("ERROR: Could not insert");
-      e.printStackTrace();
-      return;
+      logger.error("Property Details could not be inserted for zpid: " + pd.getZpid(), e);
     }
   }
 
   @Override
   public void insertObject(ZillowComparable zc) {
-    ResultSet checkZC = null;
     try {
-      String check = "SELECT compID FROM Comparables" + " WHERE primaryZPID = "
-          + zc.getPrimaryZpid() + " AND compZPID = " + zc.getCompZpid() + ";";
-      checkZC = connect.createStatement().executeQuery(check);
+      String check = "SELECT compID FROM Comparables" + " WHERE primaryZPID = ? AND compZPID = ?;";
+      PreparedStatement checkStmt = this.connect.prepareStatement(check);
+      checkStmt.setObject(1, zc.getPrimaryZpid(), Types.BIGINT);
+      checkStmt.setObject(2, zc.getCompZpid(), Types.BIGINT);
+      logger.trace("Executing query: " + checkStmt.toString());
+      ResultSet checkZC = checkStmt.executeQuery();
       if (checkZC.next() == true) {
-        System.out.println("Comparable already exists in database!");
-        return;
+        logger.warn("Comparable already exists in database!: primaryZPID = " + zc.getPrimaryZpid()
+            + " and compZPID = " + zc.getCompZpid());
+      } else {
+        String statement =
+            "INSERT INTO Comparables(primaryZPID, compZPID, compScore, compAddress, compZipcode) VALUES "
+                + "(?,?,?,?,?)";
+
+        PreparedStatement ps = this.connect.prepareStatement(statement);
+
+        ps.setObject(1, zc.getPrimaryZpid(), Types.BIGINT);
+        ps.setObject(2, zc.getCompZpid(), Types.BIGINT);
+        ps.setFloat(3, zc.getCompScore());
+        ps.setString(4, zc.getCompAddress());
+        ps.setInt(5, zc.getCompZip());
+        logger.trace("Executing query: " + ps.toString());
+        ps.execute();
+
+        logger.info("Comparable Successfully Inserted. primaryZPID = " + zc.getPrimaryZpid()
+            + " and compZPID = " + zc.getCompZpid());
       }
-
-      String statement =
-          "INSERT INTO Comparables(primaryZPID, compZPID, compScore, compAddress, compZipcode) VALUES "
-              + "(?,?,?,?,?)";
-
-      PreparedStatement ps = this.connect.prepareStatement(statement);
-
-      ps.setObject(1, zc.getPrimaryZpid(), Types.BIGINT);
-      ps.setObject(2, zc.getCompZpid(), Types.BIGINT);
-      ps.setFloat(3, zc.getCompScore());
-      ps.setString(4, zc.getCompAddress());
-      ps.setInt(5, zc.getCompZip());
-
-      ps.execute();
-
-      System.out.println("Comparable Successfully Inserted.");
-    }
-
-    catch (SQLException e) {
-      System.out.println("ERROR: Could not insert");
-      e.printStackTrace();
-      return;
+    } catch (SQLException e) {
+      logger.error("SQLException occurred while inserting comparable: primaryZPID = "
+          + zc.getPrimaryZpid() + " and compZPID = " + zc.getCompZpid(), e);
     }
   }
-  
+
   public void deleteObject(ZillowComparable zc) {
-	  ResultSet checkZC = null;
-	    try {
-	      String check = "SELECT compID FROM Comparables" + " WHERE primaryZPID = "
-	          + zc.getPrimaryZpid() + " AND compZPID = " + zc.getCompZpid() + ";";
-	      checkZC = connect.createStatement().executeQuery(check);
-	      if (checkZC.next() == false) {
-	        System.out.println("Comparable does not exist in database! Cannot delete.");
-	        return;
-	      }
-	      String statement = "DELETE FROM Comparables WHERE primaryZPID = ? AND "
-	      		+ "compZpid = ?";
-	      
-	      PreparedStatement ps = this.connect.prepareStatement(statement);
-	      
-	      ps.setObject(1, zc.getPrimaryZpid(), Types.BIGINT);
-	      ps.setObject(2, zc.getCompZpid(), Types.BIGINT);
-	      
-	      ps.execute();
-	    }
-	    catch (SQLException e) {
-	        System.out.println("ERROR: Could not delete comparable.");
-	        e.printStackTrace();
-	        return;
-	      }
+    try {
+      String check = "SELECT compID FROM Comparables WHERE primaryZPID = ? AND compZPID = ?;";
+      PreparedStatement checkStmt = this.connect.prepareStatement(check);
+      logger.trace("Executing query: " + checkStmt.toString());
+      ResultSet checkZC = checkStmt.executeQuery();
+      if (checkZC.next() == false) {
+        logger.warn("Comparable does not exist in database! Cannot delete. primaryZPID = "
+            + zc.getPrimaryZpid() + " and compZPID = " + zc.getCompZpid());
+      } else {
+        String statement = "DELETE FROM Comparables WHERE primaryZPID = ? AND " + "compZpid = ?";
+        PreparedStatement ps = this.connect.prepareStatement(statement);
+
+        ps.setObject(1, zc.getPrimaryZpid(), Types.BIGINT);
+        ps.setObject(2, zc.getCompZpid(), Types.BIGINT);
+        logger.trace("Executing query: " + ps.toString());
+        ps.execute();
+        logger.info("Successfully deleted comparable from Database. primaryZPID = "
+            + zc.getPrimaryZpid() + " and compZPID = " + zc.getCompZpid());
+      }
+    } catch (SQLException e) {
+      logger.error("ERROR: Could not delete comparable: primaryZPID = " + zc.getPrimaryZpid()
+          + " and compZPID = " + zc.getCompZpid(), e);
+    }
   }
 
   @Override
   public void insertObject(TaxAssessment ta) {
     try {
-      String statement =
-          "INSERT INTO TaxAssessments(zpid, taxYear, taxAssessment) VALUES " + "(?,?,?)";
 
-      PreparedStatement ps = this.connect.prepareStatement(statement);
+      String countExisting =
+          "SELECT COUNT(*) FROM TaxAssessments WHERE zpid = ? AND taxYear = ? and taxAssessment = ?";
+      PreparedStatement countStmt = this.connect.prepareStatement(countExisting);
+      countStmt.setObject(1, ta.getZpid(), Types.BIGINT);
+      countStmt.setObject(2, ta.getTaxYear());
+      countStmt.setObject(3, ta.getTaxAssessment());
+      ResultSet countResult = countStmt.executeQuery();
 
-      ps.setObject(1, ta.getZpid(), Types.BIGINT);
-      ps.setObject(2, ta.getTaxYear());
-      ps.setObject(3, ta.getTaxAssessment());
+      int count = 0;
+      if (countResult.next()) {
+        count = countResult.getInt(1);
+      }
 
-      ps.execute();
+      if (count < 1) {
+        String statement =
+            "INSERT INTO TaxAssessments(zpid, taxYear, taxAssessment) VALUES " + "(?,?,?)";
 
-      System.out.println("Tax Assessment Successfully Added For ZPID: " + ta.getZpid());
+        PreparedStatement ps = this.connect.prepareStatement(statement);
+
+        ps.setObject(1, ta.getZpid(), Types.BIGINT);
+        ps.setObject(2, ta.getTaxYear());
+        ps.setObject(3, ta.getTaxAssessment());
+
+        logger.trace("Executing query: " + ps.toString());
+        ps.execute();
+
+        logger.info("Tax Assessment Successfully Added For ZPID: " + ta.getZpid());
+      } else {
+        logger.info(
+            "Did not insert TaxAssessment because there is an existing identical entry: zpid = "
+                + ta.getZpid() + " year = " + ta.getTaxYear() + " and ammount = "
+                + ta.getTaxAssessment());
+      }
 
     } catch (SQLException e) {
-      System.out.println("ERROR: Could not insert");
-      e.printStackTrace();
-      return;
+      logger.error(
+          "A SQLException was thrown while attempting to insert a TaxAssessment into the database: "
+              + ta.toString(),
+          e);
     }
-
   }
 }
