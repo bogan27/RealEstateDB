@@ -1,0 +1,157 @@
+[INFO ] 2017-03-06 20:26:12.264 [main] Main - Beginning Zillow Spidering
+[INFO ] 2017-03-06 20:26:12.870 [main] Executor - Instantiating Executor with API Call Limit of 500
+[INFO ] 2017-03-06 20:26:13.074 [main] Executor - Making API Call to GetDeepSearchResults with params: {address=77 South St # 2, citystatezip=2130}
+[INFO ] 2017-03-06 20:26:14.670 [main] Executor - Request sent to: http://www.zillow.com/webservice/GetDeepSearchResults.htm?zws-id=X1-ZWz19thqfce13f_3s95g&address=77+South+St+%23+2&citystatezip=2130
+[INFO ] 2017-03-06 20:26:14.683 [main] Executor - Extracted 1 properties from API call.
+[WARN ] 2017-03-06 20:26:15.428 [main] MysqlWriter - Property Details already exist in database: ZPID = 2119249872
+[INFO ] 2017-03-06 20:26:15.877 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[ERROR] 2017-03-06 20:26:15.985 [main] MysqlWriter - Error occured when inserting Property: 
+java.sql.SQLException: Data truncated for column 'useCode' at row 1
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:957) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3878) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3814) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:2478) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2625) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2551) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.PreparedStatement.executeInternal(PreparedStatement.java:1861) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.PreparedStatement.execute(PreparedStatement.java:1192) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at main.java.dbConnectors.MysqlWriter.insertObject(MysqlWriter.java:234) [classes/:?]
+	at main.java.classes_for_db.Property.writeToDB(Property.java:1417) [classes/:?]
+	at main.java.execute.Executor.getDataForAddress(Executor.java:122) [classes/:?]
+	at main.java.execute.Executor.run(Executor.java:67) [classes/:?]
+	at main.java.execute.Main.main(Main.java:55) [classes/:?]
+[ERROR] 2017-03-06 20:26:16.038 [main] MysqlWriter - There was an error converting and/or formatting a String in method insertObject(Zestimate z) in MysqlWriter
+java.util.UnknownFormatConversionException: Conversion = 'i'
+	at java.util.Formatter$FormatSpecifier.conversion(Formatter.java:2691) ~[?:1.8.0_60]
+	at java.util.Formatter$FormatSpecifier.<init>(Formatter.java:2720) ~[?:1.8.0_60]
+	at java.util.Formatter.parse(Formatter.java:2560) ~[?:1.8.0_60]
+	at java.util.Formatter.format(Formatter.java:2501) ~[?:1.8.0_60]
+	at java.util.Formatter.format(Formatter.java:2455) ~[?:1.8.0_60]
+	at java.lang.String.format(String.java:2940) ~[?:1.8.0_60]
+	at main.java.dbConnectors.MysqlWriter.insertObject(MysqlWriter.java:38) [classes/:?]
+	at main.java.classes_for_db.Zestimate.writeToDB(Zestimate.java:469) [classes/:?]
+	at main.java.classes_for_db.Property.writeToDB(Property.java:1420) [classes/:?]
+	at main.java.execute.Executor.getDataForAddress(Executor.java:122) [classes/:?]
+	at main.java.execute.Executor.run(Executor.java:67) [classes/:?]
+	at main.java.execute.Main.main(Main.java:55) [classes/:?]
+[WARN ] 2017-03-06 20:26:16.068 [main] MysqlWriter - Neighborhood already exists in database: regionID = 154795
+[INFO ] 2017-03-06 20:26:16.097 [main] MysqlWriter - Tax Assessment Successfully Added For ZPID: 2119249872
+[INFO ] 2017-03-06 20:26:16.374 [main] Executor - Finished processing address. API Calls remaining: 497
+[INFO ] 2017-03-06 20:26:16.566 [main] Executor - Making API Call to GetDeepSearchResults with params: {address=77 South St # 2, citystatezip=2130}
+[INFO ] 2017-03-06 20:26:17.098 [main] Executor - Request sent to: http://www.zillow.com/webservice/GetDeepSearchResults.htm?zws-id=X1-ZWz19thqfce13f_3s95g&address=77+South+St+%23+2&citystatezip=2130
+[INFO ] 2017-03-06 20:26:17.103 [main] Executor - Extracted 1 properties from API call.
+[INFO ] 2017-03-06 20:30:11.849 [main] Main - Beginning Zillow Spidering
+[INFO ] 2017-03-06 20:30:12.401 [main] Executor - Instantiating Executor with API Call Limit of 500
+[INFO ] 2017-03-06 20:30:13.330 [main] Executor - Making API Call to GetDeepSearchResults with params: {address=77 South St # 2, citystatezip=2130}
+[INFO ] 2017-03-06 20:30:16.460 [main] Executor - Request sent to: http://www.zillow.com/webservice/GetDeepSearchResults.htm?zws-id=X1-ZWz19thqfce13f_3s95g&address=77+South+St+%23+2&citystatezip=2130
+[INFO ] 2017-03-06 20:30:16.476 [main] Executor - Extracted 1 properties from API call.
+[WARN ] 2017-03-06 20:30:17.278 [main] MysqlWriter - Property Details already exist in database: ZPID = 2119249872
+[INFO ] 2017-03-06 20:30:17.766 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[ERROR] 2017-03-06 20:30:17.849 [main] MysqlWriter - Error occured when inserting Property: 
+java.sql.SQLException: Data truncated for column 'useCode' at row 1
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:957) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3878) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3814) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:2478) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2625) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2551) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.PreparedStatement.executeInternal(PreparedStatement.java:1861) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.PreparedStatement.execute(PreparedStatement.java:1192) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at main.java.dbConnectors.MysqlWriter.insertObject(MysqlWriter.java:234) [classes/:?]
+	at main.java.classes_for_db.Property.writeToDB(Property.java:1417) [classes/:?]
+	at main.java.execute.Executor.getDataForAddress(Executor.java:122) [classes/:?]
+	at main.java.execute.Executor.run(Executor.java:67) [classes/:?]
+	at main.java.execute.Main.main(Main.java:55) [classes/:?]
+[WARN ] 2017-03-06 20:30:18.144 [main] MysqlWriter - Did not insert zestimate because an identical zestimate already exists in the database. 
+ ZPID: 2119249872, Zestimate: 0, Last Updated: Wed Dec 31 00:00:00 EST 1969
+[WARN ] 2017-03-06 20:30:18.170 [main] MysqlWriter - Neighborhood already exists in database: regionID = 154795
+[INFO ] 2017-03-06 20:30:18.197 [main] MysqlWriter - Tax Assessment Successfully Added For ZPID: 2119249872
+[INFO ] 2017-03-06 20:30:18.621 [main] Executor - Finished processing address. API Calls remaining: 497
+[INFO ] 2017-03-06 20:30:18.754 [main] Executor - Making API Call to GetDeepSearchResults with params: {address=77 South St # 2, citystatezip=2130}
+[INFO ] 2017-03-06 20:30:19.261 [main] Executor - Request sent to: http://www.zillow.com/webservice/GetDeepSearchResults.htm?zws-id=X1-ZWz19thqfce13f_3s95g&address=77+South+St+%23+2&citystatezip=2130
+[INFO ] 2017-03-06 20:30:19.267 [main] Executor - Extracted 1 properties from API call.
+[WARN ] 2017-03-06 20:30:19.923 [main] MysqlWriter - Property Details already exist in database: ZPID = 2119249872
+[INFO ] 2017-03-06 20:30:20.408 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[ERROR] 2017-03-06 20:30:20.462 [main] MysqlWriter - Error occured when inserting Property: 
+java.sql.SQLException: Data truncated for column 'useCode' at row 1
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:957) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3878) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3814) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:2478) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2625) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2551) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.PreparedStatement.executeInternal(PreparedStatement.java:1861) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.PreparedStatement.execute(PreparedStatement.java:1192) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at main.java.dbConnectors.MysqlWriter.insertObject(MysqlWriter.java:234) [classes/:?]
+	at main.java.classes_for_db.Property.writeToDB(Property.java:1417) [classes/:?]
+	at main.java.execute.Executor.getDataForAddress(Executor.java:122) [classes/:?]
+	at main.java.execute.Executor.run(Executor.java:67) [classes/:?]
+	at main.java.execute.Main.main(Main.java:55) [classes/:?]
+[WARN ] 2017-03-06 20:30:20.487 [main] MysqlWriter - Did not insert zestimate because an identical zestimate already exists in the database. 
+ ZPID: 2119249872, Zestimate: 0, Last Updated: Wed Dec 31 00:00:00 EST 1969
+[WARN ] 2017-03-06 20:30:20.514 [main] MysqlWriter - Neighborhood already exists in database: regionID = 154795
+[INFO ] 2017-03-06 20:30:20.541 [main] MysqlWriter - Tax Assessment Successfully Added For ZPID: 2119249872
+[INFO ] 2017-03-06 20:30:20.771 [main] Executor - Finished processing address. API Calls remaining: 494
+[INFO ] 2017-03-06 20:30:20.902 [main] Executor - Making API Call to GetDeepSearchResults with params: {address=77 South St # 2, citystatezip=2130}
+[INFO ] 2017-03-06 20:30:21.528 [main] Executor - Request sent to: http://www.zillow.com/webservice/GetDeepSearchResults.htm?zws-id=X1-ZWz19thqfce13f_3s95g&address=77+South+St+%23+2&citystatezip=2130
+[INFO ] 2017-03-06 20:30:21.534 [main] Executor - Extracted 1 properties from API call.
+[WARN ] 2017-03-06 20:30:22.067 [main] MysqlWriter - Property Details already exist in database: ZPID = 2119249872
+[INFO ] 2017-03-06 20:34:12.299 [main] Main - Beginning Zillow Spidering
+[INFO ] 2017-03-06 20:34:12.895 [main] Executor - Instantiating Executor with API Call Limit of 500
+[INFO ] 2017-03-06 20:34:13.070 [main] Executor - Making API Call to GetDeepSearchResults with params: {address=77 South St # 2, citystatezip=2130}
+[INFO ] 2017-03-06 20:34:14.485 [main] Executor - Request sent to: http://www.zillow.com/webservice/GetDeepSearchResults.htm?zws-id=X1-ZWz19thqfce13f_3s95g&address=77+South+St+%23+2&citystatezip=2130
+[INFO ] 2017-03-06 20:34:14.498 [main] Executor - Extracted 1 properties from API call.
+[WARN ] 2017-03-06 20:34:15.158 [main] MysqlWriter - Property Details already exist in database: ZPID = 2119249872
+[INFO ] 2017-03-06 20:34:15.668 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-06 20:34:15.669 [main] MysqlWriter - Executing query: com.mysql.jdbc.JDBC42PreparedStatement@5542c4ed: SELECT zpid FROM Properties WHERE zpid = 2119249872;
+[INFO ] 2017-03-06 20:34:15.702 [main] MysqlWriter - Executing query: com.mysql.jdbc.JDBC42PreparedStatement@1573f9fc: INSERT INTO Properties(zpid, streetAddress, zipcode, city, state, latitude, longitude, regionID, countyCode, useCode, yearBuilt, lotSizeSqFt, finishedSqFt, bathroomCount, bedroomCount, lastSoldDate, lastSoldPrice) VALUES (2119249872,'77 South St # 2',2130,'Jamaica Plain','MA',42.30703,-71.115654,154795,0,'Apartment',0,0,0,2.0,3,'2016-09-08 00:00:00',613000)
+[ERROR] 2017-03-06 20:34:15.751 [main] MysqlWriter - Error occured when inserting Property: 
+java.sql.SQLException: Data truncated for column 'useCode' at row 1
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:957) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3878) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3814) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:2478) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2625) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2551) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.PreparedStatement.executeInternal(PreparedStatement.java:1861) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.PreparedStatement.execute(PreparedStatement.java:1192) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at main.java.dbConnectors.MysqlWriter.insertObject(MysqlWriter.java:234) [classes/:?]
+	at main.java.classes_for_db.Property.writeToDB(Property.java:1417) [classes/:?]
+	at main.java.execute.Executor.getDataForAddress(Executor.java:122) [classes/:?]
+	at main.java.execute.Executor.run(Executor.java:67) [classes/:?]
+	at main.java.execute.Main.main(Main.java:55) [classes/:?]
+[WARN ] 2017-03-06 20:34:15.818 [main] MysqlWriter - Did not insert zestimate because an identical zestimate already exists in the database. 
+ ZPID: 2119249872, Zestimate: 0, Last Updated: Wed Dec 31 00:00:00 EST 1969
+[WARN ] 2017-03-06 20:34:15.839 [main] MysqlWriter - Neighborhood already exists in database: regionID = 154795
+[INFO ] 2017-03-06 20:34:15.871 [main] MysqlWriter - Tax Assessment Successfully Added For ZPID: 2119249872
+[INFO ] 2017-03-06 20:34:16.392 [main] Executor - Finished processing address. API Calls remaining: 497
+[INFO ] 2017-03-06 20:34:16.522 [main] Executor - Making API Call to GetDeepSearchResults with params: {address=77 South St # 2, citystatezip=2130}
+[INFO ] 2017-03-06 20:34:16.920 [main] Executor - Request sent to: http://www.zillow.com/webservice/GetDeepSearchResults.htm?zws-id=X1-ZWz19thqfce13f_3s95g&address=77+South+St+%23+2&citystatezip=2130
+[INFO ] 2017-03-06 20:34:16.926 [main] Executor - Extracted 1 properties from API call.
+[WARN ] 2017-03-06 20:34:17.708 [main] MysqlWriter - Property Details already exist in database: ZPID = 2119249872
+[INFO ] 2017-03-06 20:34:18.108 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-06 20:34:18.108 [main] MysqlWriter - Executing query: com.mysql.jdbc.JDBC42PreparedStatement@7c6908d7: SELECT zpid FROM Properties WHERE zpid = 2119249872;
+[INFO ] 2017-03-06 20:34:18.139 [main] MysqlWriter - Executing query: com.mysql.jdbc.JDBC42PreparedStatement@3c9754d8: INSERT INTO Properties(zpid, streetAddress, zipcode, city, state, latitude, longitude, regionID, countyCode, useCode, yearBuilt, lotSizeSqFt, finishedSqFt, bathroomCount, bedroomCount, lastSoldDate, lastSoldPrice) VALUES (2119249872,'77 South St # 2',2130,'Jamaica Plain','MA',42.30703,-71.115654,154795,0,'Apartment',0,0,0,2.0,3,'2016-09-08 00:00:00',613000)
+[ERROR] 2017-03-06 20:34:18.165 [main] MysqlWriter - Error occured when inserting Property: 
+java.sql.SQLException: Data truncated for column 'useCode' at row 1
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:957) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3878) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3814) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:2478) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2625) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2551) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.PreparedStatement.executeInternal(PreparedStatement.java:1861) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.PreparedStatement.execute(PreparedStatement.java:1192) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at main.java.dbConnectors.MysqlWriter.insertObject(MysqlWriter.java:234) [classes/:?]
+	at main.java.classes_for_db.Property.writeToDB(Property.java:1417) [classes/:?]
+	at main.java.execute.Executor.getDataForAddress(Executor.java:122) [classes/:?]
+	at main.java.execute.Executor.run(Executor.java:67) [classes/:?]
+	at main.java.execute.Main.main(Main.java:55) [classes/:?]
+[WARN ] 2017-03-06 20:34:18.190 [main] MysqlWriter - Did not insert zestimate because an identical zestimate already exists in the database. 
+ ZPID: 2119249872, Zestimate: 0, Last Updated: Wed Dec 31 00:00:00 EST 1969
+[WARN ] 2017-03-06 20:34:18.213 [main] MysqlWriter - Neighborhood already exists in database: regionID = 154795
+[INFO ] 2017-03-06 20:34:18.235 [main] MysqlWriter - Tax Assessment Successfully Added For ZPID: 2119249872
+[INFO ] 2017-03-06 20:34:18.579 [main] Executor - Finished processing address. API Calls remaining: 494
+[INFO ] 2017-03-06 20:34:18.713 [main] Executor - Making API Call to GetDeepSearchResults with params: {address=77 South St # 2, citystatezip=2130}
+[INFO ] 2017-03-06 20:34:19.172 [main] Executor - Request sent to: http://www.zillow.com/webservice/GetDeepSearchResults.htm?zws-id=X1-ZWz19thqfce13f_3s95g&address=77+South+St+%23+2&citystatezip=2130
+[INFO ] 2017-03-06 20:34:19.176 [main] Executor - Extracted 1 properties from API call.

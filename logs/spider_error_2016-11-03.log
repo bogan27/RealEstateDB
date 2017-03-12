@@ -1,0 +1,13 @@
+[ERROR] 2016-11-03 00:00:56.516 [main] Main - Beginning Zillow Spidering
+[ERROR] 2016-11-03 00:10:28.821 [main] Main - Beginning Zillow Spidering
+[ERROR] 2016-11-03 00:11:58.554 [main] GenericZillowAPICaller - IOException occured while making API call to: http://www.zillow.com/webservice/GetUpdatedPropertyDetails.htm?zws-id=X1-ZWz19thqfce13f_3s95g&zpid=37279691
+org.apache.http.client.HttpResponseException: Internal Server Error
+	at org.apache.http.impl.client.AbstractResponseHandler.handleResponse(AbstractResponseHandler.java:69) ~[httpclient-4.5.2.jar:4.5.2]
+	at org.apache.http.client.fluent.Response.handleResponse(Response.java:90) ~[fluent-hc-4.5.2.jar:4.5.2]
+	at org.apache.http.client.fluent.Response.returnContent(Response.java:97) ~[fluent-hc-4.5.2.jar:4.5.2]
+	at main.java.api_calls.GenericZillowAPICaller.makeApiCall(GenericZillowAPICaller.java:38) [classes/:?]
+	at main.java.api_calls.GenericZillowAPICaller.makeApiCall(GenericZillowAPICaller.java:49) [classes/:?]
+	at main.java.execute.Executor.processPropertyDetails(Executor.java:138) [classes/:?]
+	at main.java.execute.Executor.getDataForAddress(Executor.java:103) [classes/:?]
+	at main.java.execute.Executor.run(Executor.java:54) [classes/:?]
+	at main.java.execute.Main.main(Main.java:55) [classes/:?]

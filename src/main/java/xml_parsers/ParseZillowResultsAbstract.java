@@ -11,6 +11,8 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -19,6 +21,7 @@ import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
 import main.java.classes_for_db.DbTableObject;
+import main.java.classes_for_db.Property;
 
 /**
  * @author brandonbogan
@@ -27,12 +30,16 @@ import main.java.classes_for_db.DbTableObject;
 public abstract class ParseZillowResultsAbstract {
   private String xmlData;
   private Document doc;
+  private Logger logger;
 
   /**
+   * @throws IOException 
+   * @throws SAXException 
    * 
    */
-  public ParseZillowResultsAbstract(String data) {
+  public ParseZillowResultsAbstract(String data) throws SAXException, IOException {
     this.xmlData = data;
+    this.logger = LogManager.getLogger(this.getClass().getName());
     this.doc = this.convertStringToDoc(data);
   }
 
@@ -40,7 +47,7 @@ public abstract class ParseZillowResultsAbstract {
     return this.xmlData;
   }
 
-  public void setXmlString(String data) {
+  public void setXmlString(String data) throws SAXException, IOException {
     this.xmlData = data;
     this.doc = this.convertStringToDoc(data);
   }
@@ -98,8 +105,10 @@ public abstract class ParseZillowResultsAbstract {
    * 
    * @param text The text to be converted into a document
    * @return A Document representing the text
+   * @throws IOException 
+   * @throws SAXException 
    */
-  protected Document convertStringToDoc(String text) {
+  protected Document convertStringToDoc(String text) throws SAXException, IOException {
 
     InputSource source = new InputSource(new StringReader(text));
 
@@ -108,19 +117,11 @@ public abstract class ParseZillowResultsAbstract {
     try {
       docBuilder = dbFactory.newDocumentBuilder();
     } catch (ParserConfigurationException e1) {
-      e1.printStackTrace();
-      System.out.println("Error in creating the Document Builder docBuilder.");
+      logger.error("Error in creating the Document Builder docBuilder.", e1);
     }
 
-    Document doc = null;
-    try {
-      doc = docBuilder.parse(source);
-    } catch (SAXException | IOException e) {
-      e.printStackTrace();
-      System.out.println("Error in parsing the XML.");
-    }
+    Document doc = docBuilder.parse(source);
     doc.getDocumentElement().normalize();
-
     return doc;
   }
 
@@ -159,6 +160,97 @@ public abstract class ParseZillowResultsAbstract {
       response = nodes.item(0).getAttributes().getNamedItem(attribute).getNodeValue();
     }
     return response;
+  }
+  
+  /**
+   * Converts the given Element into a fully populated Property instance
+   * @param element
+   * @return A Property populated with values from child nodes of the given Element
+   */
+  protected Property convertElementToProperty(Element element) {
+    
+    Property unit = new Property();
+    
+    unit.setZpid(element.getElementsByTagName("zpid").item(0).getTextContent());
+
+    // From Address section of result
+    // Sets street address, city, state, zipcode, latitude, and longitude
+    NodeList addressSectionList = element.getElementsByTagName("address");
+    if (addressSectionList.getLength() > 0) {
+      Node addressSection = addressSectionList.item(0);
+      if (addressSection.getNodeType() == Node.ELEMENT_NODE) {
+        Element addressElement = (Element) addressSection;
+        unit.setStreetAddress(this.extractFirstValue(addressElement, "street"));
+        unit.setZipCode(this.extractFirstValue(addressElement, "zipcode"));
+        unit.setCity(this.extractFirstValue(addressElement, "city"));
+        unit.setState(this.extractFirstValue(addressElement, "state"));
+        unit.setlatitude(this.extractFirstValue(addressElement, "latitude"));
+        unit.setLongitude(this.extractFirstValue(addressElement, "longitude"));
+      }
+    }
+
+    // Stuff between address and zestimate sections.
+    /*
+     * Sets: FIPScounty, useCode, yearBuilt, finishedSqFt, bathrooms, bedrooms, tax assessment
+     * year, tax assessment amount, date last sold, price last sold for
+     */
+    unit.setCountyCode(this.extractFirstValue(element, "FIPScounty"));
+    unit.setUseCode(this.extractFirstValue(element, "useCode"));
+    unit.setTaxYear(this.extractFirstValue(element, "taxAssessmentYear"));
+    unit.setTaxAssessment(this.extractFirstValue(element, "taxAssessment"));
+    unit.setYearBuilt(this.extractFirstValue(element, "yearBuilt"));
+    unit.setFinishedSqFt(this.extractFirstValue(element, "finishedSqFt"));
+    unit.setBathroomCount(this.extractFirstValue(element, "bathrooms"));
+    unit.setBedroomCount(this.extractFirstValue(element, "bedrooms"));
+    unit.setLastSoldDate(this.extractFirstValue(element, "lastSoldDate"));
+    unit.setLastSoldPrice(this.extractFirstValue(element, "lastSoldPrice"));
+
+
+    // From Zestimate section of result
+    // Sets amount, 30-day change, date last updated, low valuation, high valuation, and
+    // percentile rank
+    NodeList zestimateList = element.getElementsByTagName("zestimate");
+    if (zestimateList.getLength() > 0) {
+      Node zestimateNode = zestimateList.item(0);
+      if (zestimateNode.getNodeType() == Node.ELEMENT_NODE) {
+        Element zestimate = (Element) zestimateNode;
+        unit.setZestimate(this.extractFirstValue(zestimate, "amount"));
+        unit.setLastUpdated(this.extractFirstValue(zestimate, "last-updated"));
+        unit.setThirtyDayChange(this.extractFirstValue(zestimate, "valueChange"));
+        unit.setPercentileValue(this.extractFirstValue(zestimate, "percentile"));
+        Element valuationRange =
+            (Element) zestimate.getElementsByTagName("valuationRange").item(0);
+        unit.setvaluationLow(this.extractFirstValue(valuationRange, "low"));
+        unit.setValuationHigh(this.extractFirstValue(valuationRange, "high"));
+      }
+    }
+
+    // For Rent Zestimate
+    // From Zestimate section of result
+    // Sets amount, 30-day change, date last updated, low valuation, high valuation, and
+    // percentile rank
+    NodeList rentZestimateList = element.getElementsByTagName("rentzestimate");
+    if (rentZestimateList.getLength() > 0) {
+      Node rentNode = rentZestimateList.item(0);
+      if (rentNode.getNodeType() == Node.ELEMENT_NODE) {
+        Element rentZ = (Element) rentNode;
+        unit.setRentZestimate(this.extractFirstValue(rentZ, "amount"));
+        unit.setRentThirtyDayChange(this.extractFirstValue(rentZ, "valueChange"));
+        Element valuationRange =
+            (Element) rentZ.getElementsByTagName("valuationRange").item(0);
+        unit.setMinRent(this.extractFirstValue(valuationRange, "low"));
+        unit.setMaxRent(this.extractFirstValue(valuationRange, "high"));
+      }
+    }
+
+    // From region section of result. This section is slightly different because the desired
+    // values are attribute values, not tag values.
+    // Gets region name, id, and type.
+    unit.setNameRegion(this.getAttributeValue(element, "region", "name"));
+    unit.setRegionID(this.getAttributeValue(element, "region", "id"));
+    unit.setRegionType(this.getAttributeValue(element, "region", "type"));
+    
+    return unit;
   }
 
   /**

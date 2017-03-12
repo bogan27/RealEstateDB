@@ -4,7 +4,10 @@
 package main.java.api_calls.examples;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.HashMap;
+
+import org.xml.sax.SAXException;
 
 import main.java.api_calls.GenericZillowAPICaller;
 import main.java.api_calls.ZillowAPI;
@@ -20,13 +23,6 @@ import main.java.xml_parsers.GetZestimateResultParser;
  *
  */
 public class GetZestimateExample implements Example {
-
-  /**
-   * 
-   */
-  public GetZestimateExample() {
-    // TODO Auto-generated constructor stub
-  }
 
   @Override
   public void run() throws IOException {
@@ -47,16 +43,24 @@ public class GetZestimateExample implements Example {
     // System.out.println(data);
     // System.out.println(request);
 
-    GetZestimateResultParser parser = new GetZestimateResultParser(data);
-    System.out.println("Response status code: " + parser.getStatusCode());
-    System.out.println("Response message text: " + parser.getMessageText());
-    DBWriter dbw = new MysqlWriter();
-    for (DbTableObject dbto : parser.parseData()) {
-      Zestimate z = (Zestimate) dbto;
-      dbw.insertObject(z);
-      System.out.println(z.toString());
-    }
 
+    DBWriter dbw;
+    try {
+      GetZestimateResultParser parser = new GetZestimateResultParser(data);
+      System.out.println("Response status code: " + parser.getStatusCode());
+      System.out.println("Response message text: " + parser.getMessageText());
+      dbw = new MysqlWriter();
+      for (DbTableObject dbto : parser.parseData()) {
+        Zestimate z = (Zestimate) dbto;
+        dbw.insertObject(z);
+        System.out.println(z.toString());
+      }
+    } catch (SQLException e) {
+      e.printStackTrace();
+    } catch (SAXException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
   }
 
 

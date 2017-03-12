@@ -1,0 +1,1413 @@
+[INFO ] 2017-03-07 19:48:21.082 [main] Main - Beginning Zillow Spidering
+[INFO ] 2017-03-07 19:48:21.725 [main] Executor - Instantiating Executor with API Call Limit of 500
+[INFO ] 2017-03-07 19:48:21.964 [main] Executor - Making API Call to GetDeepSearchResults with params: {address=77 South St # 2, citystatezip=2130}
+[INFO ] 2017-03-07 19:48:24.289 [main] Executor - Request sent to: http://www.zillow.com/webservice/GetDeepSearchResults.htm?zws-id=X1-ZWz19thqfce13f_3s95g&address=77+South+St+%23+2&citystatezip=2130
+[INFO ] 2017-03-07 19:48:24.304 [main] Executor - Extracted 1 properties from API call.
+[WARN ] 2017-03-07 19:48:25.035 [main] MysqlWriter - Property Details already exist in database: ZPID = 2119249872
+[INFO ] 2017-03-07 19:48:25.545 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 19:48:25.546 [main] MysqlWriter - Executing query: com.mysql.jdbc.JDBC42PreparedStatement@662ac478: SELECT zpid FROM Properties WHERE zpid = 2119249872;
+[INFO ] 2017-03-07 19:48:25.577 [main] MysqlWriter - Executing query: com.mysql.jdbc.JDBC42PreparedStatement@6743e411: INSERT INTO Properties(zpid, streetAddress, zipcode, city, state, latitude, longitude, regionID, countyCode, useCode, yearBuilt, lotSizeSqFt, finishedSqFt, bathroomCount, bedroomCount, lastSoldDate, lastSoldPrice) VALUES (2119249872,'77 South St # 2',2130,'Jamaica Plain','MA',42.30703,-71.115654,154795,0,'Apartment',0,0,0,2.0,3,'2016-09-08 00:00:00',613000)
+[ERROR] 2017-03-07 19:48:25.643 [main] MysqlWriter - Error occured when inserting Property: 
+java.sql.SQLException: Data truncated for column 'useCode' at row 1
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:957) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3878) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3814) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:2478) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2625) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2551) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.PreparedStatement.executeInternal(PreparedStatement.java:1861) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.PreparedStatement.execute(PreparedStatement.java:1192) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at main.java.dbConnectors.MysqlWriter.insertObject(MysqlWriter.java:234) [classes/:?]
+	at main.java.classes_for_db.Property.writeToDB(Property.java:1417) [classes/:?]
+	at main.java.execute.Executor.getDataForAddress(Executor.java:123) [classes/:?]
+	at main.java.execute.Executor.run(Executor.java:68) [classes/:?]
+	at main.java.execute.Main.main(Main.java:55) [classes/:?]
+[WARN ] 2017-03-07 19:48:25.706 [main] MysqlWriter - Did not insert zestimate because an identical zestimate already exists in the database. 
+ ZPID: 2119249872, Zestimate: 0, Last Updated: Wed Dec 31 00:00:00 EST 1969
+[WARN ] 2017-03-07 19:48:25.730 [main] MysqlWriter - Neighborhood already exists in database: regionID = 154795
+[INFO ] 2017-03-07 19:48:25.760 [main] MysqlWriter - Tax Assessment Successfully Added For ZPID: 2119249872
+[INFO ] 2017-03-07 19:48:26.222 [main] Executor - Finished processing address. API Calls remaining: 497
+[INFO ] 2017-03-07 19:48:26.360 [main] Executor - Making API Call to GetDeepSearchResults with params: {address=77 South St # 2, citystatezip=2130}
+[INFO ] 2017-03-07 19:48:26.824 [main] Executor - Request sent to: http://www.zillow.com/webservice/GetDeepSearchResults.htm?zws-id=X1-ZWz19thqfce13f_3s95g&address=77+South+St+%23+2&citystatezip=2130
+[INFO ] 2017-03-07 19:48:26.830 [main] Executor - Extracted 1 properties from API call.
+[WARN ] 2017-03-07 19:48:27.604 [main] MysqlWriter - Property Details already exist in database: ZPID = 2119249872
+[INFO ] 2017-03-07 19:48:28.105 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 19:48:28.105 [main] MysqlWriter - Executing query: com.mysql.jdbc.JDBC42PreparedStatement@5dda768f: SELECT zpid FROM Properties WHERE zpid = 2119249872;
+[INFO ] 2017-03-07 19:48:28.136 [main] MysqlWriter - Executing query: com.mysql.jdbc.JDBC42PreparedStatement@7a8c8dcf: INSERT INTO Properties(zpid, streetAddress, zipcode, city, state, latitude, longitude, regionID, countyCode, useCode, yearBuilt, lotSizeSqFt, finishedSqFt, bathroomCount, bedroomCount, lastSoldDate, lastSoldPrice) VALUES (2119249872,'77 South St # 2',2130,'Jamaica Plain','MA',42.30703,-71.115654,154795,0,'Apartment',0,0,0,2.0,3,'2016-09-08 00:00:00',613000)
+[ERROR] 2017-03-07 19:48:28.161 [main] MysqlWriter - Error occured when inserting Property: 
+java.sql.SQLException: Data truncated for column 'useCode' at row 1
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:957) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3878) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3814) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:2478) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2625) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2551) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.PreparedStatement.executeInternal(PreparedStatement.java:1861) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.PreparedStatement.execute(PreparedStatement.java:1192) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at main.java.dbConnectors.MysqlWriter.insertObject(MysqlWriter.java:234) [classes/:?]
+	at main.java.classes_for_db.Property.writeToDB(Property.java:1417) [classes/:?]
+	at main.java.execute.Executor.getDataForAddress(Executor.java:123) [classes/:?]
+	at main.java.execute.Executor.run(Executor.java:68) [classes/:?]
+	at main.java.execute.Main.main(Main.java:55) [classes/:?]
+[WARN ] 2017-03-07 19:48:28.191 [main] MysqlWriter - Did not insert zestimate because an identical zestimate already exists in the database. 
+ ZPID: 2119249872, Zestimate: 0, Last Updated: Wed Dec 31 00:00:00 EST 1969
+[WARN ] 2017-03-07 19:48:28.216 [main] MysqlWriter - Neighborhood already exists in database: regionID = 154795
+[INFO ] 2017-03-07 19:48:28.253 [main] MysqlWriter - Tax Assessment Successfully Added For ZPID: 2119249872
+[INFO ] 2017-03-07 19:48:28.677 [main] Executor - Finished processing address. API Calls remaining: 494
+[INFO ] 2017-03-07 19:48:28.809 [main] Executor - Making API Call to GetDeepSearchResults with params: {address=77 South St # 2, citystatezip=2130}
+[INFO ] 2017-03-07 19:48:29.282 [main] Executor - Request sent to: http://www.zillow.com/webservice/GetDeepSearchResults.htm?zws-id=X1-ZWz19thqfce13f_3s95g&address=77+South+St+%23+2&citystatezip=2130
+[INFO ] 2017-03-07 19:48:29.286 [main] Executor - Extracted 1 properties from API call.
+[WARN ] 2017-03-07 19:48:29.931 [main] MysqlWriter - Property Details already exist in database: ZPID = 2119249872
+[INFO ] 2017-03-07 19:48:30.455 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 19:48:30.455 [main] MysqlWriter - Executing query: com.mysql.jdbc.JDBC42PreparedStatement@1ff4931d: SELECT zpid FROM Properties WHERE zpid = 2119249872;
+[INFO ] 2017-03-07 19:48:30.485 [main] MysqlWriter - Executing query: com.mysql.jdbc.JDBC42PreparedStatement@65e98b1c: INSERT INTO Properties(zpid, streetAddress, zipcode, city, state, latitude, longitude, regionID, countyCode, useCode, yearBuilt, lotSizeSqFt, finishedSqFt, bathroomCount, bedroomCount, lastSoldDate, lastSoldPrice) VALUES (2119249872,'77 South St # 2',2130,'Jamaica Plain','MA',42.30703,-71.115654,154795,0,'Apartment',0,0,0,2.0,3,'2016-09-08 00:00:00',613000)
+[ERROR] 2017-03-07 19:48:30.518 [main] MysqlWriter - Error occured when inserting Property: 
+java.sql.SQLException: Data truncated for column 'useCode' at row 1
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:957) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3878) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3814) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:2478) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2625) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2551) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.PreparedStatement.executeInternal(PreparedStatement.java:1861) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.PreparedStatement.execute(PreparedStatement.java:1192) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at main.java.dbConnectors.MysqlWriter.insertObject(MysqlWriter.java:234) [classes/:?]
+	at main.java.classes_for_db.Property.writeToDB(Property.java:1417) [classes/:?]
+	at main.java.execute.Executor.getDataForAddress(Executor.java:123) [classes/:?]
+	at main.java.execute.Executor.run(Executor.java:68) [classes/:?]
+	at main.java.execute.Main.main(Main.java:55) [classes/:?]
+[WARN ] 2017-03-07 19:48:30.550 [main] MysqlWriter - Did not insert zestimate because an identical zestimate already exists in the database. 
+ ZPID: 2119249872, Zestimate: 0, Last Updated: Wed Dec 31 00:00:00 EST 1969
+[WARN ] 2017-03-07 19:48:30.576 [main] MysqlWriter - Neighborhood already exists in database: regionID = 154795
+[INFO ] 2017-03-07 19:48:30.602 [main] MysqlWriter - Tax Assessment Successfully Added For ZPID: 2119249872
+[INFO ] 2017-03-07 19:48:31.108 [main] Executor - Finished processing address. API Calls remaining: 491
+[INFO ] 2017-03-07 19:48:31.257 [main] Executor - Making API Call to GetDeepSearchResults with params: {address=77 South St # 2, citystatezip=2130}
+[INFO ] 2017-03-07 19:48:31.739 [main] Executor - Request sent to: http://www.zillow.com/webservice/GetDeepSearchResults.htm?zws-id=X1-ZWz19thqfce13f_3s95g&address=77+South+St+%23+2&citystatezip=2130
+[INFO ] 2017-03-07 19:48:31.743 [main] Executor - Extracted 1 properties from API call.
+[INFO ] 2017-03-07 20:15:18.241 [main] Main - Beginning Zillow Spidering
+[INFO ] 2017-03-07 20:15:18.938 [main] Executor - Instantiating Executor with API Call Limit of 500
+[INFO ] 2017-03-07 20:15:19.134 [main] Executor - Making API Call to GetDeepSearchResults with params: {address=77 South St # 2, citystatezip=2130}
+[INFO ] 2017-03-07 20:15:20.833 [main] Executor - Request sent to: http://www.zillow.com/webservice/GetDeepSearchResults.htm?zws-id=X1-ZWz19thqfce13f_3s95g&address=77+South+St+%23+2&citystatezip=2130
+[INFO ] 2017-03-07 20:15:20.888 [main] Executor - Extracted 1 properties from API call.
+[WARN ] 2017-03-07 20:15:21.451 [main] MysqlWriter - Property Details already exist in database: ZPID = 2119249872
+[INFO ] 2017-03-07 20:15:21.841 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:15:21.841 [main] MysqlWriter - Executing query: com.mysql.jdbc.JDBC42PreparedStatement@5542c4ed: SELECT zpid FROM Properties WHERE zpid = 2119249872;
+[INFO ] 2017-03-07 20:15:21.877 [main] MysqlWriter - Executing query: com.mysql.jdbc.JDBC42PreparedStatement@1573f9fc: INSERT INTO Properties(zpid, streetAddress, zipcode, city, state, latitude, longitude, regionID, countyCode, useCode, yearBuilt, lotSizeSqFt, finishedSqFt, bathroomCount, bedroomCount, lastSoldDate, lastSoldPrice) VALUES (2119249872,'77 South St # 2',2130,'Jamaica Plain','MA',42.30703,-71.115654,154795,0,'Apartment',0,0,0,2.0,3,'2016-09-08 00:00:00',613000)
+[INFO ] 2017-03-07 20:15:21.901 [main] MysqlWriter - Property Inserted Successfully: ZPID: 2119249872
+[WARN ] 2017-03-07 20:15:21.937 [main] MysqlWriter - Did not insert zestimate because an identical zestimate already exists in the database. 
+ ZPID: 2119249872, Zestimate: 0, Last Updated: Wed Dec 31 00:00:00 EST 1969
+[WARN ] 2017-03-07 20:15:21.960 [main] MysqlWriter - Neighborhood already exists in database: regionID = 154795
+[INFO ] 2017-03-07 20:15:21.987 [main] MysqlWriter - Tax Assessment Successfully Added For ZPID: 2119249872
+[INFO ] 2017-03-07 20:15:22.263 [main] Executor - Finished processing address. API Calls remaining: 497
+[INFO ] 2017-03-07 20:15:22.395 [main] Executor - Making API Call to GetDeepSearchResults with params: {address=77 South St # 2, citystatezip=2130}
+[INFO ] 2017-03-07 20:15:22.751 [main] Executor - Request sent to: http://www.zillow.com/webservice/GetDeepSearchResults.htm?zws-id=X1-ZWz19thqfce13f_3s95g&address=77+South+St+%23+2&citystatezip=2130
+[INFO ] 2017-03-07 20:15:22.757 [main] Executor - Extracted 1 properties from API call.
+[WARN ] 2017-03-07 20:15:23.410 [main] MysqlWriter - Property Details already exist in database: ZPID = 2119249872
+[INFO ] 2017-03-07 20:15:23.931 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:15:23.932 [main] MysqlWriter - Executing query: com.mysql.jdbc.JDBC42PreparedStatement@217ed35e: SELECT zpid FROM Properties WHERE zpid = 2119249872;
+[ERROR] 2017-03-07 20:15:23.990 [main] MysqlWriter - Error occured when inserting Property: 
+java.sql.SQLException: Column index out of range.
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:957) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:896) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:885) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:860) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.ResultSetMetaData.getField(ResultSetMetaData.java:395) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.ResultSetMetaData.getColumnLabel(ResultSetMetaData.java:224) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at main.java.dbConnectors.MysqlWriter.insertObject(MysqlWriter.java:205) [classes/:?]
+	at main.java.classes_for_db.Property.writeToDB(Property.java:1417) [classes/:?]
+	at main.java.execute.Executor.getDataForAddress(Executor.java:123) [classes/:?]
+	at main.java.execute.Executor.run(Executor.java:68) [classes/:?]
+	at main.java.execute.Main.main(Main.java:55) [classes/:?]
+[WARN ] 2017-03-07 20:15:24.051 [main] MysqlWriter - Did not insert zestimate because an identical zestimate already exists in the database. 
+ ZPID: 2119249872, Zestimate: 0, Last Updated: Wed Dec 31 00:00:00 EST 1969
+[WARN ] 2017-03-07 20:15:24.071 [main] MysqlWriter - Neighborhood already exists in database: regionID = 154795
+[INFO ] 2017-03-07 20:15:24.100 [main] MysqlWriter - Tax Assessment Successfully Added For ZPID: 2119249872
+[INFO ] 2017-03-07 20:15:24.531 [main] Executor - Finished processing address. API Calls remaining: 494
+[INFO ] 2017-03-07 20:15:24.667 [main] Executor - Making API Call to GetDeepSearchResults with params: {address=77 South St # 2, citystatezip=2130}
+[INFO ] 2017-03-07 20:15:25.102 [main] Executor - Request sent to: http://www.zillow.com/webservice/GetDeepSearchResults.htm?zws-id=X1-ZWz19thqfce13f_3s95g&address=77+South+St+%23+2&citystatezip=2130
+[INFO ] 2017-03-07 20:15:25.105 [main] Executor - Extracted 1 properties from API call.
+[WARN ] 2017-03-07 20:15:25.761 [main] MysqlWriter - Property Details already exist in database: ZPID = 2119249872
+[INFO ] 2017-03-07 20:17:14.013 [main] Main - Beginning Zillow Spidering
+[INFO ] 2017-03-07 20:17:14.529 [main] Executor - Instantiating Executor with API Call Limit of 500
+[INFO ] 2017-03-07 20:17:14.740 [main] Executor - Making API Call to GetDeepSearchResults with params: {address=77 South St # 2, citystatezip=2130}
+[INFO ] 2017-03-07 20:17:15.930 [main] Executor - Request sent to: http://www.zillow.com/webservice/GetDeepSearchResults.htm?zws-id=X1-ZWz19thqfce13f_3s95g&address=77+South+St+%23+2&citystatezip=2130
+[INFO ] 2017-03-07 20:17:15.945 [main] Executor - Extracted 1 properties from API call.
+[WARN ] 2017-03-07 20:17:16.461 [main] MysqlWriter - Property Details already exist in database: ZPID = 2119249872
+[INFO ] 2017-03-07 20:17:16.872 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:17:16.873 [main] MysqlWriter - Executing query: com.mysql.jdbc.JDBC42PreparedStatement@5542c4ed: SELECT zpid FROM Properties WHERE zpid = 2119249872;
+[WARN ] 2017-03-07 20:17:16.905 [main] MysqlWriter - Property already exists in database. ZPID = 2119249872
+[INFO ] 2017-03-07 20:17:16.907 [main] MysqlWriter - Executing query: com.mysql.jdbc.JDBC42PreparedStatement@1573f9fc: INSERT INTO Properties(zpid, streetAddress, zipcode, city, state, latitude, longitude, regionID, countyCode, useCode, yearBuilt, lotSizeSqFt, finishedSqFt, bathroomCount, bedroomCount, lastSoldDate, lastSoldPrice) VALUES (2119249872,'77 South St # 2',2130,'Jamaica Plain','MA',42.30703,-71.115654,154795,0,'Apartment',0,0,0,2.0,3,'2016-09-08 00:00:00',613000)
+[ERROR] 2017-03-07 20:17:16.976 [main] MysqlWriter - Error occured when inserting Property: 
+com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Duplicate entry '2119249872' for key 'PRIMARY'
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method) ~[?:1.8.0_60]
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62) ~[?:1.8.0_60]
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45) ~[?:1.8.0_60]
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:422) ~[?:1.8.0_60]
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:404) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.Util.getInstance(Util.java:387) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:932) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3878) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3814) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:2478) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2625) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2551) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.PreparedStatement.executeInternal(PreparedStatement.java:1861) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.PreparedStatement.execute(PreparedStatement.java:1192) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at main.java.dbConnectors.MysqlWriter.insertObject(MysqlWriter.java:234) [classes/:?]
+	at main.java.classes_for_db.Property.writeToDB(Property.java:1417) [classes/:?]
+	at main.java.execute.Executor.getDataForAddress(Executor.java:123) [classes/:?]
+	at main.java.execute.Executor.run(Executor.java:68) [classes/:?]
+	at main.java.execute.Main.main(Main.java:55) [classes/:?]
+[WARN ] 2017-03-07 20:17:17.058 [main] MysqlWriter - Did not insert zestimate because an identical zestimate already exists in the database. 
+ ZPID: 2119249872, Zestimate: 0, Last Updated: Wed Dec 31 00:00:00 EST 1969
+[WARN ] 2017-03-07 20:17:17.081 [main] MysqlWriter - Neighborhood already exists in database: regionID = 154795
+[INFO ] 2017-03-07 20:17:17.108 [main] MysqlWriter - Tax Assessment Successfully Added For ZPID: 2119249872
+[INFO ] 2017-03-07 20:17:17.600 [main] Executor - Finished processing address. API Calls remaining: 497
+[INFO ] 2017-03-07 20:17:17.736 [main] Executor - Making API Call to GetDeepSearchResults with params: {address=77 South St # 2, citystatezip=2130}
+[INFO ] 2017-03-07 20:17:18.156 [main] Executor - Request sent to: http://www.zillow.com/webservice/GetDeepSearchResults.htm?zws-id=X1-ZWz19thqfce13f_3s95g&address=77+South+St+%23+2&citystatezip=2130
+[INFO ] 2017-03-07 20:17:18.162 [main] Executor - Extracted 1 properties from API call.
+[WARN ] 2017-03-07 20:17:18.801 [main] MysqlWriter - Property Details already exist in database: ZPID = 2119249872
+[INFO ] 2017-03-07 20:17:19.171 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:17:19.172 [main] MysqlWriter - Executing query: com.mysql.jdbc.JDBC42PreparedStatement@3bf7ca37: SELECT zpid FROM Properties WHERE zpid = 2119249872;
+[WARN ] 2017-03-07 20:17:19.201 [main] MysqlWriter - Property already exists in database. ZPID = 2119249872
+[INFO ] 2017-03-07 20:17:19.204 [main] MysqlWriter - Executing query: com.mysql.jdbc.JDBC42PreparedStatement@79079097: INSERT INTO Properties(zpid, streetAddress, zipcode, city, state, latitude, longitude, regionID, countyCode, useCode, yearBuilt, lotSizeSqFt, finishedSqFt, bathroomCount, bedroomCount, lastSoldDate, lastSoldPrice) VALUES (2119249872,'77 South St # 2',2130,'Jamaica Plain','MA',42.30703,-71.115654,154795,0,'Apartment',0,0,0,2.0,3,'2016-09-08 00:00:00',613000)
+[ERROR] 2017-03-07 20:17:19.225 [main] MysqlWriter - Error occured when inserting Property: 
+com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Duplicate entry '2119249872' for key 'PRIMARY'
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method) ~[?:1.8.0_60]
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62) ~[?:1.8.0_60]
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45) ~[?:1.8.0_60]
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:422) ~[?:1.8.0_60]
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:404) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.Util.getInstance(Util.java:387) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:932) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3878) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3814) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:2478) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2625) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2551) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.PreparedStatement.executeInternal(PreparedStatement.java:1861) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.PreparedStatement.execute(PreparedStatement.java:1192) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at main.java.dbConnectors.MysqlWriter.insertObject(MysqlWriter.java:234) [classes/:?]
+	at main.java.classes_for_db.Property.writeToDB(Property.java:1417) [classes/:?]
+	at main.java.execute.Executor.getDataForAddress(Executor.java:123) [classes/:?]
+	at main.java.execute.Executor.run(Executor.java:68) [classes/:?]
+	at main.java.execute.Main.main(Main.java:55) [classes/:?]
+[WARN ] 2017-03-07 20:17:19.253 [main] MysqlWriter - Did not insert zestimate because an identical zestimate already exists in the database. 
+ ZPID: 2119249872, Zestimate: 0, Last Updated: Wed Dec 31 00:00:00 EST 1969
+[WARN ] 2017-03-07 20:17:19.278 [main] MysqlWriter - Neighborhood already exists in database: regionID = 154795
+[INFO ] 2017-03-07 20:17:19.301 [main] MysqlWriter - Tax Assessment Successfully Added For ZPID: 2119249872
+[INFO ] 2017-03-07 20:17:19.774 [main] Executor - Finished processing address. API Calls remaining: 494
+[INFO ] 2017-03-07 20:17:19.907 [main] Executor - Making API Call to GetDeepSearchResults with params: {address=77 South St # 2, citystatezip=2130}
+[INFO ] 2017-03-07 20:17:20.307 [main] Executor - Request sent to: http://www.zillow.com/webservice/GetDeepSearchResults.htm?zws-id=X1-ZWz19thqfce13f_3s95g&address=77+South+St+%23+2&citystatezip=2130
+[INFO ] 2017-03-07 20:17:20.312 [main] Executor - Extracted 1 properties from API call.
+[WARN ] 2017-03-07 20:17:20.951 [main] MysqlWriter - Property Details already exist in database: ZPID = 2119249872
+[INFO ] 2017-03-07 20:19:48.950 [main] Main - Beginning Zillow Spidering
+[INFO ] 2017-03-07 20:19:49.451 [main] Executor - Instantiating Executor with API Call Limit of 500
+[INFO ] 2017-03-07 20:19:49.656 [main] Executor - Making API Call to GetDeepSearchResults with params: {address=77 South St # 2, citystatezip=2130}
+[INFO ] 2017-03-07 20:19:51.680 [main] Executor - Request sent to: http://www.zillow.com/webservice/GetDeepSearchResults.htm?zws-id=X1-ZWz19thqfce13f_3s95g&address=77+South+St+%23+2&citystatezip=2130
+[INFO ] 2017-03-07 20:19:51.696 [main] Executor - Extracted 1 properties from API call.
+[WARN ] 2017-03-07 20:19:52.531 [main] MysqlWriter - Property Details already exist in database: ZPID = 2119249872
+[INFO ] 2017-03-07 20:19:52.911 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:19:52.912 [main] MysqlWriter - Executing query: com.mysql.jdbc.JDBC42PreparedStatement@5542c4ed: SELECT zpid FROM Properties WHERE zpid = 2119249872;
+[WARN ] 2017-03-07 20:19:53.162 [main] MysqlWriter - Property already exists in database. ZPID = 2119249872 Will not attempt to reinsert property.
+[WARN ] 2017-03-07 20:19:53.205 [main] MysqlWriter - Did not insert zestimate because an identical zestimate already exists in the database. 
+ ZPID: 2119249872, Zestimate: 0, Last Updated: Wed Dec 31 00:00:00 EST 1969
+[WARN ] 2017-03-07 20:19:53.228 [main] MysqlWriter - Neighborhood already exists in database: regionID = 154795
+[INFO ] 2017-03-07 20:19:53.257 [main] MysqlWriter - Tax Assessment Successfully Added For ZPID: 2119249872
+[INFO ] 2017-03-07 20:19:53.512 [main] Executor - Finished processing address. API Calls remaining: 497
+[INFO ] 2017-03-07 20:19:53.685 [main] Executor - Making API Call to GetDeepSearchResults with params: {address=77 South St # 2, citystatezip=2130}
+[INFO ] 2017-03-07 20:19:54.112 [main] Executor - Request sent to: http://www.zillow.com/webservice/GetDeepSearchResults.htm?zws-id=X1-ZWz19thqfce13f_3s95g&address=77+South+St+%23+2&citystatezip=2130
+[INFO ] 2017-03-07 20:19:54.117 [main] Executor - Extracted 1 properties from API call.
+[WARN ] 2017-03-07 20:19:54.771 [main] MysqlWriter - Property Details already exist in database: ZPID = 2119249872
+[INFO ] 2017-03-07 20:19:55.291 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:19:55.292 [main] MysqlWriter - Executing query: com.mysql.jdbc.JDBC42PreparedStatement@682b2fa: SELECT zpid FROM Properties WHERE zpid = 2119249872;
+[WARN ] 2017-03-07 20:19:55.321 [main] MysqlWriter - Property already exists in database. ZPID = 2119249872 Will not attempt to reinsert property.
+[WARN ] 2017-03-07 20:19:55.344 [main] MysqlWriter - Did not insert zestimate because an identical zestimate already exists in the database. 
+ ZPID: 2119249872, Zestimate: 0, Last Updated: Wed Dec 31 00:00:00 EST 1969
+[WARN ] 2017-03-07 20:19:55.369 [main] MysqlWriter - Neighborhood already exists in database: regionID = 154795
+[INFO ] 2017-03-07 20:19:55.409 [main] MysqlWriter - Tax Assessment Successfully Added For ZPID: 2119249872
+[INFO ] 2017-03-07 20:19:55.957 [main] Executor - Finished processing address. API Calls remaining: 494
+[INFO ] 2017-03-07 20:19:56.098 [main] Executor - Making API Call to GetDeepSearchResults with params: {address=77 South St # 2, citystatezip=2130}
+[INFO ] 2017-03-07 20:19:56.570 [main] Executor - Request sent to: http://www.zillow.com/webservice/GetDeepSearchResults.htm?zws-id=X1-ZWz19thqfce13f_3s95g&address=77+South+St+%23+2&citystatezip=2130
+[INFO ] 2017-03-07 20:19:56.575 [main] Executor - Extracted 1 properties from API call.
+[WARN ] 2017-03-07 20:19:57.121 [main] MysqlWriter - Property Details already exist in database: ZPID = 2119249872
+[INFO ] 2017-03-07 20:19:57.651 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:19:57.652 [main] MysqlWriter - Executing query: com.mysql.jdbc.JDBC42PreparedStatement@3eb738bb: SELECT zpid FROM Properties WHERE zpid = 2119249872;
+[WARN ] 2017-03-07 20:19:57.691 [main] MysqlWriter - Property already exists in database. ZPID = 2119249872 Will not attempt to reinsert property.
+[WARN ] 2017-03-07 20:19:57.719 [main] MysqlWriter - Did not insert zestimate because an identical zestimate already exists in the database. 
+ ZPID: 2119249872, Zestimate: 0, Last Updated: Wed Dec 31 00:00:00 EST 1969
+[WARN ] 2017-03-07 20:19:57.750 [main] MysqlWriter - Neighborhood already exists in database: regionID = 154795
+[INFO ] 2017-03-07 20:19:57.786 [main] MysqlWriter - Tax Assessment Successfully Added For ZPID: 2119249872
+[INFO ] 2017-03-07 20:19:57.959 [main] Executor - Finished processing address. API Calls remaining: 491
+[INFO ] 2017-03-07 20:19:58.110 [main] Executor - Making API Call to GetDeepSearchResults with params: {address=77 South St # 2, citystatezip=2130}
+[INFO ] 2017-03-07 20:19:58.544 [main] Executor - Request sent to: http://www.zillow.com/webservice/GetDeepSearchResults.htm?zws-id=X1-ZWz19thqfce13f_3s95g&address=77+South+St+%23+2&citystatezip=2130
+[INFO ] 2017-03-07 20:19:58.548 [main] Executor - Extracted 1 properties from API call.
+[WARN ] 2017-03-07 20:19:59.162 [main] MysqlWriter - Property Details already exist in database: ZPID = 2119249872
+[INFO ] 2017-03-07 20:19:59.691 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:19:59.692 [main] MysqlWriter - Executing query: com.mysql.jdbc.JDBC42PreparedStatement@4116aac9: SELECT zpid FROM Properties WHERE zpid = 2119249872;
+[WARN ] 2017-03-07 20:19:59.721 [main] MysqlWriter - Property already exists in database. ZPID = 2119249872 Will not attempt to reinsert property.
+[WARN ] 2017-03-07 20:19:59.743 [main] MysqlWriter - Did not insert zestimate because an identical zestimate already exists in the database. 
+ ZPID: 2119249872, Zestimate: 0, Last Updated: Wed Dec 31 00:00:00 EST 1969
+[WARN ] 2017-03-07 20:19:59.766 [main] MysqlWriter - Neighborhood already exists in database: regionID = 154795
+[INFO ] 2017-03-07 20:19:59.793 [main] MysqlWriter - Tax Assessment Successfully Added For ZPID: 2119249872
+[INFO ] 2017-03-07 20:20:00.041 [main] Executor - Finished processing address. API Calls remaining: 488
+[INFO ] 2017-03-07 20:20:00.168 [main] Executor - Making API Call to GetDeepSearchResults with params: {address=77 South St # 2, citystatezip=2130}
+[INFO ] 2017-03-07 20:20:00.501 [main] Executor - Request sent to: http://www.zillow.com/webservice/GetDeepSearchResults.htm?zws-id=X1-ZWz19thqfce13f_3s95g&address=77+South+St+%23+2&citystatezip=2130
+[INFO ] 2017-03-07 20:20:00.506 [main] Executor - Extracted 1 properties from API call.
+[WARN ] 2017-03-07 20:20:01.101 [main] MysqlWriter - Property Details already exist in database: ZPID = 2119249872
+[INFO ] 2017-03-07 20:20:01.631 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:20:01.632 [main] MysqlWriter - Executing query: com.mysql.jdbc.JDBC42PreparedStatement@4d1c00d0: SELECT zpid FROM Properties WHERE zpid = 2119249872;
+[WARN ] 2017-03-07 20:20:01.661 [main] MysqlWriter - Property already exists in database. ZPID = 2119249872 Will not attempt to reinsert property.
+[WARN ] 2017-03-07 20:20:01.683 [main] MysqlWriter - Did not insert zestimate because an identical zestimate already exists in the database. 
+ ZPID: 2119249872, Zestimate: 0, Last Updated: Wed Dec 31 00:00:00 EST 1969
+[WARN ] 2017-03-07 20:20:01.705 [main] MysqlWriter - Neighborhood already exists in database: regionID = 154795
+[INFO ] 2017-03-07 20:20:01.728 [main] MysqlWriter - Tax Assessment Successfully Added For ZPID: 2119249872
+[INFO ] 2017-03-07 20:20:01.985 [main] Executor - Finished processing address. API Calls remaining: 485
+[INFO ] 2017-03-07 20:20:02.115 [main] Executor - Making API Call to GetDeepSearchResults with params: {address=77 South St # 2, citystatezip=2130}
+[INFO ] 2017-03-07 20:20:02.612 [main] Executor - Request sent to: http://www.zillow.com/webservice/GetDeepSearchResults.htm?zws-id=X1-ZWz19thqfce13f_3s95g&address=77+South+St+%23+2&citystatezip=2130
+[INFO ] 2017-03-07 20:20:02.616 [main] Executor - Extracted 1 properties from API call.
+[WARN ] 2017-03-07 20:20:03.171 [main] MysqlWriter - Property Details already exist in database: ZPID = 2119249872
+[INFO ] 2017-03-07 20:20:03.612 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:20:03.613 [main] MysqlWriter - Executing query: com.mysql.jdbc.JDBC42PreparedStatement@ba2f4ec: SELECT zpid FROM Properties WHERE zpid = 2119249872;
+[WARN ] 2017-03-07 20:20:03.640 [main] MysqlWriter - Property already exists in database. ZPID = 2119249872 Will not attempt to reinsert property.
+[WARN ] 2017-03-07 20:20:03.671 [main] MysqlWriter - Did not insert zestimate because an identical zestimate already exists in the database. 
+ ZPID: 2119249872, Zestimate: 0, Last Updated: Wed Dec 31 00:00:00 EST 1969
+[WARN ] 2017-03-07 20:20:03.692 [main] MysqlWriter - Neighborhood already exists in database: regionID = 154795
+[INFO ] 2017-03-07 20:20:03.719 [main] MysqlWriter - Tax Assessment Successfully Added For ZPID: 2119249872
+[INFO ] 2017-03-07 20:20:03.870 [main] Executor - Finished processing address. API Calls remaining: 482
+[INFO ] 2017-03-07 20:20:03.999 [main] Executor - Making API Call to GetDeepSearchResults with params: {address=77 South St # 2, citystatezip=2130}
+[INFO ] 2017-03-07 20:20:04.454 [main] Executor - Request sent to: http://www.zillow.com/webservice/GetDeepSearchResults.htm?zws-id=X1-ZWz19thqfce13f_3s95g&address=77+South+St+%23+2&citystatezip=2130
+[INFO ] 2017-03-07 20:20:04.457 [main] Executor - Extracted 1 properties from API call.
+[WARN ] 2017-03-07 20:20:05.001 [main] MysqlWriter - Property Details already exist in database: ZPID = 2119249872
+[INFO ] 2017-03-07 20:20:05.351 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:20:05.352 [main] MysqlWriter - Executing query: com.mysql.jdbc.JDBC42PreparedStatement@2a5c8d3f: SELECT zpid FROM Properties WHERE zpid = 2119249872;
+[WARN ] 2017-03-07 20:20:05.381 [main] MysqlWriter - Property already exists in database. ZPID = 2119249872 Will not attempt to reinsert property.
+[WARN ] 2017-03-07 20:20:05.405 [main] MysqlWriter - Did not insert zestimate because an identical zestimate already exists in the database. 
+ ZPID: 2119249872, Zestimate: 0, Last Updated: Wed Dec 31 00:00:00 EST 1969
+[WARN ] 2017-03-07 20:20:05.435 [main] MysqlWriter - Neighborhood already exists in database: regionID = 154795
+[INFO ] 2017-03-07 20:20:05.458 [main] MysqlWriter - Tax Assessment Successfully Added For ZPID: 2119249872
+[INFO ] 2017-03-07 20:20:05.655 [main] Executor - Finished processing address. API Calls remaining: 479
+[INFO ] 2017-03-07 20:20:05.783 [main] Executor - Making API Call to GetDeepSearchResults with params: {address=77 South St # 2, citystatezip=2130}
+[INFO ] 2017-03-07 20:28:29.570 [main] Main - Beginning Zillow Spidering
+[INFO ] 2017-03-07 20:28:30.149 [main] Executor - Instantiating Executor with API Call Limit of 500
+[INFO ] 2017-03-07 20:28:30.338 [main] Executor - Making API Call to GetDeepSearchResults with params: {address=77 South St # 2, citystatezip=2130}
+[INFO ] 2017-03-07 20:28:31.468 [main] Executor - Request sent to: http://www.zillow.com/webservice/GetDeepSearchResults.htm?zws-id=X1-ZWz19thqfce13f_3s95g&address=77+South+St+%23+2&citystatezip=2130
+[INFO ] 2017-03-07 20:28:31.481 [main] Executor - Extracted 1 properties from API call.
+[WARN ] 2017-03-07 20:28:32.014 [main] MysqlWriter - Property Details already exist in database: ZPID = 2119249872
+[INFO ] 2017-03-07 20:28:32.372 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:28:32.373 [main] MysqlWriter - Executing query: com.mysql.jdbc.JDBC42PreparedStatement@5542c4ed: SELECT zpid FROM Properties WHERE zpid = 2119249872;
+[WARN ] 2017-03-07 20:28:32.399 [main] MysqlWriter - Property already exists in database. ZPID = 2119249872 Will not attempt to reinsert property.
+[WARN ] 2017-03-07 20:28:32.438 [main] MysqlWriter - Did not insert zestimate because an identical zestimate already exists in the database. 
+ ZPID: 2119249872, Zestimate: 0, Last Updated: Wed Dec 31 00:00:00 EST 1969
+[WARN ] 2017-03-07 20:28:32.467 [main] MysqlWriter - Neighborhood already exists in database: regionID = 154795
+[INFO ] 2017-03-07 20:28:32.500 [main] MysqlWriter - Tax Assessment Successfully Added For ZPID: 2119249872
+[INFO ] 2017-03-07 20:28:32.906 [main] Executor - Finished processing address. API Calls remaining: 497
+[INFO ] 2017-03-07 20:28:33.040 [main] Executor - Making API Call to GetDeepSearchResults with params: {address=77 South St # 2, citystatezip=2130}
+[INFO ] 2017-03-07 20:28:33.492 [main] Executor - Request sent to: http://www.zillow.com/webservice/GetDeepSearchResults.htm?zws-id=X1-ZWz19thqfce13f_3s95g&address=77+South+St+%23+2&citystatezip=2130
+[INFO ] 2017-03-07 20:28:33.498 [main] Executor - Extracted 1 properties from API call.
+[WARN ] 2017-03-07 20:28:34.061 [main] MysqlWriter - Property Details already exist in database: ZPID = 2119249872
+[INFO ] 2017-03-07 20:28:34.562 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:28:34.563 [main] MysqlWriter - Executing query: com.mysql.jdbc.JDBC42PreparedStatement@682b2fa: SELECT zpid FROM Properties WHERE zpid = 2119249872;
+[WARN ] 2017-03-07 20:28:34.602 [main] MysqlWriter - Property already exists in database. ZPID = 2119249872 Will not attempt to reinsert property.
+[WARN ] 2017-03-07 20:28:34.630 [main] MysqlWriter - Did not insert zestimate because an identical zestimate already exists in the database. 
+ ZPID: 2119249872, Zestimate: 0, Last Updated: Wed Dec 31 00:00:00 EST 1969
+[WARN ] 2017-03-07 20:28:34.654 [main] MysqlWriter - Neighborhood already exists in database: regionID = 154795
+[INFO ] 2017-03-07 20:28:34.685 [main] MysqlWriter - Tax Assessment Successfully Added For ZPID: 2119249872
+[INFO ] 2017-03-07 20:28:35.070 [main] Executor - Finished processing address. API Calls remaining: 494
+[INFO ] 2017-03-07 20:28:35.197 [main] Executor - Making API Call to GetDeepSearchResults with params: {address=77 South St # 2, citystatezip=2130}
+[INFO ] 2017-03-07 20:28:35.638 [main] Executor - Request sent to: http://www.zillow.com/webservice/GetDeepSearchResults.htm?zws-id=X1-ZWz19thqfce13f_3s95g&address=77+South+St+%23+2&citystatezip=2130
+[INFO ] 2017-03-07 20:28:35.643 [main] Executor - Extracted 1 properties from API call.
+[WARN ] 2017-03-07 20:28:36.292 [main] MysqlWriter - Property Details already exist in database: ZPID = 2119249872
+[INFO ] 2017-03-07 20:28:36.682 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:28:36.683 [main] MysqlWriter - Executing query: com.mysql.jdbc.JDBC42PreparedStatement@3eb738bb: SELECT zpid FROM Properties WHERE zpid = 2119249872;
+[WARN ] 2017-03-07 20:28:36.712 [main] MysqlWriter - Property already exists in database. ZPID = 2119249872 Will not attempt to reinsert property.
+[WARN ] 2017-03-07 20:28:36.741 [main] MysqlWriter - Did not insert zestimate because an identical zestimate already exists in the database. 
+ ZPID: 2119249872, Zestimate: 0, Last Updated: Wed Dec 31 00:00:00 EST 1969
+[WARN ] 2017-03-07 20:28:36.766 [main] MysqlWriter - Neighborhood already exists in database: regionID = 154795
+[INFO ] 2017-03-07 20:28:36.797 [main] MysqlWriter - Tax Assessment Successfully Added For ZPID: 2119249872
+[INFO ] 2017-03-07 20:28:36.971 [main] Executor - Finished processing address. API Calls remaining: 491
+[INFO ] 2017-03-07 20:28:37.090 [main] Executor - Making API Call to GetDeepSearchResults with params: {address=77 South St # 2, citystatezip=2130}
+[INFO ] 2017-03-07 20:28:37.686 [main] Executor - Request sent to: http://www.zillow.com/webservice/GetDeepSearchResults.htm?zws-id=X1-ZWz19thqfce13f_3s95g&address=77+South+St+%23+2&citystatezip=2130
+[INFO ] 2017-03-07 20:28:37.689 [main] Executor - Extracted 1 properties from API call.
+[WARN ] 2017-03-07 20:28:38.242 [main] MysqlWriter - Property Details already exist in database: ZPID = 2119249872
+[INFO ] 2017-03-07 20:28:38.767 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:28:38.767 [main] MysqlWriter - Executing query: com.mysql.jdbc.JDBC42PreparedStatement@4116aac9: SELECT zpid FROM Properties WHERE zpid = 2119249872;
+[WARN ] 2017-03-07 20:28:38.812 [main] MysqlWriter - Property already exists in database. ZPID = 2119249872 Will not attempt to reinsert property.
+[WARN ] 2017-03-07 20:28:38.849 [main] MysqlWriter - Did not insert zestimate because an identical zestimate already exists in the database. 
+ ZPID: 2119249872, Zestimate: 0, Last Updated: Wed Dec 31 00:00:00 EST 1969
+[WARN ] 2017-03-07 20:28:38.891 [main] MysqlWriter - Neighborhood already exists in database: regionID = 154795
+[INFO ] 2017-03-07 20:28:38.926 [main] MysqlWriter - Tax Assessment Successfully Added For ZPID: 2119249872
+[INFO ] 2017-03-07 20:28:39.245 [main] Executor - Finished processing address. API Calls remaining: 488
+[INFO ] 2017-03-07 20:34:52.234 [main] Main - Beginning Zillow Spidering
+[INFO ] 2017-03-07 20:34:52.745 [main] Executor - Instantiating Executor with API Call Limit of 500
+[INFO ] 2017-03-07 20:34:52.806 [main] MySQLAddressHandler - Now executing query: com.mysql.jdbc.JDBC42PreparedStatement@130f889: SELECT COUNT(Addresses.address_id) FROM Addresses INNER JOIN ZipGeo ON Addresses.zip = ZipGeo.zip WHERE api_result = 1 AND ZipGeo.MSAName LIKE "Boston-Cambridge-Quincy, MA-NH MSA"
+[INFO ] 2017-03-07 20:34:52.846 [main] MySQLAddressHandler - tryNewAddress set to: true
+[INFO ] 2017-03-07 20:34:52.847 [main] MySQLAddressHandler - Executing query: com.mysql.jdbc.JDBC42PreparedStatement@1188e820: SELECT Addresses.address, Addresses.zip FROM Addresses INNER JOIN ZipGeo ON Addresses.zip = ZipGeo.zip WHERE api_result IS NULL AND ZipGeo.MSAName LIKE "Boston-Cambridge-Quincy, MA-NH MSA" LIMIT 1
+[INFO ] 2017-03-07 20:34:52.887 [main] MySQLAddressHandler - Now executing query: com.mysql.jdbc.JDBC42PreparedStatement@2f490758: SELECT Addresses.address, Addresses.zip FROM Addresses INNER JOIN ZipGeo ON Addresses.zip = ZipGeo.zip WHERE api_result = 1 AND ZipGeo.MSAName LIKE "Boston-Cambridge-Quincy, MA-NH MSA" ORDER BY last_updated ASC LIMIT 1
+[INFO ] 2017-03-07 20:34:52.929 [main] MySQLAddressHandler - Response updated to contain property that had the oldest successfull update.
+[INFO ] 2017-03-07 20:34:52.930 [main] MySQLAddressHandler - Response updated to contain property that had the oldest successfull update.
+[INFO ] 2017-03-07 20:34:52.931 [main] Executor - Making API Call to GetDeepSearchResults with params: {address=77 South St # 2, citystatezip=2130}
+[INFO ] 2017-03-07 20:34:54.241 [main] Executor - Request sent to: http://www.zillow.com/webservice/GetDeepSearchResults.htm?zws-id=X1-ZWz19thqfce13f_3s95g&address=77+South+St+%23+2&citystatezip=2130
+[INFO ] 2017-03-07 20:34:54.257 [main] Executor - Extracted 1 properties from API call.
+[WARN ] 2017-03-07 20:34:54.773 [main] MysqlWriter - Property Details already exist in database: ZPID = 2119249872
+[INFO ] 2017-03-07 20:34:55.133 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:34:55.134 [main] MysqlWriter - Executing query: com.mysql.jdbc.JDBC42PreparedStatement@5542c4ed: SELECT zpid FROM Properties WHERE zpid = 2119249872;
+[WARN ] 2017-03-07 20:34:55.161 [main] MysqlWriter - Property already exists in database. ZPID = 2119249872 Will not attempt to reinsert property.
+[WARN ] 2017-03-07 20:34:55.194 [main] MysqlWriter - Did not insert zestimate because an identical zestimate already exists in the database. 
+ ZPID: 2119249872, Zestimate: 0, Last Updated: Wed Dec 31 00:00:00 EST 1969
+[WARN ] 2017-03-07 20:34:55.216 [main] MysqlWriter - Neighborhood already exists in database: regionID = 154795
+[INFO ] 2017-03-07 20:34:55.255 [main] MysqlWriter - Tax Assessment Successfully Added For ZPID: 2119249872
+[INFO ] 2017-03-07 20:34:55.766 [main] Executor - Finished processing address. API Calls remaining: 497
+[INFO ] 2017-03-07 20:34:55.767 [main] MySQLAddressHandler - Now executing query: com.mysql.jdbc.JDBC42PreparedStatement@2f4948e4: SELECT COUNT(Addresses.address_id) FROM Addresses INNER JOIN ZipGeo ON Addresses.zip = ZipGeo.zip WHERE api_result = 1 AND ZipGeo.MSAName LIKE "Boston-Cambridge-Quincy, MA-NH MSA"
+[INFO ] 2017-03-07 20:34:55.808 [main] MySQLAddressHandler - tryNewAddress set to: true
+[INFO ] 2017-03-07 20:34:55.809 [main] MySQLAddressHandler - Executing query: com.mysql.jdbc.JDBC42PreparedStatement@10683d9d: SELECT Addresses.address, Addresses.zip FROM Addresses INNER JOIN ZipGeo ON Addresses.zip = ZipGeo.zip WHERE api_result IS NULL AND ZipGeo.MSAName LIKE "Boston-Cambridge-Quincy, MA-NH MSA" LIMIT 1
+[INFO ] 2017-03-07 20:34:55.844 [main] MySQLAddressHandler - Now executing query: com.mysql.jdbc.JDBC42PreparedStatement@3fc2959f: SELECT Addresses.address, Addresses.zip FROM Addresses INNER JOIN ZipGeo ON Addresses.zip = ZipGeo.zip WHERE api_result = 1 AND ZipGeo.MSAName LIKE "Boston-Cambridge-Quincy, MA-NH MSA" ORDER BY last_updated ASC LIMIT 1
+[INFO ] 2017-03-07 20:34:55.908 [main] MySQLAddressHandler - Response updated to contain property that had the oldest successfull update.
+[INFO ] 2017-03-07 20:34:55.909 [main] MySQLAddressHandler - Response updated to contain property that had the oldest successfull update.
+[INFO ] 2017-03-07 20:34:55.909 [main] Executor - Making API Call to GetDeepSearchResults with params: {address=77 South St # 2, citystatezip=2130}
+[INFO ] 2017-03-07 20:34:56.366 [main] Executor - Request sent to: http://www.zillow.com/webservice/GetDeepSearchResults.htm?zws-id=X1-ZWz19thqfce13f_3s95g&address=77+South+St+%23+2&citystatezip=2130
+[INFO ] 2017-03-07 20:34:56.372 [main] Executor - Extracted 1 properties from API call.
+[WARN ] 2017-03-07 20:34:56.963 [main] MysqlWriter - Property Details already exist in database: ZPID = 2119249872
+[INFO ] 2017-03-07 20:34:57.323 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:34:57.324 [main] MysqlWriter - Executing query: com.mysql.jdbc.JDBC42PreparedStatement@682b2fa: SELECT zpid FROM Properties WHERE zpid = 2119249872;
+[WARN ] 2017-03-07 20:34:57.353 [main] MysqlWriter - Property already exists in database. ZPID = 2119249872 Will not attempt to reinsert property.
+[WARN ] 2017-03-07 20:34:57.384 [main] MysqlWriter - Did not insert zestimate because an identical zestimate already exists in the database. 
+ ZPID: 2119249872, Zestimate: 0, Last Updated: Wed Dec 31 00:00:00 EST 1969
+[WARN ] 2017-03-07 20:34:57.412 [main] MysqlWriter - Neighborhood already exists in database: regionID = 154795
+[INFO ] 2017-03-07 20:34:57.442 [main] MysqlWriter - Tax Assessment Successfully Added For ZPID: 2119249872
+[INFO ] 2017-03-07 20:43:18.355 [main] Main - Beginning Zillow Spidering
+[INFO ] 2017-03-07 20:43:18.882 [main] Executor - Instantiating Executor with API Call Limit of 500
+[INFO ] 2017-03-07 20:43:18.950 [main] MySQLAddressHandler - Now executing query: com.mysql.jdbc.JDBC42PreparedStatement@130f889: SELECT COUNT(Addresses.address_id) FROM Addresses INNER JOIN ZipGeo ON Addresses.zip = ZipGeo.zip WHERE api_result = 1 AND ZipGeo.MSAName LIKE "Boston-Cambridge-Quincy, MA-NH MSA"
+[INFO ] 2017-03-07 20:43:18.997 [main] MySQLAddressHandler - tryNewAddress set to: true
+[INFO ] 2017-03-07 20:43:18.998 [main] MySQLAddressHandler - Executing query: com.mysql.jdbc.JDBC42PreparedStatement@1188e820: SELECT Addresses.address, Addresses.zip FROM Addresses INNER JOIN ZipGeo ON Addresses.zip = ZipGeo.zip WHERE api_result IS NULL AND ZipGeo.MSAName LIKE "Boston-Cambridge-Quincy, MA-NH MSA" LIMIT 1
+[INFO ] 2017-03-07 20:43:19.059 [main] MySQLAddressHandler - Now executing query: com.mysql.jdbc.JDBC42PreparedStatement@2f490758: SELECT Addresses.address, Addresses.zip FROM Addresses INNER JOIN ZipGeo ON Addresses.zip = ZipGeo.zip WHERE api_result = 1 AND ZipGeo.MSAName LIKE "Boston-Cambridge-Quincy, MA-NH MSA" ORDER BY last_updated ASC LIMIT 1
+[INFO ] 2017-03-07 20:43:19.107 [main] MySQLAddressHandler - Response updated to contain property that had the oldest successfull update.
+[INFO ] 2017-03-07 20:43:19.108 [main] MySQLAddressHandler - Response updated to contain property that had the oldest successfull update.
+[INFO ] 2017-03-07 20:43:19.108 [main] Executor - Making API Call to GetDeepSearchResults with params: {address=77 South St # 2, citystatezip=2130}
+[INFO ] 2017-03-07 20:43:20.660 [main] Executor - Request sent to: http://www.zillow.com/webservice/GetDeepSearchResults.htm?zws-id=X1-ZWz19thqfce13f_3s95g&address=77+South+St+%23+2&citystatezip=2130
+[INFO ] 2017-03-07 20:43:20.720 [main] Executor - Extracted 1 properties from API call.
+[WARN ] 2017-03-07 20:43:21.354 [main] MysqlWriter - Property Details already exist in database: ZPID = 2119249872
+[INFO ] 2017-03-07 20:43:21.744 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:43:21.745 [main] MysqlWriter - Executing query: com.mysql.jdbc.JDBC42PreparedStatement@5542c4ed: SELECT zpid FROM Properties WHERE zpid = 2119249872;
+[WARN ] 2017-03-07 20:43:21.775 [main] MysqlWriter - Property already exists in database. ZPID = 2119249872 Will not attempt to reinsert property.
+[WARN ] 2017-03-07 20:43:21.809 [main] MysqlWriter - Did not insert zestimate because an identical zestimate already exists in the database. 
+ ZPID: 2119249872, Zestimate: 0, Last Updated: Wed Dec 31 00:00:00 EST 1969
+[WARN ] 2017-03-07 20:43:21.833 [main] MysqlWriter - Neighborhood already exists in database: regionID = 154795
+[INFO ] 2017-03-07 20:43:21.862 [main] MysqlWriter - Tax Assessment Successfully Added For ZPID: 2119249872
+[INFO ] 2017-03-07 20:43:22.431 [main] Executor - Finished processing address. API Calls remaining: 497
+[INFO ] 2017-03-07 20:43:22.433 [main] MySQLAddressHandler - Now executing query: com.mysql.jdbc.JDBC42PreparedStatement@2f4948e4: SELECT COUNT(Addresses.address_id) FROM Addresses INNER JOIN ZipGeo ON Addresses.zip = ZipGeo.zip WHERE api_result = 1 AND ZipGeo.MSAName LIKE "Boston-Cambridge-Quincy, MA-NH MSA"
+[INFO ] 2017-03-07 20:43:22.476 [main] MySQLAddressHandler - tryNewAddress set to: true
+[INFO ] 2017-03-07 20:43:22.477 [main] MySQLAddressHandler - Executing query: com.mysql.jdbc.JDBC42PreparedStatement@10683d9d: SELECT Addresses.address, Addresses.zip FROM Addresses INNER JOIN ZipGeo ON Addresses.zip = ZipGeo.zip WHERE api_result IS NULL AND ZipGeo.MSAName LIKE "Boston-Cambridge-Quincy, MA-NH MSA" LIMIT 1
+[INFO ] 2017-03-07 20:43:22.515 [main] MySQLAddressHandler - Now executing query: com.mysql.jdbc.JDBC42PreparedStatement@3fc2959f: SELECT Addresses.address, Addresses.zip FROM Addresses INNER JOIN ZipGeo ON Addresses.zip = ZipGeo.zip WHERE api_result = 1 AND ZipGeo.MSAName LIKE "Boston-Cambridge-Quincy, MA-NH MSA" ORDER BY last_updated ASC LIMIT 1
+[INFO ] 2017-03-07 20:43:22.554 [main] MySQLAddressHandler - Response updated to contain property that had the oldest successfull update.
+[INFO ] 2017-03-07 20:43:22.555 [main] MySQLAddressHandler - Response updated to contain property that had the oldest successfull update.
+[INFO ] 2017-03-07 20:43:22.555 [main] Executor - Making API Call to GetDeepSearchResults with params: {address=136 Marcella St, citystatezip=2119}
+[INFO ] 2017-03-07 20:43:23.031 [main] Executor - Request sent to: http://www.zillow.com/webservice/GetDeepSearchResults.htm?zws-id=X1-ZWz19thqfce13f_3s95g&address=136+Marcella+St&citystatezip=2119
+[INFO ] 2017-03-07 20:43:23.037 [main] Executor - Extracted 1 properties from API call.
+[INFO ] 2017-03-07 20:43:23.563 [main] MysqlWriter - Property Details were successfully inserted for zpid: 2142948584
+[INFO ] 2017-03-07 20:43:24.424 [main] BostonMSAValidator - Property 2120 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:43:24.492 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 2142948584 and compZPID = 59184729
+[INFO ] 2017-03-07 20:43:24.603 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:43:24.650 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 2142948584 and compZPID = 59132618
+[INFO ] 2017-03-07 20:43:24.749 [main] BostonMSAValidator - Property 2120 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:43:24.798 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 2142948584 and compZPID = 59188257
+[INFO ] 2017-03-07 20:43:24.884 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:43:24.936 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 2142948584 and compZPID = 59133566
+[INFO ] 2017-03-07 20:43:25.022 [main] BostonMSAValidator - Property 2120 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:43:25.074 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 2142948584 and compZPID = 2110918963
+[INFO ] 2017-03-07 20:43:25.163 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:43:25.209 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 2142948584 and compZPID = 2103004482
+[INFO ] 2017-03-07 20:43:25.292 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:43:25.345 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 2142948584 and compZPID = 59131658
+[INFO ] 2017-03-07 20:43:25.437 [main] BostonMSAValidator - Property 2121 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:43:25.488 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 2142948584 and compZPID = 59110893
+[INFO ] 2017-03-07 20:43:25.585 [main] BostonMSAValidator - Property 2121 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:43:25.632 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 2142948584 and compZPID = 59113263
+[INFO ] 2017-03-07 20:43:25.720 [main] BostonMSAValidator - Property 2121 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:43:25.770 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 2142948584 and compZPID = 59114055
+[INFO ] 2017-03-07 20:43:25.858 [main] BostonMSAValidator - Property 2121 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:43:25.908 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 2142948584 and compZPID = 59114058
+[INFO ] 2017-03-07 20:43:25.996 [main] BostonMSAValidator - Property 2121 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:43:26.043 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 2142948584 and compZPID = 59115468
+[INFO ] 2017-03-07 20:43:26.134 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:43:26.179 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 2142948584 and compZPID = 59131364
+[INFO ] 2017-03-07 20:43:26.275 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:43:26.347 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 2142948584 and compZPID = 59132172
+[INFO ] 2017-03-07 20:43:26.468 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:43:26.531 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 2142948584 and compZPID = 59132194
+[INFO ] 2017-03-07 20:43:26.624 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:43:26.674 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 2142948584 and compZPID = 59132299
+[INFO ] 2017-03-07 20:43:26.761 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:43:26.808 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 2142948584 and compZPID = 59132430
+[INFO ] 2017-03-07 20:43:26.897 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:43:26.944 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 2142948584 and compZPID = 59132813
+[INFO ] 2017-03-07 20:43:27.030 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:43:27.073 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 2142948584 and compZPID = 59133336
+[INFO ] 2017-03-07 20:43:27.159 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:43:27.207 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 2142948584 and compZPID = 59133348
+[INFO ] 2017-03-07 20:43:27.296 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:43:27.342 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 2142948584 and compZPID = 59133410
+[INFO ] 2017-03-07 20:43:27.433 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:43:27.482 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 2142948584 and compZPID = 59133571
+[INFO ] 2017-03-07 20:43:27.577 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:43:27.622 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 2142948584 and compZPID = 59162228
+[INFO ] 2017-03-07 20:43:27.728 [main] BostonMSAValidator - Property 2215 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:43:27.774 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 2142948584 and compZPID = 59168117
+[INFO ] 2017-03-07 20:43:27.860 [main] BostonMSAValidator - Property 2215 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:43:27.909 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 2142948584 and compZPID = 59168300
+[INFO ] 2017-03-07 20:43:28.000 [main] BostonMSAValidator - Property 2119 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:43:28.000 [main] MysqlWriter - Executing query: com.mysql.jdbc.JDBC42PreparedStatement@58a9760d: SELECT zpid FROM Properties WHERE zpid = 2142948584;
+[INFO ] 2017-03-07 20:43:28.025 [main] MysqlWriter - Executing query: com.mysql.jdbc.JDBC42PreparedStatement@71e9ddb4: INSERT INTO Properties(zpid, streetAddress, zipcode, city, state, latitude, longitude, regionID, countyCode, useCode, yearBuilt, lotSizeSqFt, finishedSqFt, bathroomCount, bedroomCount, lastSoldDate, lastSoldPrice) VALUES (2142948584,'136 Marcella St',2119,'Roxbury','MA',42.324947,-71.09691,54232,0,'MultiFamily2To4',0,0,0,2.0,4,'2016-05-20 00:00:00',443050)
+[INFO ] 2017-03-07 20:43:28.056 [main] MysqlWriter - Property Inserted Successfully: ZPID: 2142948584
+[INFO ] 2017-03-07 20:43:28.110 [main] MysqlWriter - Zetimate for zpid: 2142948584 has successfully been inserted.
+[WARN ] 2017-03-07 20:43:28.132 [main] MysqlWriter - Neighborhood already exists in database: regionID = 54232
+[INFO ] 2017-03-07 20:43:28.165 [main] MysqlWriter - Tax Assessment Successfully Added For ZPID: 2142948584
+[INFO ] 2017-03-07 20:43:28.231 [main] Executor - Finished processing address. API Calls remaining: 494
+[INFO ] 2017-03-07 20:43:28.232 [main] MySQLAddressHandler - Now executing query: com.mysql.jdbc.JDBC42PreparedStatement@707194ba: SELECT COUNT(Addresses.address_id) FROM Addresses INNER JOIN ZipGeo ON Addresses.zip = ZipGeo.zip WHERE api_result = 1 AND ZipGeo.MSAName LIKE "Boston-Cambridge-Quincy, MA-NH MSA"
+[INFO ] 2017-03-07 20:43:28.271 [main] MySQLAddressHandler - tryNewAddress set to: true
+[INFO ] 2017-03-07 20:43:28.272 [main] MySQLAddressHandler - Executing query: com.mysql.jdbc.JDBC42PreparedStatement@1190200a: SELECT Addresses.address, Addresses.zip FROM Addresses INNER JOIN ZipGeo ON Addresses.zip = ZipGeo.zip WHERE api_result IS NULL AND ZipGeo.MSAName LIKE "Boston-Cambridge-Quincy, MA-NH MSA" LIMIT 1
+[INFO ] 2017-03-07 20:43:28.320 [main] MySQLAddressHandler - Now executing query: com.mysql.jdbc.JDBC42PreparedStatement@6a2f6f80: SELECT Addresses.address, Addresses.zip FROM Addresses INNER JOIN ZipGeo ON Addresses.zip = ZipGeo.zip WHERE api_result = 1 AND ZipGeo.MSAName LIKE "Boston-Cambridge-Quincy, MA-NH MSA" ORDER BY last_updated ASC LIMIT 1
+[INFO ] 2017-03-07 20:43:28.362 [main] MySQLAddressHandler - Response updated to contain property that had the oldest successfull update.
+[INFO ] 2017-03-07 20:43:28.363 [main] MySQLAddressHandler - Response updated to contain property that had the oldest successfull update.
+[INFO ] 2017-03-07 20:43:28.363 [main] Executor - Making API Call to GetDeepSearchResults with params: {address=62 Tower St # 1, citystatezip=2130}
+[INFO ] 2017-03-07 20:43:28.777 [main] Executor - Request sent to: http://www.zillow.com/webservice/GetDeepSearchResults.htm?zws-id=X1-ZWz19thqfce13f_3s95g&address=62+Tower+St+%23+1&citystatezip=2130
+[INFO ] 2017-03-07 20:43:28.781 [main] Executor - Extracted 1 properties from API call.
+[INFO ] 2017-03-07 20:43:29.353 [main] MysqlWriter - Property Details were successfully inserted for zpid: 90137053
+[INFO ] 2017-03-07 20:43:30.113 [main] BostonMSAValidator - Property 2026 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:43:30.158 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 90137053 and compZPID = 57438779
+[INFO ] 2017-03-07 20:43:30.274 [main] BostonMSAValidator - Property 2136 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:43:30.321 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 90137053 and compZPID = 59127436
+[INFO ] 2017-03-07 20:43:30.416 [main] BostonMSAValidator - Property 2186 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:43:30.464 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 90137053 and compZPID = 2097869332
+[INFO ] 2017-03-07 20:43:30.553 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:43:30.596 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 90137053 and compZPID = 59130724
+[INFO ] 2017-03-07 20:43:30.690 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:43:30.738 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 90137053 and compZPID = 59133566
+[INFO ] 2017-03-07 20:43:30.832 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:43:30.887 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 90137053 and compZPID = 2103004482
+[INFO ] 2017-03-07 20:43:30.974 [main] BostonMSAValidator - Property 2189 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:43:31.020 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 90137053 and compZPID = 56624396
+[INFO ] 2017-03-07 20:43:31.111 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:43:31.166 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 90137053 and compZPID = 59133232
+[INFO ] 2017-03-07 20:43:31.261 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:43:31.306 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 90137053 and compZPID = 59133571
+[INFO ] 2017-03-07 20:43:31.395 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:43:31.442 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 90137053 and compZPID = 59134571
+[INFO ] 2017-03-07 20:43:31.535 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:43:31.590 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 90137053 and compZPID = 59134925
+[INFO ] 2017-03-07 20:43:31.677 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:43:31.727 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 90137053 and compZPID = 59134929
+[INFO ] 2017-03-07 20:43:31.810 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:43:31.863 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 90137053 and compZPID = 59135179
+[INFO ] 2017-03-07 20:43:31.961 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:43:32.006 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 90137053 and compZPID = 59135344
+[INFO ] 2017-03-07 20:43:32.093 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:43:32.140 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 90137053 and compZPID = 59135385
+[INFO ] 2017-03-07 20:43:32.233 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:43:32.284 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 90137053 and compZPID = 59135572
+[INFO ] 2017-03-07 20:43:32.409 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:43:32.470 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 90137053 and compZPID = 59136233
+[INFO ] 2017-03-07 20:43:32.572 [main] BostonMSAValidator - Property 2126 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:43:32.616 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 90137053 and compZPID = 59138494
+[INFO ] 2017-03-07 20:43:32.709 [main] BostonMSAValidator - Property 2126 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:43:32.760 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 90137053 and compZPID = 59139262
+[INFO ] 2017-03-07 20:43:32.850 [main] BostonMSAValidator - Property 2131 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:43:32.896 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 90137053 and compZPID = 59141473
+[INFO ] 2017-03-07 20:43:32.984 [main] BostonMSAValidator - Property 2131 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:43:33.034 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 90137053 and compZPID = 59141836
+[INFO ] 2017-03-07 20:43:33.123 [main] BostonMSAValidator - Property 2131 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:43:33.172 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 90137053 and compZPID = 59142188
+[INFO ] 2017-03-07 20:43:33.262 [main] BostonMSAValidator - Property 2131 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:43:33.310 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 90137053 and compZPID = 59144361
+[INFO ] 2017-03-07 20:43:33.408 [main] BostonMSAValidator - Property 2131 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:43:33.453 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 90137053 and compZPID = 59145653
+[INFO ] 2017-03-07 20:43:33.540 [main] BostonMSAValidator - Property 2131 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:43:33.588 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 90137053 and compZPID = 59146072
+[INFO ] 2017-03-07 20:43:33.672 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:43:33.673 [main] MysqlWriter - Executing query: com.mysql.jdbc.JDBC42PreparedStatement@87a85e1: SELECT zpid FROM Properties WHERE zpid = 90137053;
+[INFO ] 2017-03-07 20:43:33.695 [main] MysqlWriter - Executing query: com.mysql.jdbc.JDBC42PreparedStatement@671a5887: INSERT INTO Properties(zpid, streetAddress, zipcode, city, state, latitude, longitude, regionID, countyCode, useCode, yearBuilt, lotSizeSqFt, finishedSqFt, bathroomCount, bedroomCount, lastSoldDate, lastSoldPrice) VALUES (90137053,'62 Tower St # 1',2130,'Jamaica Plain','MA',42.29868,-71.11092,154795,25025,'MultiFamily2To4',1930,0,1515,3.0,4,'2016-06-15 00:00:00',595000)
+[INFO ] 2017-03-07 20:43:33.720 [main] MysqlWriter - Property Inserted Successfully: ZPID: 90137053
+[INFO ] 2017-03-07 20:43:33.774 [main] MysqlWriter - Zetimate for zpid: 90137053 has successfully been inserted.
+[WARN ] 2017-03-07 20:43:33.804 [main] MysqlWriter - Neighborhood already exists in database: regionID = 154795
+[INFO ] 2017-03-07 20:43:33.832 [main] MysqlWriter - Tax Assessment Successfully Added For ZPID: 90137053
+[INFO ] 2017-03-07 20:43:34.100 [main] Executor - Finished processing address. API Calls remaining: 491
+[INFO ] 2017-03-07 20:43:34.101 [main] MySQLAddressHandler - Now executing query: com.mysql.jdbc.JDBC42PreparedStatement@1329eff: SELECT COUNT(Addresses.address_id) FROM Addresses INNER JOIN ZipGeo ON Addresses.zip = ZipGeo.zip WHERE api_result = 1 AND ZipGeo.MSAName LIKE "Boston-Cambridge-Quincy, MA-NH MSA"
+[INFO ] 2017-03-07 20:43:34.141 [main] MySQLAddressHandler - tryNewAddress set to: true
+[INFO ] 2017-03-07 20:43:34.142 [main] MySQLAddressHandler - Executing query: com.mysql.jdbc.JDBC42PreparedStatement@6497b078: SELECT Addresses.address, Addresses.zip FROM Addresses INNER JOIN ZipGeo ON Addresses.zip = ZipGeo.zip WHERE api_result IS NULL AND ZipGeo.MSAName LIKE "Boston-Cambridge-Quincy, MA-NH MSA" LIMIT 1
+[INFO ] 2017-03-07 20:43:34.181 [main] MySQLAddressHandler - Now executing query: com.mysql.jdbc.JDBC42PreparedStatement@41c2284a: SELECT Addresses.address, Addresses.zip FROM Addresses INNER JOIN ZipGeo ON Addresses.zip = ZipGeo.zip WHERE api_result = 1 AND ZipGeo.MSAName LIKE "Boston-Cambridge-Quincy, MA-NH MSA" ORDER BY last_updated ASC LIMIT 1
+[INFO ] 2017-03-07 20:43:34.222 [main] MySQLAddressHandler - Response updated to contain property that had the oldest successfull update.
+[INFO ] 2017-03-07 20:43:34.222 [main] MySQLAddressHandler - Response updated to contain property that had the oldest successfull update.
+[INFO ] 2017-03-07 20:43:34.222 [main] Executor - Making API Call to GetDeepSearchResults with params: {address=77 South St # 1, citystatezip=2130}
+[INFO ] 2017-03-07 20:43:34.587 [main] Executor - Request sent to: http://www.zillow.com/webservice/GetDeepSearchResults.htm?zws-id=X1-ZWz19thqfce13f_3s95g&address=77+South+St+%23+1&citystatezip=2130
+[INFO ] 2017-03-07 20:43:34.591 [main] Executor - Extracted 1 properties from API call.
+[INFO ] 2017-03-07 20:43:35.323 [main] MysqlWriter - Property Details were successfully inserted for zpid: 2103862618
+[INFO ] 2017-03-07 20:43:35.704 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:43:35.704 [main] MysqlWriter - Executing query: com.mysql.jdbc.JDBC42PreparedStatement@4f67eb2a: SELECT zpid FROM Properties WHERE zpid = 2103862618;
+[INFO ] 2017-03-07 20:43:35.736 [main] MysqlWriter - Executing query: com.mysql.jdbc.JDBC42PreparedStatement@4a668b6e: INSERT INTO Properties(zpid, streetAddress, zipcode, city, state, latitude, longitude, regionID, countyCode, useCode, yearBuilt, lotSizeSqFt, finishedSqFt, bathroomCount, bedroomCount, lastSoldDate, lastSoldPrice) VALUES (2103862618,'77 South St # 1',2130,'Jamaica Plain','MA',42.30703,-71.115654,154795,0,'Apartment',1925,0,1121,2.0,3,'2016-08-12 00:00:00',585000)
+[INFO ] 2017-03-07 20:43:35.765 [main] MysqlWriter - Property Inserted Successfully: ZPID: 2103862618
+[INFO ] 2017-03-07 20:43:35.810 [main] MysqlWriter - Zetimate for zpid: 2103862618 has successfully been inserted.
+[WARN ] 2017-03-07 20:43:35.836 [main] MysqlWriter - Neighborhood already exists in database: regionID = 154795
+[INFO ] 2017-03-07 20:43:35.862 [main] MysqlWriter - Tax Assessment Successfully Added For ZPID: 2103862618
+[INFO ] 2017-03-07 20:43:36.058 [main] Executor - Finished processing address. API Calls remaining: 488
+[INFO ] 2017-03-07 20:43:36.059 [main] MySQLAddressHandler - Now executing query: com.mysql.jdbc.JDBC42PreparedStatement@6c779568: SELECT COUNT(Addresses.address_id) FROM Addresses INNER JOIN ZipGeo ON Addresses.zip = ZipGeo.zip WHERE api_result = 1 AND ZipGeo.MSAName LIKE "Boston-Cambridge-Quincy, MA-NH MSA"
+[INFO ] 2017-03-07 20:43:36.100 [main] MySQLAddressHandler - tryNewAddress set to: true
+[INFO ] 2017-03-07 20:43:36.101 [main] MySQLAddressHandler - Executing query: com.mysql.jdbc.JDBC42PreparedStatement@f381794: SELECT Addresses.address, Addresses.zip FROM Addresses INNER JOIN ZipGeo ON Addresses.zip = ZipGeo.zip WHERE api_result IS NULL AND ZipGeo.MSAName LIKE "Boston-Cambridge-Quincy, MA-NH MSA" LIMIT 1
+[INFO ] 2017-03-07 20:43:36.139 [main] MySQLAddressHandler - Now executing query: com.mysql.jdbc.JDBC42PreparedStatement@2cdd0d4b: SELECT Addresses.address, Addresses.zip FROM Addresses INNER JOIN ZipGeo ON Addresses.zip = ZipGeo.zip WHERE api_result = 1 AND ZipGeo.MSAName LIKE "Boston-Cambridge-Quincy, MA-NH MSA" ORDER BY last_updated ASC LIMIT 1
+[INFO ] 2017-03-07 20:43:36.186 [main] MySQLAddressHandler - Response updated to contain property that had the oldest successfull update.
+[INFO ] 2017-03-07 20:43:36.186 [main] MySQLAddressHandler - Response updated to contain property that had the oldest successfull update.
+[INFO ] 2017-03-07 20:43:36.186 [main] Executor - Making API Call to GetDeepSearchResults with params: {address=3 Abbotsford St, citystatezip=2121}
+[INFO ] 2017-03-07 20:43:36.592 [main] Executor - Request sent to: http://www.zillow.com/webservice/GetDeepSearchResults.htm?zws-id=X1-ZWz19thqfce13f_3s95g&address=3+Abbotsford+St&citystatezip=2121
+[INFO ] 2017-03-07 20:43:36.596 [main] Executor - Extracted 1 properties from API call.
+[INFO ] 2017-03-07 20:43:37.109 [main] MysqlWriter - Property Details were successfully inserted for zpid: 2103799149
+[INFO ] 2017-03-07 20:43:37.824 [main] BostonMSAValidator - Property 2136 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:43:37.869 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 2103799149 and compZPID = 59127436
+[INFO ] 2017-03-07 20:43:37.993 [main] BostonMSAValidator - Property 2136 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:43:38.040 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 2103799149 and compZPID = 2096329871
+[INFO ] 2017-03-07 20:43:38.134 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:43:38.189 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 2103799149 and compZPID = 59132618
+[INFO ] 2017-03-07 20:43:38.277 [main] BostonMSAValidator - Property 2121 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:43:38.323 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 2103799149 and compZPID = 2101436253
+[INFO ] 2017-03-07 20:43:38.409 [main] BostonMSAValidator - Property 2119 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:43:38.458 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 2103799149 and compZPID = 59186823
+[INFO ] 2017-03-07 20:43:38.546 [main] BostonMSAValidator - Property 2189 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:43:38.598 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 2103799149 and compZPID = 56624396
+[INFO ] 2017-03-07 20:43:38.684 [main] BostonMSAValidator - Property 2121 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:43:38.730 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 2103799149 and compZPID = 59103498
+[INFO ] 2017-03-07 20:43:38.816 [main] BostonMSAValidator - Property 2121 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:43:38.860 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 2103799149 and compZPID = 59105158
+[INFO ] 2017-03-07 20:43:38.947 [main] BostonMSAValidator - Property 2125 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:43:38.990 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 2103799149 and compZPID = 59105184
+[INFO ] 2017-03-07 20:43:39.149 [main] BostonMSAValidator - Property 2121 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:43:39.195 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 2103799149 and compZPID = 59106991
+[INFO ] 2017-03-07 20:43:39.286 [main] BostonMSAValidator - Property 2121 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:43:39.336 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 2103799149 and compZPID = 59107539
+[INFO ] 2017-03-07 20:43:39.432 [main] BostonMSAValidator - Property 2121 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:43:39.478 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 2103799149 and compZPID = 59107549
+[INFO ] 2017-03-07 20:43:39.561 [main] BostonMSAValidator - Property 2121 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:43:39.610 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 2103799149 and compZPID = 59109022
+[INFO ] 2017-03-07 20:43:39.707 [main] BostonMSAValidator - Property 2121 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:43:39.752 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 2103799149 and compZPID = 59109742
+[INFO ] 2017-03-07 20:43:39.836 [main] BostonMSAValidator - Property 2121 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:43:39.886 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 2103799149 and compZPID = 59109750
+[INFO ] 2017-03-07 20:43:39.971 [main] BostonMSAValidator - Property 2121 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:43:40.016 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 2103799149 and compZPID = 59110711
+[INFO ] 2017-03-07 20:43:40.101 [main] BostonMSAValidator - Property 2121 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:43:40.144 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 2103799149 and compZPID = 59110883
+[INFO ] 2017-03-07 20:43:40.238 [main] BostonMSAValidator - Property 2121 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:43:40.296 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 2103799149 and compZPID = 59110893
+[INFO ] 2017-03-07 20:43:40.433 [main] BostonMSAValidator - Property 2121 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:43:40.494 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 2103799149 and compZPID = 59110899
+[INFO ] 2017-03-07 20:43:40.591 [main] BostonMSAValidator - Property 2121 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:43:40.634 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 2103799149 and compZPID = 59114055
+[INFO ] 2017-03-07 20:43:40.722 [main] BostonMSAValidator - Property 2121 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:43:40.779 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 2103799149 and compZPID = 59115468
+[INFO ] 2017-03-07 20:43:40.873 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:43:40.928 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 2103799149 and compZPID = 59131364
+[INFO ] 2017-03-07 20:43:41.015 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:43:41.058 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 2103799149 and compZPID = 59132172
+[INFO ] 2017-03-07 20:45:34.831 [main] Main - Beginning Zillow Spidering
+[INFO ] 2017-03-07 20:45:35.376 [main] Executor - Instantiating Executor with API Call Limit of 500
+[INFO ] 2017-03-07 20:45:35.419 [main] MySQLAddressHandler - Now executing query: com.mysql.jdbc.JDBC42PreparedStatement@130f889: SELECT COUNT(Addresses.address_id) FROM Addresses INNER JOIN ZipGeo ON Addresses.zip = ZipGeo.zip WHERE api_result = 1 AND ZipGeo.MSAName LIKE "Boston-Cambridge-Quincy, MA-NH MSA"
+[INFO ] 2017-03-07 20:45:35.461 [main] MySQLAddressHandler - tryNewAddress set to: true
+[INFO ] 2017-03-07 20:45:35.462 [main] MySQLAddressHandler - Executing query: com.mysql.jdbc.JDBC42PreparedStatement@1188e820: SELECT Addresses.address, Addresses.zip FROM Addresses INNER JOIN ZipGeo ON Addresses.zip = ZipGeo.zip WHERE api_result IS NULL AND ZipGeo.MSAName LIKE "Boston-Cambridge-Quincy, MA-NH MSA" LIMIT 1
+[INFO ] 2017-03-07 20:45:35.510 [main] MySQLAddressHandler - Now executing query: com.mysql.jdbc.JDBC42PreparedStatement@2f490758: SELECT Addresses.address, Addresses.zip FROM Addresses INNER JOIN ZipGeo ON Addresses.zip = ZipGeo.zip WHERE api_result = 1 AND ZipGeo.MSAName LIKE "Boston-Cambridge-Quincy, MA-NH MSA" ORDER BY last_updated ASC LIMIT 1
+[INFO ] 2017-03-07 20:45:35.549 [main] MySQLAddressHandler - Response updated to contain property that had the oldest successfull update.
+[INFO ] 2017-03-07 20:45:35.549 [main] MySQLAddressHandler - Response updated to contain property that had the oldest successfull update.
+[INFO ] 2017-03-07 20:45:35.549 [main] Executor - Making API Call to GetDeepSearchResults with params: {address=54 Glen Rd, citystatezip=2130}
+[INFO ] 2017-03-07 20:45:36.907 [main] Executor - Request sent to: http://www.zillow.com/webservice/GetDeepSearchResults.htm?zws-id=X1-ZWz19thqfce13f_3s95g&address=54+Glen+Rd&citystatezip=2130
+[INFO ] 2017-03-07 20:45:36.958 [main] Executor - Extracted 1 properties from API call.
+[INFO ] 2017-03-07 20:45:37.734 [main] MysqlWriter - Property Details were successfully inserted for zpid: 2099746186
+[INFO ] 2017-03-07 20:45:38.544 [main] BostonMSAValidator - Property 2186 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:45:38.600 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 2099746186 and compZPID = 57466891
+[INFO ] 2017-03-07 20:45:38.713 [main] BostonMSAValidator - Property 2136 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:45:38.769 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 2099746186 and compZPID = 59127436
+[INFO ] 2017-03-07 20:45:38.862 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:45:38.925 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 2099746186 and compZPID = 59132618
+[INFO ] 2017-03-07 20:45:39.010 [main] BostonMSAValidator - Property 2121 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:45:39.069 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 2099746186 and compZPID = 2101436253
+[INFO ] 2017-03-07 20:45:39.162 [main] BostonMSAValidator - Property 2189 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:45:39.218 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 2099746186 and compZPID = 56624396
+[INFO ] 2017-03-07 20:45:39.302 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:45:39.354 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 2099746186 and compZPID = 2103004482
+[INFO ] 2017-03-07 20:45:39.446 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:45:39.502 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 2099746186 and compZPID = 59131658
+[INFO ] 2017-03-07 20:45:39.596 [main] BostonMSAValidator - Property 2121 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:45:39.648 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 2099746186 and compZPID = 59109022
+[INFO ] 2017-03-07 20:45:39.735 [main] BostonMSAValidator - Property 2121 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:45:39.789 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 2099746186 and compZPID = 59109358
+[INFO ] 2017-03-07 20:45:39.882 [main] BostonMSAValidator - Property 2121 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:45:39.943 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 2099746186 and compZPID = 59110711
+[INFO ] 2017-03-07 20:45:40.033 [main] BostonMSAValidator - Property 2124 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:45:40.087 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 2099746186 and compZPID = 59112917
+[INFO ] 2017-03-07 20:45:40.183 [main] BostonMSAValidator - Property 2121 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:45:40.243 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 2099746186 and compZPID = 59113263
+[INFO ] 2017-03-07 20:45:40.327 [main] BostonMSAValidator - Property 2121 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:45:40.386 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 2099746186 and compZPID = 59114055
+[INFO ] 2017-03-07 20:45:40.476 [main] BostonMSAValidator - Property 2121 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:45:40.537 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 2099746186 and compZPID = 59114058
+[INFO ] 2017-03-07 20:45:40.621 [main] BostonMSAValidator - Property 2121 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:45:40.679 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 2099746186 and compZPID = 59114685
+[INFO ] 2017-03-07 20:45:40.765 [main] BostonMSAValidator - Property 2121 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:45:40.818 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 2099746186 and compZPID = 59115076
+[INFO ] 2017-03-07 20:45:40.900 [main] BostonMSAValidator - Property 2121 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:45:40.956 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 2099746186 and compZPID = 59115468
+[INFO ] 2017-03-07 20:45:41.046 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:45:41.097 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 2099746186 and compZPID = 59130365
+[INFO ] 2017-03-07 20:45:41.176 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:45:41.225 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 2099746186 and compZPID = 59131364
+[INFO ] 2017-03-07 20:45:41.309 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:45:41.361 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 2099746186 and compZPID = 59131444
+[INFO ] 2017-03-07 20:45:41.446 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:45:41.538 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 2099746186 and compZPID = 59132194
+[INFO ] 2017-03-07 20:45:41.622 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:45:41.675 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 2099746186 and compZPID = 59132299
+[INFO ] 2017-03-07 20:45:41.764 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:45:41.823 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 2099746186 and compZPID = 59132430
+[INFO ] 2017-03-07 20:45:41.904 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:45:41.953 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 2099746186 and compZPID = 59132813
+[INFO ] 2017-03-07 20:45:42.041 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:45:42.099 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 2099746186 and compZPID = 59133232
+[INFO ] 2017-03-07 20:45:42.195 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:45:42.196 [main] MysqlWriter - Executing query: com.mysql.jdbc.JDBC42PreparedStatement@bccb269: SELECT zpid FROM Properties WHERE zpid = 2099746186;
+[INFO ] 2017-03-07 20:45:42.222 [main] MysqlWriter - Executing query: com.mysql.jdbc.JDBC42PreparedStatement@609cd4d8: INSERT INTO Properties(zpid, streetAddress, zipcode, city, state, latitude, longitude, regionID, countyCode, useCode, yearBuilt, lotSizeSqFt, finishedSqFt, bathroomCount, bedroomCount, lastSoldDate, lastSoldPrice) VALUES (2099746186,'54 Glen Rd',2130,'Jamaica Plain','MA',42.30865,-71.10143,154795,0,'MultiFamily2To4',0,0,0,1.0,3,'2016-09-27 00:00:00',480000)
+[INFO ] 2017-03-07 20:45:42.249 [main] MysqlWriter - Property Inserted Successfully: ZPID: 2099746186
+[INFO ] 2017-03-07 20:45:42.303 [main] MysqlWriter - Zetimate for zpid: 2099746186 has successfully been inserted.
+[WARN ] 2017-03-07 20:45:42.327 [main] MysqlWriter - Neighborhood already exists in database: regionID = 154795
+[INFO ] 2017-03-07 20:45:42.359 [main] MysqlWriter - Tax Assessment Successfully Added For ZPID: 2099746186
+[INFO ] 2017-03-07 20:45:42.665 [main] Executor - Finished processing address. API Calls remaining: 497
+[INFO ] 2017-03-07 20:45:42.666 [main] MySQLAddressHandler - Now executing query: com.mysql.jdbc.JDBC42PreparedStatement@5fbe4146: SELECT COUNT(Addresses.address_id) FROM Addresses INNER JOIN ZipGeo ON Addresses.zip = ZipGeo.zip WHERE api_result = 1 AND ZipGeo.MSAName LIKE "Boston-Cambridge-Quincy, MA-NH MSA"
+[INFO ] 2017-03-07 20:45:42.709 [main] MySQLAddressHandler - tryNewAddress set to: true
+[INFO ] 2017-03-07 20:45:42.709 [main] MySQLAddressHandler - Executing query: com.mysql.jdbc.JDBC42PreparedStatement@1e66f1f5: SELECT Addresses.address, Addresses.zip FROM Addresses INNER JOIN ZipGeo ON Addresses.zip = ZipGeo.zip WHERE api_result IS NULL AND ZipGeo.MSAName LIKE "Boston-Cambridge-Quincy, MA-NH MSA" LIMIT 1
+[INFO ] 2017-03-07 20:45:42.751 [main] MySQLAddressHandler - Now executing query: com.mysql.jdbc.JDBC42PreparedStatement@4e50c791: SELECT Addresses.address, Addresses.zip FROM Addresses INNER JOIN ZipGeo ON Addresses.zip = ZipGeo.zip WHERE api_result = 1 AND ZipGeo.MSAName LIKE "Boston-Cambridge-Quincy, MA-NH MSA" ORDER BY last_updated ASC LIMIT 1
+[INFO ] 2017-03-07 20:45:42.793 [main] MySQLAddressHandler - Response updated to contain property that had the oldest successfull update.
+[INFO ] 2017-03-07 20:45:42.793 [main] MySQLAddressHandler - Response updated to contain property that had the oldest successfull update.
+[INFO ] 2017-03-07 20:45:42.793 [main] Executor - Making API Call to GetDeepSearchResults with params: {address=3 Abbotsford St, citystatezip=2121}
+[INFO ] 2017-03-07 20:45:43.308 [main] Executor - Request sent to: http://www.zillow.com/webservice/GetDeepSearchResults.htm?zws-id=X1-ZWz19thqfce13f_3s95g&address=3+Abbotsford+St&citystatezip=2121
+[INFO ] 2017-03-07 20:45:43.313 [main] Executor - Extracted 1 properties from API call.
+[WARN ] 2017-03-07 20:45:43.844 [main] MysqlWriter - Property Details already exist in database: ZPID = 2103799149
+[INFO ] 2017-03-07 20:45:44.485 [main] BostonMSAValidator - Property 2136 validated geographically for geography "Boston": true
+[WARN ] 2017-03-07 20:45:44.514 [main] MysqlWriter - Comparable already exists in database!: primaryZPID = 2103799149 and compZPID = 59127436
+[INFO ] 2017-03-07 20:45:44.634 [main] BostonMSAValidator - Property 2136 validated geographically for geography "Boston": true
+[WARN ] 2017-03-07 20:45:44.659 [main] MysqlWriter - Comparable already exists in database!: primaryZPID = 2103799149 and compZPID = 2096329871
+[INFO ] 2017-03-07 20:45:44.749 [main] BostonMSAValidator - Property 2119 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:45:44.806 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 2103799149 and compZPID = 59186469
+[INFO ] 2017-03-07 20:45:44.897 [main] BostonMSAValidator - Property 2189 validated geographically for geography "Boston": true
+[WARN ] 2017-03-07 20:45:44.923 [main] MysqlWriter - Comparable already exists in database!: primaryZPID = 2103799149 and compZPID = 56624396
+[INFO ] 2017-03-07 20:45:45.010 [main] BostonMSAValidator - Property 2121 validated geographically for geography "Boston": true
+[WARN ] 2017-03-07 20:45:45.040 [main] MysqlWriter - Comparable already exists in database!: primaryZPID = 2103799149 and compZPID = 59103498
+[INFO ] 2017-03-07 20:45:45.130 [main] BostonMSAValidator - Property 2121 validated geographically for geography "Boston": true
+[WARN ] 2017-03-07 20:45:45.159 [main] MysqlWriter - Comparable already exists in database!: primaryZPID = 2103799149 and compZPID = 59105158
+[INFO ] 2017-03-07 20:45:45.247 [main] BostonMSAValidator - Property 2125 validated geographically for geography "Boston": true
+[WARN ] 2017-03-07 20:45:45.274 [main] MysqlWriter - Comparable already exists in database!: primaryZPID = 2103799149 and compZPID = 59105184
+[INFO ] 2017-03-07 20:45:45.357 [main] BostonMSAValidator - Property 2121 validated geographically for geography "Boston": true
+[WARN ] 2017-03-07 20:45:45.385 [main] MysqlWriter - Comparable already exists in database!: primaryZPID = 2103799149 and compZPID = 59106991
+[INFO ] 2017-03-07 20:45:45.533 [main] BostonMSAValidator - Property 2121 validated geographically for geography "Boston": true
+[WARN ] 2017-03-07 20:45:45.559 [main] MysqlWriter - Comparable already exists in database!: primaryZPID = 2103799149 and compZPID = 59107539
+[INFO ] 2017-03-07 20:45:45.655 [main] BostonMSAValidator - Property 2121 validated geographically for geography "Boston": true
+[WARN ] 2017-03-07 20:45:45.684 [main] MysqlWriter - Comparable already exists in database!: primaryZPID = 2103799149 and compZPID = 59107549
+[INFO ] 2017-03-07 20:45:45.773 [main] BostonMSAValidator - Property 2121 validated geographically for geography "Boston": true
+[WARN ] 2017-03-07 20:45:45.802 [main] MysqlWriter - Comparable already exists in database!: primaryZPID = 2103799149 and compZPID = 59109022
+[INFO ] 2017-03-07 20:45:45.887 [main] BostonMSAValidator - Property 2121 validated geographically for geography "Boston": true
+[WARN ] 2017-03-07 20:45:45.913 [main] MysqlWriter - Comparable already exists in database!: primaryZPID = 2103799149 and compZPID = 59109742
+[INFO ] 2017-03-07 20:45:45.998 [main] BostonMSAValidator - Property 2121 validated geographically for geography "Boston": true
+[WARN ] 2017-03-07 20:45:46.027 [main] MysqlWriter - Comparable already exists in database!: primaryZPID = 2103799149 and compZPID = 59109750
+[INFO ] 2017-03-07 20:45:46.114 [main] BostonMSAValidator - Property 2121 validated geographically for geography "Boston": true
+[WARN ] 2017-03-07 20:45:46.138 [main] MysqlWriter - Comparable already exists in database!: primaryZPID = 2103799149 and compZPID = 59110711
+[INFO ] 2017-03-07 20:45:46.224 [main] BostonMSAValidator - Property 2121 validated geographically for geography "Boston": true
+[WARN ] 2017-03-07 20:45:46.248 [main] MysqlWriter - Comparable already exists in database!: primaryZPID = 2103799149 and compZPID = 59110883
+[INFO ] 2017-03-07 20:45:46.332 [main] BostonMSAValidator - Property 2121 validated geographically for geography "Boston": true
+[WARN ] 2017-03-07 20:45:46.364 [main] MysqlWriter - Comparable already exists in database!: primaryZPID = 2103799149 and compZPID = 59110893
+[INFO ] 2017-03-07 20:45:46.455 [main] BostonMSAValidator - Property 2121 validated geographically for geography "Boston": true
+[WARN ] 2017-03-07 20:45:46.480 [main] MysqlWriter - Comparable already exists in database!: primaryZPID = 2103799149 and compZPID = 59110899
+[INFO ] 2017-03-07 20:45:46.563 [main] BostonMSAValidator - Property 2121 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:45:46.614 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 2103799149 and compZPID = 59107543
+[INFO ] 2017-03-07 20:45:46.704 [main] BostonMSAValidator - Property 2121 validated geographically for geography "Boston": true
+[WARN ] 2017-03-07 20:45:46.727 [main] MysqlWriter - Comparable already exists in database!: primaryZPID = 2103799149 and compZPID = 59114055
+[INFO ] 2017-03-07 20:45:46.818 [main] BostonMSAValidator - Property 2121 validated geographically for geography "Boston": true
+[WARN ] 2017-03-07 20:45:46.847 [main] MysqlWriter - Comparable already exists in database!: primaryZPID = 2103799149 and compZPID = 59115468
+[INFO ] 2017-03-07 20:45:46.943 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:45:46.994 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 2103799149 and compZPID = 59132608
+[INFO ] 2017-03-07 20:45:47.080 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[WARN ] 2017-03-07 20:45:47.108 [main] MysqlWriter - Comparable already exists in database!: primaryZPID = 2103799149 and compZPID = 59131364
+[INFO ] 2017-03-07 20:45:47.200 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[WARN ] 2017-03-07 20:45:47.225 [main] MysqlWriter - Comparable already exists in database!: primaryZPID = 2103799149 and compZPID = 59132172
+[INFO ] 2017-03-07 20:45:47.314 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:45:47.385 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 2103799149 and compZPID = 59132194
+[INFO ] 2017-03-07 20:45:47.475 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:45:47.529 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 2103799149 and compZPID = 59132299
+[INFO ] 2017-03-07 20:45:47.623 [main] BostonMSAValidator - Property 2121 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:45:47.624 [main] MysqlWriter - Executing query: com.mysql.jdbc.JDBC42PreparedStatement@7748410a: SELECT zpid FROM Properties WHERE zpid = 2103799149;
+[INFO ] 2017-03-07 20:45:47.650 [main] MysqlWriter - Executing query: com.mysql.jdbc.JDBC42PreparedStatement@740773a3: INSERT INTO Properties(zpid, streetAddress, zipcode, city, state, latitude, longitude, regionID, countyCode, useCode, yearBuilt, lotSizeSqFt, finishedSqFt, bathroomCount, bedroomCount, lastSoldDate, lastSoldPrice) VALUES (2103799149,'3 Abbotsford St',2121,'Boston','MA',42.314575,-71.092995,54232,0,'MultiFamily2To4',1900,0,2385,6.0,6,'2017-02-14 00:00:00',525000)
+[INFO ] 2017-03-07 20:45:47.680 [main] MysqlWriter - Property Inserted Successfully: ZPID: 2103799149
+[INFO ] 2017-03-07 20:45:47.735 [main] MysqlWriter - Zetimate for zpid: 2103799149 has successfully been inserted.
+[WARN ] 2017-03-07 20:45:47.759 [main] MysqlWriter - Neighborhood already exists in database: regionID = 54232
+[INFO ] 2017-03-07 20:45:47.788 [main] MysqlWriter - Tax Assessment Successfully Added For ZPID: 2103799149
+[INFO ] 2017-03-07 20:45:48.108 [main] Executor - Finished processing address. API Calls remaining: 494
+[INFO ] 2017-03-07 20:45:48.108 [main] MySQLAddressHandler - Now executing query: com.mysql.jdbc.JDBC42PreparedStatement@f2ff811: SELECT COUNT(Addresses.address_id) FROM Addresses INNER JOIN ZipGeo ON Addresses.zip = ZipGeo.zip WHERE api_result = 1 AND ZipGeo.MSAName LIKE "Boston-Cambridge-Quincy, MA-NH MSA"
+[INFO ] 2017-03-07 20:45:48.151 [main] MySQLAddressHandler - tryNewAddress set to: true
+[INFO ] 2017-03-07 20:45:48.151 [main] MySQLAddressHandler - Executing query: com.mysql.jdbc.JDBC42PreparedStatement@568ff82: SELECT Addresses.address, Addresses.zip FROM Addresses INNER JOIN ZipGeo ON Addresses.zip = ZipGeo.zip WHERE api_result IS NULL AND ZipGeo.MSAName LIKE "Boston-Cambridge-Quincy, MA-NH MSA" LIMIT 1
+[INFO ] 2017-03-07 20:45:48.198 [main] MySQLAddressHandler - Now executing query: com.mysql.jdbc.JDBC42PreparedStatement@50caa560: SELECT Addresses.address, Addresses.zip FROM Addresses INNER JOIN ZipGeo ON Addresses.zip = ZipGeo.zip WHERE api_result = 1 AND ZipGeo.MSAName LIKE "Boston-Cambridge-Quincy, MA-NH MSA" ORDER BY last_updated ASC LIMIT 1
+[INFO ] 2017-03-07 20:45:48.238 [main] MySQLAddressHandler - Response updated to contain property that had the oldest successfull update.
+[INFO ] 2017-03-07 20:45:48.238 [main] MySQLAddressHandler - Response updated to contain property that had the oldest successfull update.
+[INFO ] 2017-03-07 20:45:48.239 [main] Executor - Making API Call to GetDeepSearchResults with params: {address=40 Glenway St, citystatezip=2121}
+[INFO ] 2017-03-07 20:45:48.655 [main] Executor - Request sent to: http://www.zillow.com/webservice/GetDeepSearchResults.htm?zws-id=X1-ZWz19thqfce13f_3s95g&address=40+Glenway+St&citystatezip=2121
+[INFO ] 2017-03-07 20:45:48.659 [main] Executor - Extracted 1 properties from API call.
+[INFO ] 2017-03-07 20:45:49.343 [main] MysqlWriter - Property Details were successfully inserted for zpid: 2097425350
+[INFO ] 2017-03-07 20:45:49.964 [main] BostonMSAValidator - Property 2136 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:45:50.015 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 2097425350 and compZPID = 59124794
+[INFO ] 2017-03-07 20:45:50.354 [main] BostonMSAValidator - Property 2186 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:45:50.410 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 2097425350 and compZPID = 57470214
+[INFO ] 2017-03-07 20:45:50.495 [main] BostonMSAValidator - Property 2136 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:45:50.560 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 2097425350 and compZPID = 59126768
+[INFO ] 2017-03-07 20:45:50.641 [main] BostonMSAValidator - Property 2121 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:45:50.698 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 2097425350 and compZPID = 59108071
+[INFO ] 2017-03-07 20:45:50.784 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:45:50.834 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 2097425350 and compZPID = 59133566
+[INFO ] 2017-03-07 20:45:50.926 [main] BostonMSAValidator - Property 2121 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:45:50.982 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 2097425350 and compZPID = 59103498
+[INFO ] 2017-03-07 20:45:51.064 [main] BostonMSAValidator - Property 2121 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:45:51.114 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 2097425350 and compZPID = 59103624
+[INFO ] 2017-03-07 20:45:51.232 [main] BostonMSAValidator - Property 2124 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:45:51.294 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 2097425350 and compZPID = 59103960
+[INFO ] 2017-03-07 20:45:51.448 [main] BostonMSAValidator - Property 2124 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:45:51.568 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 2097425350 and compZPID = 59103961
+[INFO ] 2017-03-07 20:45:51.742 [main] BostonMSAValidator - Property 2124 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:45:51.809 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 2097425350 and compZPID = 59103977
+[INFO ] 2017-03-07 20:45:51.891 [main] BostonMSAValidator - Property 2124 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:45:51.943 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 2097425350 and compZPID = 59104211
+[INFO ] 2017-03-07 20:45:52.031 [main] BostonMSAValidator - Property 2124 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:45:52.082 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 2097425350 and compZPID = 59104220
+[INFO ] 2017-03-07 20:45:52.173 [main] BostonMSAValidator - Property 2124 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:45:52.238 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 2097425350 and compZPID = 59104578
+[INFO ] 2017-03-07 20:45:52.323 [main] BostonMSAValidator - Property 2124 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:45:52.379 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 2097425350 and compZPID = 59104615
+[INFO ] 2017-03-07 20:45:52.461 [main] BostonMSAValidator - Property 2121 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:45:52.518 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 2097425350 and compZPID = 59105158
+[INFO ] 2017-03-07 20:45:52.601 [main] BostonMSAValidator - Property 2125 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:45:52.655 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 2097425350 and compZPID = 59105184
+[INFO ] 2017-03-07 20:45:52.742 [main] BostonMSAValidator - Property 2124 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:45:52.799 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 2097425350 and compZPID = 59105510
+[INFO ] 2017-03-07 20:45:52.882 [main] BostonMSAValidator - Property 2124 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:45:52.943 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 2097425350 and compZPID = 59105544
+[INFO ] 2017-03-07 20:45:53.024 [main] BostonMSAValidator - Property 2125 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:45:53.079 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 2097425350 and compZPID = 59105659
+[INFO ] 2017-03-07 20:45:53.163 [main] BostonMSAValidator - Property 2124 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:45:53.222 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 2097425350 and compZPID = 59105963
+[INFO ] 2017-03-07 20:45:53.314 [main] BostonMSAValidator - Property 2124 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:45:53.371 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 2097425350 and compZPID = 59105996
+[INFO ] 2017-03-07 20:45:53.459 [main] BostonMSAValidator - Property 2121 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:45:53.513 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 2097425350 and compZPID = 59106169
+[INFO ] 2017-03-07 20:45:53.597 [main] BostonMSAValidator - Property 2125 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:45:53.651 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 2097425350 and compZPID = 59106539
+[INFO ] 2017-03-07 20:45:53.737 [main] BostonMSAValidator - Property 2125 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:45:53.794 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 2097425350 and compZPID = 59106678
+[INFO ] 2017-03-07 20:45:53.883 [main] BostonMSAValidator - Property 2121 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:45:53.950 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 2097425350 and compZPID = 59106991
+[INFO ] 2017-03-07 20:45:54.034 [main] BostonMSAValidator - Property 2121 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:45:54.035 [main] MysqlWriter - Executing query: com.mysql.jdbc.JDBC42PreparedStatement@72cde7cc: SELECT zpid FROM Properties WHERE zpid = 2097425350;
+[INFO ] 2017-03-07 20:45:54.062 [main] MysqlWriter - Executing query: com.mysql.jdbc.JDBC42PreparedStatement@5fd4f8f5: INSERT INTO Properties(zpid, streetAddress, zipcode, city, state, latitude, longitude, regionID, countyCode, useCode, yearBuilt, lotSizeSqFt, finishedSqFt, bathroomCount, bedroomCount, lastSoldDate, lastSoldPrice) VALUES (2097425350,'40 Glenway St',2121,'Boston','MA',42.3014,-71.08436,54232,0,'MultiFamily2To4',0,0,0,3.0,5,'2016-10-06 00:00:00',550000)
+[INFO ] 2017-03-07 20:45:54.093 [main] MysqlWriter - Property Inserted Successfully: ZPID: 2097425350
+[INFO ] 2017-03-07 20:45:54.145 [main] MysqlWriter - Zetimate for zpid: 2097425350 has successfully been inserted.
+[WARN ] 2017-03-07 20:45:54.168 [main] MysqlWriter - Neighborhood already exists in database: regionID = 54232
+[INFO ] 2017-03-07 20:45:54.198 [main] MysqlWriter - Tax Assessment Successfully Added For ZPID: 2097425350
+[INFO ] 2017-03-07 20:45:54.375 [main] Executor - Finished processing address. API Calls remaining: 491
+[INFO ] 2017-03-07 20:45:54.376 [main] MySQLAddressHandler - Now executing query: com.mysql.jdbc.JDBC42PreparedStatement@41e1e210: SELECT COUNT(Addresses.address_id) FROM Addresses INNER JOIN ZipGeo ON Addresses.zip = ZipGeo.zip WHERE api_result = 1 AND ZipGeo.MSAName LIKE "Boston-Cambridge-Quincy, MA-NH MSA"
+[INFO ] 2017-03-07 20:45:54.415 [main] MySQLAddressHandler - tryNewAddress set to: true
+[INFO ] 2017-03-07 20:45:54.416 [main] MySQLAddressHandler - Executing query: com.mysql.jdbc.JDBC42PreparedStatement@be35cd9: SELECT Addresses.address, Addresses.zip FROM Addresses INNER JOIN ZipGeo ON Addresses.zip = ZipGeo.zip WHERE api_result IS NULL AND ZipGeo.MSAName LIKE "Boston-Cambridge-Quincy, MA-NH MSA" LIMIT 1
+[INFO ] 2017-03-07 20:45:54.454 [main] MySQLAddressHandler - Now executing query: com.mysql.jdbc.JDBC42PreparedStatement@4944252c: SELECT Addresses.address, Addresses.zip FROM Addresses INNER JOIN ZipGeo ON Addresses.zip = ZipGeo.zip WHERE api_result = 1 AND ZipGeo.MSAName LIKE "Boston-Cambridge-Quincy, MA-NH MSA" ORDER BY last_updated ASC LIMIT 1
+[INFO ] 2017-03-07 20:45:54.493 [main] MySQLAddressHandler - Response updated to contain property that had the oldest successfull update.
+[INFO ] 2017-03-07 20:45:54.494 [main] MySQLAddressHandler - Response updated to contain property that had the oldest successfull update.
+[INFO ] 2017-03-07 20:45:54.494 [main] Executor - Making API Call to GetDeepSearchResults with params: {address=3516 Washington St, citystatezip=2130}
+[INFO ] 2017-03-07 20:45:54.907 [main] Executor - Request sent to: http://www.zillow.com/webservice/GetDeepSearchResults.htm?zws-id=X1-ZWz19thqfce13f_3s95g&address=3516+Washington+St&citystatezip=2130
+[INFO ] 2017-03-07 20:45:54.912 [main] Executor - Extracted 1 properties from API call.
+[INFO ] 2017-03-07 20:45:55.733 [main] MysqlWriter - Property Details were successfully inserted for zpid: 59134919
+[INFO ] 2017-03-07 20:45:56.498 [main] BostonMSAValidator - Property 2136 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:45:56.567 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59134919 and compZPID = 59126768
+[INFO ] 2017-03-07 20:45:56.683 [main] BostonMSAValidator - Property 2136 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:45:56.736 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59134919 and compZPID = 59127449
+[INFO ] 2017-03-07 20:45:56.818 [main] BostonMSAValidator - Property 2136 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:45:56.875 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59134919 and compZPID = 59129748
+[INFO ] 2017-03-07 20:45:56.962 [main] BostonMSAValidator - Property 2136 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:45:57.013 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59134919 and compZPID = 2096329871
+[INFO ] 2017-03-07 20:45:57.095 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:45:57.145 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59134919 and compZPID = 59136241
+[INFO ] 2017-03-07 20:45:57.224 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:45:57.273 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59134919 and compZPID = 59132618
+[INFO ] 2017-03-07 20:45:57.352 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:45:57.412 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59134919 and compZPID = 59133566
+[INFO ] 2017-03-07 20:45:57.496 [main] BostonMSAValidator - Property 2189 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:45:57.549 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59134919 and compZPID = 56624396
+[INFO ] 2017-03-07 20:45:57.643 [main] BostonMSAValidator - Property 2121 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:45:57.695 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59134919 and compZPID = 59114055
+[INFO ] 2017-03-07 20:45:57.782 [main] BostonMSAValidator - Property 2121 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:45:57.841 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59134919 and compZPID = 59115468
+[INFO ] 2017-03-07 20:45:57.924 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:45:57.973 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59134919 and compZPID = 59131364
+[INFO ] 2017-03-07 20:45:58.055 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:45:58.105 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59134919 and compZPID = 59131444
+[INFO ] 2017-03-07 20:45:58.184 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:45:58.234 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59134919 and compZPID = 59131445
+[INFO ] 2017-03-07 20:45:58.315 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:45:58.367 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59134919 and compZPID = 59132172
+[INFO ] 2017-03-07 20:45:58.446 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:45:58.496 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59134919 and compZPID = 59132194
+[INFO ] 2017-03-07 20:45:58.576 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:45:58.631 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59134919 and compZPID = 59132299
+[INFO ] 2017-03-07 20:45:58.722 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:45:58.776 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59134919 and compZPID = 59132813
+[INFO ] 2017-03-07 20:45:58.873 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:45:58.924 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59134919 and compZPID = 59132936
+[INFO ] 2017-03-07 20:45:59.013 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:45:59.068 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59134919 and compZPID = 59133232
+[INFO ] 2017-03-07 20:45:59.152 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:45:59.206 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59134919 and compZPID = 59133348
+[INFO ] 2017-03-07 20:45:59.301 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:45:59.349 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59134919 and compZPID = 59133410
+[INFO ] 2017-03-07 20:45:59.441 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:45:59.493 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59134919 and compZPID = 59133905
+[INFO ] 2017-03-07 20:45:59.572 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:45:59.621 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59134919 and compZPID = 59134230
+[INFO ] 2017-03-07 20:45:59.702 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:45:59.755 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59134919 and compZPID = 59134380
+[INFO ] 2017-03-07 20:45:59.838 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:45:59.887 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59134919 and compZPID = 59134384
+[INFO ] 2017-03-07 20:45:59.975 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:45:59.975 [main] MysqlWriter - Executing query: com.mysql.jdbc.JDBC42PreparedStatement@f736069: SELECT zpid FROM Properties WHERE zpid = 59134919;
+[INFO ] 2017-03-07 20:46:00.001 [main] MysqlWriter - Executing query: com.mysql.jdbc.JDBC42PreparedStatement@6da21078: INSERT INTO Properties(zpid, streetAddress, zipcode, city, state, latitude, longitude, regionID, countyCode, useCode, yearBuilt, lotSizeSqFt, finishedSqFt, bathroomCount, bedroomCount, lastSoldDate, lastSoldPrice) VALUES (59134919,'3516 Washington St',2130,'Boston','MA',42.305622,-71.107994,154795,25025,'MultiFamily2To4',1885,0,2316,1.0,4,'2016-08-22 00:00:00',550000)
+[INFO ] 2017-03-07 20:46:00.027 [main] MysqlWriter - Property Inserted Successfully: ZPID: 59134919
+[INFO ] 2017-03-07 20:46:00.079 [main] MysqlWriter - Zetimate for zpid: 59134919 has successfully been inserted.
+[WARN ] 2017-03-07 20:46:00.103 [main] MysqlWriter - Neighborhood already exists in database: regionID = 154795
+[INFO ] 2017-03-07 20:46:00.129 [main] MysqlWriter - Tax Assessment Successfully Added For ZPID: 59134919
+[INFO ] 2017-03-07 20:46:00.413 [main] Executor - Finished processing address. API Calls remaining: 488
+[INFO ] 2017-03-07 20:46:00.413 [main] MySQLAddressHandler - Now executing query: com.mysql.jdbc.JDBC42PreparedStatement@169e6180: SELECT COUNT(Addresses.address_id) FROM Addresses INNER JOIN ZipGeo ON Addresses.zip = ZipGeo.zip WHERE api_result = 1 AND ZipGeo.MSAName LIKE "Boston-Cambridge-Quincy, MA-NH MSA"
+[INFO ] 2017-03-07 20:46:00.453 [main] MySQLAddressHandler - tryNewAddress set to: true
+[INFO ] 2017-03-07 20:46:00.453 [main] MySQLAddressHandler - Executing query: com.mysql.jdbc.JDBC42PreparedStatement@35aea049: SELECT Addresses.address, Addresses.zip FROM Addresses INNER JOIN ZipGeo ON Addresses.zip = ZipGeo.zip WHERE api_result IS NULL AND ZipGeo.MSAName LIKE "Boston-Cambridge-Quincy, MA-NH MSA" LIMIT 1
+[INFO ] 2017-03-07 20:46:00.498 [main] MySQLAddressHandler - Now executing query: com.mysql.jdbc.JDBC42PreparedStatement@7205765b: SELECT Addresses.address, Addresses.zip FROM Addresses INNER JOIN ZipGeo ON Addresses.zip = ZipGeo.zip WHERE api_result = 1 AND ZipGeo.MSAName LIKE "Boston-Cambridge-Quincy, MA-NH MSA" ORDER BY last_updated ASC LIMIT 1
+[INFO ] 2017-03-07 20:46:00.536 [main] MySQLAddressHandler - Response updated to contain property that had the oldest successfull update.
+[INFO ] 2017-03-07 20:46:00.536 [main] MySQLAddressHandler - Response updated to contain property that had the oldest successfull update.
+[INFO ] 2017-03-07 20:46:00.536 [main] Executor - Making API Call to GetDeepSearchResults with params: {address=82 Munroe St, citystatezip=2119}
+[INFO ] 2017-03-07 20:46:01.149 [main] Executor - Request sent to: http://www.zillow.com/webservice/GetDeepSearchResults.htm?zws-id=X1-ZWz19thqfce13f_3s95g&address=82+Munroe+St&citystatezip=2119
+[INFO ] 2017-03-07 20:46:01.152 [main] Executor - Extracted 1 properties from API call.
+[INFO ] 2017-03-07 20:46:01.863 [main] MysqlWriter - Property Details were successfully inserted for zpid: 59187066
+[INFO ] 2017-03-07 20:46:02.574 [main] BostonMSAValidator - Property 2186 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:02.660 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59187066 and compZPID = 57466891
+[INFO ] 2017-03-07 20:46:02.801 [main] BostonMSAValidator - Property 2119 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:02.872 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59187066 and compZPID = 59186469
+[INFO ] 2017-03-07 20:46:02.953 [main] BostonMSAValidator - Property 2120 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:03.006 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59187066 and compZPID = 59184729
+[INFO ] 2017-03-07 20:46:03.085 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:03.136 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59187066 and compZPID = 59132618
+[INFO ] 2017-03-07 20:46:03.220 [main] BostonMSAValidator - Property 2120 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:03.275 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59187066 and compZPID = 59188257
+[INFO ] 2017-03-07 20:46:03.364 [main] BostonMSAValidator - Property 2121 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:03.414 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59187066 and compZPID = 2101436253
+[INFO ] 2017-03-07 20:46:03.502 [main] BostonMSAValidator - Property 2121 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:03.551 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59187066 and compZPID = 59103498
+[INFO ] 2017-03-07 20:46:03.634 [main] BostonMSAValidator - Property 2121 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:03.686 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59187066 and compZPID = 59105158
+[INFO ] 2017-03-07 20:46:03.768 [main] BostonMSAValidator - Property 2125 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:03.818 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59187066 and compZPID = 59105184
+[INFO ] 2017-03-07 20:46:03.900 [main] BostonMSAValidator - Property 2125 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:03.950 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59187066 and compZPID = 59106366
+[INFO ] 2017-03-07 20:46:04.040 [main] BostonMSAValidator - Property 2125 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:04.089 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59187066 and compZPID = 59106678
+[INFO ] 2017-03-07 20:46:04.190 [main] BostonMSAValidator - Property 2121 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:04.240 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59187066 and compZPID = 59106991
+[INFO ] 2017-03-07 20:46:04.321 [main] BostonMSAValidator - Property 2121 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:04.373 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59187066 and compZPID = 59107539
+[INFO ] 2017-03-07 20:46:04.459 [main] BostonMSAValidator - Property 2121 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:04.513 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59187066 and compZPID = 59107549
+[INFO ] 2017-03-07 20:46:04.600 [main] BostonMSAValidator - Property 2121 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:04.654 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59187066 and compZPID = 59109022
+[INFO ] 2017-03-07 20:46:04.732 [main] BostonMSAValidator - Property 2121 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:04.787 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59187066 and compZPID = 59109742
+[INFO ] 2017-03-07 20:46:04.866 [main] BostonMSAValidator - Property 2121 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:04.915 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59187066 and compZPID = 59109750
+[INFO ] 2017-03-07 20:46:04.998 [main] BostonMSAValidator - Property 2121 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:05.047 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59187066 and compZPID = 59110711
+[INFO ] 2017-03-07 20:46:05.130 [main] BostonMSAValidator - Property 2121 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:05.184 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59187066 and compZPID = 59110883
+[INFO ] 2017-03-07 20:46:05.262 [main] BostonMSAValidator - Property 2121 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:05.315 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59187066 and compZPID = 59110893
+[INFO ] 2017-03-07 20:46:05.400 [main] BostonMSAValidator - Property 2121 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:05.451 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59187066 and compZPID = 59110899
+[INFO ] 2017-03-07 20:46:05.530 [main] BostonMSAValidator - Property 2121 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:05.579 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59187066 and compZPID = 59114055
+[INFO ] 2017-03-07 20:46:05.703 [main] BostonMSAValidator - Property 2121 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:05.753 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59187066 and compZPID = 59115076
+[INFO ] 2017-03-07 20:46:05.832 [main] BostonMSAValidator - Property 2121 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:05.881 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59187066 and compZPID = 59115468
+[INFO ] 2017-03-07 20:46:05.960 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:06.010 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59187066 and compZPID = 59132813
+[INFO ] 2017-03-07 20:46:06.095 [main] BostonMSAValidator - Property 2119 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:06.095 [main] MysqlWriter - Executing query: com.mysql.jdbc.JDBC42PreparedStatement@54e1c68b: SELECT zpid FROM Properties WHERE zpid = 59187066;
+[INFO ] 2017-03-07 20:46:06.121 [main] MysqlWriter - Executing query: com.mysql.jdbc.JDBC42PreparedStatement@53aac487: INSERT INTO Properties(zpid, streetAddress, zipcode, city, state, latitude, longitude, regionID, countyCode, useCode, yearBuilt, lotSizeSqFt, finishedSqFt, bathroomCount, bedroomCount, lastSoldDate, lastSoldPrice) VALUES (59187066,'82 Munroe St',2119,'Roxbury','MA',42.318447,-71.088104,54232,25025,'MultiFamily2To4',1890,0,2432,2.0,3,'2016-11-21 00:00:00',425000)
+[INFO ] 2017-03-07 20:46:06.147 [main] MysqlWriter - Property Inserted Successfully: ZPID: 59187066
+[INFO ] 2017-03-07 20:46:06.198 [main] MysqlWriter - Zetimate for zpid: 59187066 has successfully been inserted.
+[WARN ] 2017-03-07 20:46:06.225 [main] MysqlWriter - Neighborhood already exists in database: regionID = 54232
+[INFO ] 2017-03-07 20:46:06.253 [main] MysqlWriter - Tax Assessment Successfully Added For ZPID: 59187066
+[INFO ] 2017-03-07 20:46:06.419 [main] Executor - Finished processing address. API Calls remaining: 485
+[INFO ] 2017-03-07 20:46:06.419 [main] MySQLAddressHandler - Now executing query: com.mysql.jdbc.JDBC42PreparedStatement@771a660: SELECT COUNT(Addresses.address_id) FROM Addresses INNER JOIN ZipGeo ON Addresses.zip = ZipGeo.zip WHERE api_result = 1 AND ZipGeo.MSAName LIKE "Boston-Cambridge-Quincy, MA-NH MSA"
+[INFO ] 2017-03-07 20:46:06.460 [main] MySQLAddressHandler - tryNewAddress set to: true
+[INFO ] 2017-03-07 20:46:06.460 [main] MySQLAddressHandler - Executing query: com.mysql.jdbc.JDBC42PreparedStatement@2d52216b: SELECT Addresses.address, Addresses.zip FROM Addresses INNER JOIN ZipGeo ON Addresses.zip = ZipGeo.zip WHERE api_result IS NULL AND ZipGeo.MSAName LIKE "Boston-Cambridge-Quincy, MA-NH MSA" LIMIT 1
+[INFO ] 2017-03-07 20:46:06.498 [main] MySQLAddressHandler - Now executing query: com.mysql.jdbc.JDBC42PreparedStatement@242b836: SELECT Addresses.address, Addresses.zip FROM Addresses INNER JOIN ZipGeo ON Addresses.zip = ZipGeo.zip WHERE api_result = 1 AND ZipGeo.MSAName LIKE "Boston-Cambridge-Quincy, MA-NH MSA" ORDER BY last_updated ASC LIMIT 1
+[INFO ] 2017-03-07 20:46:06.536 [main] MySQLAddressHandler - Response updated to contain property that had the oldest successfull update.
+[INFO ] 2017-03-07 20:46:06.536 [main] MySQLAddressHandler - Response updated to contain property that had the oldest successfull update.
+[INFO ] 2017-03-07 20:46:06.536 [main] Executor - Making API Call to GetDeepSearchResults with params: {address=26 Bardwell St, citystatezip=2130}
+[INFO ] 2017-03-07 20:46:07.090 [main] Executor - Request sent to: http://www.zillow.com/webservice/GetDeepSearchResults.htm?zws-id=X1-ZWz19thqfce13f_3s95g&address=26+Bardwell+St&citystatezip=2130
+[INFO ] 2017-03-07 20:46:07.093 [main] Executor - Extracted 1 properties from API call.
+[INFO ] 2017-03-07 20:46:08.084 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:08.084 [main] MysqlWriter - Executing query: com.mysql.jdbc.JDBC42PreparedStatement@3527942a: SELECT zpid FROM Properties WHERE zpid = 59134499;
+[INFO ] 2017-03-07 20:46:08.125 [main] MysqlWriter - Executing query: com.mysql.jdbc.JDBC42PreparedStatement@942a29c: INSERT INTO Properties(zpid, streetAddress, zipcode, city, state, latitude, longitude, regionID, countyCode, useCode, yearBuilt, lotSizeSqFt, finishedSqFt, bathroomCount, bedroomCount, lastSoldDate, lastSoldPrice) VALUES (59134499,'26 Bardwell St',2130,'Boston','MA',42.307934,-71.117134,154795,25025,'MultiFamily5Plus',1920,0,1863,3.0,3,'2016-11-01 00:00:00',725000)
+[INFO ] 2017-03-07 20:46:08.173 [main] MysqlWriter - Property Inserted Successfully: ZPID: 59134499
+[INFO ] 2017-03-07 20:46:08.228 [main] MysqlWriter - Zetimate for zpid: 59134499 has successfully been inserted.
+[WARN ] 2017-03-07 20:46:08.257 [main] MysqlWriter - Neighborhood already exists in database: regionID = 154795
+[INFO ] 2017-03-07 20:46:08.283 [main] MysqlWriter - Tax Assessment Successfully Added For ZPID: 59134499
+[INFO ] 2017-03-07 20:46:08.371 [main] Executor - Finished processing address. API Calls remaining: 482
+[INFO ] 2017-03-07 20:46:08.371 [main] MySQLAddressHandler - Now executing query: com.mysql.jdbc.JDBC42PreparedStatement@130c12b7: SELECT COUNT(Addresses.address_id) FROM Addresses INNER JOIN ZipGeo ON Addresses.zip = ZipGeo.zip WHERE api_result = 1 AND ZipGeo.MSAName LIKE "Boston-Cambridge-Quincy, MA-NH MSA"
+[INFO ] 2017-03-07 20:46:08.409 [main] MySQLAddressHandler - tryNewAddress set to: true
+[INFO ] 2017-03-07 20:46:08.409 [main] MySQLAddressHandler - Executing query: com.mysql.jdbc.JDBC42PreparedStatement@5e600dd5: SELECT Addresses.address, Addresses.zip FROM Addresses INNER JOIN ZipGeo ON Addresses.zip = ZipGeo.zip WHERE api_result IS NULL AND ZipGeo.MSAName LIKE "Boston-Cambridge-Quincy, MA-NH MSA" LIMIT 1
+[INFO ] 2017-03-07 20:46:08.447 [main] MySQLAddressHandler - Now executing query: com.mysql.jdbc.JDBC42PreparedStatement@576d5deb: SELECT Addresses.address, Addresses.zip FROM Addresses INNER JOIN ZipGeo ON Addresses.zip = ZipGeo.zip WHERE api_result = 1 AND ZipGeo.MSAName LIKE "Boston-Cambridge-Quincy, MA-NH MSA" ORDER BY last_updated ASC LIMIT 1
+[INFO ] 2017-03-07 20:46:08.486 [main] MySQLAddressHandler - Response updated to contain property that had the oldest successfull update.
+[INFO ] 2017-03-07 20:46:08.487 [main] MySQLAddressHandler - Response updated to contain property that had the oldest successfull update.
+[INFO ] 2017-03-07 20:46:08.487 [main] Executor - Making API Call to GetDeepSearchResults with params: {address=12 White Pl, citystatezip=2445}
+[INFO ] 2017-03-07 20:46:08.838 [main] Executor - Request sent to: http://www.zillow.com/webservice/GetDeepSearchResults.htm?zws-id=X1-ZWz19thqfce13f_3s95g&address=12+White+Pl&citystatezip=2445
+[INFO ] 2017-03-07 20:46:08.841 [main] Executor - Extracted 1 properties from API call.
+[INFO ] 2017-03-07 20:46:09.643 [main] MysqlWriter - Property Details were successfully inserted for zpid: 56570428
+[INFO ] 2017-03-07 20:46:10.264 [main] BostonMSAValidator - Property 2445 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:10.314 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 56570428 and compZPID = 56568298
+[INFO ] 2017-03-07 20:46:10.434 [main] BostonMSAValidator - Property 2446 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:10.484 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 56570428 and compZPID = 56563490
+[INFO ] 2017-03-07 20:46:10.569 [main] BostonMSAValidator - Property 2446 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:10.622 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 56570428 and compZPID = 56563319
+[INFO ] 2017-03-07 20:46:10.714 [main] BostonMSAValidator - Property 2446 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:10.768 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 56570428 and compZPID = 56561285
+[INFO ] 2017-03-07 20:46:10.852 [main] BostonMSAValidator - Property 2446 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:10.903 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 56570428 and compZPID = 56561329
+[INFO ] 2017-03-07 20:46:10.988 [main] BostonMSAValidator - Property 2446 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:11.042 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 56570428 and compZPID = 56565171
+[INFO ] 2017-03-07 20:46:11.128 [main] BostonMSAValidator - Property 2446 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:11.181 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 56570428 and compZPID = 56565201
+[INFO ] 2017-03-07 20:46:11.260 [main] BostonMSAValidator - Property 2446 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:11.314 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 56570428 and compZPID = 56565873
+[INFO ] 2017-03-07 20:46:11.410 [main] BostonMSAValidator - Property 2445 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:11.495 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 56570428 and compZPID = 56567087
+[INFO ] 2017-03-07 20:46:11.587 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:11.640 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 56570428 and compZPID = 59132800
+[INFO ] 2017-03-07 20:46:11.720 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:11.769 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 56570428 and compZPID = 59131445
+[INFO ] 2017-03-07 20:46:11.852 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:11.902 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 56570428 and compZPID = 59131779
+[INFO ] 2017-03-07 20:46:11.984 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:12.049 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 56570428 and compZPID = 59131967
+[INFO ] 2017-03-07 20:46:12.134 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:12.183 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 56570428 and compZPID = 59132172
+[INFO ] 2017-03-07 20:46:12.267 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:12.333 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 56570428 and compZPID = 59132936
+[INFO ] 2017-03-07 20:46:12.447 [main] BostonMSAValidator - Property 2120 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:12.501 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 56570428 and compZPID = 59187770
+[INFO ] 2017-03-07 20:46:12.584 [main] BostonMSAValidator - Property 2120 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:12.639 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 56570428 and compZPID = 59187849
+[INFO ] 2017-03-07 20:46:12.727 [main] BostonMSAValidator - Property 2120 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:12.785 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 56570428 and compZPID = 59188096
+[INFO ] 2017-03-07 20:46:12.880 [main] BostonMSAValidator - Property 2120 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:12.946 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 56570428 and compZPID = 87795350
+[INFO ] 2017-03-07 20:46:13.029 [main] BostonMSAValidator - Property 2446 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:13.081 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 56570428 and compZPID = 56562127
+[INFO ] 2017-03-07 20:46:13.167 [main] BostonMSAValidator - Property 2445 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:13.221 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 56570428 and compZPID = 56567400
+[INFO ] 2017-03-07 20:46:13.310 [main] BostonMSAValidator - Property 2445 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:13.360 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 56570428 and compZPID = 56567688
+[INFO ] 2017-03-07 20:46:13.442 [main] BostonMSAValidator - Property 2446 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:13.495 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 56570428 and compZPID = 56563492
+[INFO ] 2017-03-07 20:46:13.574 [main] BostonMSAValidator - Property 2446 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:13.630 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 56570428 and compZPID = 2098587148
+[INFO ] 2017-03-07 20:46:13.708 [main] BostonMSAValidator - Property 2446 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:13.769 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 56570428 and compZPID = 2101846960
+[INFO ] 2017-03-07 20:46:13.848 [main] BostonMSAValidator - Property 2445 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:13.848 [main] MysqlWriter - Executing query: com.mysql.jdbc.JDBC42PreparedStatement@53fb3dab: SELECT zpid FROM Properties WHERE zpid = 56570428;
+[INFO ] 2017-03-07 20:46:13.871 [main] MysqlWriter - Executing query: com.mysql.jdbc.JDBC42PreparedStatement@cb0755b: INSERT INTO Properties(zpid, streetAddress, zipcode, city, state, latitude, longitude, regionID, countyCode, useCode, yearBuilt, lotSizeSqFt, finishedSqFt, bathroomCount, bedroomCount, lastSoldDate, lastSoldPrice) VALUES (56570428,'12 White Pl',2445,'Brookline','MA',42.33201,-71.11871,17188,25021,'Triplex',1909,0,4182,3.0,8,'2016-05-31 00:00:00',660000)
+[INFO ] 2017-03-07 20:46:13.899 [main] MysqlWriter - Property Inserted Successfully: ZPID: 56570428
+[INFO ] 2017-03-07 20:46:13.950 [main] MysqlWriter - Zetimate for zpid: 56570428 has successfully been inserted.
+[WARN ] 2017-03-07 20:46:13.974 [main] MysqlWriter - Neighborhood already exists in database: regionID = 17188
+[INFO ] 2017-03-07 20:46:14.000 [main] MysqlWriter - Tax Assessment Successfully Added For ZPID: 56570428
+[INFO ] 2017-03-07 20:46:14.150 [main] Executor - Finished processing address. API Calls remaining: 479
+[INFO ] 2017-03-07 20:46:14.151 [main] MySQLAddressHandler - Now executing query: com.mysql.jdbc.JDBC42PreparedStatement@1c5920df: SELECT COUNT(Addresses.address_id) FROM Addresses INNER JOIN ZipGeo ON Addresses.zip = ZipGeo.zip WHERE api_result = 1 AND ZipGeo.MSAName LIKE "Boston-Cambridge-Quincy, MA-NH MSA"
+[INFO ] 2017-03-07 20:46:14.196 [main] MySQLAddressHandler - tryNewAddress set to: true
+[INFO ] 2017-03-07 20:46:14.196 [main] MySQLAddressHandler - Executing query: com.mysql.jdbc.JDBC42PreparedStatement@17f9d882: SELECT Addresses.address, Addresses.zip FROM Addresses INNER JOIN ZipGeo ON Addresses.zip = ZipGeo.zip WHERE api_result IS NULL AND ZipGeo.MSAName LIKE "Boston-Cambridge-Quincy, MA-NH MSA" LIMIT 1
+[INFO ] 2017-03-07 20:46:14.240 [main] MySQLAddressHandler - Now executing query: com.mysql.jdbc.JDBC42PreparedStatement@79e4c792: SELECT Addresses.address, Addresses.zip FROM Addresses INNER JOIN ZipGeo ON Addresses.zip = ZipGeo.zip WHERE api_result = 1 AND ZipGeo.MSAName LIKE "Boston-Cambridge-Quincy, MA-NH MSA" ORDER BY last_updated ASC LIMIT 1
+[INFO ] 2017-03-07 20:46:14.278 [main] MySQLAddressHandler - Response updated to contain property that had the oldest successfull update.
+[INFO ] 2017-03-07 20:46:14.278 [main] MySQLAddressHandler - Response updated to contain property that had the oldest successfull update.
+[INFO ] 2017-03-07 20:46:14.278 [main] Executor - Making API Call to GetDeepSearchResults with params: {address=23 Cheshire St, citystatezip=2130}
+[INFO ] 2017-03-07 20:46:14.697 [main] Executor - Request sent to: http://www.zillow.com/webservice/GetDeepSearchResults.htm?zws-id=X1-ZWz19thqfce13f_3s95g&address=23+Cheshire+St&citystatezip=2130
+[INFO ] 2017-03-07 20:46:14.699 [main] Executor - Extracted 1 properties from API call.
+[INFO ] 2017-03-07 20:46:15.373 [main] MysqlWriter - Property Details were successfully inserted for zpid: 59133279
+[INFO ] 2017-03-07 20:46:16.093 [main] BostonMSAValidator - Property 2120 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:16.144 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59133279 and compZPID = 59187969
+[INFO ] 2017-03-07 20:46:16.263 [main] BostonMSAValidator - Property 2119 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:16.314 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59133279 and compZPID = 59186140
+[INFO ] 2017-03-07 20:46:16.400 [main] BostonMSAValidator - Property 2119 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:16.461 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59133279 and compZPID = 2096766060
+[INFO ] 2017-03-07 20:46:16.540 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:16.599 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59133279 and compZPID = 59130988
+[INFO ] 2017-03-07 20:46:16.690 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:16.743 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59133279 and compZPID = 59131445
+[INFO ] 2017-03-07 20:46:16.828 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:16.882 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59133279 and compZPID = 59131779
+[INFO ] 2017-03-07 20:46:16.966 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:17.016 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59133279 and compZPID = 59131967
+[INFO ] 2017-03-07 20:46:17.094 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:17.152 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59133279 and compZPID = 59132172
+[INFO ] 2017-03-07 20:46:17.234 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:17.286 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59133279 and compZPID = 59132936
+[INFO ] 2017-03-07 20:46:17.368 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:17.418 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59133279 and compZPID = 59133336
+[INFO ] 2017-03-07 20:46:17.503 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:17.564 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59133279 and compZPID = 59133410
+[INFO ] 2017-03-07 20:46:17.650 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:17.707 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59133279 and compZPID = 59133905
+[INFO ] 2017-03-07 20:46:17.794 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:17.848 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59133279 and compZPID = 59134318
+[INFO ] 2017-03-07 20:46:17.932 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:17.986 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59133279 and compZPID = 59134350
+[INFO ] 2017-03-07 20:46:18.067 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:18.121 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59133279 and compZPID = 59134384
+[INFO ] 2017-03-07 20:46:18.211 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:18.263 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59133279 and compZPID = 59134571
+[INFO ] 2017-03-07 20:46:18.344 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:18.393 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59133279 and compZPID = 59134784
+[INFO ] 2017-03-07 20:46:18.484 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:18.537 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59133279 and compZPID = 59135732
+[INFO ] 2017-03-07 20:46:18.620 [main] BostonMSAValidator - Property 2119 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:18.679 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59133279 and compZPID = 59186139
+[INFO ] 2017-03-07 20:46:18.762 [main] BostonMSAValidator - Property 2120 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:18.813 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59133279 and compZPID = 59187770
+[INFO ] 2017-03-07 20:46:18.893 [main] BostonMSAValidator - Property 2120 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:18.943 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59133279 and compZPID = 59188096
+[INFO ] 2017-03-07 20:46:19.024 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:19.073 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59133279 and compZPID = 59132800
+[INFO ] 2017-03-07 20:46:19.168 [main] BostonMSAValidator - Property 2120 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:19.218 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59133279 and compZPID = 87795350
+[INFO ] 2017-03-07 20:46:19.296 [main] BostonMSAValidator - Property 2120 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:19.356 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59133279 and compZPID = 113389229
+[INFO ] 2017-03-07 20:46:19.434 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:19.484 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59133279 and compZPID = 123845668
+[INFO ] 2017-03-07 20:46:19.562 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:19.562 [main] MysqlWriter - Executing query: com.mysql.jdbc.JDBC42PreparedStatement@65987993: SELECT zpid FROM Properties WHERE zpid = 59133279;
+[INFO ] 2017-03-07 20:46:19.590 [main] MysqlWriter - Executing query: com.mysql.jdbc.JDBC42PreparedStatement@71075444: INSERT INTO Properties(zpid, streetAddress, zipcode, city, state, latitude, longitude, regionID, countyCode, useCode, yearBuilt, lotSizeSqFt, finishedSqFt, bathroomCount, bedroomCount, lastSoldDate, lastSoldPrice) VALUES (59133279,'23 Cheshire St',2130,'Boston','MA',42.312386,-71.109055,154795,25025,'Duplex',1900,0,4018,3.0,6,'2016-04-22 00:00:00',1715000)
+[INFO ] 2017-03-07 20:46:19.616 [main] MysqlWriter - Property Inserted Successfully: ZPID: 59133279
+[INFO ] 2017-03-07 20:46:19.669 [main] MysqlWriter - Zetimate for zpid: 59133279 has successfully been inserted.
+[WARN ] 2017-03-07 20:46:19.694 [main] MysqlWriter - Neighborhood already exists in database: regionID = 154795
+[INFO ] 2017-03-07 20:46:19.723 [main] MysqlWriter - Tax Assessment Successfully Added For ZPID: 59133279
+[INFO ] 2017-03-07 20:46:20.009 [main] Executor - Finished processing address. API Calls remaining: 476
+[INFO ] 2017-03-07 20:46:20.009 [main] MySQLAddressHandler - Now executing query: com.mysql.jdbc.JDBC42PreparedStatement@6f01b95f: SELECT COUNT(Addresses.address_id) FROM Addresses INNER JOIN ZipGeo ON Addresses.zip = ZipGeo.zip WHERE api_result = 1 AND ZipGeo.MSAName LIKE "Boston-Cambridge-Quincy, MA-NH MSA"
+[INFO ] 2017-03-07 20:46:20.050 [main] MySQLAddressHandler - tryNewAddress set to: true
+[INFO ] 2017-03-07 20:46:20.050 [main] MySQLAddressHandler - Executing query: com.mysql.jdbc.JDBC42PreparedStatement@4007f65e: SELECT Addresses.address, Addresses.zip FROM Addresses INNER JOIN ZipGeo ON Addresses.zip = ZipGeo.zip WHERE api_result IS NULL AND ZipGeo.MSAName LIKE "Boston-Cambridge-Quincy, MA-NH MSA" LIMIT 1
+[INFO ] 2017-03-07 20:46:20.087 [main] MySQLAddressHandler - Now executing query: com.mysql.jdbc.JDBC42PreparedStatement@1a245833: SELECT Addresses.address, Addresses.zip FROM Addresses INNER JOIN ZipGeo ON Addresses.zip = ZipGeo.zip WHERE api_result = 1 AND ZipGeo.MSAName LIKE "Boston-Cambridge-Quincy, MA-NH MSA" ORDER BY last_updated ASC LIMIT 1
+[INFO ] 2017-03-07 20:46:20.140 [main] MySQLAddressHandler - Response updated to contain property that had the oldest successfull update.
+[INFO ] 2017-03-07 20:46:20.141 [main] MySQLAddressHandler - Response updated to contain property that had the oldest successfull update.
+[INFO ] 2017-03-07 20:46:20.141 [main] Executor - Making API Call to GetDeepSearchResults with params: {address=95 Hillside St, citystatezip=2120}
+[INFO ] 2017-03-07 20:46:20.708 [main] Executor - Request sent to: http://www.zillow.com/webservice/GetDeepSearchResults.htm?zws-id=X1-ZWz19thqfce13f_3s95g&address=95+Hillside+St&citystatezip=2120
+[INFO ] 2017-03-07 20:46:20.711 [main] Executor - Extracted 1 properties from API call.
+[INFO ] 2017-03-07 20:46:21.504 [main] MysqlWriter - Property Details were successfully inserted for zpid: 59187876
+[INFO ] 2017-03-07 20:46:36.024 [main] BostonMSAValidator - Property 2120 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:36.084 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59187876 and compZPID = 59187969
+[INFO ] 2017-03-07 20:46:36.186 [main] BostonMSAValidator - Property 2446 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:36.236 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59187876 and compZPID = 56565171
+[INFO ] 2017-03-07 20:46:36.314 [main] BostonMSAValidator - Property 2446 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:36.364 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59187876 and compZPID = 56565201
+[INFO ] 2017-03-07 20:46:36.463 [main] BostonMSAValidator - Property 2445 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:36.515 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59187876 and compZPID = 56567087
+[INFO ] 2017-03-07 20:46:36.598 [main] BostonMSAValidator - Property 2119 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:36.652 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59187876 and compZPID = 59186140
+[INFO ] 2017-03-07 20:46:36.740 [main] BostonMSAValidator - Property 2119 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:36.790 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59187876 and compZPID = 2096766060
+[INFO ] 2017-03-07 20:46:36.882 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:36.942 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59187876 and compZPID = 59130988
+[INFO ] 2017-03-07 20:46:37.026 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:37.082 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59187876 and compZPID = 59131445
+[INFO ] 2017-03-07 20:46:37.168 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:37.218 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59187876 and compZPID = 59131779
+[INFO ] 2017-03-07 20:46:37.308 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:37.366 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59187876 and compZPID = 59131967
+[INFO ] 2017-03-07 20:46:37.458 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:37.513 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59187876 and compZPID = 59132172
+[INFO ] 2017-03-07 20:46:37.594 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:37.651 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59187876 and compZPID = 59133336
+[INFO ] 2017-03-07 20:46:37.732 [main] BostonMSAValidator - Property 2119 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:37.786 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59187876 and compZPID = 59185499
+[INFO ] 2017-03-07 20:46:37.866 [main] BostonMSAValidator - Property 2119 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:37.918 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59187876 and compZPID = 59186139
+[INFO ] 2017-03-07 20:46:38.003 [main] BostonMSAValidator - Property 2120 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:38.057 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59187876 and compZPID = 59187770
+[INFO ] 2017-03-07 20:46:38.140 [main] BostonMSAValidator - Property 2120 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:38.192 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59187876 and compZPID = 59187849
+[INFO ] 2017-03-07 20:46:38.272 [main] BostonMSAValidator - Property 2120 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:38.323 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59187876 and compZPID = 59188096
+[INFO ] 2017-03-07 20:46:38.402 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:38.460 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59187876 and compZPID = 59132800
+[INFO ] 2017-03-07 20:46:38.538 [main] BostonMSAValidator - Property 2120 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:38.588 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59187876 and compZPID = 87795350
+[INFO ] 2017-03-07 20:46:38.670 [main] BostonMSAValidator - Property 2120 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:38.720 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59187876 and compZPID = 113389229
+[INFO ] 2017-03-07 20:46:38.802 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:38.853 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59187876 and compZPID = 2097710028
+[INFO ] 2017-03-07 20:46:38.936 [main] BostonMSAValidator - Property 2120 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:38.986 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59187876 and compZPID = 2098531944
+[INFO ] 2017-03-07 20:46:39.080 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:39.143 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59187876 and compZPID = 59132498
+[INFO ] 2017-03-07 20:46:39.228 [main] BostonMSAValidator - Property 2120 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:39.228 [main] MysqlWriter - Executing query: com.mysql.jdbc.JDBC42PreparedStatement@6a4f1a55: SELECT zpid FROM Properties WHERE zpid = 59187876;
+[INFO ] 2017-03-07 20:46:39.252 [main] MysqlWriter - Executing query: com.mysql.jdbc.JDBC42PreparedStatement@7dfd3c81: INSERT INTO Properties(zpid, streetAddress, zipcode, city, state, latitude, longitude, regionID, countyCode, useCode, yearBuilt, lotSizeSqFt, finishedSqFt, bathroomCount, bedroomCount, lastSoldDate, lastSoldPrice) VALUES (59187876,'95 Hillside St',2120,'Roxbury Crossing','MA',42.330933,-71.10384,15856,25025,'MultiFamily2To4',1905,0,4614,1.5,4,'2016-03-02 00:00:00',1750000)
+[INFO ] 2017-03-07 20:46:39.286 [main] MysqlWriter - Property Inserted Successfully: ZPID: 59187876
+[INFO ] 2017-03-07 20:46:39.340 [main] MysqlWriter - Zetimate for zpid: 59187876 has successfully been inserted.
+[WARN ] 2017-03-07 20:46:39.364 [main] MysqlWriter - Neighborhood already exists in database: regionID = 15856
+[INFO ] 2017-03-07 20:46:39.397 [main] MysqlWriter - Tax Assessment Successfully Added For ZPID: 59187876
+[INFO ] 2017-03-07 20:46:39.801 [main] Executor - Finished processing address. API Calls remaining: 473
+[INFO ] 2017-03-07 20:46:39.802 [main] MySQLAddressHandler - Now executing query: com.mysql.jdbc.JDBC42PreparedStatement@169bb4dd: SELECT COUNT(Addresses.address_id) FROM Addresses INNER JOIN ZipGeo ON Addresses.zip = ZipGeo.zip WHERE api_result = 1 AND ZipGeo.MSAName LIKE "Boston-Cambridge-Quincy, MA-NH MSA"
+[INFO ] 2017-03-07 20:46:39.848 [main] MySQLAddressHandler - tryNewAddress set to: true
+[INFO ] 2017-03-07 20:46:39.848 [main] MySQLAddressHandler - Executing query: com.mysql.jdbc.JDBC42PreparedStatement@1f9e9475: SELECT Addresses.address, Addresses.zip FROM Addresses INNER JOIN ZipGeo ON Addresses.zip = ZipGeo.zip WHERE api_result IS NULL AND ZipGeo.MSAName LIKE "Boston-Cambridge-Quincy, MA-NH MSA" LIMIT 1
+[INFO ] 2017-03-07 20:46:39.888 [main] MySQLAddressHandler - Now executing query: com.mysql.jdbc.JDBC42PreparedStatement@3aa078fd: SELECT Addresses.address, Addresses.zip FROM Addresses INNER JOIN ZipGeo ON Addresses.zip = ZipGeo.zip WHERE api_result = 1 AND ZipGeo.MSAName LIKE "Boston-Cambridge-Quincy, MA-NH MSA" ORDER BY last_updated ASC LIMIT 1
+[INFO ] 2017-03-07 20:46:39.954 [main] MySQLAddressHandler - Response updated to contain property that had the oldest successfull update.
+[INFO ] 2017-03-07 20:46:39.954 [main] MySQLAddressHandler - Response updated to contain property that had the oldest successfull update.
+[INFO ] 2017-03-07 20:46:39.954 [main] Executor - Making API Call to GetDeepSearchResults with params: {address=2 Miles St, citystatezip=2119}
+[INFO ] 2017-03-07 20:46:40.379 [main] Executor - Request sent to: http://www.zillow.com/webservice/GetDeepSearchResults.htm?zws-id=X1-ZWz19thqfce13f_3s95g&address=2+Miles+St&citystatezip=2119
+[INFO ] 2017-03-07 20:46:40.382 [main] Executor - Extracted 1 properties from API call.
+[INFO ] 2017-03-07 20:46:41.764 [main] BostonMSAValidator - Property 2136 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:41.863 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59187226 and compZPID = 59126768
+[INFO ] 2017-03-07 20:46:42.057 [main] BostonMSAValidator - Property 2136 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:42.182 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59187226 and compZPID = 59129748
+[INFO ] 2017-03-07 20:46:42.288 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:42.338 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59187226 and compZPID = 59132618
+[INFO ] 2017-03-07 20:46:42.521 [main] BostonMSAValidator - Property 2121 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:42.608 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59187226 and compZPID = 2101436253
+[INFO ] 2017-03-07 20:46:42.690 [main] BostonMSAValidator - Property 2119 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:42.786 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59187226 and compZPID = 59186823
+[INFO ] 2017-03-07 20:46:42.980 [main] BostonMSAValidator - Property 2189 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:43.048 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59187226 and compZPID = 56624396
+[INFO ] 2017-03-07 20:46:43.167 [main] BostonMSAValidator - Property 2119 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:43.299 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59187226 and compZPID = 59186140
+[INFO ] 2017-03-07 20:46:43.418 [main] BostonMSAValidator - Property 2121 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:43.470 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59187226 and compZPID = 59110893
+[INFO ] 2017-03-07 20:46:43.627 [main] BostonMSAValidator - Property 2121 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:43.764 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59187226 and compZPID = 59113263
+[INFO ] 2017-03-07 20:46:43.860 [main] BostonMSAValidator - Property 2121 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:43.964 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59187226 and compZPID = 59114055
+[INFO ] 2017-03-07 20:46:44.174 [main] BostonMSAValidator - Property 2121 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:44.256 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59187226 and compZPID = 59114058
+[INFO ] 2017-03-07 20:46:44.390 [main] BostonMSAValidator - Property 2121 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:44.528 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59187226 and compZPID = 59114685
+[INFO ] 2017-03-07 20:46:44.650 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:44.699 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59187226 and compZPID = 59131364
+[INFO ] 2017-03-07 20:46:44.911 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:45.011 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59187226 and compZPID = 59131444
+[INFO ] 2017-03-07 20:46:45.097 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:45.230 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59187226 and compZPID = 59131445
+[INFO ] 2017-03-07 20:46:45.396 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:45.457 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59187226 and compZPID = 59131967
+[INFO ] 2017-03-07 20:46:45.641 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:45.751 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59187226 and compZPID = 59132172
+[INFO ] 2017-03-07 20:46:45.862 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:45.917 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59187226 and compZPID = 59132194
+[INFO ] 2017-03-07 20:46:46.089 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:46.202 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59187226 and compZPID = 59132299
+[INFO ] 2017-03-07 20:46:46.284 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:46.401 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59187226 and compZPID = 59132813
+[INFO ] 2017-03-07 20:46:46.578 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:46.705 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59187226 and compZPID = 59132936
+[INFO ] 2017-03-07 20:46:46.934 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:47.080 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59187226 and compZPID = 59133232
+[INFO ] 2017-03-07 20:46:47.288 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:47.355 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59187226 and compZPID = 59133336
+[INFO ] 2017-03-07 20:46:47.441 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:47.497 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59187226 and compZPID = 59133348
+[INFO ] 2017-03-07 20:46:47.687 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:47.771 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59187226 and compZPID = 59133410
+[INFO ] 2017-03-07 20:46:47.850 [main] BostonMSAValidator - Property 2119 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:47.850 [main] MysqlWriter - Executing query: com.mysql.jdbc.JDBC42PreparedStatement@78fa769e: SELECT zpid FROM Properties WHERE zpid = 59187226;
+[INFO ] 2017-03-07 20:46:47.874 [main] MysqlWriter - Executing query: com.mysql.jdbc.JDBC42PreparedStatement@16612a51: INSERT INTO Properties(zpid, streetAddress, zipcode, city, state, latitude, longitude, regionID, countyCode, useCode, yearBuilt, lotSizeSqFt, finishedSqFt, bathroomCount, bedroomCount, lastSoldDate, lastSoldPrice) VALUES (59187226,'2 Miles St',2119,'Roxbury','MA',42.31887,-71.099724,154795,25025,'Triplex',1905,0,3012,3.0,8,'2016-03-04 00:00:00',555556)
+[INFO ] 2017-03-07 20:46:47.958 [main] MysqlWriter - Property Inserted Successfully: ZPID: 59187226
+[INFO ] 2017-03-07 20:46:48.082 [main] MysqlWriter - Zetimate for zpid: 59187226 has successfully been inserted.
+[WARN ] 2017-03-07 20:46:48.146 [main] MysqlWriter - Neighborhood already exists in database: regionID = 154795
+[INFO ] 2017-03-07 20:46:48.172 [main] MysqlWriter - Tax Assessment Successfully Added For ZPID: 59187226
+[INFO ] 2017-03-07 20:46:48.356 [main] Executor - Finished processing address. API Calls remaining: 470
+[INFO ] 2017-03-07 20:46:48.356 [main] MySQLAddressHandler - Now executing query: com.mysql.jdbc.JDBC42PreparedStatement@4b86805d: SELECT COUNT(Addresses.address_id) FROM Addresses INNER JOIN ZipGeo ON Addresses.zip = ZipGeo.zip WHERE api_result = 1 AND ZipGeo.MSAName LIKE "Boston-Cambridge-Quincy, MA-NH MSA"
+[INFO ] 2017-03-07 20:46:48.455 [main] MySQLAddressHandler - tryNewAddress set to: true
+[INFO ] 2017-03-07 20:46:48.455 [main] MySQLAddressHandler - Executing query: com.mysql.jdbc.JDBC42PreparedStatement@5852c06f: SELECT Addresses.address, Addresses.zip FROM Addresses INNER JOIN ZipGeo ON Addresses.zip = ZipGeo.zip WHERE api_result IS NULL AND ZipGeo.MSAName LIKE "Boston-Cambridge-Quincy, MA-NH MSA" LIMIT 1
+[INFO ] 2017-03-07 20:46:48.534 [main] MySQLAddressHandler - Now executing query: com.mysql.jdbc.JDBC42PreparedStatement@4149c063: SELECT Addresses.address, Addresses.zip FROM Addresses INNER JOIN ZipGeo ON Addresses.zip = ZipGeo.zip WHERE api_result = 1 AND ZipGeo.MSAName LIKE "Boston-Cambridge-Quincy, MA-NH MSA" ORDER BY last_updated ASC LIMIT 1
+[INFO ] 2017-03-07 20:46:48.573 [main] MySQLAddressHandler - Response updated to contain property that had the oldest successfull update.
+[INFO ] 2017-03-07 20:46:48.573 [main] MySQLAddressHandler - Response updated to contain property that had the oldest successfull update.
+[INFO ] 2017-03-07 20:46:48.573 [main] Executor - Making API Call to GetDeepSearchResults with params: {address=78 Bragdon St, citystatezip=2119}
+[INFO ] 2017-03-07 20:46:49.007 [main] Executor - Request sent to: http://www.zillow.com/webservice/GetDeepSearchResults.htm?zws-id=X1-ZWz19thqfce13f_3s95g&address=78+Bragdon+St&citystatezip=2119
+[INFO ] 2017-03-07 20:46:49.011 [main] Executor - Extracted 1 properties from API call.
+[INFO ] 2017-03-07 20:46:50.357 [main] BostonMSAValidator - Property 2136 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:50.454 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59187229 and compZPID = 59126768
+[INFO ] 2017-03-07 20:46:50.614 [main] BostonMSAValidator - Property 2136 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:50.717 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59187229 and compZPID = 59129748
+[INFO ] 2017-03-07 20:46:50.798 [main] BostonMSAValidator - Property 2119 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:50.883 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59187229 and compZPID = 59184590
+[INFO ] 2017-03-07 20:46:51.029 [main] BostonMSAValidator - Property 2119 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:51.135 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59187229 and compZPID = 59186823
+[INFO ] 2017-03-07 20:46:51.305 [main] BostonMSAValidator - Property 2189 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:51.401 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59187229 and compZPID = 56624396
+[INFO ] 2017-03-07 20:46:51.532 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:51.678 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59187229 and compZPID = 59132618
+[INFO ] 2017-03-07 20:46:51.785 [main] BostonMSAValidator - Property 2119 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:51.895 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59187229 and compZPID = 59186140
+[INFO ] 2017-03-07 20:46:52.081 [main] BostonMSAValidator - Property 2121 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:52.177 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59187229 and compZPID = 59110893
+[INFO ] 2017-03-07 20:46:52.362 [main] BostonMSAValidator - Property 2121 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:52.491 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59187229 and compZPID = 59113263
+[INFO ] 2017-03-07 20:46:52.633 [main] BostonMSAValidator - Property 2121 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:52.777 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59187229 and compZPID = 59114055
+[INFO ] 2017-03-07 20:46:52.865 [main] BostonMSAValidator - Property 2121 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:52.993 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59187229 and compZPID = 59114058
+[INFO ] 2017-03-07 20:46:53.150 [main] BostonMSAValidator - Property 2121 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:53.232 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59187229 and compZPID = 59114685
+[INFO ] 2017-03-07 20:46:53.372 [main] BostonMSAValidator - Property 2121 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:53.459 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59187229 and compZPID = 59115468
+[INFO ] 2017-03-07 20:46:53.592 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:46:53.671 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59187229 and compZPID = 59131364
+[INFO ] 2017-03-07 20:48:04.722 [main] Main - Beginning Zillow Spidering
+[INFO ] 2017-03-07 20:48:05.267 [main] Executor - Instantiating Executor with API Call Limit of 500
+[INFO ] 2017-03-07 20:48:05.426 [main] Executor - Making API Call to GetDeepSearchResults with params: {address=78 Bragdon St, citystatezip=2119}
+[INFO ] 2017-03-07 20:48:44.329 [main] Main - Beginning Zillow Spidering
+[INFO ] 2017-03-07 20:48:44.831 [main] Executor - Instantiating Executor with API Call Limit of 500
+[INFO ] 2017-03-07 20:48:45.001 [main] Executor - Making API Call to GetDeepSearchResults with params: {address=78 Bragdon St, citystatezip=2119}
+[INFO ] 2017-03-07 20:48:46.250 [main] Executor - Request sent to: http://www.zillow.com/webservice/GetDeepSearchResults.htm?zws-id=X1-ZWz19thqfce13f_3s95g&address=78+Bragdon+St&citystatezip=2119
+[INFO ] 2017-03-07 20:48:46.265 [main] Executor - Extracted 1 properties from API call.
+[INFO ] 2017-03-07 20:48:47.914 [main] BostonMSAValidator - Property 2136 validated geographically for geography "Boston": true
+[WARN ] 2017-03-07 20:48:47.944 [main] MysqlWriter - Comparable already exists in database!: primaryZPID = 59187229 and compZPID = 59126768
+[INFO ] 2017-03-07 20:48:48.054 [main] BostonMSAValidator - Property 2136 validated geographically for geography "Boston": true
+[WARN ] 2017-03-07 20:48:48.084 [main] MysqlWriter - Comparable already exists in database!: primaryZPID = 59187229 and compZPID = 59129748
+[INFO ] 2017-03-07 20:48:48.175 [main] BostonMSAValidator - Property 2120 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:48:48.234 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59187229 and compZPID = 59184729
+[INFO ] 2017-03-07 20:48:48.322 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[WARN ] 2017-03-07 20:48:48.348 [main] MysqlWriter - Comparable already exists in database!: primaryZPID = 59187229 and compZPID = 59132618
+[INFO ] 2017-03-07 20:48:48.489 [main] BostonMSAValidator - Property 2121 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:48:48.597 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59187229 and compZPID = 2101436253
+[INFO ] 2017-03-07 20:48:48.682 [main] BostonMSAValidator - Property 2189 validated geographically for geography "Boston": true
+[WARN ] 2017-03-07 20:48:48.708 [main] MysqlWriter - Comparable already exists in database!: primaryZPID = 59187229 and compZPID = 56624396
+[INFO ] 2017-03-07 20:48:48.790 [main] BostonMSAValidator - Property 2119 validated geographically for geography "Boston": true
+[WARN ] 2017-03-07 20:48:48.818 [main] MysqlWriter - Comparable already exists in database!: primaryZPID = 59187229 and compZPID = 59186140
+[INFO ] 2017-03-07 20:48:48.900 [main] BostonMSAValidator - Property 2121 validated geographically for geography "Boston": true
+[WARN ] 2017-03-07 20:48:48.926 [main] MysqlWriter - Comparable already exists in database!: primaryZPID = 59187229 and compZPID = 59110893
+[INFO ] 2017-03-07 20:48:49.006 [main] BostonMSAValidator - Property 2121 validated geographically for geography "Boston": true
+[WARN ] 2017-03-07 20:48:49.034 [main] MysqlWriter - Comparable already exists in database!: primaryZPID = 59187229 and compZPID = 59113263
+[INFO ] 2017-03-07 20:48:49.123 [main] BostonMSAValidator - Property 2121 validated geographically for geography "Boston": true
+[WARN ] 2017-03-07 20:48:49.148 [main] MysqlWriter - Comparable already exists in database!: primaryZPID = 59187229 and compZPID = 59114055
+[INFO ] 2017-03-07 20:48:49.237 [main] BostonMSAValidator - Property 2121 validated geographically for geography "Boston": true
+[WARN ] 2017-03-07 20:48:49.266 [main] MysqlWriter - Comparable already exists in database!: primaryZPID = 59187229 and compZPID = 59114058
+[INFO ] 2017-03-07 20:48:49.357 [main] BostonMSAValidator - Property 2121 validated geographically for geography "Boston": true
+[WARN ] 2017-03-07 20:48:49.386 [main] MysqlWriter - Comparable already exists in database!: primaryZPID = 59187229 and compZPID = 59114685
+[INFO ] 2017-03-07 20:48:49.471 [main] BostonMSAValidator - Property 2121 validated geographically for geography "Boston": true
+[WARN ] 2017-03-07 20:48:49.500 [main] MysqlWriter - Comparable already exists in database!: primaryZPID = 59187229 and compZPID = 59115468
+[INFO ] 2017-03-07 20:48:49.581 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[WARN ] 2017-03-07 20:48:49.609 [main] MysqlWriter - Comparable already exists in database!: primaryZPID = 59187229 and compZPID = 59131364
+[INFO ] 2017-03-07 20:48:49.701 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:48:49.760 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59187229 and compZPID = 59131444
+[INFO ] 2017-03-07 20:48:49.843 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:48:49.897 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59187229 and compZPID = 59131445
+[INFO ] 2017-03-07 20:48:49.982 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:48:50.040 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59187229 and compZPID = 59131967
+[INFO ] 2017-03-07 20:48:50.129 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:48:50.191 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59187229 and compZPID = 59132172
+[INFO ] 2017-03-07 20:48:50.268 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:48:50.322 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59187229 and compZPID = 59132194
+[INFO ] 2017-03-07 20:48:50.418 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:48:50.474 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59187229 and compZPID = 59132299
+[INFO ] 2017-03-07 20:48:50.562 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:48:50.622 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59187229 and compZPID = 59132813
+[INFO ] 2017-03-07 20:48:50.708 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:48:50.764 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59187229 and compZPID = 59132936
+[INFO ] 2017-03-07 20:48:50.856 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:48:50.914 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59187229 and compZPID = 59133232
+[INFO ] 2017-03-07 20:48:51.000 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:48:51.063 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59187229 and compZPID = 59133336
+[INFO ] 2017-03-07 20:48:51.148 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:48:51.202 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59187229 and compZPID = 59133348
+[INFO ] 2017-03-07 20:48:51.287 [main] BostonMSAValidator - Property 2119 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:48:51.288 [main] MysqlWriter - Executing query: com.mysql.jdbc.JDBC42PreparedStatement@ae13544: SELECT zpid FROM Properties WHERE zpid = 59187229;
+[INFO ] 2017-03-07 20:48:51.318 [main] MysqlWriter - Executing query: com.mysql.jdbc.JDBC42PreparedStatement@3d34d211: INSERT INTO Properties(zpid, streetAddress, zipcode, city, state, latitude, longitude, regionID, countyCode, useCode, yearBuilt, lotSizeSqFt, finishedSqFt, bathroomCount, bedroomCount, lastSoldDate, lastSoldPrice) VALUES (59187229,'78 Bragdon St',2119,'Roxbury','MA',42.31877,-71.09951,154795,25025,'Triplex',1890,0,3012,3.0,8,'2016-03-04 00:00:00',555556)
+[INFO ] 2017-03-07 20:48:51.349 [main] MysqlWriter - Property Inserted Successfully: ZPID: 59187229
+[INFO ] 2017-03-07 20:48:51.406 [main] MysqlWriter - Zetimate for zpid: 59187229 has successfully been inserted.
+[WARN ] 2017-03-07 20:48:51.432 [main] MysqlWriter - Neighborhood already exists in database: regionID = 154795
+[INFO ] 2017-03-07 20:48:51.460 [main] MysqlWriter - Tax Assessment Successfully Added For ZPID: 59187229
+[INFO ] 2017-03-07 20:48:51.909 [main] Executor - Finished processing address. API Calls remaining: 497
+[INFO ] 2017-03-07 20:48:52.036 [main] Executor - Making API Call to GetDeepSearchResults with params: {address=25 Hawthorne St, citystatezip=2119}
+[INFO ] 2017-03-07 20:48:52.687 [main] Executor - Request sent to: http://www.zillow.com/webservice/GetDeepSearchResults.htm?zws-id=X1-ZWz19thqfce13f_3s95g&address=25+Hawthorne+St&citystatezip=2119
+[INFO ] 2017-03-07 20:48:52.693 [main] Executor - Extracted 1 properties from API call.
+[INFO ] 2017-03-07 20:48:53.363 [main] MysqlWriter - Property Details were successfully inserted for zpid: 59185742
+[INFO ] 2017-03-07 20:48:54.315 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:48:54.368 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59185742 and compZPID = 59132618
+[INFO ] 2017-03-07 20:48:54.564 [main] BostonMSAValidator - Property 2121 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:48:54.622 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59185742 and compZPID = 2101436253
+[INFO ] 2017-03-07 20:48:54.703 [main] BostonMSAValidator - Property 2119 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:48:54.758 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59185742 and compZPID = 59186823
+[INFO ] 2017-03-07 20:48:54.850 [main] BostonMSAValidator - Property 2120 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:48:54.964 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59185742 and compZPID = 59188257
+[INFO ] 2017-03-07 20:48:55.044 [main] BostonMSAValidator - Property 2125 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:48:55.100 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59185742 and compZPID = 59105184
+[INFO ] 2017-03-07 20:48:55.184 [main] BostonMSAValidator - Property 2121 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:48:55.244 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59185742 and compZPID = 59110893
+[INFO ] 2017-03-07 20:48:55.322 [main] BostonMSAValidator - Property 2121 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:48:55.384 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59185742 and compZPID = 59110899
+[INFO ] 2017-03-07 20:48:55.463 [main] BostonMSAValidator - Property 2121 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:48:55.518 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59185742 and compZPID = 59113263
+[INFO ] 2017-03-07 20:48:55.597 [main] BostonMSAValidator - Property 2121 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:48:55.652 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59185742 and compZPID = 59114055
+[INFO ] 2017-03-07 20:48:55.730 [main] BostonMSAValidator - Property 2121 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:48:55.786 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59185742 and compZPID = 59114058
+[INFO ] 2017-03-07 20:48:55.863 [main] BostonMSAValidator - Property 2121 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:48:55.928 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59185742 and compZPID = 59114685
+[INFO ] 2017-03-07 20:48:56.010 [main] BostonMSAValidator - Property 2121 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:48:56.064 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59185742 and compZPID = 59115468
+[INFO ] 2017-03-07 20:48:56.148 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:48:56.202 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59185742 and compZPID = 59131364
+[INFO ] 2017-03-07 20:48:56.288 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:48:56.346 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59185742 and compZPID = 59132172
+[INFO ] 2017-03-07 20:48:56.430 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:48:56.489 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59185742 and compZPID = 59132299
+[INFO ] 2017-03-07 20:48:56.569 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:48:56.626 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59185742 and compZPID = 59133336
+[INFO ] 2017-03-07 20:48:56.706 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:48:56.764 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59185742 and compZPID = 59133410
+[INFO ] 2017-03-07 20:48:56.851 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:48:56.915 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59185742 and compZPID = 59162228
+[INFO ] 2017-03-07 20:48:56.996 [main] BostonMSAValidator - Property 2119 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:48:57.052 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59185742 and compZPID = 59185499
+[INFO ] 2017-03-07 20:48:57.140 [main] BostonMSAValidator - Property 2119 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:48:57.194 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59185742 and compZPID = 59185654
+[INFO ] 2017-03-07 20:48:57.276 [main] BostonMSAValidator - Property 2119 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:48:57.341 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59185742 and compZPID = 59185662
+[INFO ] 2017-03-07 20:48:57.431 [main] BostonMSAValidator - Property 2119 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:48:57.548 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59185742 and compZPID = 59185819
+[INFO ] 2017-03-07 20:48:57.644 [main] BostonMSAValidator - Property 2119 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:48:57.700 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59185742 and compZPID = 59186042
+[INFO ] 2017-03-07 20:48:57.777 [main] BostonMSAValidator - Property 2119 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:48:57.843 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59185742 and compZPID = 59186139
+[INFO ] 2017-03-07 20:48:57.925 [main] BostonMSAValidator - Property 2119 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:48:57.982 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59185742 and compZPID = 59186219
+[INFO ] 2017-03-07 20:48:58.062 [main] BostonMSAValidator - Property 2119 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:48:58.063 [main] MysqlWriter - Executing query: com.mysql.jdbc.JDBC42PreparedStatement@65b3f4a4: SELECT zpid FROM Properties WHERE zpid = 59185742;
+[INFO ] 2017-03-07 20:48:58.089 [main] MysqlWriter - Executing query: com.mysql.jdbc.JDBC42PreparedStatement@f2ff811: INSERT INTO Properties(zpid, streetAddress, zipcode, city, state, latitude, longitude, regionID, countyCode, useCode, yearBuilt, lotSizeSqFt, finishedSqFt, bathroomCount, bedroomCount, lastSoldDate, lastSoldPrice) VALUES (59185742,'25 Hawthorne St',2119,'Roxbury','MA',42.32455,-71.09194,54232,25025,'MultiFamily2To4',1875,0,3982,2.0,6,'2016-05-11 00:00:00',639000)
+[INFO ] 2017-03-07 20:48:58.120 [main] MysqlWriter - Property Inserted Successfully: ZPID: 59185742
+[INFO ] 2017-03-07 20:48:58.180 [main] MysqlWriter - Zetimate for zpid: 59185742 has successfully been inserted.
+[WARN ] 2017-03-07 20:48:58.206 [main] MysqlWriter - Neighborhood already exists in database: regionID = 54232
+[INFO ] 2017-03-07 20:48:58.238 [main] MysqlWriter - Tax Assessment Successfully Added For ZPID: 59185742
+[INFO ] 2017-03-07 20:48:58.511 [main] Executor - Finished processing address. API Calls remaining: 494
+[INFO ] 2017-03-07 20:48:58.625 [main] Executor - Making API Call to GetDeepSearchResults with params: {address=82 Bragdon St, citystatezip=2119}
+[INFO ] 2017-03-07 20:48:59.020 [main] Executor - Request sent to: http://www.zillow.com/webservice/GetDeepSearchResults.htm?zws-id=X1-ZWz19thqfce13f_3s95g&address=82+Bragdon+St&citystatezip=2119
+[INFO ] 2017-03-07 20:48:59.023 [main] Executor - Extracted 1 properties from API call.
+[INFO ] 2017-03-07 20:49:00.294 [main] BostonMSAValidator - Property 2136 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:49:00.364 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59187227 and compZPID = 59126768
+[INFO ] 2017-03-07 20:49:00.554 [main] BostonMSAValidator - Property 2136 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:49:00.624 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59187227 and compZPID = 59129748
+[INFO ] 2017-03-07 20:49:00.709 [main] BostonMSAValidator - Property 2130 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:49:00.773 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59187227 and compZPID = 59132618
+[INFO ] 2017-03-07 20:49:00.864 [main] BostonMSAValidator - Property 2121 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:49:00.921 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59187227 and compZPID = 2101436253
+[INFO ] 2017-03-07 20:49:01.012 [main] BostonMSAValidator - Property 2119 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:49:01.085 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59187227 and compZPID = 59186823
+[INFO ] 2017-03-07 20:49:01.165 [main] BostonMSAValidator - Property 2189 validated geographically for geography "Boston": true
+[INFO ] 2017-03-07 20:49:01.222 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 59187227 and compZPID = 56624396

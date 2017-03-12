@@ -4,7 +4,10 @@
 package main.java.api_calls.examples;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.HashMap;
+
+import org.xml.sax.SAXException;
 
 import main.java.api_calls.GenericZillowAPICaller;
 import main.java.api_calls.ZillowAPI;
@@ -21,16 +24,12 @@ import main.java.xml_parsers.SearchResultParser;
  */
 public class GetDeepSearchResultsExample implements Example {
 
-  /**
-   * 
-   */
-  public GetDeepSearchResultsExample() {
-    // TODO Auto-generated constructor stub
-  }
-
   public void run() throws IOException {
-    String address = "7510 Shadyvilla Ln";
-    String zipCode = "77055";
+    String address = "15 Park Vale Ave APT 02";
+    String zipCode = "02134";
+//    String address = "7510 Shadyvilla Ln";
+//    String zipCode = "77055";
+    
 //    String address = "580 Washington St";// "99 Pond Ave";
 //    String zipCode = "02111";// "02445";
 
@@ -51,15 +50,23 @@ public class GetDeepSearchResultsExample implements Example {
     GenericZillowAPICaller apiTool = new GenericZillowAPICaller();
     String data = apiTool.makeApiCall(request);
 
-    SearchResultParser parser = new SearchResultParser(data);
-    System.out.println("Response status code: " + parser.getStatusCode());
-    System.out.println("Response message text: " + parser.getMessageText());
-    DBWriter dbw = new MysqlWriter();
-    for (DbTableObject dbto : parser.parseData()) {
-      Property p = (Property) dbto;
-      p.writeToDB(dbw);
-      // Property p = (Property) parser.parseData().get(0);
-      System.out.println(p.toString());
+    DBWriter dbw;
+    try {
+      SearchResultParser parser = new SearchResultParser(data);
+      System.out.println("Response status code: " + parser.getStatusCode());
+      System.out.println("Response message text: " + parser.getMessageText());
+      dbw = new MysqlWriter();
+      for (DbTableObject dbto : parser.parseData()) {
+        Property p = (Property) dbto;
+        p.writeToDB(dbw);
+        // Property p = (Property) parser.parseData().get(0);
+        System.out.println(p.toString());
+      }
+    } catch (SQLException e) {
+      e.printStackTrace();
+    } catch (SAXException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
     }
   }
 
