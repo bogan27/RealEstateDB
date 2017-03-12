@@ -1,0 +1,464 @@
+[INFO ] 2016-11-22 22:56:59.001 [main] Main - Beginning Zillow Spidering
+[INFO ] 2016-11-22 22:58:24.260 [main] Main - Beginning Zillow Spidering
+[INFO ] 2016-11-22 22:58:24.966 [main] Executor - Instantiating Executor with API Call Limit of 500
+[INFO ] 2016-11-22 22:58:25.162 [main] Executor - Making API Call to GetDeepSearchResults with params: {address=2215 Kimball Pl, citystatezip=20910}
+[INFO ] 2016-11-22 22:58:28.217 [main] GenericZillowAPICaller - Successfully made API Call to: http://www.zillow.com/webservice/GetDeepSearchResults.htm?zws-id=X1-ZWz19thqfce13f_3s95g&address=2215+Kimball+Pl&citystatezip=20910
+[INFO ] 2016-11-22 22:58:28.217 [main] Executor - Request sent to: http://www.zillow.com/webservice/GetDeepSearchResults.htm?zws-id=X1-ZWz19thqfce13f_3s95g&address=2215+Kimball+Pl&citystatezip=20910
+[INFO ] 2016-11-22 22:58:28.231 [main] Executor - Extracted 1 properties from API call.
+[INFO ] 2016-11-22 22:58:28.553 [main] GenericZillowAPICaller - Successfully made API Call to: http://www.zillow.com/webservice/GetDeepComps.htm?zws-id=X1-ZWz19thqfce13f_3s95g&zpid=37279691&count=25
+[ERROR] 2016-11-22 22:58:28.692 [main] MysqlWriter - SQLException occurred while inserting comparable: primaryZPID = 37279691 and compZPID = 37305769
+java.sql.SQLException: No value specified for parameter 1
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:957) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:896) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:885) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:860) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.PreparedStatement.checkAllParametersSet(PreparedStatement.java:2205) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.PreparedStatement.fillSendPacket(PreparedStatement.java:2185) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.PreparedStatement.fillSendPacket(PreparedStatement.java:2115) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.PreparedStatement.executeQuery(PreparedStatement.java:1936) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at main.java.dbConnectors.MysqlWriter.insertObject(MysqlWriter.java:290) [classes/:?]
+	at main.java.classes_for_db.ZillowComparable.writeToDB(ZillowComparable.java:233) [classes/:?]
+	at main.java.execute.Executor.processComps(Executor.java:190) [classes/:?]
+	at main.java.execute.Executor.getDataForAddress(Executor.java:112) [classes/:?]
+	at main.java.execute.Executor.run(Executor.java:62) [classes/:?]
+	at main.java.execute.Main.main(Main.java:55) [classes/:?]
+[ERROR] 2016-11-22 22:58:28.864 [main] MysqlWriter - SQLException occurred while inserting comparable: primaryZPID = 37279691 and compZPID = 37276647
+java.sql.SQLException: No value specified for parameter 1
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:957) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:896) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:885) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:860) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.PreparedStatement.checkAllParametersSet(PreparedStatement.java:2205) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.PreparedStatement.fillSendPacket(PreparedStatement.java:2185) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.PreparedStatement.fillSendPacket(PreparedStatement.java:2115) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.PreparedStatement.executeQuery(PreparedStatement.java:1936) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at main.java.dbConnectors.MysqlWriter.insertObject(MysqlWriter.java:290) [classes/:?]
+	at main.java.classes_for_db.ZillowComparable.writeToDB(ZillowComparable.java:233) [classes/:?]
+	at main.java.execute.Executor.processComps(Executor.java:190) [classes/:?]
+	at main.java.execute.Executor.getDataForAddress(Executor.java:112) [classes/:?]
+	at main.java.execute.Executor.run(Executor.java:62) [classes/:?]
+	at main.java.execute.Main.main(Main.java:55) [classes/:?]
+[ERROR] 2016-11-22 22:58:28.949 [main] MysqlWriter - SQLException occurred while inserting comparable: primaryZPID = 37279691 and compZPID = 37279620
+java.sql.SQLException: No value specified for parameter 1
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:957) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:896) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:885) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:860) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.PreparedStatement.checkAllParametersSet(PreparedStatement.java:2205) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.PreparedStatement.fillSendPacket(PreparedStatement.java:2185) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.PreparedStatement.fillSendPacket(PreparedStatement.java:2115) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.PreparedStatement.executeQuery(PreparedStatement.java:1936) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at main.java.dbConnectors.MysqlWriter.insertObject(MysqlWriter.java:290) [classes/:?]
+	at main.java.classes_for_db.ZillowComparable.writeToDB(ZillowComparable.java:233) [classes/:?]
+	at main.java.execute.Executor.processComps(Executor.java:190) [classes/:?]
+	at main.java.execute.Executor.getDataForAddress(Executor.java:112) [classes/:?]
+	at main.java.execute.Executor.run(Executor.java:62) [classes/:?]
+	at main.java.execute.Main.main(Main.java:55) [classes/:?]
+[ERROR] 2016-11-22 22:58:29.038 [main] MysqlWriter - SQLException occurred while inserting comparable: primaryZPID = 37279691 and compZPID = 37279654
+java.sql.SQLException: No value specified for parameter 1
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:957) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:896) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:885) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:860) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.PreparedStatement.checkAllParametersSet(PreparedStatement.java:2205) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.PreparedStatement.fillSendPacket(PreparedStatement.java:2185) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.PreparedStatement.fillSendPacket(PreparedStatement.java:2115) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.PreparedStatement.executeQuery(PreparedStatement.java:1936) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at main.java.dbConnectors.MysqlWriter.insertObject(MysqlWriter.java:290) [classes/:?]
+	at main.java.classes_for_db.ZillowComparable.writeToDB(ZillowComparable.java:233) [classes/:?]
+	at main.java.execute.Executor.processComps(Executor.java:190) [classes/:?]
+	at main.java.execute.Executor.getDataForAddress(Executor.java:112) [classes/:?]
+	at main.java.execute.Executor.run(Executor.java:62) [classes/:?]
+	at main.java.execute.Main.main(Main.java:55) [classes/:?]
+[ERROR] 2016-11-22 22:58:29.135 [main] MysqlWriter - SQLException occurred while inserting comparable: primaryZPID = 37279691 and compZPID = 37279685
+java.sql.SQLException: No value specified for parameter 1
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:957) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:896) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:885) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:860) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.PreparedStatement.checkAllParametersSet(PreparedStatement.java:2205) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.PreparedStatement.fillSendPacket(PreparedStatement.java:2185) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.PreparedStatement.fillSendPacket(PreparedStatement.java:2115) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.PreparedStatement.executeQuery(PreparedStatement.java:1936) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at main.java.dbConnectors.MysqlWriter.insertObject(MysqlWriter.java:290) [classes/:?]
+	at main.java.classes_for_db.ZillowComparable.writeToDB(ZillowComparable.java:233) [classes/:?]
+	at main.java.execute.Executor.processComps(Executor.java:190) [classes/:?]
+	at main.java.execute.Executor.getDataForAddress(Executor.java:112) [classes/:?]
+	at main.java.execute.Executor.run(Executor.java:62) [classes/:?]
+	at main.java.execute.Main.main(Main.java:55) [classes/:?]
+[ERROR] 2016-11-22 22:58:29.229 [main] MysqlWriter - SQLException occurred while inserting comparable: primaryZPID = 37279691 and compZPID = 37279702
+java.sql.SQLException: No value specified for parameter 1
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:957) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:896) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:885) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:860) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.PreparedStatement.checkAllParametersSet(PreparedStatement.java:2205) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.PreparedStatement.fillSendPacket(PreparedStatement.java:2185) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.PreparedStatement.fillSendPacket(PreparedStatement.java:2115) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.PreparedStatement.executeQuery(PreparedStatement.java:1936) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at main.java.dbConnectors.MysqlWriter.insertObject(MysqlWriter.java:290) [classes/:?]
+	at main.java.classes_for_db.ZillowComparable.writeToDB(ZillowComparable.java:233) [classes/:?]
+	at main.java.execute.Executor.processComps(Executor.java:190) [classes/:?]
+	at main.java.execute.Executor.getDataForAddress(Executor.java:112) [classes/:?]
+	at main.java.execute.Executor.run(Executor.java:62) [classes/:?]
+	at main.java.execute.Main.main(Main.java:55) [classes/:?]
+[ERROR] 2016-11-22 22:58:29.321 [main] MysqlWriter - SQLException occurred while inserting comparable: primaryZPID = 37279691 and compZPID = 37279706
+java.sql.SQLException: No value specified for parameter 1
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:957) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:896) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:885) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:860) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.PreparedStatement.checkAllParametersSet(PreparedStatement.java:2205) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.PreparedStatement.fillSendPacket(PreparedStatement.java:2185) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.PreparedStatement.fillSendPacket(PreparedStatement.java:2115) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.PreparedStatement.executeQuery(PreparedStatement.java:1936) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at main.java.dbConnectors.MysqlWriter.insertObject(MysqlWriter.java:290) [classes/:?]
+	at main.java.classes_for_db.ZillowComparable.writeToDB(ZillowComparable.java:233) [classes/:?]
+	at main.java.execute.Executor.processComps(Executor.java:190) [classes/:?]
+	at main.java.execute.Executor.getDataForAddress(Executor.java:112) [classes/:?]
+	at main.java.execute.Executor.run(Executor.java:62) [classes/:?]
+	at main.java.execute.Main.main(Main.java:55) [classes/:?]
+[ERROR] 2016-11-22 22:58:29.406 [main] MysqlWriter - SQLException occurred while inserting comparable: primaryZPID = 37279691 and compZPID = 37279711
+java.sql.SQLException: No value specified for parameter 1
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:957) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:896) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:885) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:860) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.PreparedStatement.checkAllParametersSet(PreparedStatement.java:2205) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.PreparedStatement.fillSendPacket(PreparedStatement.java:2185) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.PreparedStatement.fillSendPacket(PreparedStatement.java:2115) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.PreparedStatement.executeQuery(PreparedStatement.java:1936) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at main.java.dbConnectors.MysqlWriter.insertObject(MysqlWriter.java:290) [classes/:?]
+	at main.java.classes_for_db.ZillowComparable.writeToDB(ZillowComparable.java:233) [classes/:?]
+	at main.java.execute.Executor.processComps(Executor.java:190) [classes/:?]
+	at main.java.execute.Executor.getDataForAddress(Executor.java:112) [classes/:?]
+	at main.java.execute.Executor.run(Executor.java:62) [classes/:?]
+	at main.java.execute.Main.main(Main.java:55) [classes/:?]
+[ERROR] 2016-11-22 22:58:29.494 [main] MysqlWriter - SQLException occurred while inserting comparable: primaryZPID = 37279691 and compZPID = 37287212
+java.sql.SQLException: No value specified for parameter 1
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:957) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:896) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:885) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:860) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.PreparedStatement.checkAllParametersSet(PreparedStatement.java:2205) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.PreparedStatement.fillSendPacket(PreparedStatement.java:2185) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.PreparedStatement.fillSendPacket(PreparedStatement.java:2115) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.PreparedStatement.executeQuery(PreparedStatement.java:1936) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at main.java.dbConnectors.MysqlWriter.insertObject(MysqlWriter.java:290) [classes/:?]
+	at main.java.classes_for_db.ZillowComparable.writeToDB(ZillowComparable.java:233) [classes/:?]
+	at main.java.execute.Executor.processComps(Executor.java:190) [classes/:?]
+	at main.java.execute.Executor.getDataForAddress(Executor.java:112) [classes/:?]
+	at main.java.execute.Executor.run(Executor.java:62) [classes/:?]
+	at main.java.execute.Main.main(Main.java:55) [classes/:?]
+[ERROR] 2016-11-22 22:58:29.581 [main] MysqlWriter - SQLException occurred while inserting comparable: primaryZPID = 37279691 and compZPID = 37287510
+java.sql.SQLException: No value specified for parameter 1
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:957) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:896) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:885) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:860) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.PreparedStatement.checkAllParametersSet(PreparedStatement.java:2205) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.PreparedStatement.fillSendPacket(PreparedStatement.java:2185) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.PreparedStatement.fillSendPacket(PreparedStatement.java:2115) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.PreparedStatement.executeQuery(PreparedStatement.java:1936) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at main.java.dbConnectors.MysqlWriter.insertObject(MysqlWriter.java:290) [classes/:?]
+	at main.java.classes_for_db.ZillowComparable.writeToDB(ZillowComparable.java:233) [classes/:?]
+	at main.java.execute.Executor.processComps(Executor.java:190) [classes/:?]
+	at main.java.execute.Executor.getDataForAddress(Executor.java:112) [classes/:?]
+	at main.java.execute.Executor.run(Executor.java:62) [classes/:?]
+	at main.java.execute.Main.main(Main.java:55) [classes/:?]
+[ERROR] 2016-11-22 22:58:29.669 [main] MysqlWriter - SQLException occurred while inserting comparable: primaryZPID = 37279691 and compZPID = 37287716
+java.sql.SQLException: No value specified for parameter 1
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:957) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:896) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:885) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:860) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.PreparedStatement.checkAllParametersSet(PreparedStatement.java:2205) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.PreparedStatement.fillSendPacket(PreparedStatement.java:2185) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.PreparedStatement.fillSendPacket(PreparedStatement.java:2115) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.PreparedStatement.executeQuery(PreparedStatement.java:1936) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at main.java.dbConnectors.MysqlWriter.insertObject(MysqlWriter.java:290) [classes/:?]
+	at main.java.classes_for_db.ZillowComparable.writeToDB(ZillowComparable.java:233) [classes/:?]
+	at main.java.execute.Executor.processComps(Executor.java:190) [classes/:?]
+	at main.java.execute.Executor.getDataForAddress(Executor.java:112) [classes/:?]
+	at main.java.execute.Executor.run(Executor.java:62) [classes/:?]
+	at main.java.execute.Main.main(Main.java:55) [classes/:?]
+[ERROR] 2016-11-22 22:58:29.753 [main] MysqlWriter - SQLException occurred while inserting comparable: primaryZPID = 37279691 and compZPID = 37287812
+java.sql.SQLException: No value specified for parameter 1
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:957) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:896) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:885) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:860) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.PreparedStatement.checkAllParametersSet(PreparedStatement.java:2205) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.PreparedStatement.fillSendPacket(PreparedStatement.java:2185) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.PreparedStatement.fillSendPacket(PreparedStatement.java:2115) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.PreparedStatement.executeQuery(PreparedStatement.java:1936) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at main.java.dbConnectors.MysqlWriter.insertObject(MysqlWriter.java:290) [classes/:?]
+	at main.java.classes_for_db.ZillowComparable.writeToDB(ZillowComparable.java:233) [classes/:?]
+	at main.java.execute.Executor.processComps(Executor.java:190) [classes/:?]
+	at main.java.execute.Executor.getDataForAddress(Executor.java:112) [classes/:?]
+	at main.java.execute.Executor.run(Executor.java:62) [classes/:?]
+	at main.java.execute.Main.main(Main.java:55) [classes/:?]
+[ERROR] 2016-11-22 22:58:29.836 [main] MysqlWriter - SQLException occurred while inserting comparable: primaryZPID = 37279691 and compZPID = 37288384
+java.sql.SQLException: No value specified for parameter 1
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:957) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:896) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:885) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:860) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.PreparedStatement.checkAllParametersSet(PreparedStatement.java:2205) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.PreparedStatement.fillSendPacket(PreparedStatement.java:2185) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.PreparedStatement.fillSendPacket(PreparedStatement.java:2115) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.PreparedStatement.executeQuery(PreparedStatement.java:1936) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at main.java.dbConnectors.MysqlWriter.insertObject(MysqlWriter.java:290) [classes/:?]
+	at main.java.classes_for_db.ZillowComparable.writeToDB(ZillowComparable.java:233) [classes/:?]
+	at main.java.execute.Executor.processComps(Executor.java:190) [classes/:?]
+	at main.java.execute.Executor.getDataForAddress(Executor.java:112) [classes/:?]
+	at main.java.execute.Executor.run(Executor.java:62) [classes/:?]
+	at main.java.execute.Main.main(Main.java:55) [classes/:?]
+[ERROR] 2016-11-22 22:58:29.924 [main] MysqlWriter - SQLException occurred while inserting comparable: primaryZPID = 37279691 and compZPID = 37288782
+java.sql.SQLException: No value specified for parameter 1
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:957) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:896) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:885) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:860) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.PreparedStatement.checkAllParametersSet(PreparedStatement.java:2205) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.PreparedStatement.fillSendPacket(PreparedStatement.java:2185) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.PreparedStatement.fillSendPacket(PreparedStatement.java:2115) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.PreparedStatement.executeQuery(PreparedStatement.java:1936) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at main.java.dbConnectors.MysqlWriter.insertObject(MysqlWriter.java:290) [classes/:?]
+	at main.java.classes_for_db.ZillowComparable.writeToDB(ZillowComparable.java:233) [classes/:?]
+	at main.java.execute.Executor.processComps(Executor.java:190) [classes/:?]
+	at main.java.execute.Executor.getDataForAddress(Executor.java:112) [classes/:?]
+	at main.java.execute.Executor.run(Executor.java:62) [classes/:?]
+	at main.java.execute.Main.main(Main.java:55) [classes/:?]
+[ERROR] 2016-11-22 22:58:30.011 [main] MysqlWriter - SQLException occurred while inserting comparable: primaryZPID = 37279691 and compZPID = 37289748
+java.sql.SQLException: No value specified for parameter 1
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:957) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:896) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:885) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:860) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.PreparedStatement.checkAllParametersSet(PreparedStatement.java:2205) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.PreparedStatement.fillSendPacket(PreparedStatement.java:2185) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.PreparedStatement.fillSendPacket(PreparedStatement.java:2115) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.PreparedStatement.executeQuery(PreparedStatement.java:1936) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at main.java.dbConnectors.MysqlWriter.insertObject(MysqlWriter.java:290) [classes/:?]
+	at main.java.classes_for_db.ZillowComparable.writeToDB(ZillowComparable.java:233) [classes/:?]
+	at main.java.execute.Executor.processComps(Executor.java:190) [classes/:?]
+	at main.java.execute.Executor.getDataForAddress(Executor.java:112) [classes/:?]
+	at main.java.execute.Executor.run(Executor.java:62) [classes/:?]
+	at main.java.execute.Main.main(Main.java:55) [classes/:?]
+[ERROR] 2016-11-22 22:58:30.103 [main] MysqlWriter - SQLException occurred while inserting comparable: primaryZPID = 37279691 and compZPID = 37289778
+java.sql.SQLException: No value specified for parameter 1
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:957) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:896) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:885) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:860) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.PreparedStatement.checkAllParametersSet(PreparedStatement.java:2205) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.PreparedStatement.fillSendPacket(PreparedStatement.java:2185) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.PreparedStatement.fillSendPacket(PreparedStatement.java:2115) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.PreparedStatement.executeQuery(PreparedStatement.java:1936) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at main.java.dbConnectors.MysqlWriter.insertObject(MysqlWriter.java:290) [classes/:?]
+	at main.java.classes_for_db.ZillowComparable.writeToDB(ZillowComparable.java:233) [classes/:?]
+	at main.java.execute.Executor.processComps(Executor.java:190) [classes/:?]
+	at main.java.execute.Executor.getDataForAddress(Executor.java:112) [classes/:?]
+	at main.java.execute.Executor.run(Executor.java:62) [classes/:?]
+	at main.java.execute.Main.main(Main.java:55) [classes/:?]
+[ERROR] 2016-11-22 22:58:30.189 [main] MysqlWriter - SQLException occurred while inserting comparable: primaryZPID = 37279691 and compZPID = 37289784
+java.sql.SQLException: No value specified for parameter 1
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:957) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:896) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:885) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:860) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.PreparedStatement.checkAllParametersSet(PreparedStatement.java:2205) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.PreparedStatement.fillSendPacket(PreparedStatement.java:2185) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.PreparedStatement.fillSendPacket(PreparedStatement.java:2115) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.PreparedStatement.executeQuery(PreparedStatement.java:1936) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at main.java.dbConnectors.MysqlWriter.insertObject(MysqlWriter.java:290) [classes/:?]
+	at main.java.classes_for_db.ZillowComparable.writeToDB(ZillowComparable.java:233) [classes/:?]
+	at main.java.execute.Executor.processComps(Executor.java:190) [classes/:?]
+	at main.java.execute.Executor.getDataForAddress(Executor.java:112) [classes/:?]
+	at main.java.execute.Executor.run(Executor.java:62) [classes/:?]
+	at main.java.execute.Main.main(Main.java:55) [classes/:?]
+[ERROR] 2016-11-22 22:58:30.278 [main] MysqlWriter - SQLException occurred while inserting comparable: primaryZPID = 37279691 and compZPID = 37289840
+java.sql.SQLException: No value specified for parameter 1
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:957) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:896) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:885) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:860) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.PreparedStatement.checkAllParametersSet(PreparedStatement.java:2205) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.PreparedStatement.fillSendPacket(PreparedStatement.java:2185) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.PreparedStatement.fillSendPacket(PreparedStatement.java:2115) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.PreparedStatement.executeQuery(PreparedStatement.java:1936) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at main.java.dbConnectors.MysqlWriter.insertObject(MysqlWriter.java:290) [classes/:?]
+	at main.java.classes_for_db.ZillowComparable.writeToDB(ZillowComparable.java:233) [classes/:?]
+	at main.java.execute.Executor.processComps(Executor.java:190) [classes/:?]
+	at main.java.execute.Executor.getDataForAddress(Executor.java:112) [classes/:?]
+	at main.java.execute.Executor.run(Executor.java:62) [classes/:?]
+	at main.java.execute.Main.main(Main.java:55) [classes/:?]
+[ERROR] 2016-11-22 22:58:30.366 [main] MysqlWriter - SQLException occurred while inserting comparable: primaryZPID = 37279691 and compZPID = 37289841
+java.sql.SQLException: No value specified for parameter 1
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:957) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:896) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:885) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:860) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.PreparedStatement.checkAllParametersSet(PreparedStatement.java:2205) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.PreparedStatement.fillSendPacket(PreparedStatement.java:2185) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.PreparedStatement.fillSendPacket(PreparedStatement.java:2115) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.PreparedStatement.executeQuery(PreparedStatement.java:1936) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at main.java.dbConnectors.MysqlWriter.insertObject(MysqlWriter.java:290) [classes/:?]
+	at main.java.classes_for_db.ZillowComparable.writeToDB(ZillowComparable.java:233) [classes/:?]
+	at main.java.execute.Executor.processComps(Executor.java:190) [classes/:?]
+	at main.java.execute.Executor.getDataForAddress(Executor.java:112) [classes/:?]
+	at main.java.execute.Executor.run(Executor.java:62) [classes/:?]
+	at main.java.execute.Main.main(Main.java:55) [classes/:?]
+[ERROR] 2016-11-22 22:58:30.452 [main] MysqlWriter - SQLException occurred while inserting comparable: primaryZPID = 37279691 and compZPID = 37289868
+java.sql.SQLException: No value specified for parameter 1
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:957) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:896) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:885) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:860) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.PreparedStatement.checkAllParametersSet(PreparedStatement.java:2205) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.PreparedStatement.fillSendPacket(PreparedStatement.java:2185) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.PreparedStatement.fillSendPacket(PreparedStatement.java:2115) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.PreparedStatement.executeQuery(PreparedStatement.java:1936) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at main.java.dbConnectors.MysqlWriter.insertObject(MysqlWriter.java:290) [classes/:?]
+	at main.java.classes_for_db.ZillowComparable.writeToDB(ZillowComparable.java:233) [classes/:?]
+	at main.java.execute.Executor.processComps(Executor.java:190) [classes/:?]
+	at main.java.execute.Executor.getDataForAddress(Executor.java:112) [classes/:?]
+	at main.java.execute.Executor.run(Executor.java:62) [classes/:?]
+	at main.java.execute.Main.main(Main.java:55) [classes/:?]
+[ERROR] 2016-11-22 22:58:30.541 [main] MysqlWriter - SQLException occurred while inserting comparable: primaryZPID = 37279691 and compZPID = 37289877
+java.sql.SQLException: No value specified for parameter 1
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:957) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:896) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:885) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:860) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.PreparedStatement.checkAllParametersSet(PreparedStatement.java:2205) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.PreparedStatement.fillSendPacket(PreparedStatement.java:2185) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.PreparedStatement.fillSendPacket(PreparedStatement.java:2115) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.PreparedStatement.executeQuery(PreparedStatement.java:1936) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at main.java.dbConnectors.MysqlWriter.insertObject(MysqlWriter.java:290) [classes/:?]
+	at main.java.classes_for_db.ZillowComparable.writeToDB(ZillowComparable.java:233) [classes/:?]
+	at main.java.execute.Executor.processComps(Executor.java:190) [classes/:?]
+	at main.java.execute.Executor.getDataForAddress(Executor.java:112) [classes/:?]
+	at main.java.execute.Executor.run(Executor.java:62) [classes/:?]
+	at main.java.execute.Main.main(Main.java:55) [classes/:?]
+[ERROR] 2016-11-22 22:58:30.629 [main] MysqlWriter - SQLException occurred while inserting comparable: primaryZPID = 37279691 and compZPID = 37289881
+java.sql.SQLException: No value specified for parameter 1
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:957) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:896) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:885) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:860) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.PreparedStatement.checkAllParametersSet(PreparedStatement.java:2205) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.PreparedStatement.fillSendPacket(PreparedStatement.java:2185) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.PreparedStatement.fillSendPacket(PreparedStatement.java:2115) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.PreparedStatement.executeQuery(PreparedStatement.java:1936) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at main.java.dbConnectors.MysqlWriter.insertObject(MysqlWriter.java:290) [classes/:?]
+	at main.java.classes_for_db.ZillowComparable.writeToDB(ZillowComparable.java:233) [classes/:?]
+	at main.java.execute.Executor.processComps(Executor.java:190) [classes/:?]
+	at main.java.execute.Executor.getDataForAddress(Executor.java:112) [classes/:?]
+	at main.java.execute.Executor.run(Executor.java:62) [classes/:?]
+	at main.java.execute.Main.main(Main.java:55) [classes/:?]
+[ERROR] 2016-11-22 22:58:30.710 [main] MysqlWriter - SQLException occurred while inserting comparable: primaryZPID = 37279691 and compZPID = 37289909
+java.sql.SQLException: No value specified for parameter 1
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:957) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:896) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:885) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:860) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.PreparedStatement.checkAllParametersSet(PreparedStatement.java:2205) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.PreparedStatement.fillSendPacket(PreparedStatement.java:2185) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.PreparedStatement.fillSendPacket(PreparedStatement.java:2115) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.PreparedStatement.executeQuery(PreparedStatement.java:1936) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at main.java.dbConnectors.MysqlWriter.insertObject(MysqlWriter.java:290) [classes/:?]
+	at main.java.classes_for_db.ZillowComparable.writeToDB(ZillowComparable.java:233) [classes/:?]
+	at main.java.execute.Executor.processComps(Executor.java:190) [classes/:?]
+	at main.java.execute.Executor.getDataForAddress(Executor.java:112) [classes/:?]
+	at main.java.execute.Executor.run(Executor.java:62) [classes/:?]
+	at main.java.execute.Main.main(Main.java:55) [classes/:?]
+[ERROR] 2016-11-22 22:58:30.806 [main] MysqlWriter - SQLException occurred while inserting comparable: primaryZPID = 37279691 and compZPID = 37289919
+java.sql.SQLException: No value specified for parameter 1
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:957) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:896) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:885) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:860) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.PreparedStatement.checkAllParametersSet(PreparedStatement.java:2205) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.PreparedStatement.fillSendPacket(PreparedStatement.java:2185) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.PreparedStatement.fillSendPacket(PreparedStatement.java:2115) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.PreparedStatement.executeQuery(PreparedStatement.java:1936) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at main.java.dbConnectors.MysqlWriter.insertObject(MysqlWriter.java:290) [classes/:?]
+	at main.java.classes_for_db.ZillowComparable.writeToDB(ZillowComparable.java:233) [classes/:?]
+	at main.java.execute.Executor.processComps(Executor.java:190) [classes/:?]
+	at main.java.execute.Executor.getDataForAddress(Executor.java:112) [classes/:?]
+	at main.java.execute.Executor.run(Executor.java:62) [classes/:?]
+	at main.java.execute.Main.main(Main.java:55) [classes/:?]
+[ERROR] 2016-11-22 22:58:30.895 [main] MysqlWriter - SQLException occurred while inserting comparable: primaryZPID = 37279691 and compZPID = 37289940
+java.sql.SQLException: No value specified for parameter 1
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:957) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:896) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:885) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:860) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.PreparedStatement.checkAllParametersSet(PreparedStatement.java:2205) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.PreparedStatement.fillSendPacket(PreparedStatement.java:2185) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.PreparedStatement.fillSendPacket(PreparedStatement.java:2115) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at com.mysql.jdbc.PreparedStatement.executeQuery(PreparedStatement.java:1936) ~[mysql-connector-java-5.1.38-bin.jar:5.1.38]
+	at main.java.dbConnectors.MysqlWriter.insertObject(MysqlWriter.java:290) [classes/:?]
+	at main.java.classes_for_db.ZillowComparable.writeToDB(ZillowComparable.java:233) [classes/:?]
+	at main.java.execute.Executor.processComps(Executor.java:190) [classes/:?]
+	at main.java.execute.Executor.getDataForAddress(Executor.java:112) [classes/:?]
+	at main.java.execute.Executor.run(Executor.java:62) [classes/:?]
+	at main.java.execute.Main.main(Main.java:55) [classes/:?]
+[ERROR] 2016-11-22 22:58:31.305 [main] GenericZillowAPICaller - IOException occured while making API call to: http://www.zillow.com/webservice/GetUpdatedPropertyDetails.htm?zws-id=X1-ZWz19thqfce13f_3s95g&zpid=37279691
+org.apache.http.client.HttpResponseException: Internal Server Error
+	at org.apache.http.impl.client.AbstractResponseHandler.handleResponse(AbstractResponseHandler.java:69) ~[httpclient-4.5.2.jar:4.5.2]
+	at org.apache.http.client.fluent.Response.handleResponse(Response.java:90) ~[fluent-hc-4.5.2.jar:4.5.2]
+	at org.apache.http.client.fluent.Response.returnContent(Response.java:97) ~[fluent-hc-4.5.2.jar:4.5.2]
+	at main.java.api_calls.GenericZillowAPICaller.makeApiCall(GenericZillowAPICaller.java:38) [classes/:?]
+	at main.java.api_calls.GenericZillowAPICaller.makeApiCall(GenericZillowAPICaller.java:49) [classes/:?]
+	at main.java.execute.Executor.processPropertyDetails(Executor.java:149) [classes/:?]
+	at main.java.execute.Executor.getDataForAddress(Executor.java:113) [classes/:?]
+	at main.java.execute.Executor.run(Executor.java:62) [classes/:?]
+	at main.java.execute.Main.main(Main.java:55) [classes/:?]
+[INFO ] 2016-11-22 22:58:31.306 [main] GenericZillowAPICaller - Successfully made API Call to: http://www.zillow.com/webservice/GetUpdatedPropertyDetails.htm?zws-id=X1-ZWz19thqfce13f_3s95g&zpid=37279691
+[INFO ] 2016-11-22 23:01:11.484 [main] Main - Beginning Zillow Spidering
+[INFO ] 2016-11-22 23:01:12.195 [main] Executor - Instantiating Executor with API Call Limit of 500
+[INFO ] 2016-11-22 23:01:12.405 [main] Executor - Making API Call to GetDeepSearchResults with params: {address=2215 Kimball Pl, citystatezip=20910}
+[INFO ] 2016-11-22 23:01:15.368 [main] GenericZillowAPICaller - Successfully made API Call to: http://www.zillow.com/webservice/GetDeepSearchResults.htm?zws-id=X1-ZWz19thqfce13f_3s95g&address=2215+Kimball+Pl&citystatezip=20910
+[INFO ] 2016-11-22 23:01:15.368 [main] Executor - Request sent to: http://www.zillow.com/webservice/GetDeepSearchResults.htm?zws-id=X1-ZWz19thqfce13f_3s95g&address=2215+Kimball+Pl&citystatezip=20910
+[INFO ] 2016-11-22 23:01:15.381 [main] Executor - Extracted 1 properties from API call.
+[INFO ] 2016-11-22 23:01:15.608 [main] GenericZillowAPICaller - Successfully made API Call to: http://www.zillow.com/webservice/GetDeepComps.htm?zws-id=X1-ZWz19thqfce13f_3s95g&zpid=37279691&count=25
+[WARN ] 2016-11-22 23:01:15.721 [main] MysqlWriter - Comparable already exists in database!: primaryZPID = 37279691 and compZPID = 37305769
+[WARN ] 2016-11-22 23:01:15.855 [main] MysqlWriter - Comparable already exists in database!: primaryZPID = 37279691 and compZPID = 37276647
+[WARN ] 2016-11-22 23:01:15.989 [main] MysqlWriter - Comparable already exists in database!: primaryZPID = 37279691 and compZPID = 37279620
+[WARN ] 2016-11-22 23:01:16.126 [main] MysqlWriter - Comparable already exists in database!: primaryZPID = 37279691 and compZPID = 37279654
+[WARN ] 2016-11-22 23:01:16.262 [main] MysqlWriter - Comparable already exists in database!: primaryZPID = 37279691 and compZPID = 37279685
+[WARN ] 2016-11-22 23:01:16.397 [main] MysqlWriter - Comparable already exists in database!: primaryZPID = 37279691 and compZPID = 37279702
+[WARN ] 2016-11-22 23:01:16.529 [main] MysqlWriter - Comparable already exists in database!: primaryZPID = 37279691 and compZPID = 37279706
+[WARN ] 2016-11-22 23:01:16.654 [main] MysqlWriter - Comparable already exists in database!: primaryZPID = 37279691 and compZPID = 37279711
+[WARN ] 2016-11-22 23:01:16.788 [main] MysqlWriter - Comparable already exists in database!: primaryZPID = 37279691 and compZPID = 37287212
+[WARN ] 2016-11-22 23:01:16.914 [main] MysqlWriter - Comparable already exists in database!: primaryZPID = 37279691 and compZPID = 37287510
+[WARN ] 2016-11-22 23:01:17.039 [main] MysqlWriter - Comparable already exists in database!: primaryZPID = 37279691 and compZPID = 37287716
+[WARN ] 2016-11-22 23:01:17.167 [main] MysqlWriter - Comparable already exists in database!: primaryZPID = 37279691 and compZPID = 37287812
+[WARN ] 2016-11-22 23:01:17.296 [main] MysqlWriter - Comparable already exists in database!: primaryZPID = 37279691 and compZPID = 37288384
+[WARN ] 2016-11-22 23:01:17.442 [main] MysqlWriter - Comparable already exists in database!: primaryZPID = 37279691 and compZPID = 37288782
+[WARN ] 2016-11-22 23:01:17.573 [main] MysqlWriter - Comparable already exists in database!: primaryZPID = 37279691 and compZPID = 37289748
+[WARN ] 2016-11-22 23:01:17.699 [main] MysqlWriter - Comparable already exists in database!: primaryZPID = 37279691 and compZPID = 37289778
+[WARN ] 2016-11-22 23:01:17.829 [main] MysqlWriter - Comparable already exists in database!: primaryZPID = 37279691 and compZPID = 37289784
+[WARN ] 2016-11-22 23:01:17.959 [main] MysqlWriter - Comparable already exists in database!: primaryZPID = 37279691 and compZPID = 37289840
+[WARN ] 2016-11-22 23:01:18.089 [main] MysqlWriter - Comparable already exists in database!: primaryZPID = 37279691 and compZPID = 37289841
+[WARN ] 2016-11-22 23:01:18.219 [main] MysqlWriter - Comparable already exists in database!: primaryZPID = 37279691 and compZPID = 37289868
+[WARN ] 2016-11-22 23:01:18.361 [main] MysqlWriter - Comparable already exists in database!: primaryZPID = 37279691 and compZPID = 37289877
+[WARN ] 2016-11-22 23:01:18.495 [main] MysqlWriter - Comparable already exists in database!: primaryZPID = 37279691 and compZPID = 37289881
+[WARN ] 2016-11-22 23:01:18.628 [main] MysqlWriter - Comparable already exists in database!: primaryZPID = 37279691 and compZPID = 37289909
+[INFO ] 2016-11-22 23:01:18.821 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 37279691 and compZPID = 37289919
+[INFO ] 2016-11-22 23:01:19.003 [main] MysqlWriter - Comparable Successfully Inserted. primaryZPID = 37279691 and compZPID = 37289940
+[ERROR] 2016-11-22 23:01:19.739 [main] GenericZillowAPICaller - IOException occured while making API call to: http://www.zillow.com/webservice/GetUpdatedPropertyDetails.htm?zws-id=X1-ZWz19thqfce13f_3s95g&zpid=37279691
+org.apache.http.client.HttpResponseException: Internal Server Error
+	at org.apache.http.impl.client.AbstractResponseHandler.handleResponse(AbstractResponseHandler.java:69) ~[httpclient-4.5.2.jar:4.5.2]
+	at org.apache.http.client.fluent.Response.handleResponse(Response.java:90) ~[fluent-hc-4.5.2.jar:4.5.2]
+	at org.apache.http.client.fluent.Response.returnContent(Response.java:97) ~[fluent-hc-4.5.2.jar:4.5.2]
+	at main.java.api_calls.GenericZillowAPICaller.makeApiCall(GenericZillowAPICaller.java:38) [classes/:?]
+	at main.java.api_calls.GenericZillowAPICaller.makeApiCall(GenericZillowAPICaller.java:49) [classes/:?]
+	at main.java.execute.Executor.processPropertyDetails(Executor.java:149) [classes/:?]
+	at main.java.execute.Executor.getDataForAddress(Executor.java:113) [classes/:?]
+	at main.java.execute.Executor.run(Executor.java:62) [classes/:?]
+	at main.java.execute.Main.main(Main.java:55) [classes/:?]
+[INFO ] 2016-11-22 23:01:19.773 [main] GenericZillowAPICaller - Successfully made API Call to: http://www.zillow.com/webservice/GetUpdatedPropertyDetails.htm?zws-id=X1-ZWz19thqfce13f_3s95g&zpid=37279691

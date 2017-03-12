@@ -26,7 +26,7 @@ public interface AddressHandler {
    * 
    * @return
    */
-  public Map<String, String> getNextAddressToUpdate();
+  public Map<String, String> getNextAddressToUpdate(int maxActiveProperties);
 
   /**
    * Given a Map, this method will look for the following Keys and insert their values into the

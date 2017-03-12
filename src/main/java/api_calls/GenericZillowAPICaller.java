@@ -7,15 +7,14 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.apache.http.client.fluent.Request;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class GenericZillowAPICaller {
 
   private String request;
   private String response;
-
-  public GenericZillowAPICaller() {
-
-  }
+  private Logger logger = LogManager.getLogger(this.getClass().getName());
 
   public String getRequest() {
     return request;
@@ -33,19 +32,13 @@ public class GenericZillowAPICaller {
     this.response = response;
   }
 
-  public String makeApiCall() {
-    String results = "";
-    try {
-      results = Request.Get(this.request).execute().returnContent().toString();
-    } catch (IOException e) {
-      e.printStackTrace();
-      System.out.println("Error occured while making API call.");
-    }
+  public String makeApiCall() throws IOException {
+    String results = Request.Get(this.request).execute().returnContent().toString();
     this.response = results;
     return this.response;
   }
 
-  public String makeApiCall(String requestString) {
+  public String makeApiCall(String requestString) throws IOException {
     this.request = requestString;
     return this.makeApiCall();
   }
@@ -61,6 +54,7 @@ public class GenericZillowAPICaller {
     private String request = "?";
     private String zwsid = "X1-ZWz19thqfce13f_3s95g";
     private HashMap<String, String> params = new HashMap<String, String>();
+    private Logger logger = LogManager.getLogger(this.getClass().getName());
 
     public String getBaseUrl() {
       return baseUrl;
@@ -102,6 +96,7 @@ public class GenericZillowAPICaller {
           url = "http://www.zillow.com/webservice/GetZestimate.htm";
       }
       this.baseUrl = url;
+      logger.trace("Given argument " + api + ", using base URL" + url);
       return this;
     }
 
@@ -144,6 +139,7 @@ public class GenericZillowAPICaller {
         String newValue = this.encodeString(paramsToAdd.get(newKey));
         newKey = this.encodeString(newKey);
         this.params.put(newKey, newValue);
+        logger.trace("Including <param_name, param_value> = <" + newKey + ", " + newValue + " in API paramaters");
       }
       return this;
     }
@@ -159,6 +155,7 @@ public class GenericZillowAPICaller {
       paramName = this.encodeString(paramName);
       paramValue = this.encodeString(paramValue);
       this.params.put(paramName, paramValue);
+      logger.trace("Including <param_name, param_value> = <" + paramName + ", " + paramValue + " in API paramaters");
       return this;
     }
 
@@ -170,22 +167,27 @@ public class GenericZillowAPICaller {
      *         parameters that have been provided to this ZillowRequestBuilder
      */
     public String build() {
+      logger.trace("Building URL for API request...");
       StringBuilder sb = new StringBuilder(this.baseUrl).append("?");
       sb.append("zws-id=").append(zwsid);
       for (String param : this.params.keySet()) {
         sb.append("&").append(param).append("=").append(this.params.get(param));
       }
       String response = sb.toString();
+      logger.trace("URL String built: %s", response);
       return response;
     }
 
     public String encodeString(String arg) {
       String response = arg;
+      String charSet = "UTF-8";
       try {
-        response = URLEncoder.encode(response, "UTF-8");
+        response = URLEncoder.encode(response, charSet);
+        logger.trace("Successfully encoded %s to %s using %s", arg, response, charSet);
       } catch (UnsupportedEncodingException e) {
         e.printStackTrace();
-        System.out.println("Error in encoding String: " + arg);
+        logger.error("Error in encoding String: " + arg);
+        logger.error("Error was an UnsupportedEncodingException: ",  e);
       }
       return response;
     }

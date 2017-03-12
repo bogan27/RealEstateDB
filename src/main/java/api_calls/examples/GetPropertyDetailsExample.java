@@ -6,6 +6,8 @@ package main.java.api_calls.examples;
 import java.io.IOException;
 import java.util.HashMap;
 
+import org.xml.sax.SAXException;
+
 import main.java.api_calls.GenericZillowAPICaller;
 import main.java.api_calls.ZillowAPI;
 import main.java.api_calls.GenericZillowAPICaller.ZillowRequestBuilder;
@@ -52,12 +54,17 @@ public class GetPropertyDetailsExample implements Example {
     // System.out.println(data);
     // System.out.println(request);
 
-    PropertyDetailParser parser = new PropertyDetailParser(data);
-    System.out.println("Response status code: " + parser.getStatusCode());
-    System.out.println("Response message text: " + parser.getMessageText());
-    for (DbTableObject dbto : parser.parseData()) {
-      PropertyDetails details = (PropertyDetails) dbto;
-      System.out.println(details.toString());
+    try {
+      PropertyDetailParser parser = new PropertyDetailParser(data);
+      System.out.println("Response status code: " + parser.getStatusCode());
+      System.out.println("Response message text: " + parser.getMessageText());
+      for (DbTableObject dbto : parser.parseData()) {
+        PropertyDetails details = (PropertyDetails) dbto;
+        System.out.println(details.toString());
+      }
+    } catch (SAXException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
     }
 
   }

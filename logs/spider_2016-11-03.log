@@ -1,0 +1,136 @@
+[INFO ] 2016-11-03 00:00:00.441 [main] GenericZillowAPICaller - Successfully made API Call to: http://www.zillow.com/webservice/GetUpdatedPropertyDetails.htm?zws-id=X1-ZWz19thqfce13f_3s95g&zpid=37289842
+[INFO ] 2016-11-03 00:00:01.457 [main] GenericZillowAPICaller - Successfully made API Call to: http://www.zillow.com/webservice/GetDeepSearchResults.htm?zws-id=X1-ZWz19thqfce13f_3s95g&address=10103+Gardiner+Ave&citystatezip=20902
+[INFO ] 2016-11-03 00:00:01.646 [main] GenericZillowAPICaller - Successfully made API Call to: http://www.zillow.com/webservice/GetDeepComps.htm?zws-id=X1-ZWz19thqfce13f_3s95g&zpid=37289850&count=25
+[INFO ] 2016-11-03 00:00:04.207 [main] GenericZillowAPICaller - Successfully made API Call to: http://www.zillow.com/webservice/GetUpdatedPropertyDetails.htm?zws-id=X1-ZWz19thqfce13f_3s95g&zpid=37289850
+[INFO ] 2016-11-03 00:00:04.639 [main] GenericZillowAPICaller - Successfully made API Call to: http://www.zillow.com/webservice/GetDeepSearchResults.htm?zws-id=X1-ZWz19thqfce13f_3s95g&address=10504+Amherst+Ave&citystatezip=20902
+[INFO ] 2016-11-03 00:00:04.743 [main] GenericZillowAPICaller - Successfully made API Call to: http://www.zillow.com/webservice/GetDeepComps.htm?zws-id=X1-ZWz19thqfce13f_3s95g&zpid=37289270&count=25
+[INFO ] 2016-11-03 00:00:06.227 [main] GenericZillowAPICaller - Successfully made API Call to: http://www.zillow.com/webservice/GetUpdatedPropertyDetails.htm?zws-id=X1-ZWz19thqfce13f_3s95g&zpid=37289270
+[INFO ] 2016-11-03 00:00:06.716 [main] GenericZillowAPICaller - Successfully made API Call to: http://www.zillow.com/webservice/GetDeepSearchResults.htm?zws-id=X1-ZWz19thqfce13f_3s95g&address=2302+Churchill+Rd&citystatezip=20902
+[INFO ] 2016-11-03 00:00:06.934 [main] GenericZillowAPICaller - Successfully made API Call to: http://www.zillow.com/webservice/GetDeepComps.htm?zws-id=X1-ZWz19thqfce13f_3s95g&zpid=37289902&count=25
+[INFO ] 2016-11-03 00:00:09.617 [main] GenericZillowAPICaller - Successfully made API Call to: http://www.zillow.com/webservice/GetUpdatedPropertyDetails.htm?zws-id=X1-ZWz19thqfce13f_3s95g&zpid=37289902
+[INFO ] 2016-11-03 00:00:10.128 [main] GenericZillowAPICaller - Successfully made API Call to: http://www.zillow.com/webservice/GetDeepSearchResults.htm?zws-id=X1-ZWz19thqfce13f_3s95g&address=2500+Hayden+Dr&citystatezip=20902
+[INFO ] 2016-11-03 00:00:10.325 [main] GenericZillowAPICaller - Successfully made API Call to: http://www.zillow.com/webservice/GetDeepComps.htm?zws-id=X1-ZWz19thqfce13f_3s95g&zpid=37289881&count=25
+[INFO ] 2016-11-03 00:00:13.140 [main] GenericZillowAPICaller - Successfully made API Call to: http://www.zillow.com/webservice/GetUpdatedPropertyDetails.htm?zws-id=X1-ZWz19thqfce13f_3s95g&zpid=37289881
+[INFO ] 2016-11-03 00:00:13.622 [main] GenericZillowAPICaller - Successfully made API Call to: http://www.zillow.com/webservice/GetDeepSearchResults.htm?zws-id=X1-ZWz19thqfce13f_3s95g&address=2305+Arthur+Ave&citystatezip=20902
+[INFO ] 2016-11-03 00:00:13.735 [main] GenericZillowAPICaller - Successfully made API Call to: http://www.zillow.com/webservice/GetDeepComps.htm?zws-id=X1-ZWz19thqfce13f_3s95g&zpid=37289901&count=25
+[INFO ] 2016-11-03 00:00:16.318 [main] GenericZillowAPICaller - Successfully made API Call to: http://www.zillow.com/webservice/GetUpdatedPropertyDetails.htm?zws-id=X1-ZWz19thqfce13f_3s95g&zpid=37289901
+[INFO ] 2016-11-03 00:00:16.820 [main] GenericZillowAPICaller - Successfully made API Call to: http://www.zillow.com/webservice/GetDeepSearchResults.htm?zws-id=X1-ZWz19thqfce13f_3s95g&address=10429+Kensington+Pkwy&citystatezip=20895
+[INFO ] 2016-11-03 00:00:16.977 [main] GenericZillowAPICaller - Successfully made API Call to: http://www.zillow.com/webservice/GetDeepComps.htm?zws-id=X1-ZWz19thqfce13f_3s95g&zpid=37281371&count=25
+[INFO ] 2016-11-03 00:00:19.898 [main] GenericZillowAPICaller - Successfully made API Call to: http://www.zillow.com/webservice/GetUpdatedPropertyDetails.htm?zws-id=X1-ZWz19thqfce13f_3s95g&zpid=37281371
+[INFO ] 2016-11-03 00:00:20.692 [main] GenericZillowAPICaller - Successfully made API Call to: http://www.zillow.com/webservice/GetDeepSearchResults.htm?zws-id=X1-ZWz19thqfce13f_3s95g&address=2802+Jennings+Rd&citystatezip=20895
+[INFO ] 2016-11-03 00:00:20.803 [main] GenericZillowAPICaller - Successfully made API Call to: http://www.zillow.com/webservice/GetDeepComps.htm?zws-id=X1-ZWz19thqfce13f_3s95g&zpid=37290843&count=25
+[INFO ] 2016-11-03 00:00:23.368 [main] GenericZillowAPICaller - Successfully made API Call to: http://www.zillow.com/webservice/GetUpdatedPropertyDetails.htm?zws-id=X1-ZWz19thqfce13f_3s95g&zpid=37290843
+[INFO ] 2016-11-03 00:00:23.926 [main] GenericZillowAPICaller - Successfully made API Call to: http://www.zillow.com/webservice/GetDeepSearchResults.htm?zws-id=X1-ZWz19thqfce13f_3s95g&address=2807+Jennings+Rd&citystatezip=20895
+[INFO ] 2016-11-03 00:00:24.039 [main] GenericZillowAPICaller - Successfully made API Call to: http://www.zillow.com/webservice/GetDeepComps.htm?zws-id=X1-ZWz19thqfce13f_3s95g&zpid=37290841&count=25
+[INFO ] 2016-11-03 00:00:26.839 [main] GenericZillowAPICaller - Successfully made API Call to: http://www.zillow.com/webservice/GetUpdatedPropertyDetails.htm?zws-id=X1-ZWz19thqfce13f_3s95g&zpid=37290841
+[INFO ] 2016-11-03 00:00:27.587 [main] GenericZillowAPICaller - Successfully made API Call to: http://www.zillow.com/webservice/GetDeepSearchResults.htm?zws-id=X1-ZWz19thqfce13f_3s95g&address=2733+Jennings+Rd&citystatezip=20895
+[INFO ] 2016-11-03 00:00:27.698 [main] GenericZillowAPICaller - Successfully made API Call to: http://www.zillow.com/webservice/GetDeepComps.htm?zws-id=X1-ZWz19thqfce13f_3s95g&zpid=37291007&count=25
+[INFO ] 2016-11-03 00:00:30.318 [main] GenericZillowAPICaller - Successfully made API Call to: http://www.zillow.com/webservice/GetUpdatedPropertyDetails.htm?zws-id=X1-ZWz19thqfce13f_3s95g&zpid=37291007
+[INFO ] 2016-11-03 00:00:30.846 [main] GenericZillowAPICaller - Successfully made API Call to: http://www.zillow.com/webservice/GetDeepSearchResults.htm?zws-id=X1-ZWz19thqfce13f_3s95g&address=3019+Ferndale+St&citystatezip=20895
+[INFO ] 2016-11-03 00:00:30.956 [main] GenericZillowAPICaller - Successfully made API Call to: http://www.zillow.com/webservice/GetDeepComps.htm?zws-id=X1-ZWz19thqfce13f_3s95g&zpid=37297391&count=25
+[INFO ] 2016-11-03 00:00:33.229 [main] GenericZillowAPICaller - Successfully made API Call to: http://www.zillow.com/webservice/GetUpdatedPropertyDetails.htm?zws-id=X1-ZWz19thqfce13f_3s95g&zpid=37297391
+[INFO ] 2016-11-03 00:00:33.794 [main] GenericZillowAPICaller - Successfully made API Call to: http://www.zillow.com/webservice/GetDeepSearchResults.htm?zws-id=X1-ZWz19thqfce13f_3s95g&address=2907+Barker+St&citystatezip=20910
+[INFO ] 2016-11-03 00:00:33.912 [main] GenericZillowAPICaller - Successfully made API Call to: http://www.zillow.com/webservice/GetDeepComps.htm?zws-id=X1-ZWz19thqfce13f_3s95g&zpid=37278947&count=25
+[INFO ] 2016-11-03 00:00:36.538 [main] GenericZillowAPICaller - Successfully made API Call to: http://www.zillow.com/webservice/GetUpdatedPropertyDetails.htm?zws-id=X1-ZWz19thqfce13f_3s95g&zpid=37278947
+[INFO ] 2016-11-03 00:00:37.137 [main] GenericZillowAPICaller - Successfully made API Call to: http://www.zillow.com/webservice/GetDeepSearchResults.htm?zws-id=X1-ZWz19thqfce13f_3s95g&address=10202+Meredith+Ave&citystatezip=20910
+[INFO ] 2016-11-03 00:00:37.254 [main] GenericZillowAPICaller - Successfully made API Call to: http://www.zillow.com/webservice/GetDeepComps.htm?zws-id=X1-ZWz19thqfce13f_3s95g&zpid=37279014&count=25
+[INFO ] 2016-11-03 00:00:39.839 [main] GenericZillowAPICaller - Successfully made API Call to: http://www.zillow.com/webservice/GetUpdatedPropertyDetails.htm?zws-id=X1-ZWz19thqfce13f_3s95g&zpid=37279014
+[ERROR] 2016-11-03 00:00:56.516 [main] Main - Beginning Zillow Spidering
+[INFO ] 2016-11-03 00:00:58.339 [main] GenericZillowAPICaller - Successfully made API Call to: http://www.zillow.com/webservice/GetDeepSearchResults.htm?zws-id=X1-ZWz19thqfce13f_3s95g&address=2702+Harmon+Rd&citystatezip=20902
+[INFO ] 2016-11-03 00:00:58.700 [main] GenericZillowAPICaller - Successfully made API Call to: http://www.zillow.com/webservice/GetDeepComps.htm?zws-id=X1-ZWz19thqfce13f_3s95g&zpid=37290827&count=25
+[INFO ] 2016-11-03 00:01:01.570 [main] GenericZillowAPICaller - Successfully made API Call to: http://www.zillow.com/webservice/GetUpdatedPropertyDetails.htm?zws-id=X1-ZWz19thqfce13f_3s95g&zpid=37290827
+[INFO ] 2016-11-03 00:01:02.301 [main] GenericZillowAPICaller - Successfully made API Call to: http://www.zillow.com/webservice/GetDeepSearchResults.htm?zws-id=X1-ZWz19thqfce13f_3s95g&address=3012+Ferndale+St&citystatezip=20895
+[INFO ] 2016-11-03 00:01:02.417 [main] GenericZillowAPICaller - Successfully made API Call to: http://www.zillow.com/webservice/GetDeepComps.htm?zws-id=X1-ZWz19thqfce13f_3s95g&zpid=37297260&count=25
+[INFO ] 2016-11-03 00:01:05.365 [main] GenericZillowAPICaller - Successfully made API Call to: http://www.zillow.com/webservice/GetUpdatedPropertyDetails.htm?zws-id=X1-ZWz19thqfce13f_3s95g&zpid=37297260
+[INFO ] 2016-11-03 00:01:06.082 [main] GenericZillowAPICaller - Successfully made API Call to: http://www.zillow.com/webservice/GetDeepSearchResults.htm?zws-id=X1-ZWz19thqfce13f_3s95g&address=3009+Blueford+Rd&citystatezip=20895
+[INFO ] 2016-11-03 00:01:06.198 [main] GenericZillowAPICaller - Successfully made API Call to: http://www.zillow.com/webservice/GetDeepComps.htm?zws-id=X1-ZWz19thqfce13f_3s95g&zpid=37297271&count=25
+[INFO ] 2016-11-03 00:01:09.011 [main] GenericZillowAPICaller - Successfully made API Call to: http://www.zillow.com/webservice/GetUpdatedPropertyDetails.htm?zws-id=X1-ZWz19thqfce13f_3s95g&zpid=37297271
+[INFO ] 2016-11-03 00:01:09.826 [main] GenericZillowAPICaller - Successfully made API Call to: http://www.zillow.com/webservice/GetDeepSearchResults.htm?zws-id=X1-ZWz19thqfce13f_3s95g&address=3201+Blueford+Rd&citystatezip=20895
+[INFO ] 2016-11-03 00:01:09.947 [main] GenericZillowAPICaller - Successfully made API Call to: http://www.zillow.com/webservice/GetDeepComps.htm?zws-id=X1-ZWz19thqfce13f_3s95g&zpid=37297272&count=25
+[INFO ] 2016-11-03 00:01:13.047 [main] GenericZillowAPICaller - Successfully made API Call to: http://www.zillow.com/webservice/GetUpdatedPropertyDetails.htm?zws-id=X1-ZWz19thqfce13f_3s95g&zpid=37297272
+[INFO ] 2016-11-03 00:01:13.819 [main] GenericZillowAPICaller - Successfully made API Call to: http://www.zillow.com/webservice/GetDeepSearchResults.htm?zws-id=X1-ZWz19thqfce13f_3s95g&address=10113+Grant+Ave&citystatezip=20910
+[INFO ] 2016-11-03 00:01:13.939 [main] GenericZillowAPICaller - Successfully made API Call to: http://www.zillow.com/webservice/GetDeepComps.htm?zws-id=X1-ZWz19thqfce13f_3s95g&zpid=37278934&count=25
+[ERROR] 2016-11-03 00:10:28.821 [main] Main - Beginning Zillow Spidering
+[INFO ] 2016-11-03 00:10:31.881 [main] GenericZillowAPICaller - Successfully made API Call to: http://www.zillow.com/webservice/GetDeepSearchResults.htm?zws-id=X1-ZWz19thqfce13f_3s95g&address=10113+Grant+Ave&citystatezip=20910
+[INFO ] 2016-11-03 00:10:32.208 [main] GenericZillowAPICaller - Successfully made API Call to: http://www.zillow.com/webservice/GetDeepComps.htm?zws-id=X1-ZWz19thqfce13f_3s95g&zpid=37278934&count=25
+[INFO ] 2016-11-03 00:10:35.347 [main] GenericZillowAPICaller - Successfully made API Call to: http://www.zillow.com/webservice/GetUpdatedPropertyDetails.htm?zws-id=X1-ZWz19thqfce13f_3s95g&zpid=37278934
+[INFO ] 2016-11-03 00:10:35.861 [main] GenericZillowAPICaller - Successfully made API Call to: http://www.zillow.com/webservice/GetDeepSearchResults.htm?zws-id=X1-ZWz19thqfce13f_3s95g&address=3005+Edgewood+Rd&citystatezip=20895
+[INFO ] 2016-11-03 00:10:35.997 [main] GenericZillowAPICaller - Successfully made API Call to: http://www.zillow.com/webservice/GetDeepComps.htm?zws-id=X1-ZWz19thqfce13f_3s95g&zpid=37297474&count=25
+[INFO ] 2016-11-03 00:10:39.136 [main] GenericZillowAPICaller - Successfully made API Call to: http://www.zillow.com/webservice/GetUpdatedPropertyDetails.htm?zws-id=X1-ZWz19thqfce13f_3s95g&zpid=37297474
+[INFO ] 2016-11-03 00:10:40.036 [main] GenericZillowAPICaller - Successfully made API Call to: http://www.zillow.com/webservice/GetDeepSearchResults.htm?zws-id=X1-ZWz19thqfce13f_3s95g&address=10208+Menlo+Ave&citystatezip=20910
+[INFO ] 2016-11-03 00:10:40.161 [main] GenericZillowAPICaller - Successfully made API Call to: http://www.zillow.com/webservice/GetDeepComps.htm?zws-id=X1-ZWz19thqfce13f_3s95g&zpid=37278985&count=25
+[INFO ] 2016-11-03 00:10:43.436 [main] GenericZillowAPICaller - Successfully made API Call to: http://www.zillow.com/webservice/GetUpdatedPropertyDetails.htm?zws-id=X1-ZWz19thqfce13f_3s95g&zpid=37278985
+[INFO ] 2016-11-03 00:10:44.170 [main] GenericZillowAPICaller - Successfully made API Call to: http://www.zillow.com/webservice/GetDeepSearchResults.htm?zws-id=X1-ZWz19thqfce13f_3s95g&address=2605+Finch+St&citystatezip=20902
+[INFO ] 2016-11-03 00:10:44.323 [main] GenericZillowAPICaller - Successfully made API Call to: http://www.zillow.com/webservice/GetDeepComps.htm?zws-id=X1-ZWz19thqfce13f_3s95g&zpid=37287322&count=25
+[INFO ] 2016-11-03 00:10:48.455 [main] GenericZillowAPICaller - Successfully made API Call to: http://www.zillow.com/webservice/GetUpdatedPropertyDetails.htm?zws-id=X1-ZWz19thqfce13f_3s95g&zpid=37287322
+[INFO ] 2016-11-03 00:10:49.313 [main] GenericZillowAPICaller - Successfully made API Call to: http://www.zillow.com/webservice/GetDeepSearchResults.htm?zws-id=X1-ZWz19thqfce13f_3s95g&address=2706+Finch+St&citystatezip=20902
+[INFO ] 2016-11-03 00:10:49.672 [main] GenericZillowAPICaller - Successfully made API Call to: http://www.zillow.com/webservice/GetDeepComps.htm?zws-id=X1-ZWz19thqfce13f_3s95g&zpid=37287331&count=25
+[INFO ] 2016-11-03 00:10:52.857 [main] GenericZillowAPICaller - Successfully made API Call to: http://www.zillow.com/webservice/GetUpdatedPropertyDetails.htm?zws-id=X1-ZWz19thqfce13f_3s95g&zpid=37287331
+[INFO ] 2016-11-03 00:10:53.479 [main] GenericZillowAPICaller - Successfully made API Call to: http://www.zillow.com/webservice/GetDeepSearchResults.htm?zws-id=X1-ZWz19thqfce13f_3s95g&address=10117+Gardiner+Ave&citystatezip=20902
+[INFO ] 2016-11-03 00:10:53.674 [main] GenericZillowAPICaller - Successfully made API Call to: http://www.zillow.com/webservice/GetDeepComps.htm?zws-id=X1-ZWz19thqfce13f_3s95g&zpid=37289798&count=25
+[INFO ] 2016-11-03 00:10:56.240 [main] GenericZillowAPICaller - Successfully made API Call to: http://www.zillow.com/webservice/GetUpdatedPropertyDetails.htm?zws-id=X1-ZWz19thqfce13f_3s95g&zpid=37289798
+[INFO ] 2016-11-03 00:10:56.887 [main] GenericZillowAPICaller - Successfully made API Call to: http://www.zillow.com/webservice/GetDeepSearchResults.htm?zws-id=X1-ZWz19thqfce13f_3s95g&address=10408+Conover+Dr&citystatezip=20902
+[INFO ] 2016-11-03 00:10:57.079 [main] GenericZillowAPICaller - Successfully made API Call to: http://www.zillow.com/webservice/GetDeepComps.htm?zws-id=X1-ZWz19thqfce13f_3s95g&zpid=37287724&count=25
+[INFO ] 2016-11-03 00:10:59.999 [main] GenericZillowAPICaller - Successfully made API Call to: http://www.zillow.com/webservice/GetUpdatedPropertyDetails.htm?zws-id=X1-ZWz19thqfce13f_3s95g&zpid=37287724
+[INFO ] 2016-11-03 00:11:00.871 [main] GenericZillowAPICaller - Successfully made API Call to: http://www.zillow.com/webservice/GetDeepSearchResults.htm?zws-id=X1-ZWz19thqfce13f_3s95g&address=1811+Florin+St&citystatezip=20902
+[INFO ] 2016-11-03 00:11:01.069 [main] GenericZillowAPICaller - Successfully made API Call to: http://www.zillow.com/webservice/GetDeepComps.htm?zws-id=X1-ZWz19thqfce13f_3s95g&zpid=37287114&count=25
+[INFO ] 2016-11-03 00:11:04.020 [main] GenericZillowAPICaller - Successfully made API Call to: http://www.zillow.com/webservice/GetUpdatedPropertyDetails.htm?zws-id=X1-ZWz19thqfce13f_3s95g&zpid=37287114
+[INFO ] 2016-11-03 00:11:04.407 [main] GenericZillowAPICaller - Successfully made API Call to: http://www.zillow.com/webservice/GetDeepSearchResults.htm?zws-id=X1-ZWz19thqfce13f_3s95g&address=11102+Norlee+Dr&citystatezip=20902
+[INFO ] 2016-11-03 00:11:04.603 [main] GenericZillowAPICaller - Successfully made API Call to: http://www.zillow.com/webservice/GetDeepComps.htm?zws-id=X1-ZWz19thqfce13f_3s95g&zpid=37276621&count=25
+[INFO ] 2016-11-03 00:11:07.380 [main] GenericZillowAPICaller - Successfully made API Call to: http://www.zillow.com/webservice/GetUpdatedPropertyDetails.htm?zws-id=X1-ZWz19thqfce13f_3s95g&zpid=37276621
+[INFO ] 2016-11-03 00:11:08.090 [main] GenericZillowAPICaller - Successfully made API Call to: http://www.zillow.com/webservice/GetDeepSearchResults.htm?zws-id=X1-ZWz19thqfce13f_3s95g&address=11016+Horde+St&citystatezip=20902
+[INFO ] 2016-11-03 00:11:08.285 [main] GenericZillowAPICaller - Successfully made API Call to: http://www.zillow.com/webservice/GetDeepComps.htm?zws-id=X1-ZWz19thqfce13f_3s95g&zpid=37276853&count=25
+[INFO ] 2016-11-03 00:11:11.140 [main] GenericZillowAPICaller - Successfully made API Call to: http://www.zillow.com/webservice/GetUpdatedPropertyDetails.htm?zws-id=X1-ZWz19thqfce13f_3s95g&zpid=37276853
+[INFO ] 2016-11-03 00:11:11.504 [main] GenericZillowAPICaller - Successfully made API Call to: http://www.zillow.com/webservice/GetDeepSearchResults.htm?zws-id=X1-ZWz19thqfce13f_3s95g&address=10913+Bucknell+Dr+%23+7&citystatezip=20902
+[INFO ] 2016-11-03 00:11:11.710 [main] GenericZillowAPICaller - Successfully made API Call to: http://www.zillow.com/webservice/GetDeepComps.htm?zws-id=X1-ZWz19thqfce13f_3s95g&zpid=37277363&count=25
+[INFO ] 2016-11-03 00:11:14.610 [main] GenericZillowAPICaller - Successfully made API Call to: http://www.zillow.com/webservice/GetUpdatedPropertyDetails.htm?zws-id=X1-ZWz19thqfce13f_3s95g&zpid=37277363
+[INFO ] 2016-11-03 00:11:15.377 [main] GenericZillowAPICaller - Successfully made API Call to: http://www.zillow.com/webservice/GetDeepSearchResults.htm?zws-id=X1-ZWz19thqfce13f_3s95g&address=2115+Cascade+Rd&citystatezip=20902
+[INFO ] 2016-11-03 00:11:15.511 [main] GenericZillowAPICaller - Successfully made API Call to: http://www.zillow.com/webservice/GetDeepComps.htm?zws-id=X1-ZWz19thqfce13f_3s95g&zpid=37289276&count=25
+[INFO ] 2016-11-03 00:11:18.500 [main] GenericZillowAPICaller - Successfully made API Call to: http://www.zillow.com/webservice/GetUpdatedPropertyDetails.htm?zws-id=X1-ZWz19thqfce13f_3s95g&zpid=37289276
+[INFO ] 2016-11-03 00:11:19.003 [main] GenericZillowAPICaller - Successfully made API Call to: http://www.zillow.com/webservice/GetDeepSearchResults.htm?zws-id=X1-ZWz19thqfce13f_3s95g&address=10611+Amherst+Ave&citystatezip=20902
+[INFO ] 2016-11-03 00:11:19.132 [main] GenericZillowAPICaller - Successfully made API Call to: http://www.zillow.com/webservice/GetDeepComps.htm?zws-id=X1-ZWz19thqfce13f_3s95g&zpid=37289354&count=25
+[INFO ] 2016-11-03 00:11:22.010 [main] GenericZillowAPICaller - Successfully made API Call to: http://www.zillow.com/webservice/GetUpdatedPropertyDetails.htm?zws-id=X1-ZWz19thqfce13f_3s95g&zpid=37289354
+[INFO ] 2016-11-03 00:11:22.576 [main] GenericZillowAPICaller - Successfully made API Call to: http://www.zillow.com/webservice/GetDeepSearchResults.htm?zws-id=X1-ZWz19thqfce13f_3s95g&address=2100+Plyers+Mill+Rd&citystatezip=20902
+[INFO ] 2016-11-03 00:11:22.719 [main] GenericZillowAPICaller - Successfully made API Call to: http://www.zillow.com/webservice/GetDeepComps.htm?zws-id=X1-ZWz19thqfce13f_3s95g&zpid=37289367&count=25
+[INFO ] 2016-11-03 00:11:25.480 [main] GenericZillowAPICaller - Successfully made API Call to: http://www.zillow.com/webservice/GetUpdatedPropertyDetails.htm?zws-id=X1-ZWz19thqfce13f_3s95g&zpid=37289367
+[INFO ] 2016-11-03 00:11:25.866 [main] GenericZillowAPICaller - Successfully made API Call to: http://www.zillow.com/webservice/GetDeepSearchResults.htm?zws-id=X1-ZWz19thqfce13f_3s95g&address=2504+Jennings+Rd&citystatezip=20902
+[INFO ] 2016-11-03 00:11:25.984 [main] GenericZillowAPICaller - Successfully made API Call to: http://www.zillow.com/webservice/GetDeepComps.htm?zws-id=X1-ZWz19thqfce13f_3s95g&zpid=37302856&count=25
+[INFO ] 2016-11-03 00:11:28.901 [main] GenericZillowAPICaller - Successfully made API Call to: http://www.zillow.com/webservice/GetUpdatedPropertyDetails.htm?zws-id=X1-ZWz19thqfce13f_3s95g&zpid=37302856
+[INFO ] 2016-11-03 00:11:29.535 [main] GenericZillowAPICaller - Successfully made API Call to: http://www.zillow.com/webservice/GetDeepSearchResults.htm?zws-id=X1-ZWz19thqfce13f_3s95g&address=2501+Plyers+Mill+Rd&citystatezip=20902
+[INFO ] 2016-11-03 00:11:29.648 [main] GenericZillowAPICaller - Successfully made API Call to: http://www.zillow.com/webservice/GetDeepComps.htm?zws-id=X1-ZWz19thqfce13f_3s95g&zpid=37302914&count=25
+[INFO ] 2016-11-03 00:11:32.710 [main] GenericZillowAPICaller - Successfully made API Call to: http://www.zillow.com/webservice/GetUpdatedPropertyDetails.htm?zws-id=X1-ZWz19thqfce13f_3s95g&zpid=37302914
+[INFO ] 2016-11-03 00:11:33.140 [main] GenericZillowAPICaller - Successfully made API Call to: http://www.zillow.com/webservice/GetDeepSearchResults.htm?zws-id=X1-ZWz19thqfce13f_3s95g&address=2601+Plyers+Mill+Rd&citystatezip=20902
+[INFO ] 2016-11-03 00:11:33.265 [main] GenericZillowAPICaller - Successfully made API Call to: http://www.zillow.com/webservice/GetDeepComps.htm?zws-id=X1-ZWz19thqfce13f_3s95g&zpid=37302965&count=25
+[INFO ] 2016-11-03 00:11:36.046 [main] GenericZillowAPICaller - Successfully made API Call to: http://www.zillow.com/webservice/GetUpdatedPropertyDetails.htm?zws-id=X1-ZWz19thqfce13f_3s95g&zpid=37302965
+[INFO ] 2016-11-03 00:11:36.699 [main] GenericZillowAPICaller - Successfully made API Call to: http://www.zillow.com/webservice/GetDeepSearchResults.htm?zws-id=X1-ZWz19thqfce13f_3s95g&address=11011+Bucknell+Dr&citystatezip=20902
+[INFO ] 2016-11-03 00:11:36.819 [main] GenericZillowAPICaller - Successfully made API Call to: http://www.zillow.com/webservice/GetDeepComps.htm?zws-id=X1-ZWz19thqfce13f_3s95g&zpid=37303257&count=25
+[INFO ] 2016-11-03 00:11:39.321 [main] GenericZillowAPICaller - Successfully made API Call to: http://www.zillow.com/webservice/GetUpdatedPropertyDetails.htm?zws-id=X1-ZWz19thqfce13f_3s95g&zpid=37303257
+[INFO ] 2016-11-03 00:11:39.761 [main] GenericZillowAPICaller - Successfully made API Call to: http://www.zillow.com/webservice/GetDeepSearchResults.htm?zws-id=X1-ZWz19thqfce13f_3s95g&address=11012+Burnley+Ter&citystatezip=20902
+[INFO ] 2016-11-03 00:11:39.871 [main] GenericZillowAPICaller - Successfully made API Call to: http://www.zillow.com/webservice/GetDeepComps.htm?zws-id=X1-ZWz19thqfce13f_3s95g&zpid=37303289&count=25
+[INFO ] 2016-11-03 00:11:41.803 [main] GenericZillowAPICaller - Successfully made API Call to: http://www.zillow.com/webservice/GetUpdatedPropertyDetails.htm?zws-id=X1-ZWz19thqfce13f_3s95g&zpid=37303289
+[INFO ] 2016-11-03 00:11:42.306 [main] GenericZillowAPICaller - Successfully made API Call to: http://www.zillow.com/webservice/GetDeepSearchResults.htm?zws-id=X1-ZWz19thqfce13f_3s95g&address=11004+Bucknell+Dr&citystatezip=20902
+[INFO ] 2016-11-03 00:11:42.422 [main] GenericZillowAPICaller - Successfully made API Call to: http://www.zillow.com/webservice/GetDeepComps.htm?zws-id=X1-ZWz19thqfce13f_3s95g&zpid=37303308&count=25
+[INFO ] 2016-11-03 00:11:44.541 [main] GenericZillowAPICaller - Successfully made API Call to: http://www.zillow.com/webservice/GetUpdatedPropertyDetails.htm?zws-id=X1-ZWz19thqfce13f_3s95g&zpid=37303308
+[INFO ] 2016-11-03 00:11:44.930 [main] GenericZillowAPICaller - Successfully made API Call to: http://www.zillow.com/webservice/GetDeepSearchResults.htm?zws-id=X1-ZWz19thqfce13f_3s95g&address=2104+Windham+Ln&citystatezip=20902
+[INFO ] 2016-11-03 00:11:45.048 [main] GenericZillowAPICaller - Successfully made API Call to: http://www.zillow.com/webservice/GetDeepComps.htm?zws-id=X1-ZWz19thqfce13f_3s95g&zpid=37289288&count=25
+[INFO ] 2016-11-03 00:11:47.611 [main] GenericZillowAPICaller - Successfully made API Call to: http://www.zillow.com/webservice/GetUpdatedPropertyDetails.htm?zws-id=X1-ZWz19thqfce13f_3s95g&zpid=37289288
+[INFO ] 2016-11-03 00:11:48.275 [main] GenericZillowAPICaller - Successfully made API Call to: http://www.zillow.com/webservice/GetDeepSearchResults.htm?zws-id=X1-ZWz19thqfce13f_3s95g&address=2703+Calgary+Ave&citystatezip=20895
+[INFO ] 2016-11-03 00:11:48.392 [main] GenericZillowAPICaller - Successfully made API Call to: http://www.zillow.com/webservice/GetDeepComps.htm?zws-id=X1-ZWz19thqfce13f_3s95g&zpid=37296528&count=25
+[INFO ] 2016-11-03 00:11:51.266 [main] GenericZillowAPICaller - Successfully made API Call to: http://www.zillow.com/webservice/GetUpdatedPropertyDetails.htm?zws-id=X1-ZWz19thqfce13f_3s95g&zpid=37296528
+[INFO ] 2016-11-03 00:11:51.674 [main] GenericZillowAPICaller - Successfully made API Call to: http://www.zillow.com/webservice/GetDeepSearchResults.htm?zws-id=X1-ZWz19thqfce13f_3s95g&address=2119+Ellis+St&citystatezip=20910
+[INFO ] 2016-11-03 00:11:51.790 [main] GenericZillowAPICaller - Successfully made API Call to: http://www.zillow.com/webservice/GetDeepComps.htm?zws-id=X1-ZWz19thqfce13f_3s95g&zpid=37276547&count=25
+[INFO ] 2016-11-03 00:11:54.571 [main] GenericZillowAPICaller - Successfully made API Call to: http://www.zillow.com/webservice/GetUpdatedPropertyDetails.htm?zws-id=X1-ZWz19thqfce13f_3s95g&zpid=37276547
+[INFO ] 2016-11-03 00:11:55.090 [main] GenericZillowAPICaller - Successfully made API Call to: http://www.zillow.com/webservice/GetDeepSearchResults.htm?zws-id=X1-ZWz19thqfce13f_3s95g&address=2215+Kimball+Pl&citystatezip=20910
+[INFO ] 2016-11-03 00:11:55.209 [main] GenericZillowAPICaller - Successfully made API Call to: http://www.zillow.com/webservice/GetDeepComps.htm?zws-id=X1-ZWz19thqfce13f_3s95g&zpid=37279691&count=25
+[ERROR] 2016-11-03 00:11:58.554 [main] GenericZillowAPICaller - IOException occured while making API call to: http://www.zillow.com/webservice/GetUpdatedPropertyDetails.htm?zws-id=X1-ZWz19thqfce13f_3s95g&zpid=37279691
+org.apache.http.client.HttpResponseException: Internal Server Error
+	at org.apache.http.impl.client.AbstractResponseHandler.handleResponse(AbstractResponseHandler.java:69) ~[httpclient-4.5.2.jar:4.5.2]
+	at org.apache.http.client.fluent.Response.handleResponse(Response.java:90) ~[fluent-hc-4.5.2.jar:4.5.2]
+	at org.apache.http.client.fluent.Response.returnContent(Response.java:97) ~[fluent-hc-4.5.2.jar:4.5.2]
+	at main.java.api_calls.GenericZillowAPICaller.makeApiCall(GenericZillowAPICaller.java:38) [classes/:?]
+	at main.java.api_calls.GenericZillowAPICaller.makeApiCall(GenericZillowAPICaller.java:49) [classes/:?]
+	at main.java.execute.Executor.processPropertyDetails(Executor.java:138) [classes/:?]
+	at main.java.execute.Executor.getDataForAddress(Executor.java:103) [classes/:?]
+	at main.java.execute.Executor.run(Executor.java:54) [classes/:?]
+	at main.java.execute.Main.main(Main.java:55) [classes/:?]
+[INFO ] 2016-11-03 00:11:58.596 [main] GenericZillowAPICaller - Successfully made API Call to: http://www.zillow.com/webservice/GetUpdatedPropertyDetails.htm?zws-id=X1-ZWz19thqfce13f_3s95g&zpid=37279691
